@@ -1,0 +1,119 @@
+site_name: 追光的笔记本         
+site_author: 追光          
+site_url: https://your.domain.com 
+
+repo_url: https://github.com/zhuiguang49/notebook
+repo_name: zhuiguang49/notebook
+
+theme:
+  name: material
+  language: zh                
+  
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: pink
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+
+    - scheme: slate
+      primary: black
+      accent: pink
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+
+
+  features:
+    - navigation.tabs          
+    - navigation.instant        
+    - navigation.top            
+    - header.autohide          
+    - content.code.copy        
+    - content.code.annotate  
+    - search.suggest            
+    - search.highlight
+
+  social:
+    - icon: fontawesome/brands/github   
+      link: https://github.com/zhuiguang49
+    - icon: fontawesome/solid/envelope
+      link: mailto:zhuiguang49@foxmail.com         
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search:
+      lang: ja                   
+  - git-revision-date-localized: 
+      type: timeago
+      locale: zh
+  - mermaid2  
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js               
+
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.arithmatex:         
+      generic: true
+  - pymdownx.highlight:         
+      anchor_linenums: true
+  - pymdownx.inlinehilite        
+  - pymdownx.snippets            
+  - pymdownx.superfences         
+  - admonition                   
+  - pymdownx.details             
+  - pymdownx.tabbed:            
+      alternate_style: true
+  - attr_list                    
+  - md_in_html                   
+
+
+
+nav:
+  - 'Home': 'index.md'
+  - 'Computer Science':
+    - '数据结构和算法（数院）': 'CS/数据结构和算法/数据结构和算法（数院）.md'
+    - 'OOP':
+      - 'Week1 Using Object': 'CS/OOP/Week1 Using Object.md'
+      - 'Week2 Grouping Object': 'CS/OOP/Week2 Grouping Object.md'
+      - 'Week3 Class': 'CS/OOP/Week3 Class.md'
+      - 'Week4&5 Inside Object': 'CS/OOP/Week4&5 Inside Object.md'
+      - 'Week6 Inside Class': 'CS/OOP/Week6 Inside Class.md'
+      - 'Week7 Composition': 'CS/OOP/Week7 Composition.md'
+      - 'Week8 Inheritance': 'CS/OOP/Week8 Inheritance.md'
+      - 'Week9 Polymorphism': 'CS/OOP/Week9 Polymorphism.md'
+      - 'Week10 Copy and Move': 'CS/OOP/Week10 Copy and Move.md'
+      - 'Week11 Overloaded Operator': 'CS/OOP/Week11 Overloaded Operator.md'
+      - 'Week12 Template': 'CS/OOP/Week12 Template.md'
+      - 'Week13 Exception': 'CS/OOP/Week13 Exception.md'
+
+
+
+  - 'Math': 
+    - '概率论': 
+      - 'Chapter1 事件及其概率': 'Math/概率论/概率论笔记（第一章）.md'
+      - 'Chapter2 随机变量与分布函数': 'Math/概率论/概率论笔记（第二章）.md'
+      - 'Chapter3 数字特征与特征函数': 'Math/概率论/概率论笔记（第三章）.md'
+      - 'Chapter4 极限定理': 'Math/概率论/概率论笔记（第四章）.md'
+  
+    - '随机过程':
+      - 'Chapter1 概率论复习': 'Math/随机过程/Chapter1 概率论复习.md'
+      - 'Chapter2 随机过程的分类和定义': 'Math/随机过程/Chapter2 随机过程的分类和定义.md'
+      - 'Chapter3 泊松过程': 'Math/随机过程/Chapter3 泊松过程.md' 
+      - 'Chapter4 Markov链': 'Math/随机过程/Chapter4 Markov链.md'
+      - 'Chapter5 分支过程': 'Math/随机过程/Chapter5 分支过程.md'
+      - 'Chapter6 布朗运动': 'Math/随机过程/Chapter6 布朗运动.md'
+      - 'Chapter7 平稳过程': 'Math/随机过程/Chapter7 平稳过程.md'
+
