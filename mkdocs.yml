@@ -9,7 +9,7 @@ theme:
   name: material
   language: zh  
   logo: assets/logo.png
-  favion: assets/logo.png
+  favion: assets/logo.ico
   custom_dir: overrides              
   
   font:
