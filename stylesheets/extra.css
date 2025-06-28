@@ -552,3 +552,40 @@ a:hover .text-button span {
   width: 100%;
   height: 100%;
 }
+
+
+:root {
+  --md-admonition-icon--quote-color: #2C3E50;
+}
+
+
+.md-typeset .admonition.quote,
+.md-typeset details.quote {
+  
+  border-left-color: var(--md-admonition-icon--quote-color);
+  
+  background-color: rgba(44, 62, 80, 0.05);
+}
+
+
+.md-typeset .quote > .admonition-title,
+.md-typeset .quote > summary {
+  
+  background-color: rgba(44, 62, 80, 0.1);
+
+  
+  color: var(--md-admonition-icon--quote-color);
+  font-weight: 700;
+
+  
+  &::before {
+    background-color: var(--md-admonition-icon--quote-color);
+    -webkit-mask-image: var(--md-icon--crown);
+    mask-image: var(--md-icon--crown);
+  }
+}
+
+
+.md-typeset .admonition.quote .md-admonition-content {
+  font-style: italic;
+}
