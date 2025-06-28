@@ -1,6 +1,4 @@
-## W1 Using Object
-
-### Format output
+## Format output
 
 - 首先需要使用`<iomanip>`库，即`#include<iomanip>`
 
@@ -28,11 +26,11 @@
   std::cout << std::setw(10) << std::setfill('*') << 42 << std::endl // "********42"
   ```
 
-### String类
+## String类
 
 需要先包含string类的头文件：`#<include string>`
 
-#### Input and Output
+### Input and Output
 
 如果是想要读一个字符串。可以使用`cin/cout`即
 
@@ -75,7 +73,7 @@ while (std::getline(inputFile, line)) {
 inputFile.close();
 ```
 
-#### create a string
+### create a string
 
  ```c++
  string(const char *p,int len);
@@ -83,7 +81,7 @@ inputFile.close();
  string(const string & s3,int pos, int len);
  ```
 
-#### 一些字符串函数
+### 一些字符串函数
 
 Sub-string
 

@@ -1,10 +1,8 @@
-## W2 Grouping object
-
-### Container/Collection（容器）
+## Container/Collection（容器）
 
 capacity 指能存储的容量，size 指现在存储的量
 
-#### STL : Standard Template Library
+### STL : Standard Template Library
 
 Library includes:
 
@@ -17,7 +15,7 @@ Library includes:
 - Basic Algorithms(sort, search, etc)
 - 都在 `std`命名空间里
 
-##### `std::sort`
+#### `std::sort`
 
 这里我们讲一下`std::sort`的基本用法，其通常用于对指定范围内的元素进行排序，**默认是按照升序排列的**，主要有两个版本：
 
@@ -39,7 +37,7 @@ Library includes:
 
 `std::sort`的必选参数是`first`和`last`，这两个参数是迭代器，这是迭代器的范围。
 
-#### Vector
+### Vector
 
 需要`#include<vector>`，创建vector：`vector<int> x`，vector放入元素是有序的
 
@@ -82,7 +80,7 @@ Library includes:
     ```
     我们使用`std::vector<int>`的构造函数，创建了一个包含`c`个元素的向量，且将所有的元素初始化为0
 
-#### List
+### List
 
 需要包含头文件`#include<list>`
 
@@ -125,7 +123,7 @@ List和Vector有一点不同，List是双向列表，其在列表前后端都是
     // 不能使用 iter1<iter2 的循环判断条件
     ```
 
-#### Deque
+### Deque
 
 需要包含头文件`#include<deque>`
 
@@ -178,7 +176,7 @@ Choose Between Sequential Containers:
   
     这是因为双端队列支持在前端和后端以常数时间$O(1)$插入和删除元素
 
-#### Map
+### Map
 
 Map提供了一种键值对的数据结构，允许通过键来快速查找对应的值，需要包含头文件`#include<map>`，创建一个map对象的示例如下：
 
@@ -227,7 +225,7 @@ for(const auto &it : count){
 }// 当然这个例子并没有什么实际意义，只是说明一下有first和second这两个方法而已
 ```
 
-### Iterator（迭代器）
+## Iterator（迭代器）
 
 声明
 
@@ -243,7 +241,7 @@ li = L.begin(); // begin()指向的是容器的头部
 li = L.end();    // end()指向的是容器的尾部的下一个
 ```
 
-#### for-each loop(C++11)
+### for-each loop(C++11)
 
 很经典的
 

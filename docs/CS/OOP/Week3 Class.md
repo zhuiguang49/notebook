@@ -1,12 +1,10 @@
-## W3 Class
-
-#### `::`resolver（解析器）
+### `::`resolver（解析器）
 
 - `<Class Name>::<function name>`
 
 - `::<function name>`（代表是全局的）
 
-#### `this`指针
+### `this`指针
 
 `this`指针是所有成员函数的一个隐藏参数，类型就是结构的类型，也就是说
 
@@ -15,7 +13,7 @@ void Point::move(int dx,int dy);  // can be recognized as
 void Point::move(Point *this, int dx, int dy);
 ```
 
-#### Class
+### Class
 
 - In C++,separated `.h` and `.cpp` file are used to define one class
 - Class declaration and prototypes in that calss are in the header file(`.h`)（类的声明和该类中的函数原型应当放在头文件中）
@@ -49,13 +47,13 @@ void Point::move(Point *this, int dx, int dy);
 #endif 
 ```
 
-#### Initialization and Clean-Up
+### Initialization and Clean-Up
 
 Constructor（构造函数）
 
 构造函数的名字和类的名字是相同的
 
-##### Initializer list
+#### Initializer list
 
 - 成员变量可以在定义的时候被初始化，如
 
@@ -77,7 +75,7 @@ Constructor（构造函数）
   Point::Point(int xx, int yy):x(xx),y(yy){}
   ```
 
-##### The default constructor（默认构造函数）
+#### The default constructor（默认构造函数）
 
 默认构造函数是指没有参数或者所有参数都有默认值的构造函数（严格定义“默认构造函数是指**可以被无参数调用的构造函数**”）
 
@@ -87,7 +85,7 @@ Constructor（构造函数）
 
 "auto" default constructor（自动默认构造函数）：如果你自己定义了任何构造函数，那么编译器会确保对象创建时总会调用这个构造函数，并且不会自动生成默认构造函数；只有**当类完全没有定义任何构造函数时**，编译器才会自动为你创建一个默认构造函数，这个自动生成的默认构造函数不带参数，也**不执行任何初始化**
 
-##### The Destructor（析构函数）
+#### The Destructor（析构函数）
 
 析构函数的命名是`~`+`类的名字`，析构函数没有参数
 
@@ -100,7 +98,7 @@ Constructor（构造函数）
 
     析构的顺序和构造的顺序相反，先构造的后析构，后构造的先析构（因为可能存在构造的依赖关系） 
 
-##### 储存分配和初始化的区别
+#### 储存分配和初始化的区别
 
 - 编译器会在作用域开始处就分配该作用域内的所有存储空间，这意味着编译器会在函数或代码块开始执行时就为其中所有的局部变量预留内存空间
 - 对象的构造函数调用并不是在分配存储空间的时候发生的，而是在程序执行到定义该对象的那一行代码才会调用，也就是说创造了一个“已分配但未初始化”的时间窗口。
