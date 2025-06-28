@@ -83,7 +83,7 @@ markdown_extensions:
 
 
 nav:
-  - 'Home': 'Home/index.md'
+  - 'Home': 'index.md'
   - 'Computer Science':
     - 'OOP':
       - 'Week1 Using Object': 'CS/OOP/Week1 Using Object.md'

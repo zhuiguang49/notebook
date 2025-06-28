@@ -10,28 +10,26 @@
         <meta name="author" content="追光">
       
       
-        <link rel="canonical" href="https://note.zhuiguang.tech/CS/OOP/Week13%20Exception/">
+        <link rel="canonical" href="https://note.zhuiguang.tech/Home/">
       
       
-        <link rel="prev" href="../Week12%20Template/">
+      
+        <link rel="next" href="../CS/OOP/Week1%20Using%20Object/">
       
       
-        <link rel="next" href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/">
-      
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
-        <title>Week13 Exception - 追光的笔记本</title>
+        <title>Home - 追光的笔记本</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/timeago.css">
+      <link rel="stylesheet" href="../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#w13-exception" class="md-skip">
+        <a href="#welcome-to-zhuiguangs-notebook" class="md-skip">
           跳转至
         </a>
       
@@ -94,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+    <a href=".." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Week13 Exception
+              Home
             
           </span>
         </div>
@@ -221,9 +219,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../../Home/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -238,21 +238,17 @@
         
   
   
-    
-  
   
     
     
       
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../Week1%20Using%20Object/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
           
   
   Computer Science
@@ -279,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+        <a href="../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
           
   
   Math
@@ -315,7 +311,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+    <a href=".." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -342,10 +338,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../Home/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -354,6 +370,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      About me
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -362,28 +407,23 @@
       
   
   
-    
   
   
-  
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -394,7 +434,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -405,8 +445,6 @@
                 
   
   
-    
-  
   
   
     
@@ -416,11 +454,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -434,7 +472,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             OOP
@@ -448,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week1%20Using%20Object/" class="md-nav__link">
+      <a href="../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -469,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week2%20Grouping%20Object/" class="md-nav__link">
+      <a href="../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -490,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week3%20Class/" class="md-nav__link">
+      <a href="../CS/OOP/Week3%20Class/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -511,7 +549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week4%265%20Inside%20Object/" class="md-nav__link">
+      <a href="../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -532,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week6%20Inside%20Class/" class="md-nav__link">
+      <a href="../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -553,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week7%20Composition/" class="md-nav__link">
+      <a href="../CS/OOP/Week7%20Composition/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -574,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week8%20Inheritance/" class="md-nav__link">
+      <a href="../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -595,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week9%20Polymorphism/" class="md-nav__link">
+      <a href="../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -616,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week10%20Copy%20and%20Move/" class="md-nav__link">
+      <a href="../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -637,7 +675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week11%20Overloaded%20Operator/" class="md-nav__link">
+      <a href="../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -658,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week12%20Template/" class="md-nav__link">
+      <a href="../CS/OOP/Week12%20Template/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -676,28 +714,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Week13 Exception
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../CS/OOP/Week13%20Exception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -706,84 +726,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#w13-exception" class="md-nav__link">
-    <span class="md-ellipsis">
-      W13 Exception(异常)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="W13 Exception(异常)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#throw" class="md-nav__link">
-    <span class="md-ellipsis">
-      抛出异常throw
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#try" class="md-nav__link">
-    <span class="md-ellipsis">
-      try监控可能抛出异常的代码
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#catch" class="md-nav__link">
-    <span class="md-ellipsis">
-      catch捕获和处理异常
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      异常对象
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stack-unwinding" class="md-nav__link">
-    <span class="md-ellipsis">
-      栈展开(Stack Unwinding)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -887,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+      <a href="../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -908,7 +850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+      <a href="../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -929,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+      <a href="../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -950,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+      <a href="../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1017,7 +959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+      <a href="../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1038,7 +980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+      <a href="../Math/随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1059,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+      <a href="../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1080,7 +1022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+      <a href="../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1101,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+      <a href="../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1122,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+      <a href="../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1143,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+      <a href="../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1189,6 +1131,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1197,62 +1141,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#w13-exception" class="md-nav__link">
+  <a href="#about-me" class="md-nav__link">
     <span class="md-ellipsis">
-      W13 Exception(异常)
+      About me
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="W13 Exception(异常)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#throw" class="md-nav__link">
-    <span class="md-ellipsis">
-      抛出异常throw
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#try" class="md-nav__link">
-    <span class="md-ellipsis">
-      try监控可能抛出异常的代码
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#catch" class="md-nav__link">
-    <span class="md-ellipsis">
-      catch捕获和处理异常
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      异常对象
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stack-unwinding" class="md-nav__link">
-    <span class="md-ellipsis">
-      栈展开(Stack Unwinding)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1275,50 +1168,19 @@
   
 
 
-  <h1>Week13 Exception</h1>
-
-<h2 id="w13-exception">W13 Exception(异常)<a class="headerlink" href="#w13-exception" title="Permanent link">&para;</a></h2>
-<p>异常(Exception)指的是程序在运行时遇到无法正常处理的问题时的一种机制。</p>
-<p>其核心思想在于，当问题发生时，当前代码可能不知道如何解决，但它知道不能继续正常执行。异常机制允许程序暂停当前操作，将问题“抛”给能够处理它的代码。</p>
-<p>首先需要强调的是，异常是<strong>运行时机制(针对run-time error)</strong>，在程序运行时触发，用于处理运行时错误（比如文件无法打开、内存分配失败、数组越界等），C++编译器不会在编译时检查异常是否会发生，而是将异常处理逻辑留到运行时执行。</p>
-<h3 id="throw">抛出异常<code>throw</code><a class="headerlink" href="#throw" title="Permanent link">&para;</a></h3>
-<p><code>throw</code>关键字用于抛出异常对象，暂停当前代码执行，并将控制权传递给调用栈中能够处理该异常的<code>catch</code>块，<code>throw</code>的使用有以下几点规则：</p>
+<h1 id="welcome-to-zhuiguangs-notebook">Welcome to Zhuiguang's notebook!<a class="headerlink" href="#welcome-to-zhuiguangs-notebook" title="Permanent link">&para;</a></h1>
+<p>这里是追光的笔记本 📖 ~ 欢迎交流~</p>
+<hr />
+<div class="admonition quote">
+<p class="admonition-title">Motto</p>
+<p>莫忘少年凌云志，曾许天下第一流！</p>
+</div>
+<hr />
+<h2 id="about-me">About me<a class="headerlink" href="#about-me" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>抛出任意类型</strong>：<code>throw</code>可以抛出任何类型的对象（包括基本类型、自定义类、标准库异常等等），但是我们推荐使用自定义异常类或<code>std::exception</code>的派生类</li>
-<li><strong>抛出后中断</strong>：<code>throw</code>执行后，当前函数立即停止，控制权沿调用栈向上传播。</li>
-<li><strong>异常对象拷贝</strong>：抛出的对象会被复制（除非是通过引用捕获的），因此应确保对象支持拷贝或通过引用捕获</li>
-</ul>
-<h3 id="try"><code>try</code>监控可能抛出异常的代码<a class="headerlink" href="#try" title="Permanent link">&para;</a></h3>
-<p><code>try</code>块包裹可能抛出异常的代码，告诉C++运行时在这些代码中监视异常，其使用也有以下几点规则：</p>
-<ul>
-<li><code>try</code>后面必须至少跟一个<code>catch</code>块，否则编译器会报错</li>
-<li>只监控<code>try</code>块内的代码，块外代码不受影响</li>
-<li><code>try</code>块会引入运行时开销</li>
-</ul>
-<h3 id="catch"><code>catch</code>捕获和处理异常<a class="headerlink" href="#catch" title="Permanent link">&para;</a></h3>
-<p><code>catch</code>块用于捕获特定类型的异常，并执行相应的错误处理逻辑，其有以下几点规则</p>
-<ul>
-<li>按类型捕获：<code>catch</code>块指定捕获的异常类型，可以是具体类型、基类或<code>...</code>（捕获所有异常）</li>
-<li><code>catch</code>块按声明顺序检查，优先匹配精确类型，然后尝试基类转换，最后匹配<code>...</code></li>
-<li>在<code>catch</code>块中可以使用<code>throw</code>，重新抛出当前异常</li>
-<li>推荐使用<code>catch(Type&amp; e)</code>避免对象切片</li>
-</ul>
-<h3 id="_1">异常对象<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>异常对象携带错误信息，能够帮助调用者了解问题原因</p>
-<p>异常对象通常继承自<code>std::exception</code>或其派生类，提供<code>what()</code>方法返回错误描述；</p>
-<h4 id="_2">标准库异常<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>标准库异常在使用的时候需要<code>#include&lt;stdexcept&gt;</code>，常见的标准库异常包括：</p>
-<ul>
-<li><code>std::bad_alloc</code>：内存分配失败</li>
-<li><code>std::out_of_range</code>：索引越界</li>
-<li><code>std::runtime_error</code>：通用运行时错误</li>
-</ul>
-<h3 id="stack-unwinding">栈展开(Stack Unwinding)<a class="headerlink" href="#stack-unwinding" title="Permanent link">&para;</a></h3>
-<p>当异常抛出后，C++会沿调用栈向上寻找匹配的<code>catch</code>块，在此过程中，自动销毁栈上对象（调用其析构函数），确保资源正确释放</p>
-<p>栈展开的规则有如下几点：</p>
-<ul>
-<li><strong>自动清理：</strong>栈上对象的析构函数会在异常传播时自动调用</li>
-<li><strong>析构函数不抛异常</strong>：如果析构函数在栈展开期间抛出异常，会导致<code>std::terminate()</code></li>
+<li><a href="https://github.com/zhuiguang49">My GitHub</a></li>
+<li><a href="mailto:zhuiguang49@foxmail.com">My Gmail</a> </li>
+<li><a href="mailto:guangzhang@zju.edu.cn">My ZJU Email</a></li>
 </ul>
 
 
@@ -1340,7 +1202,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 05:50:11 UTC"><span class="timeago" datetime="2025-06-28T05:50:11+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 05:50:11 UTC">2025-06-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 08:06:51 UTC"><span class="timeago" datetime="2025-06-28T08:06:51+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 08:06:51 UTC">2025-06-28</span>
   </span>
 
     
@@ -1409,14 +1271,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
-        <script src="../../../js/timeago.min.js"></script>
+        <script src="../js/timeago.min.js"></script>
       
-        <script src="../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../js/timeago_mkdocs_material.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
