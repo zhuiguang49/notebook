@@ -1,0 +1,1892 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/CS/OOP/Week4%265%20Inside%20Object/">
+      
+      
+        <link rel="prev" href="../Week3%20Class/">
+      
+      
+        <link rel="next" href="../Week6%20Inside%20Class/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Week4&5 Inside Object - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w45-inside-object" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week4&5 Inside Object
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Home/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Home/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#w45-inside-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      W4&amp;5 Inside Object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="W4&5 Inside Object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object的存储类型和作用域、生命周期
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      引用（Reference）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constant
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#const-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Const object（常量对象）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamically-allocated-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamically allocated memory（动态分配内存）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的分类和定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#w45-inside-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      W4&amp;5 Inside Object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="W4&5 Inside Object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object的存储类型和作用域、生命周期
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      引用（Reference）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constant
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#const-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Const object（常量对象）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamically-allocated-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamically allocated memory（动态分配内存）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Week4&5 Inside Object</h1>
+
+<h2 id="w45-inside-object">W4&amp;5 Inside Object<a class="headerlink" href="#w45-inside-object" title="Permanent link">&para;</a></h2>
+<h3 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h3>
+<p>类的成员根据可见性和访问权限可以被分为<code>public</code>，<code>private</code>，<code>protected</code>三种类型：</p>
+<ul>
+<li>
+<p><code>public</code>意味着其后声明的成员（变量或函数）对所有人都是可以访问的（类外的任何代码都可以直接访问这些成员）</p>
+</li>
+<li>
+<p><code>private</code>意味着其后声明的成员只能在<strong>该类型</strong>的成员函数内部访问（也就是说，成员对类的外部是完全不可见的）</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>需要注意的是，同一个类的不同对象实例是可以访问彼此的<code>private</code>成员的，这是因为<strong>访问控制是基于类级别而不是对象级别的</strong></p>
+</div>
+<h4 id="friend">Friend（友元）<a class="headerlink" href="#friend" title="Permanent link">&para;</a></h4>
+<p>友元是一种明确授予访问权限的方式，其<strong>允许不是类成员的函数访问类的私有成员</strong>。我们可以将全局函数声明为友元（<strong>友元函数在声明的时候需要加<code>friend</code>前缀，但是在定义的时候并不需要加<code>friend</code>前缀</strong>），也可以将另一个类的成员函数声明为友元，甚至可以将整个类声明为友元，下面我们举一些实际的例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Box</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="c1">// 友元函数声明</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">calculateArea</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Box</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">Box</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">width</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="w"> </span><span class="n">height</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">};</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1">// 友元函数定义 - 可以访问Box的私有成员</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="kt">double</span><span class="w"> </span><span class="nf">calculateArea</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Box</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">height</span><span class="p">;</span><span class="w"> </span><span class="c1">// 直接访问私有成员</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>友元有以下几点注意事项：</p>
+<ol>
+<li><strong>友元函数不是类的成员函数</strong>，因此不能通过类的对象调用，比如<code>obj.showSecret()</code>，而是直接作为普通函数进行调用，比如<code>showSecret(obj)</code></li>
+<li>单向关系：<strong>友元关系不具有传递性和对称性</strong>，A是B的友元不意味着B是A的友元（因为<strong>友元是授权访问</strong>的）</li>
+<li>访问权限：友元获得了对私有和保护成员的完全访问权，我们无法限制只访问特定的成员</li>
+<li>不可继承：<strong>友元关系不能被继承</strong>，派生类不能自动获得基类的友元</li>
+<li>声明位置：友元声明可以放在类定义的任何区域（包括<code>public</code>,<code>private</code>,<code>protected</code>），效果是一样的</li>
+</ol>
+</div>
+<h4 id="classstruct">Class和Struct的不同<a class="headerlink" href="#classstruct" title="Permanent link">&para;</a></h4>
+<p>class默认成员访问权限是<code>private</code>，struct默认成员访问权限是<code>public</code></p>
+<h3 id="object">Object的存储类型和作用域、生命周期<a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
+<p>按照<strong>作用域和生命周期</strong>分类可以分成<strong>局部对象</strong>和<strong>全局对象</strong>，按照存储类型分类可以分成<strong>自动对象</strong>和<strong>静态对象</strong></p>
+<p><strong>自动对象（默认的局部对象）</strong></p>
+<p>自动对象在每次进入作用域时创建，离开时销毁</p>
+<p><strong>静态对象</strong></p>
+<p>只初始化一次，在程序运行期间一直存在</p>
+<p><strong>Local objects（局部对象）</strong></p>
+<p>局部对象定义在方法内部，作用域局限于他们所属的方法，生命周期仅限于函数调用期间，构造函数在进入定义它们的代码块时调用，析构函数在离开该代码块时调用。局部对象默认是自动存储的，但可以用<code>static</code>关键字声明为静态存储</p>
+<p><strong>Global objects（全局对象）</strong></p>
+<p>全局对象是定义在任何函数之外的对象，<strong>构造函数在<code>main()</code>函数执行前就调用</strong>，析构函数在<code>main()</code>函数结束后或调用<code>exit()</code>时调用，<strong>同一文件</strong>中的构造顺序由其出现顺序决定（不同文件的构造顺序是不确定的），全局对象总是静态存储的</p>
+<p>这样就会产生一个比较棘手的问题——<strong>Static Initialization Dependency（静态初始化依赖）</strong>，我们知道，同一个文件中的静态对象的构造顺序是已知的（按照它们在文件中出现的顺序），但是不同文件之间的静态对象构造顺序是未指定的、不确定的，所以当不同文件中的非局部静态对象之间存在依赖关系时就会导致问题。</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>非局部静态对象是指：</p>
+<ul>
+<li>定义在全局作用域或命名空间作用域的对象</li>
+<li>在类中声明为<code>static</code>的成员变量</li>
+<li>在文件作用域定义为<code>static</code>的对象</li>
+</ul>
+</div>
+<p>而这种“静态初始化依赖”的问题有两种解决方案：</p>
+<ul>
+<li>直接避免使用有依赖关系的非局部静态对象</li>
+<li>将所有静态对象定义放在同一个文件中，并按正确的依赖顺序排序</li>
+</ul>
+<h3 id="static">Static<a class="headerlink" href="#static" title="Permanent link">&para;</a></h3>
+<p>static这个关键字在C语言中是有两种含义的：</p>
+<ol>
+<li>静态存储：也即在固定的地址分配一次，会记住其值</li>
+<li>Restricted access：内部链接、访问受限</li>
+</ol>
+<p>但是Restricted access在C++中已经基本废弃了，C++中的static主要是静态存储的含义</p>
+<h4 id="static_1">函数中的static<a class="headerlink" href="#static_1" title="Permanent link">&para;</a></h4>
+<p>用static来声明一个变量（静态局部变量），这意味着该变量的值将被整个程序一直记住，不会丢失，并且初始化操作只会进行一次。静态局部变量虽然生命周期是全局的，但是其作用域仍然还是局限于定义它的函数内部</p>
+<h4 id="_1">静态对象<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p><strong>静态对象</strong>是指在函数内部使用<code>static</code>关键字声明的对象，例如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(){</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="n">my_x</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>静态对象在程序运行期间只会被创建一次，并且在整个程序的生命周期内保持其状态</p>
+<p>下面我们明确一下<strong>静态对象构造和析构的时机</strong>：</p>
+<ul>
+<li><strong>构造：</strong> 静态对象的构造函数在定义点第一次被执行时调用，并且只会调用一次（后续的函数调用不会重新构造它）</li>
+<li><strong>析构：</strong> 静态对象的析构函数在程序退出时（比如<code>main()</code>结束或者调用<code>exit()</code>）时被调用，且编译器会保证静态对象的析构顺序遵循<strong>LIFO(后进先出)</strong>的规则，也即<strong>后构造的对象先被析构</strong></li>
+</ul>
+<p><strong>条件构造</strong>：在某些情况下，可能需要满足条件才会构造，比如下面的例子</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="n">my_X</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">21</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="c1">// ...</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>静态对象<code>my_X</code>仅在函数<code>f()</code>被调用且参数的值<code>x</code>大于10的时候才会进行构造，一旦构造，<code>my_X</code>的值将会被保留，之后即使再次调用<code>f()</code>，也不会再次构造（静态对象的特性）；而如果条件从未被满足，那就不会被构造，自然也不会有析构。</p>
+<h4 id="_2">静态成员变量和静态成员函数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>这一部分主要是在C++中将<code>static</code>关键字应用于类成员（包括静态成员变量和静态成员函数）的情况，这类静态成员遵循类的访问控制规则（比如<code>public</code>、<code>private</code>、<code>protected</code>），同时也具有持久性，独立于对象实例，生命周期为整个程序。</p>
+<p>下面我们来详细介绍一下各类变量的作用域和生存期，以及何时被初始化：</p>
+<p><img alt="image-20250421001225582" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250421001225582.png" /></p>
+<p>如上图，需要说明一下的是，上面的<code>member variable</code>指的是<code>private</code>类型的成员变量。静态成员变量(<code>static member variable</code>)是我们下面要讲的东西，这里暂时不展开，本地变量、全局变量、静态局部变量我们也都能理解，唯一要区分一下的可能是<strong>全局变量（global variable）</strong>与<strong>静态全局变量(static global variable)</strong>：</p>
+<p><strong>全局变量</strong>是定义在函数外部（通常在文件顶部或者命名空间作用域）中的变量，默认其具有<strong>外部链接(extrenal linkage)</strong>，意味着其可以被其他文件通过<code>extern</code>声明而访问；</p>
+<p><strong>静态全局变量</strong>同样是定义在函数外部的，但是其使用<code>static</code>关键字进行修饰，静态全局变量具有<strong>内部链接(internal linkage)</strong>，意味着其仅在定义它的文件中可见，其他文件无法访问。</p>
+<p>下面我们再辨析一下两者的作用域、生存期、初始化时间：</p>
+<ul>
+<li><strong>作用域</strong>：全局变量的作用域是全局（global），在整个程序中可见，可以在定义它的文件中直接使用，其他文件也可以通过<code>extern</code>声明来访问；静态全局变量的作用域是文件作用域（in file），仅在定义它的文件中可见，其他文件无法通过<code>extern</code>或其他方式访问它</li>
+<li><strong>生存期：</strong> 全局变量的生存期是全局（global），从程序开始运行道程序结束，初始化在程序启动（<code>main()</code>函数之前）完成，销毁在程序结束；静态全局变量的生存期和全局变量完全相同</li>
+<li><strong>初始化时间：</strong> 全局变量的初始化在程序启动时，定义处（<code>main()</code>函数之前），静态全局变量的初始化时间与全局变量相同</li>
+<li><strong>链接属性：</strong> 全局变量是外部链接，如果多个文件中定义了同名的全局变量（未使用<code>extern</code>），就会导致连接错误；而静态全局变量是内部链接，仅限于定义它的文件，其他文件无法看到或访问，即使是多个文件中定义了同名的静态全局变量，它们之间也是独立的，不会引发冲突</li>
+</ul>
+<h6 id="_3">静态成员变量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h6>
+<p>静态成员变量有以下几个特性：</p>
+<ul>
+<li>对类的所有成员函数（包括静态和非静态）都是全局可用的</li>
+<li>类的所有对象实例共享同一份静态成员变量（静态成员变量属于类本身，而不是某个具体的对象实例）</li>
+<li>只需要初始化一次，在文件作用域中完成，通常在<code>.cpp</code>文件中</li>
+<li>需要在<code>.cpp</code>文件中为静态成员变量提供存储空间并初始化，且初始化时不使用<code>static</code>修饰符</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>静态成员变量必须在类外定义和初始化，否则会导致链接错误。</p>
+<p>而且很重要的是，我们需要区分一下定义和声明，尤其是静态成员变量的定义和声明，这是两个不同的步骤，我们必须分开完成。</p>
+<p><strong>声明：</strong>声明是告诉编译器静态成员变量的存在，包括它的名称、类型和所属的类，但是并不为其分配实际的内存，声明的位置通常在类定义中（一般在<code>.h</code>文件中）</p>
+<p><strong>定义：</strong>定义是为静态成员变量分配实际的内存空间，（通常）并指定初始值，定义通常在源文件中、类定义外，需要注意的是，<strong>定义的时候不使用<code>static</code>关键字，因为<code>static</code>已经在声明中指定了存储类</strong>。定义必须有且仅有一次，否则会导致<strong>重复定义错误</strong>。</p>
+<p>如果只声明而未定义，链接器会报错，因为没有为变量分配实际的存储空间</p>
+<p>下面我们给出一个完整的例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// X.h</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="cp">#ifndef X_H</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="cp">#define X_H</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">X</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="c1">// 声明静态成员变量</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="n">X</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">printCount</span><span class="p">();</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">};</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="cp">#endif</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="c1">// X.cpp</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;X.h&quot;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="kt">int</span><span class="w"> </span><span class="n">X</span><span class="o">::</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 定义并初始化静态成员变量</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">X::printCount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Count: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="p">}</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1">// main.cpp</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;X.h&quot;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="n">X</span><span class="o">::</span><span class="n">printCount</span><span class="p">();</span><span class="w"> </span><span class="c1">// 输出: Count: 0</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="n">X</span><span class="w"> </span><span class="n">obj1</span><span class="p">;</span><span class="w">          </span><span class="c1">// count 增到 1</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="n">X</span><span class="o">::</span><span class="n">printCount</span><span class="p">();</span><span class="w"> </span><span class="c1">// 输出: Count: 1</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="n">X</span><span class="w"> </span><span class="n">obj2</span><span class="p">;</span><span class="w">          </span><span class="c1">// count 增到 2</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="n">X</span><span class="o">::</span><span class="n">printCount</span><span class="p">();</span><span class="w"> </span><span class="c1">// 输出: Count: 2</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+<h5 id="_4">静态成员函数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<p>静态成员函数是类的成员函数，使用<code>static</code>关键字声明，属于类本身，不是类的任何对象实例。并且和<code>private</code>成员可以被同一个类的不同对象实例访问一样，静态成员函数也是类级别的功能，不依赖于具体的实例。</p>
+<p>和静态成员变量一样，也需要区分声明和定义。静态成员函数在类中声明为<code>static</code>，例如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">X</span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printCount</span><span class="p">();</span><span class="w"> </span><span class="c1">// 静态成员函数</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">};</span>
+</code></pre></div>
+<p>在实现中（通常在<code>.cpp</code>文件中）不需要<code>static</code>关键字，示例如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">X::printCount</span><span class="p">(){</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Count: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>静态成员函数有几个很重要的特性：</p>
+<ul>
+<li><strong>只能访问静态成员</strong>：只能访问类的静态成员变量或其他全局变量，而<strong>无法访问非静态成员变量或非静态成员函数</strong>（因为它们依赖于对象实例，而静态成员函数是类级别的功能，并不依赖于具体的实例）</li>
+<li><strong>无<code>this</code>指针</strong>：静态成员不与任何对象绑定，因此也没有隐式的<code>this</code>指针</li>
+<li>不可动态覆盖：静态成员函数不能是虚函数（<code>virtual</code>），虚函数后面在多态部分会讲到，因为它们不依赖于对象实例，无法通过多态机制动态绑定。</li>
+<li>静态成员函数默认具有<strong>外部链接(external linkage)</strong>，可以在不同的编译单元使用，注意和静态全局变量区分。</li>
+</ul>
+<p>访问静态成员函数的方法有以下几种：</p>
+<ul>
+<li>通过类名（推荐），比如</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">X</span><span class="o">::</span><span class="n">printCount</span><span class="p">();</span>
+</code></pre></div>
+<ul>
+<li>通过对象（合法但不推荐）：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">X</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">obj</span><span class="p">.</span><span class="n">printCount</span><span class="p">();</span>
+</code></pre></div>
+<ul>
+<li>通过对象指针（合法但不推荐）：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">X</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">X</span><span class="p">();</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">ptf</span><span class="o">-&gt;</span><span class="n">printCount</span><span class="p">();</span>
+</code></pre></div>
+<p>上述三种方法都是可以的，但是我们往往更倾向于使用类名调用的方式，因为它更清晰地表明了静态成员函数是类级别的功能。因为静态成员函数是类级别的操作，所以<strong>即使我们没有创建任何<code>X</code>类的对象，<code>X::printCount()</code>仍然可以调用</strong>，因为静态成员函数在程序启动时已经可用。</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>辨析一下内存的几个主要区域（栈、堆、全局数据区）：</p>
+<ol>
+<li><strong>栈（Stack）</strong></li>
+</ol>
+<p>栈用于存储<strong>局部变量</strong>和<strong>函数调用信息（如函数参数、返回地址）</strong>，其具有以下特点：</p>
+<ul>
+<li>自动管理：变量在作用域开始时分配，离开作用域时自动销毁</li>
+<li>分配快速：栈是连续的内存块，分配和释放由编译器管理</li>
+<li>大小有限：栈的空间通常比较小（几MB），过多的局部变量或深层递归可能导致栈溢出</li>
+</ul>
+<p>这些变量的生命周期是与其作用域绑定的，通常比较短（函数调用期间）</p>
+<ol>
+<li><strong>堆（Heap）</strong></li>
+</ol>
+<p>堆用于存储<strong>动态分配</strong>的内存，通过<code>new</code>（C++）或<code>malloc</code>（C）分配，通过<code>delete</code>或<code>free</code>释放，其具有以下特点：</p>
+<ul>
+<li>手动管理：程序员负责分配和释放内存，容易引发内存泄漏或悬空指针（即指向已经被释放或删除的对象的指针）</li>
+<li>分配较慢：堆是动态分配，涉及内存管理器的开销</li>
+<li>大小较大：堆空间通常受系统内存的限制，远大于栈</li>
+</ul>
+<p>这些变量的生命周期是从分配到释放的，可以跨函数作用域</p>
+<ol>
+<li>全局数据区（静态数据区）</li>
+</ol>
+<p>全局数据区/静态数据区用于存储<strong>全局变量、静态变量（包括静态局部变量、静态全局变量、静态成员变量）和常量（如字符串字面量）</strong>，其可分为<strong>已初始化数据段（存储显式初始化的全局/静态变量）</strong>和<strong>未初始化数据段（存储未显式初始化的全局/静态变量，自动初始化为0）</strong>，其具有以下特点：</p>
+<ul>
+<li>自动管理：由程序加载时分配，程序结束时释放</li>
+<li>生命周期为整个程序运行期间（从启动到结束）</li>
+<li>分配在程序启动时完成，初始化在<code>main()</code>之前</li>
+</ul>
+</div>
+<h3 id="reference">引用（Reference）<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h3>
+<h4 id="_5">引用的声明<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>引用是C++中操作对象的别名，比如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</code></pre></div>
+<p>在上述例子中<code>y</code>就是<code>x</code>的一个引用，后续我们对<code>y</code>的改动其实就是在对<code>x</code>做改动，这和指针是一样的，我们需要区别一下。</p>
+<p>引用有以下几点规则：</p>
+<ul>
+<li>
+<p>引用必须初始化（不能为<code>null</code>），且绑定之后就不可再改变了（与指针不同，指针是可以改变指向的对象的）</p>
+</li>
+<li>
+<p>引用必须要指向有地址的对象（也就是我们常说的左值），<strong>引用只能绑定左值！！！</strong>，所以引用在初始化的时候不能绑定常量值。比如下面的这个例子就会出错</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// 上面这个例子就会报错，因为i*3是一个右值</span>
+</code></pre></div>
+<p>在上面这个例子中，引用作为函数的参数出现，调用函数<code>f()</code>的时候传入的是一个右值，右值是没有地址的，所以会出现错误</p>
+<p>下面我们对比一下<strong>指针和引用</strong>的不同：指针可以为<code>null</code>，可以重新指向其他地址，而引用不能为空，是现有变量的别名，且这种绑定是固定的（不能再改变）。</p>
+<p>引用有一些限制：</p>
+<ul>
+<li>没有引用数组(No arrays of references)</li>
+<li>没有引用到引用(No references to references)</li>
+<li>没有指针到引用(No pointers to references)</li>
+<li>可以有引用到指针(Reference to pointer is ok)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>上面我们提到左值和右值(Left Value &amp; Right Value)，这可能是一个陌生的概念，下面我们介绍一下<strong>左值和右值：</strong></p>
+<ul>
+<li>左值是可以出现在赋值左侧的变量或引用（通常具有实际的地址）</li>
+<li>右值是临时值，如字面量或表达式</li>
+</ul>
+<p>引用作为函数的参数时只能接受左值</p>
+<p>值得一提的是，在C++11的标准中，引用也可以指向右值，称为<strong>右值引用：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">int</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">rx</span><span class="o">=</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span>
+</code></pre></div>
+<p>右值引用的声明形式为<code>T&amp;&amp;</code>，用于绑定临时对象，延长其生命周期（因为右值往往是用于计算的临时值，在计算完成后就会消失，而右值引用则能将其暂时保留下来）</p>
+</div>
+<p>在实际的函数参数传递过程中，我们往往会使用以下形式：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">clref</span><span class="p">){</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w">  </span><span class="s">&quot;l-value const refercence&quot;</span><span class="p">;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>这样的函数可以接受右值作为参数，因为我们使用<code>const T&amp;</code>作为函数参数（有时候我们还会使用<code>auto</code>来自动推断类型），对于右值<code>const T&amp;</code>可以延长其生命周期，而<code>const</code>确保函数不会修改传入的参数，适用于只需要读取参数值而不需要修改的场景。</p>
+<h3 id="constant">Constant<a class="headerlink" href="#constant" title="Permanent link">&para;</a></h3>
+<h4 id="const">Const<a class="headerlink" href="#const" title="Permanent link">&para;</a></h4>
+<p>Const关键字用于声明常量变量，使用<code>const</code>声明的变量值不可修改，<strong>必须初始化</strong>，例如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">123</span><span class="p">;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">27</span><span class="p">;</span><span class="w"> </span><span class="c1">// 修改了常量变量的值，非法</span>
+</code></pre></div>
+<p>但是需要注意的是，在C++中，<code>const</code>变量默认是具有内部链接的，也就是说，它们只在定义它们的文件（翻译单元）中可见。编译器往往会将<code>const</code>变量的值存储在符号表中，而不是分配实际的内存空间，如果我们要强制为常量分配存储空间的话，可以使用<code>extern</code>关键字，比如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// file1.cpp</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">123</span><span class="p">;</span><span class="w"> </span><span class="c1">// 分配存储空间，外部链接</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1">// file2.cpp</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// 其他文件通过此声明可以访问</span>
+</code></pre></div>
+<p>可以强制为常量分配内存，并且使其具有外部链接，允许其他文件访问该常量。</p>
+<h4 id="_6">编译时的常量<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>编译时常量是在编译时值已经确定的常量，典型示例为<code>const int bufsize = 1024</code>，编译时常量必须在定义时就完成初始化，否则编译会报错（不然怎么知道这个常量的值是多少，毕竟后续也不能再做修改）。不过有一个例外就是，在使用<code>extern</code>声明的时候，初始化可以在其他文件中提供，比如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// header.h</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bufsize</span><span class="p">;</span><span class="w"> </span><span class="c1">// 声明</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1">// source.cpp</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bufsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="c1">// 定义并初始化</span>
+</code></pre></div>
+<h4 id="_7">运行时常量<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>运行时常量的值在运行时才能确定，比如通过用户的输入或者计算得到，例如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="_8">指针和常量<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>这部分有一点复杂，主要是指针与常量组合起来可能有不同顺序，造成的结果也不同，比如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abc&quot;</span><span class="p">;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ABCD&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>这两个定义中<code>const</code>的位置不一样，第一个<code>char* const q</code>是说<code>q</code>是一个<strong>常量指针</strong>（指向字符的指针是一个常量），也就是说，指针<code>q</code>所指向的地址是不可更改的，一旦<code>q</code>被初始化指向某个地址之后，不能再让他指向其他地址，但指针所指向的内容本身是可以修改的；</p>
+<p>而<code>const char* p = "ABCD"</code>则是说指针<code>p</code>是一个指向<strong>常量字符</strong>的指针，也即指针<code>p</code>可以指向其他地址，但是我们不能通过<code>p</code>修改它所指向的内容（注意只是说我们不能通过这个指针去修改，但是内容本身可以修改）</p>
+<p>下面我们看一个总结指针和常量关系的表格：</p>
+<ul>
+<li>普通指针（<code>int * ip</code>）可以指向非<code>const</code>变量，但不能指向<code>const</code>变量，因为这可能导致通过指针修改常量</li>
+<li>指向常量的指针（<code>const int * cip</code>）可以指向非<code>const</code>变量，也可以指向<code>const</code>变量，因为它保证不修改值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>int i;</code></th>
+<th><code>const int ci = 3</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int *ip;</code></td>
+<td><code>ip=&amp;i</code>是可以的</td>
+<td><code>ip=&amp;ci</code>是不可以的</td>
+</tr>
+<tr>
+<td><code>const int *cip</code></td>
+<td><code>cip = &amp;i</code>是可以的</td>
+<td><code>cip=&amp;ci</code>是可以的</td>
+</tr>
+</tbody>
+</table>
+<p>且<code>*ip=54</code>合法，而<code>*cip=54</code>是不合理的，因为我们不能通过指向常量的指针去修改其指向的内容</p>
+<h4 id="_9">字符串字面量<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>在C语言中我们学过，字符串字面量是常量，且其实本质上是<code>const char</code>数组，存储在只读内存区域，在C语言中我们也学过这样的写法</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>这是一个历史遗留写法，编译器允许但是我们并不推荐，因为<code>s</code>是一个普通指针，但是它指向了字符串字面量这种常量，如果我们尝试修改将会导致未定义行为，我们推荐的做法是使用指向常量的指针，也即</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>上述定义方式明确表示指针<code>s</code>指向常量。如果我们想要修改字符串的话，应当使用数组，如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;h&#39;</span><span class="w"> </span><span class="c1">// 这是合法的</span>
+</code></pre></div>
+<h4 id="_10">常量转换<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>我们可以将非<code>const</code>赋值给常量变量，这时候非<code>const</code>值会做一个隐式转换变为<code>const</code>值。</p>
+<p>但是我们不能将<code>const</code>值直接赋给非<code>const</code>变量或指针，除非我们使用<code>const_cast</code>显式去除<code>const</code>属性（但是尽量避免使用<code>const_cast</code>，因为它有可能引入难以调试的错误）</p>
+<h4 id="_11">常量与地址传递<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>我们知道，按值传递整个对象将可能导致高昂的拷贝成本（比如<code>std::vector</code>），因此我们通常更推荐使用指针或引用，但是这非常有可能导致我们修改了原始值，所以这个时候我们应当尽量使用<code>const</code>修饰，比如<code>const int *x</code>，以防止函数修改原始值，这提高了代码的安全性，明确函数的只读意图</p>
+<h3 id="const-object">Const object（常量对象）<a class="headerlink" href="#const-object" title="Permanent link">&para;</a></h3>
+<p>常量对象是指使用<code>const</code>关键字声明的对象，其内容不可修改，比如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">const</span><span class="w"> </span><span class="n">Currency</span><span class="w"> </span><span class="nf">the_raise</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span><span class="mi">38</span><span class="p">);</span>
+</code></pre></div>
+<p>表示创建了一个常量对象<code>the_raise</code>，其内部数据不能被更改。</p>
+<p>而为了保护常量对象不被修改，我们需要将成员函数声明为<code>const</code>来确保这些函数不会更改对象的状态，且常量对象也只能调用被标记为<code>const</code>的成员函数，而非常量对象则可以调用任何成员函数（包括<code>const</code>和非<code>const</code>函数），例如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1">// 非常量对象</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">Date</span><span class="w"> </span><span class="nf">when</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2001</span><span class="p">);</span><span class="w"> </span><span class="c1">// 非const对象</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">when</span><span class="p">.</span><span class="n">get_day</span><span class="p">();</span><span class="w"> </span><span class="c1">// 合法</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">when</span><span class="p">.</span><span class="n">set_day</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span><span class="w"> </span><span class="c1">// 合法</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="c1">// 常量对象</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="k">const</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="nf">birthday</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">1994</span><span class="p">);</span><span class="w"> </span><span class="c1">// const对象</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">birthday</span><span class="p">.</span><span class="n">get_day</span><span class="p">();</span><span class="w"> </span><span class="c1">// 合法</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="n">birthday</span><span class="p">.</span><span class="n">set_day</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span><span class="w"> </span><span class="c1">// 错误：不能调用非const函数</span>
+</code></pre></div>
+<h4 id="_12">常量成员函数<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>常量成员函数在声明和定义的时候都需要在函数签名后加上<code>const</code>关键字，因为如果声明和定义不统一的话，可能会存在函数重载导致认定为不同函数的情况。常量函数不能修改其所属对象的数据，且不能调用非<code>const</code>成员函数（因为非<code>const</code>成员函数可能会修改对象的数据），例如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">Date::set_day</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="c1">// 合法，非const函数可以修改数据</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="p">}</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">Date::get_day</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="n">day</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// 错误：不能修改数据成员</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">    </span><span class="n">set_day</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span><span class="w"> </span><span class="c1">// 错误：不能调用非const成员函数</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">day</span><span class="p">;</span><span class="w"> </span><span class="c1">// 合法</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>函数末尾是否有const是会影响函数重载的。事实上，C++的函数重载是基于函数签名进行区分的，函数签名包括<strong>函数名、参数列表以及<code>const</code>修饰符</strong></p>
+</div>
+<p>在写代码的时候，我们通常的习惯是，将所有不修改对象数据的成员函数都声明为<code>const</code>，以确保它们对常量对象是安全的。</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>下面我们捋一捋常量对象、常量成员变量、常量成员函数之间的关系：</p>
+<p><strong>常量对象</strong>意味着对象的所有成员变量都不能被修改，无论是通过成员函数还是直接访问（此时成员变量不需要再显式地用<code>const</code>进行声明）。</p>
+<p><strong>常量成员变量</strong>则是使用<code>const</code>关键字声明的成员变量，表示该成员变量在对象构造后不可以被修改。需要注意的是，<strong>常量成员变量必须在构造函数的初始化列表中进行初始化</strong>，且在对象生命周期内不可以被更改。</p>
+<p><strong>常量成员函数</strong>则是在类的成员函数声明之后加上<code>const</code>关键字，表示该函数不会修改对象的状态。其与常量对象之间的关系就是：常量对象只能调用常量成员函数，因为非常量成员函数可能试图改变成员变量的值。</p>
+</div>
+<h4 id="_13">类中的编译时常量<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>编译时常量（编译阶段就能完全确定其值的常量，C++编译器在处理这些常量时，可以将他们的值直接嵌入生成的代码中，或者用来决定某些代码结构的具体形式，比如数组大小）需要在编译时确定其值，我们可以看下面这个例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">HasArray</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="c1">// const成员变量</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">size</span><span class="p">];</span><span class="w"> </span><span class="c1">// 非法！</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="p">};</span>
+</code></pre></div>
+<p>在上述这个例子中，编译器是需要根据数组的大小分配内存的，但是<code>size</code>并不是一个编译时常量，编译器不知道要为这个数组分配多少空间，其无法在生成类定义时确定<code>array[size]</code>的大小。</p>
+<p><code>const</code>成员变量的值通常在对象构造时通过构造函数的初始化列表确定，而不是编译时就固定了，比如下面这个例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">HasArray</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">    </span><span class="n">HasArray</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// size在运行时初始化</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">size</span><span class="p">];</span><span class="w"> </span><span class="c1">// 非法：size不是编译时常量</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="p">};</span>
+</code></pre></div>
+<p><code>const int size</code>是一个成员变量，它的值是每个对象实例特有的，并且在对象构造时通过初始化列表设置，它的值是<strong>运行时常量</strong>。</p>
+<p>那么上述问题怎么解决呢，我们有以下几个处理方法：</p>
+<ol>
+<li><strong>匿名枚举：</strong>使用枚举(<code>enum</code>)来定义编译时常量，因为枚举值在编译时是固定的，参考下面这个例子：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">HasArray</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 匿名枚举，size是编译时常量</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">size</span><span class="p">];</span><span class="w"> </span><span class="c1">// 合法</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">};</span>
+</code></pre></div>
+<ol>
+<li><strong>静态常量(static const)：</strong>使用<code>static const</code>成员变量来定义编译时常量，参考下面这个例子：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">HasArray</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="c1">// static const是编译时常量</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">size</span><span class="p">];</span><span class="w"> </span><span class="c1">// 合法</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">};</span>
+</code></pre></div>
+<h3 id="dynamically-allocated-memory">Dynamically allocated memory（动态分配内存）<a class="headerlink" href="#dynamically-allocated-memory" title="Permanent link">&para;</a></h3>
+<p>和C语言中的<code>malloc</code>、<code>free</code>组合对应的，C++中有<code>new</code>和<code>delete</code>两个运算符可以动态分配内存。</p>
+<p>我们使用<code>new</code>运算符在程序运行时分配内存，返回指向分配的内存的地址的指针，例如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span><span class="w"> </span><span class="c1">// 分配一个int的内存</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">new</span><span class="w"> </span><span class="n">stash</span><span class="p">;</span><span class="w"> </span><span class="c1">// 分配一个stash类型的对象</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"> </span><span class="c1">// 分配一个包含10个int的数组</span>
+</code></pre></div>
+<p><code>new</code>分配的内存位于堆上</p>
+<p>我们使用<code>delete</code>释放<code>new</code>分配的内存，将内存归还给内存池，例如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">delete</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// 释放单个对象的内存</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// 释放数组的内存</span>
+</code></pre></div>
+<h4 id="_14">动态数组<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>我们使用<code>new</code>分配动态数组，并<strong>返回指向数组第一个元素的指针</strong>，例如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">psome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</code></pre></div>
+<p>动态数组在释放的时候应当使用<code>delete[]</code>，必须使用<code>[]</code>来指示释放的是整个数组，而不仅仅是第一个元素，如果误用<code>delete</code>而非<code>delete[]</code>释放数组，很可能会导致未定义行为或内存泄漏</p>
+<p>下面我们举一些<code>new-delete</code>的例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span><span class="w"> </span><span class="c1">// 分配单个int</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"> </span><span class="c1">// 分配int数组</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="n">Student</span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">();</span><span class="w"> </span><span class="c1">// 分配单个Student对象</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">Student</span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"> </span><span class="c1">// 分配Student数组</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="k">delete</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// 释放单个int</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// 指针移动，指向数组第二个元素</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">// 错误：释放的指针不是原始分配的地址</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="k">delete</span><span class="w"> </span><span class="n">q</span><span class="p">;</span><span class="w"> </span><span class="c1">// 释放单个Student对象</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="k">delete</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"> </span><span class="c1">// 错误：应该用delete[]释放数组</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"> </span><span class="c1">// 正确：释放Student数组</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>在使用<code>new</code>和<code>delete</code>的时候有几点小tips：</p>
+<ul>
+<li>不要释放非<code>new</code>分配的内存。使用<code>delete</code>释放非<code>new</code>分配的内存（如栈上的地址）会导致未定义行为</li>
+<li>不要重复释放同一块内存。多次<code>delete</code>同一指针会导致未定义行为</li>
+<li>一定要匹配好<code>new</code>和<code>delete</code>的类型，如果使用<code>new[]</code>分配数组，必须使用<code>delete[]</code>释放；如果用<code>new</code>分配单个对象，必须使用<code>delete</code>释放</li>
+<li>对空指针使用<code>delete</code>是安全的，程序会直接忽略。</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 05:50:11 UTC"><span class="timeago" datetime="2025-06-28T05:50:11+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 05:50:11 UTC">2025-06-28</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

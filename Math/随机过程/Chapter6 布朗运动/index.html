@@ -1,0 +1,2146 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/">
+      
+      
+        <link rel="prev" href="../Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/">
+      
+      
+        <link rel="next" href="../Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter6 布朗运动 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter6" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter6 布朗运动
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Home/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Home/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的分类和定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter6 布朗运动
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter6 布朗运动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      布朗运动的定义和性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      与布朗运动相关的过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      最大值与首中时分布
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ito积分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter6 布朗运动
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter6 布朗运动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      布朗运动的定义和性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      与布朗运动相关的过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      最大值与首中时分布
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ito积分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Chapter6 布朗运动</h1>
+
+<h2 id="chapter6">Chapter6 布朗运动<a class="headerlink" href="#chapter6" title="Permanent link">&para;</a></h2>
+<h3 id="_1">布朗运动的定义和性质<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h4 id="_2">布朗运动的定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>浙大版定义：</p>
+<p>随机过程<span class="arithmatex">\(\left\{X(t);t\geq 0\right\}\)</span>被称为Brown运动，如果它满足下面四个条件：</p>
+<ul>
+<li><span class="arithmatex">\(X(0)=0\)</span></li>
+<li>随机过程<span class="arithmatex">\(X(t)\)</span>是独立增量过程</li>
+<li>对<span class="arithmatex">\(\forall t&gt;s\geq0\)</span>，有<span class="arithmatex">\(X(t)-X(s)\sim N(0,\sigma^2(t-s))\)</span></li>
+<li>样本轨道连续（通常这个条件我们默认成立，不予讨论）</li>
+</ul>
+<p>中科大版定义：</p>
+<p>随机过程称为Brown运动，如果它满足如下三个条件：</p>
+<ul>
+<li><span class="arithmatex">\(X(0)=0\)</span></li>
+<li>随机过程<span class="arithmatex">\(X\)</span>有平稳独立增量</li>
+<li>对每个<span class="arithmatex">\(t&gt;0\)</span>，有<span class="arithmatex">\(X(t)\sim N(0,c^2t)\)</span></li>
+</ul>
+<p>后面我们都讨论<span class="arithmatex">\(\sigma(c)=1\)</span>的情况，称之为标准Brown运动。因为如果<span class="arithmatex">\(c\neq1\)</span>，则可以考虑<span class="arithmatex">\(\left\{X(t)/c,t\geq0\right\}\)</span>，则<span class="arithmatex">\(\left\{X(t)/c,t\geq0\right\}\)</span>就是标准Brown运动，不失一般性我们可以只考虑标准Brown运动的性质。</p>
+<p>下面我们来看一个例子：</p>
+<p><strong>例</strong> 设<span class="arithmatex">\(\left\{B(t),t\geq0\right\}\)</span>是标准Brown运动，求：</p>
+<p>(1) <span class="arithmatex">\(B(1)+3B(2)\)</span>的分布</p>
+<p>(2) <span class="arithmatex">\(Cov(B(1)+B(3),B(3)-B(2))\)</span></p>
+<p>(3) <span class="arithmatex">\(P\left\{B(7)\leq3|B(1)=1,B(3)=2\right\}\)</span></p>
+<p><strong>解</strong> (1) <span class="arithmatex">\(B(1)\sim N(0,1),B(2)\sim N(0,2)\)</span></p>
+<p>故可以得到
+$$
+B(1)+3B(2)=B(1)+3[B(1)+B(2)-B(1)]=4B(1)+3[B(2)-B(1)]\sim N(0,25)
+$$</p>
+<blockquote>
+<p>这里是用到了正态过程的可加性，
+$$
+4B(1)\sim N(0,16)\qquad3[B(2)-B(1)]\sim N(0,9)
+$$
+所以有
+$$
+4B(1)+3[B(2)-B(1)]\sim N(0,25)
+$$</p>
+</blockquote>
+<p>(2) 考虑将其分为几个独立的事件，即
+$$
+Cov(B(1)+B(3),B(3)-B(2))=Cov(B(1)+B(2)+B(3)-B(2),B(3)-B(2))\=Cov(B(1),B(3)-B(2))+Cov(B(2),B(3)-B(2))+Cov(B(3)-B(2),B(3)-B(2))\=Var(B(3)-B(2))=1
+$$
+(3) <span class="arithmatex">\(P[B(7)\leq3|B(1)=1,B(3)=2]=P[B(7)-B(3)\leq 1|B(1)=1,B(3)=2]=P[B(7)-B(3)\leq 1]\)</span></p>
+<p>又我们知道<span class="arithmatex">\(B(7)-B(3)\sim N(0,4)\)</span>，所以有<span class="arithmatex">\(P(B(7)-B(3)\leq 1) =P(\frac{\xi-0}{\sqrt{4}}\leq \frac{1-0}{\sqrt{4}})\)</span>，其中<span class="arithmatex">\(\frac{\xi-0}{\sqrt{4}}\)</span>服从标准正态分布，则有
+$$
+P(B(7)-B(3)\leq 1)=\Phi(\frac{1}{2})
+$$</p>
+<h4 id="1">布朗运动的性质1<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>样本轨道连续的随机过程<span class="arithmatex">\(\left\{B(t);t\geq 0\right\}\)</span>是布朗运动当且仅当它是正态过程，<span class="arithmatex">\(E(B(t))=0\)</span>且<span class="arithmatex">\(E[B(t)B(s)]=\min(t,s)\)</span>（这是布朗运动的另一种定义）</p>
+</li>
+<li>
+<p><strong>Markov性：</strong>固定<span class="arithmatex">\(s&gt;0\)</span>，<span class="arithmatex">\(\left\{B(t+s)-B(s);t\geq 0\right\}\)</span>是布朗过程，且与<span class="arithmatex">\(\left\{B(u);u\leq s\right\}\)</span>独立</p>
+</li>
+<li>
+<p><strong>自相似性：</strong>固定<span class="arithmatex">\(a\neq 0\)</span>，有<span class="arithmatex">\(\left\{\frac{1}{a}B(a^2t);t\geq 0\right\}\)</span>是布朗运动</p>
+</li>
+<li>
+<p><strong><span class="arithmatex">\(0\)</span>与<span class="arithmatex">\(\infty\)</span>的对称性</strong></p>
+</li>
+</ol>
+<p>我们令
+   $$
+   \widetilde{B}=\begin{cases} 
+   tB(\frac{1}{t}),&amp;t&gt;0\
+   0,&amp;t=0
+   \end{cases}
+   $$
+   则<span class="arithmatex">\(\left\{\widetilde{B}(t);t\geq 0\right\}\)</span>是布朗过程</p>
+<p>下面我们给出上述几个性质的证明：</p>
+<p>对于第一条性质，我们这里只证明必要性，充分性不作证明。下面证明Brown运动是正态过程：</p>
+<p>也即证明<span class="arithmatex">\(\forall n,\forall t_1,\cdots,c_n\)</span>，<span class="arithmatex">\((B(t_1),\cdots,B(t_n))\)</span>是<span class="arithmatex">\(n\)</span>元正态分布。我们已知<span class="arithmatex">\(B(t_1),B(t_2),\cdots,B(t_n)\)</span>服从正态分布，但是边际正态分布无法证明联合分布也是正态分布，还需要独立性，而<span class="arithmatex">\(B(t_1),B(t_2),\cdots,B(t_n)\)</span>显然又不是对称的，所以我们考虑将时间分开，也即考虑<span class="arithmatex">\(X_1=B(t_1),X_2=B(t_2),\cdots,X_n=B(t_n)-B(t_{n-1})\)</span>，此时即有<span class="arithmatex">\(X_1,\cdots X_n\)</span>是相互独立的，而<span class="arithmatex">\(B(t_1),\cdots,B(t_n)\)</span>又是<span class="arithmatex">\(X_1,\cdots,X_n\)</span>的线性组合，所以<span class="arithmatex">\((B(t_1),\cdots,B(t_n))\)</span>是联合正态分布</p>
+<p>第二条性质和泊松过程是类似的</p>
+<p>第三条性质，要证明<span class="arithmatex">\(\left\{\frac{1}{a}B(a^2t);t\geq 0\right\}\)</span>是布朗运动，容易说明其满足在0处的取值为0，且是独立增量过程，下面我们证明定义中的第三点，<span class="arithmatex">\(\forall t&gt;s\)</span>，有<span class="arithmatex">\(X(t)-X(s)=\frac{1}{a}[B(a^2 t)-B(a^2 s)]\sim N(0,\frac{1}{a^2}(a^2t-a^2s))\)</span>，也即<span class="arithmatex">\(X(t)-X(s)\sim N(0,t-s)\)</span></p>
+<blockquote>
+<p>第三条性质在时间上的变换尺度是<span class="arithmatex">\(a^2\)</span>，在空间上的变换尺度是<span class="arithmatex">\(\frac{1}{a}\)</span>，但是最后的效果仍然和原来的布朗运动类似</p>
+</blockquote>
+<p>第四条性质，要证明<span class="arithmatex">\(\left\{\widetilde{B}(t);t\geq 0\right\}\)</span>是正态过程，我们可以按照它的原本定义去证明，但是在证明独立增量性的时候可能会比较困难，这时候可以用到我们前面讲的第一条性质，这也是布朗运动的一个等价定义，下面我们证明<span class="arithmatex">\(\left\{\widetilde{B}(t);t\geq 0\right\}\)</span>是正态过程，也即要证明<span class="arithmatex">\(\forall n,\forall t_1&lt;t_2&lt;\cdots&lt;t_n\)</span>，有<span class="arithmatex">\((B(t_1),B(t_2),\cdots,B(t_n))\)</span>是<span class="arithmatex">\(n\)</span>元正态过程，又<span class="arithmatex">\(\widetilde B(t_i)=t_iB(\frac{1}{t_i})\)</span>是<span class="arithmatex">\((B(\frac{1}{t_1}),B(\frac{1}{t_2}),\cdots,B(\frac{1}{t_n}))\)</span>的线性组合，而正态过程的任意有限维线性组合也是一个正态过程，所以<span class="arithmatex">\(\widetilde B(t)\)</span>是正态过程。下面我们证明均值函数和自相关函数的两个条件：
+$$
+E(\widetilde B(t))=\begin{cases}E(tB(\frac{1}{t})),&amp;t&gt;0\0,&amp;t=0 \end{cases}=\begin{cases} EtE(B(\frac{1}{t}))=0,&amp;t&gt;0\0,&amp;t=0\end{cases}\</p>
+<p>E[\widetilde B(t) \widetilde B(s)]=\begin{cases}
+tsE[B(\frac{1}{t})B(\frac{1}{s})] &amp;s&gt;0,t&gt;0\
+0,&amp;s=0或t=0
+\end{cases}\
+又E[B(\frac{1}{t})B(\frac{1}{s})]=\min\left{\frac{1}{t},\frac{1}{s}\right}=\frac{1}{\max\left{t,s\right}}\
+所以有E[\widetilde B(t) \widetilde B(s)]=\frac{ts}{\max\left{t,s\right}}=\min\left{t,s\right}, t&gt;0,s&gt;0
+$$
+下面我们来看一些例子加深我们对布朗运动这些性质的理解</p>
+<p><strong>例</strong> 设<span class="arithmatex">\(\left\{B(t);t\geq 0\right\}\)</span>是标准布朗运动，求<span class="arithmatex">\(P(B(0.5)\leq 1| B(1)=1,B(2)=2)\)</span></p>
+<p><strong>解</strong> 看到这个题，我们的第一想法肯定是去考虑条件概率的定义，这是我们在泊松过程那一章经常使用的方法，尝试一下我们会发现
+$$
+P(B(0.5)\leq 1|B(1)=1,B(2)=2)=\frac{P(B(0.5)\leq 1,B(1)=1,B(2)=2)}{P(B(1)=1,B(2)=2)}
+$$
+其中<span class="arithmatex">\(P(B(1)=1,B(2)=2)\)</span>是好计算的，拆成<span class="arithmatex">\(B(1),B(2)-B(1)\)</span>，利用标准正态分布的概率密度函数<span class="arithmatex">\(p(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\)</span>即可，但是<span class="arithmatex">\(P(B(0.5)\leq1,B(1)=1,B(2)=2)\)</span>却是并不好计算的。</p>
+<p>我们也可以考虑应用上述性质3，因为题目的类型是已知现在和将来，考虑过去，如果我们能够将时间翻转一下，变成已知现在和过去考虑将来，那么题目就会变得比较简单了，这时候我们会想到<span class="arithmatex">\(\widetilde B(t)=tB(\frac{1}{t})\)</span>，正好能将时间翻转，但是问题在于，现在我们有的是<span class="arithmatex">\(B\)</span>而非<span class="arithmatex">\(\widetilde B\)</span>，其实他们俩的关系是对称的，如果我们令<span class="arithmatex">\(m=\frac{1}{t}\)</span>，整理一下就可以得到
+$$
+B(t)=\begin{cases}
+t\widetilde B(\frac{1}{t}),&amp;t\geq 0\
+0,&amp;t=0
+\end{cases}
+$$
+应用上述式子可以得到
+$$
+P(B(0.5)\leq 1|B(1)=1,B(2)=2)=P(0.5\widetilde B(2)\leq 1|\widetilde B(1)=1,2\widetilde B(0.5)=2)\=P(\widetilde B(2)\leq 2|\widetilde B(1)=1,\widetilde B(0.5)=1)=P(\widetilde B(2)-\widetilde B(1) \leq 1|\widetilde B(1)=1,\widetilde B(0.5)=1)\
+=P(\widetilde B(2)-\widetilde B(1)\leq 1)=\Phi(1)=0.8413
+$$</p>
+<h3 id="_3">与布朗运动相关的过程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="brown">反射Brown运动<a class="headerlink" href="#brown" title="Permanent link">&para;</a></h4>
+<p>设<span class="arithmatex">\(\left\{B(t);t\geq 0\right\}\)</span>是Brown运动，我们令<span class="arithmatex">\(X(t)=|B(t)|\)</span>，则称<span class="arithmatex">\(\left\{X(t);t\geq 0\right\}\)</span>是反射Brown运动</p>
+<p>需要注意的是，反射Brown运动并不是正态过程，因为正态过程的取值是可以取负值的，但是反射Brown运动的取值只有正值，所以反射Brown运动肯定不是正态过程，下面我们考虑<strong>反射Brown运动的数字特征</strong>，有两种方法供参考，第一种方法直接计算：</p>
+<p>已知<span class="arithmatex">\(B(t)\sim N(0,t)\)</span>，则有
+$$
+E[X(t)]=E|B(t)|=\int_{-\infty}^{\infty}|x|\frac{1}{\sqrt{2\pi t}}e^{-\frac{x^2}{2t}}dx=\int_{-\infty}^0(-x)\frac{1}{\sqrt{2\pi t}}e^{-\frac{x^2}{2t}}dx+\int_0^{\infty}x\frac{1}{\sqrt{2\pi t}}e^{-\frac{x^2}{2t}}dx\=\sqrt{\frac{t}{2\pi}}e^{-\frac{x^2}{2t}}\big|<em -_infty="-\infty">{\infty}^0+\sqrt{\frac{t}{2\pi}}e^{-\frac{x^2}{2t}}\big|^{0}</em>
+$$
+而}=\sqrt{\frac{2t}{\pi}<span class="arithmatex">\(Var X(t)=E[(X(t))^2]-[EX(t)]^2\)</span>，但是这里<span class="arithmatex">\(E[(X(t))^2]\)</span>的值我们还不清楚，而<span class="arithmatex">\(E[(X(t))^2]\)</span>其实也就是<span class="arithmatex">\(E[(B(t))^2]\)</span>，则有
+$$
+E[(B(t))^2]=Var(B(t))+[E(B(t))]^2=t
+$$
+所以有
+$$
+Var(X(t))=t-\frac{2t}{\pi}=(1-\frac{2}{\pi})t
+$$
+另一种方法则是去考虑标准正态分布随机变量绝对值的期望和方差，也即若<span class="arithmatex">\(X\sim N(0,1)\)</span>，考虑<span class="arithmatex">\(E|X|\)</span>和<span class="arithmatex">\(Var|X|\)</span></p>
+<p>则有
+$$
+E|X|=\int_{-\infty}^{\infty}|x|\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx=\sqrt{\frac{2}{\pi}}
+\Var|X|=E(X^2)-(E|X|)^2=VarX+(E(X))^2+(E|X|)^2=1-\frac{2}{\pi}
+$$</p>
+<p>而现在要求的是<span class="arithmatex">\(|B(t)|\)</span>的数字特征，由于我们已经求出了标准正态分布随机变量绝对值的数字特征，所以我们考虑将<span class="arithmatex">\(B(t)\)</span>标准化，也即令<span class="arithmatex">\(Z=\frac{B(t)}{\sqrt{t}}\sim N(0,1)\)</span>，则有<span class="arithmatex">\(E|Z|=\sqrt{\frac{2}{\pi}},Var|Z|=1-\frac{2}{\pi}\)</span>，且<span class="arithmatex">\(B(t)=\sqrt{t}Z\)</span>
+$$
+E(X(t))=E(\sqrt{t}|Z|)=\sqrt{t}E|Z|=\sqrt{\frac{2t}{\pi}},\qquad VarX(t)=(\sqrt{t})^2(1-\frac{2}{\pi})=(1-\frac{2}{\pi})t
+$$
+我们再考虑一下<strong>反射Brown运动的分布函数</strong>：
+$$
+F_{X(t)}(x)=\begin{cases}
+0,&amp;x&lt;0\
+P(X(t)\leq x),&amp;x\geq 0
+\end{cases}
+$$
+对于<span class="arithmatex">\(x\geq 0\)</span>的情形，有<span class="arithmatex">\(P(X(t)\leq x)=P(|B(t)|\leq x)=P(-x\leq B(t)\leq x)=\Phi(\frac{x-0}{\sqrt{t}})-\Phi(\frac{-x-0}{\sqrt{t}})=2\Phi(\frac{x}{\sqrt{2}})-1\)</span></p>
+<h4 id="brown_1">几何Brown运动<a class="headerlink" href="#brown_1" title="Permanent link">&para;</a></h4>
+<p>若<span class="arithmatex">\(\left\{B(t);t\geq 0\right\}\)</span>是Brown运动，<span class="arithmatex">\(\alpha\)</span>是一个常数，我们令<span class="arithmatex">\(X(t)=e^{\alpha B(t)}\)</span>，则称<span class="arithmatex">\(X(t)\)</span>为几何Brown运动。同样的，由于正态过程是可以取正值的，而几何Brown运动不能取正值，所以几何Brown运动不是一个正态过程，下面我们考虑几何Brown运动的数字特征，仍然是设一个标准正态分布的随机变量<span class="arithmatex">\(Z\sim N(0,1)\)</span>，考虑<span class="arithmatex">\(Ee^{\alpha z}\)</span>和<span class="arithmatex">\(Var \ e^{\alpha z}\)</span>，则有
+$$
+Ee^{\alpha z}=\int_{-\infty}^{\infty}e^{\alpha x}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx=e^{\frac{\alpha^2}{2}} \int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}  e^{-\frac{(x-\alpha)^2}{2}}dx=e^{\frac{\alpha^2}{2}}
+$$
+上面最右边的积分实际上是对服从<span class="arithmatex">\(N(\alpha,1)\)</span>的随机变量的概率密度函数的积分，显然积分值为1</p>
+<p>对于<span class="arithmatex">\(Var \ e^{\alpha z}\)</span>，则有
+$$
+Var \ e^{\alpha z}=E(e^{\alpha z})^2-[Ee^{\alpha z}]^2=E(e^{2\alpha z})-e^{\alpha^2}
+$$
+其中<span class="arithmatex">\(e^{2\alpha z}\)</span>可以视为<span class="arithmatex">\(e^{(2\alpha) \cdot z}\)</span>，故有
+$$
+E(e^{(2\alpha )z})=e^{\frac{(2\alpha)^2}{2}}=e^{2\alpha^2}
+$$
+所以可以得到
+$$
+Var\ e^{\alpha z}=e^{2\alpha^2}-e^{\alpha^2}
+$$
+我们知道<span class="arithmatex">\(B(t)\sim N(0,t)\)</span>，考虑将其标准化为标准正态分布的随机变量，则有<span class="arithmatex">\(\frac{B(t)}{\sqrt{t}}\sim N(0,1)\)</span>，故有
+$$
+E(X(t))=E(e^{\alpha B(t)})=E(e^{\alpha\sqrt{t}\frac{B(t)}{\sqrt{t}}})=e^{\frac{\alpha^2t}{2}}\</p>
+<p>VarX(t)=Var(e^{\alpha B(t)})=Var(e^{\alpha \sqrt{t}\frac{B(t)}{\sqrt{t}}})=e^{2(\alpha \sqrt{t})^2}-e^{(\alpha\sqrt{t})^2}=e^{2\alpha^2t}-e^{\alpha^2 t}
+$$</p>
+<blockquote>
+<p><span class="arithmatex">\(\ln X(t)=\alpha B(t)\)</span>服从正态分布，所以我们称<span class="arithmatex">\(X(t)\)</span>服从对数正态分布</p>
+<p>且因为<span class="arithmatex">\(\alpha B(t)\)</span>与<span class="arithmatex">\(-\alpha B(t)\)</span>同分布，所以有<span class="arithmatex">\(e^{\alpha B(t)}\)</span>与<span class="arithmatex">\(e^{-\alpha B(t)}\)</span>同分布</p>
+</blockquote>
+<p>下面我们考虑几何Brown运动的分布函数和概率密度函数，</p>
+<p>所以对<span class="arithmatex">\(\alpha&gt;0,x&gt;0\)</span>
+$$
+P(X(t)\leq x)=P(e^{\alpha B(t)}\leq x)=P(\alpha B(t)\leq \ln x)=P(B(t)\leq \frac{\ln x}{\alpha})=P(\frac{B(t)}{\sqrt{t}}\leq \frac{\ln x}{\alpha \sqrt{t}})=\Phi(\frac{\ln x}{\alpha \sqrt{t}})
+$$
+所以有
+$$
+f_{X(t)}(x)=\phi(\frac{\ln x}{\alpha \sqrt{t}})\frac{1}{\alpha x\sqrt{t}}1_\left{x&gt;0\right}=\frac{1}{\alpha x \sqrt{2\pi t}}e^{-\frac{(\ln x)^2}{2\alpha ^2t}}1_\left{x&gt;0\right}
+$$</p>
+<h4 id="_4">布朗桥过程<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>设<span class="arithmatex">\(X(t)=B(t)-tB(1)\)</span>，则称<span class="arithmatex">\(\left\{X(t),0\leq t\leq 1\right\}\)</span>为布朗桥过程</p>
+<p>布朗桥过程有以下性质：</p>
+<ul>
+<li><span class="arithmatex">\(X(0)=0,X(1)=0\)</span></li>
+<li>布朗桥过程是正态过程，有限维分布完全由均值函数和自相关函数确定</li>
+<li><span class="arithmatex">\(\mu_X(t)=0\)</span>，且对<span class="arithmatex">\(0\leq s \leq t \leq 1\)</span>，有<span class="arithmatex">\(C_X(t,s)=s(1-t)\)</span></li>
+<li>样本轨道是连续的</li>
+</ul>
+<blockquote>
+<p>布朗桥运动还有等价定义，满足上述2、3、4性质的过程即为布朗桥过程</p>
+</blockquote>
+<p>下面我们证明布朗桥过程的第三条性质：</p>
+<p><span class="arithmatex">\(\mu_X(t)=E[X(t)]=E(B(t)-tB(1))=E(B(t))-tE(B(1))=0\)</span></p>
+<p>设<span class="arithmatex">\(0\leq s \leq t\leq 1\)</span></p>
+<p><span class="arithmatex">\(C_X(t,s)=Cov(B(t)-tB(1),B(s)-sB(1))=Cov(B(t),B(s))-tCov(B(1),B(s))-sCov(B(t),B(1))+tsCov(B(1),B(1))\)</span></p>
+<p>所以有
+$$
+C_X(t,s)=s-ts-st+ts=s(1-t)
+$$</p>
+<h4 id="_5">积分过程<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>我们定义
+$$
+X(t)=\int_0^tB(s)ds,\ t\geq 0
+$$
+则称<span class="arithmatex">\(X(t)\)</span>为Brown运动的积分过程，由Riemann积分可知‘
+$$
+\int_0^tB(s)ds=\lim_{n\to \infty}\sum_{k=1}^n (s_i-s_{i-1})B_{s_i}
+$$
+因为<span class="arithmatex">\(B=(B(t);t\geq 0)\)</span>是正态过程，所以有<span class="arithmatex">\(\sum_{k=1}^n (s_i-s_{i-1})B_{s_i}\)</span>为正态随机变量，又由于正态随机变量序列的极限仍为正态随机变量，所以有<span class="arithmatex">\(\lim_{n\to \infty}\sum_{k=1}^n (s_i-s_{i-1})B_{s_i}\)</span>为正态随机变量</p>
+<p>可以证明，积分过程<span class="arithmatex">\(\left\{X(t)\right\}\)</span>是一个正态过程。</p>
+<p>下面我们考虑积分过程<span class="arithmatex">\(\left\{X(t)\right\}\)</span>的数字特征，先考虑<span class="arithmatex">\(EX(t)\)</span></p>
+<p>因为
+$$
+\int_0^{t}E(|B(s)|)ds \leq \int_0^t\sqrt{E(B_s^2)}ds=\int_0^t\sqrt{s}ds&lt;\infty
+$$
+所以由Fubini定理有
+$$
+EX(t)=E\int_0^tB(s)ds=\int_0^tE(B(s))ds=0
+$$
+下面我们考虑积分过程的自协方差函数</p>
+<p>对<span class="arithmatex">\(s\leq t\)</span>，因为
+$$
+\int_0^sdu \int_0^tE(|B(u)B(v)|)dv\leq \int_0^sdu \int_0^t\sqrt{E(B(u)^2)}\sqrt{E(B(v)^2)}dv\leq \int_0^s du\int_0^t\sqrt{u}\sqrt{v}dv\leq \int_0^s du\int_0^t tdv\=st^2&lt;\infty
+$$
+所以由Fubini定理</p>
+<p>对<span class="arithmatex">\(0\leq s\leq t\)</span>，有
+$$
+Cov(X(s),X(t))=E(X(s)X(t))=E(\int_0^sB(u)du\int_0^tB(v)dv)=E(\int_0^s\int_0^tB(u)B(v)dudv)\=\int_0^s\int_0^tE(B(u)B(v))dudv=\int_0^s\int_0^t\min(u,v)dudv=\int_0^sdu\int_0^uvdv+\int_0^sudu\int_u^tdv\=\frac{ts^2}{2}-\frac{s^3}{6}
+$$</p>
+<h3 id="_6">最大值与首中时分布<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>设<span class="arithmatex">\(\left\{B(t);t\geq 0\right\}\)</span>是标准Brown运动，<span class="arithmatex">\(a\neq 0\)</span>，记<span class="arithmatex">\(T_a=\inf \left\{t&gt;0:B(t)=a\right\}\)</span>，表示首次击中<span class="arithmatex">\(a\)</span>的时刻，称为<span class="arithmatex">\(a\)</span>的首中时。</p>
+<h4 id="_7">反射原理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>固定实数<span class="arithmatex">\(a\)</span>，令
+$$
+\hat{B}(t)=\begin{cases}
+B(t)&amp;t&lt;T_a
+\ 2a-B(t),&amp;t \geq T_a
+\end{cases}
+$$
+则有<span class="arithmatex">\(\left\{ \hat{B}(t);t\geq 0\right\}\)</span>也是布朗运动（标准布朗运动）</p>
+<p>下面我们给出证明：对<span class="arithmatex">\(t \geq 0\)</span>，令<span class="arithmatex">\(Y(t) = B(t)1_\left\{t \leq T_a\right\}\)</span>，<span class="arithmatex">\(Z(t) = B(t + T_a) - a\)</span>。 则<span class="arithmatex">\(Z = \left\{Z(t); t \geq 0\right\}\)</span>是独立于<span class="arithmatex">\(Y = \left\{Y(t); t \geq 0\right\}\)</span>的布朗运动。 所以<span class="arithmatex">\(-Z = \left\{-Z(t); t \geq 0\right\}\)</span>是独立于<span class="arithmatex">\(Y\)</span>的布朗运动。 所以<span class="arithmatex">\((Y, Z)\)</span>与<span class="arithmatex">\((Y, -Z)\)</span>具有相同的有限维分布。 <span class="arithmatex">\(\varphi: (Y, Z) \rightarrow \left\{Y(t)1_\left\{t \leq T_a \right\} + (a + Z(t - T_a))1_\left\{t &gt; T_a\right\}; t \geq 0\right\}\)</span> 生成一个连续过程，<span class="arithmatex">\(\varphi(Y, -Z)\)</span>也是一个连续过程，且两个具有相同的有限维分布。 又<span class="arithmatex">\(\varphi(Y, Z) = B\)</span>，<span class="arithmatex">\(\varphi(Y, -Z) = \widehat{B}\)</span>，所以<span class="arithmatex">\(\widehat{B}\)</span>也是布朗运动。</p>
+<blockquote>
+<p>当布朗运动首次达到水平<span class="arithmatex">\(a\)</span>后，其后续路径可以通过“反射”来构造，将路径在水平<span class="arithmatex">\(a\)</span>上“对称翻转”，得到的路径在概率意义上与原布朗运动等价</p>
+</blockquote>
+<p>布朗运动有以下<strong>几个非常关键的性质（主要是1、2两点）</strong>：</p>
+<p>我们记<span class="arithmatex">\(M_t=\sup_{0\leq s\leq t}B(s)\)</span>为布朗运动在时间区间<span class="arithmatex">\([0,t]\)</span>内的最大值，则有：</p>
+<ol>
+<li>
+<p>对任意的<span class="arithmatex">\(a,y,t\geq 0\)</span>
+   $$
+   P(M_t\geq a,B_t\leq a-y)=P(B_t\geq a+y)
+   $$</p>
+</li>
+<li>
+<div class="arithmatex">\[
+   P(M_t\geq a)=2P(B_t\geq a),\forall a\geq 0
+   \]</div>
+</li>
+</ol>
+<p>即有<span class="arithmatex">\(M_t\)</span>与<span class="arithmatex">\(|B_t|\)</span>同分布</p>
+<ol>
+<li>对任何的<span class="arithmatex">\(a\neq 0,P(T_a&lt;\infty)=1\)</span>
+   $$
+   f_{T_a}(t)=\frac{a}{\sqrt{2\pi t^3}}e^{-\frac{a^2}{2t}} 1_\left{t\geq 0\right}
+   $$
+   从而有<span class="arithmatex">\(E(T_a)=\infty\)</span></li>
+</ol>
+<p>下面我们对这几个性质给出证明：</p>
+<p>(1) 对任意的<span class="arithmatex">\(a,y,t\geq 0\)</span>，由反射原理有
+$$
+P(M_t\geq a,B_t\leq a-y)=P(\hat{M}_t\geq a,\hat{B}_t\geq a+y)
+$$
+由于<span class="arithmatex">\(\hat{B}_t\geq a+y\)</span>其实是能推出<span class="arithmatex">\(\hat{M}_t\geq a\)</span>的，也就是说，这两个事件是包含关系，那么在概率上的反映就是
+$$
+P(\hat{M}_t\geq a,\hat{B}_t\geq a+y)=P(\hat{B}_t\geq a+y)=P(B_t\geq a+y)
+$$</p>
+<blockquote>
+<p>需要说明的是，上述记号<span class="arithmatex">\(\hat{M}_t\)</span>是反射后的布朗运动<span class="arithmatex">\(\hat{B}_t\)</span>的最大值，而不是对原最大值<span class="arithmatex">\(M_t\)</span>作反射操作，也即
+$$
+\hat{M}<em 0_leq="0\leq" _leq="\leq" s="s" t="t">t=\max</em>_s
+$$}\hat{B</p>
+</blockquote>
+<p>(2) 对<span class="arithmatex">\(a&gt;0\)</span>，有
+$$
+P(M_t\geq a)=P(M_t\geq a,B_t&gt; a)+P(M_t\geq a,B_t\leq a)
+$$
+其中<span class="arithmatex">\(P(M_t\geq a,B_t&gt;a)=P(B_t&gt;a)\)</span>，且由(1)可以得到
+$$
+P(M_t\geq a,B_t\leq a)=P(M_t\geq a,B_t\geq a)=P(B_t\geq a)
+$$
+故最终可以得到<span class="arithmatex">\(P(M_t\geq a)=2P(B_t\geq a)\)</span></p>
+<p>(3) 对<span class="arithmatex">\(a&gt;0\)</span>和<span class="arithmatex">\(t&gt;0\)</span>，有
+$$
+F_{T_a}(t)=P(T_a\leq t)=P(M_t\geq a)=2P(B_t\geq a)=2(1-P(B_t&lt;a))=2(1-\Phi(\frac{a}{\sqrt{t}}))
+$$
+所以有
+$$
+f_{T_a}(t)=F_{T_a}'(t)=\frac{a}{\sqrt{2\pi t^3}}e^{-\frac{a^2}{2t}}
+$$
+所以有
+$$
+E(T_a)=\int_0^{\infty}\frac{a}{\sqrt{2\pi t}}e^{-\frac{a^2}{2t}}dt=\infty
+$$</p>
+<blockquote>
+<p>由上式我们可以知道
+$$
+P(T_a&lt;\infty)=\lim_{t\to \infty}P(T_a\leq t)=F(\infty)=1
+$$
+说明对几乎每条样本轨道，不管<span class="arithmatex">\(a\)</span>多大，总在有限时刻首次击中<span class="arithmatex">\(a\)</span>，但虽然Brown运动的几乎所有样本轨道初次击中<span class="arithmatex">\(a\)</span>的时刻都是有限的，或者说尽管几乎每条轨道都能在有限时间内击中<span class="arithmatex">\(a\)</span>，但是经过<span class="arithmatex">\(a\)</span>点的平均时间却是无穷的。对照Markov链中常返和瞬过的定义，我们知道每个状态<span class="arithmatex">\(a\)</span>都是“常返”的，但是“零常返”的</p>
+</blockquote>
+<p>下面我们来看一些实际的例子：</p>
+<p><strong>例</strong> 设<span class="arithmatex">\(\left\{B(t);t\geq 0\right\}\)</span>是标准Brown运动，令<span class="arithmatex">\(X(t)=|\min_{0\leq s \leq t}B(s)|\)</span>，求<span class="arithmatex">\(X(t)\)</span>的分布函数</p>
+<p><strong>解</strong> 这里有一个很重要的理解，<span class="arithmatex">\(|\min_{0\leq s\leq t}B(s)|=-\min_{0\leq s\leq t}B(s)\)</span>，这是因为<span class="arithmatex">\(B(0)=0\)</span>所以有<span class="arithmatex">\(\min_{0\leq s \leq t}B(s)\leq 0\)</span>，那么就有
+$$
+|\min_{0\leq s\leq t}B(s)|=-\min_{0\leq s\leq t }B(s)
+$$
+我们记<span class="arithmatex">\(B_1(s)=-B(s)\)</span>，因为<span class="arithmatex">\(\left\{-B(s);s\geq 0\right\}\)</span>是布朗运动，所以<span class="arithmatex">\(B_1(s)\)</span>也是Brown运动，因为<span class="arithmatex">\(X(t)\geq 0\)</span>，所以有当<span class="arithmatex">\(x&lt;0\)</span>时，
+$$
+F_{X(t)}(x)=0
+$$
+当<span class="arithmatex">\(x&gt;0\)</span>时，
+$$
+F_{X(t)}(x)=P(X(t)\leq x) =P(|\min_{0\leq s\leq t}B(s)|\leq x)=P(-\min_{0\leq s\leq t}B(s)\leq x)=P(\max_{0\leq s\leq t}B_1(s)\leq x)\=1-P(\max_{0\leq s\leq t}B_1(s)&gt;x)=1-2P(B(t)&gt; x)=1-2(1-\Phi(\frac{x}{\sqrt{t}}))=2\Phi(\frac{x}{\sqrt{t}})-1
+$$</p>
+<blockquote>
+<p>这题我个人觉得有两个很妙的地方，首先是，我们利用了<span class="arithmatex">\(B(0)=0\)</span>得出<span class="arithmatex">\(|\min_{0\leq s\leq t}B(s)|=-\min_{0\leq s\leq t }B(s)\)</span>，成功将绝对值去掉；其次是，我们记<span class="arithmatex">\(B_1(s)=-B(s)\)</span>，因为<span class="arithmatex">\(B(s)\)</span>在题中出现的形式是<strong>最小值</strong>；而我们学到的Brown运动的性质中出现的是<strong>最大值</strong>，我们将<span class="arithmatex">\(B(s)\)</span>的最小值转化为了同样为Brown运动的<span class="arithmatex">\(B_1(s)\)</span>的最大值，从而成功地应用了Brown运动的性质。</p>
+</blockquote>
+<p><strong>例</strong> 以<span class="arithmatex">\(X(t)\)</span>表示<span class="arithmatex">\(t\)</span>时刻的股票价格（单位：元），设<span class="arithmatex">\(X(t)=2^{B(t)}\)</span>，其中<span class="arithmatex">\(\left\{B(t);t\geq 0\right\}\)</span>是标准Brown运动，求<span class="arithmatex">\([0,4]\)</span>内股票价格不曾达到8元的概率</p>
+<p><strong>解</strong> <span class="arithmatex">\(P(X(t)_{t\leq4 }&lt; 8)=P(\max_{t\leq 4}B(t)&lt; 3)\)</span>，而我们知道
+$$
+P(\max_{t\leq 4}B(t)&lt; 3)=1-P(\max_{t\leq 4}B(t)\geq3)=1-2P(B(4)\geq 3)=1-2(1-\Phi(\frac{3}{2}))=1-2(1-0.9332)=0.8664
+$$</p>
+<h3 id="ito">Ito积分<a class="headerlink" href="#ito" title="Permanent link">&para;</a></h3>
+<p>Ito积分实际上是指形如下式的积分：
+$$
+\int_0^t f(s)dB_s, t\geq 0
+$$
+其中<span class="arithmatex">\(f\)</span>是随机过程，通过Ito积分得到的是一个随机变量。对于一个适定过程<span class="arithmatex">\(f(s)\)</span>，Ito积分表示在时间区间<span class="arithmatex">\([0,t]\)</span>上对布朗运动的增量进行加权求和，其中<span class="arithmatex">\(f(s)\)</span>是权重函数，为了保证积分有意义，通常要求<span class="arithmatex">\(f(s)\)</span>满足平方可积条件，也即
+$$
+E[\int_0^t f^2(s)ds]&lt;\infty
+$$
+为了理解Ito积分定义的微妙之处，我们首先回忆一下Riemann积分和Riemann-Stieltjes积分</p>
+<h4 id="riemann-stieltjes">Riemann-Stieltjes积分<a class="headerlink" href="#riemann-stieltjes" title="Permanent link">&para;</a></h4>
+<p>我们首先回忆一下
+$$
+\int_a^b f(x)dx
+$$
+是如何定义的。</p>
+<p>首先作分割，在<span class="arithmatex">\([a,b]\)</span>上插入<span class="arithmatex">\(n-1\)</span>个分点：<span class="arithmatex">\(a=x_0&lt;x_1&lt;\cdots&lt;x_n=b\)</span>；其次取点，在每一个<span class="arithmatex">\([x_{i-1},x_i]\)</span>任取一点<span class="arithmatex">\(\xi_i\)</span>；再作Riemann和，有
+$$
+S_n=\sum_{i=1}^nf(\xi_i)(x_i-x_{i-1})
+$$
+再求极限：如果存在一个<span class="arithmatex">\(S\)</span>，使得对任意划分、任意取点，有
+$$
+\lim_{\max_{i}(x_i-x_{i-1})\to 0}S_n=S
+$$
+那么我们就称<span class="arithmatex">\(S\)</span>为函数<span class="arithmatex">\(f\)</span>在<span class="arithmatex">\([a,b]\)</span>上的Riemann积分，记作
+$$
+\int_a^bf(x)dx=S
+$$
+那么什么时候<span class="arithmatex">\(f\)</span>在<span class="arithmatex">\([a,b]\)</span>上Riemann可积呢？答案是<strong><span class="arithmatex">\(f\)</span>连续或者逐段连续</strong>的时候。</p>
+<p>接下来我们再回忆一下<span class="arithmatex">\(f\)</span>关于<span class="arithmatex">\(G(x)\)</span>的积分
+$$
+\int_a^bf(x)dG(x)
+$$
+我们首先作分割，在<span class="arithmatex">\([a,b]\)</span>上插入<span class="arithmatex">\(n-1\)</span>个分点：<span class="arithmatex">\(a=x_0&lt;x_1&lt;\cdots&lt;x_n=b\)</span>；然后在每一个<span class="arithmatex">\([x_{i-1},x_i]\)</span>上任取一点<span class="arithmatex">\(\xi_i\)</span>；接着再作Riemann-Stieltjes和，也即
+$$
+S_n=\sum_{i=1}^nf(\xi_i)(G(x_i)-G(x_{i-1}))
+$$
+然后求极限，如果存在一个<span class="arithmatex">\(S\)</span>，使得对任意划分，任意取点
+$$
+\lim_{\max_i(x_i-x_{i-1})\to 0}S_n=S
+$$
+那么我们就称<span class="arithmatex">\(S\)</span>为函数<span class="arithmatex">\(f\)</span>在<span class="arithmatex">\([a,b]\)</span>上的Riemann-Stieltjes积分，记作
+$$
+\int_a^bf(x)dG(x)=S
+$$
+什么条件下<span class="arithmatex">\(\int_a^bf(x)dG(x)\)</span>存在呢？答案是当且仅当<span class="arithmatex">\(f\)</span>是<span class="arithmatex">\([a,b]\)</span>上的连续函数，<span class="arithmatex">\(G(x)\)</span>是<span class="arithmatex">\([a,b]\)</span>上的<strong>有界变差函数</strong></p>
+<h4 id="_8">有界变差函数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>下面我们给出<strong>有界变差函数</strong>的定义</p>
+<p>假设<span class="arithmatex">\(G\)</span>是<span class="arithmatex">\([a,b]\)</span>上的实值函数，对<span class="arithmatex">\([a,b]\)</span>进行分割，记
+$$
+\Delta :a=x_0&lt;x_1&lt;\cdots&lt;x_n=b
+$$
+如果有
+$$
+\sup_{\Delta}\sum_{i=1}^n|G(x_i)-G(X_{i-1})|&lt;\infty
+$$
+那么我们就称<span class="arithmatex">\(G\)</span>在<span class="arithmatex">\([a,b]\)</span>上具有有界变差。</p>
+<p>假设<span class="arithmatex">\(G\)</span>是<span class="arithmatex">\([0,\infty)\)</span>上的实值函数，如果
+$$
+\sup_{t&gt;0}\sup_{\Delta}\sum_{i=1}^n|G(x_i)-G(x_{i-1})|&lt;\infty
+$$
+其中<span class="arithmatex">\(\Delta\)</span>是<span class="arithmatex">\([0,t]\)</span>上的分割，那么称<span class="arithmatex">\(G\)</span>在<span class="arithmatex">\([0,\infty)\)</span>上具有有界变差</p>
+<p>有界变差函数有以下几点性质：</p>
+<ul>
+<li>任何有界变差函数都可以写成两个单调增函数的差</li>
+<li>任何有界变差函数都几乎处处可微</li>
+<li><span class="arithmatex">\([a,b]\)</span>上具有有界导函数的函数是有界变差函数</li>
+<li><span class="arithmatex">\([a,b]\)</span>上的单调函数是有界变差函数</li>
+</ul>
+<p>但是非常遗憾的是，对于布朗运动<span class="arithmatex">\(\left\{B(t);t\geq 0\right\}\)</span>来说，尽管其<strong>几乎所有轨道都连续</strong>，但是：</p>
+<ul>
+<li>几乎所有轨道在任何区间上不单调</li>
+<li>几乎所有轨道在任何点不可导</li>
+<li>几乎所有轨道在任何区间上都不是有界变差</li>
+</ul>
+<p>下面我们证明一下<strong>布朗运动的几乎所有轨道在任何区间上都不是有界变差</strong></p>
+<p><strong>证明</strong> 我们将<span class="arithmatex">\([0,t]\)</span>区间作划分，划分成<span class="arithmatex">\(\frac{0}{2^n}t,\frac{1}{2^n}t,\cdots,t\)</span>等等，令
+$$
+V_n=\sum_{i=0}^{2^n-1}|B(\frac{(i+1)t}{2^n})-B(\frac{it}{2^n})|
+$$
+则有<span class="arithmatex">\(V_n\)</span>单调递增（这是因为将区间加细<span class="arithmatex">\(V_n\)</span>会变大，由绝对值不等式即可得到），所以如果我们如果能够证明<span class="arithmatex">\(V_n\)</span>的极限是<span class="arithmatex">\(+\infty\)</span>，就能证明其不是有界变差函数。和之前一样的思路，我们先考虑标准正态分布随机变量的方差和期望，若<span class="arithmatex">\(X\sim N(0,1)\)</span>，则有
+$$
+E(|X|)=\sqrt{\frac{2}{\pi}},\qquad D(X^2)=2
+$$</p>
+<blockquote>
+<p>印象中是说<span class="arithmatex">\(D(X^2)=2\)</span>是由卡方分布得来的</p>
+<p>标准正态分布的矩公式：如果<span class="arithmatex">\(X\)</span>是标准正态分布随机变量，也即<span class="arithmatex">\(X\sim N(0,1)\)</span>，则可以得到
+$$
+E[X^{2k-1}]=0\E[X^{2k}]=\frac{(2k!)}{2^kk!}
+$$
+也即标准正态分布的奇数阶矩为0，偶数阶矩为<span class="arithmatex">\(\frac{(2k)!}{2^k k!}\)</span></p>
+<p>所以我们可以得到
+$$
+Var X^2=E(X^4)-[EX^2]^2=\frac{4!}{2^2\times  2!}-(\frac{2!}{2^1\times 1!})=3-1=2
+$$</p>
+</blockquote>
+<p>可以得出
+$$
+E(X^4)=3
+$$</p>
+<blockquote>
+<p>但是这不是循环论证了吗？🤣</p>
+</blockquote>
+<p>所以
+$$
+E(V_n)=2^n\sqrt{\frac{t}{2^n}}\sqrt{\frac{2}{\pi}}=\sqrt{\frac{2^{n+1}t}{\pi}}\to \infty\
+D(V_n)=2^n\times \frac{t}{2^n}\times (1-\frac{2}{\pi})=(1-\frac{2}{\pi})t
+$$
+所以可以得出：
+$$
+P(V_n &lt; \frac{EV_n}{2})\leq P(|V_n-EV_n|\geq \frac{EV_n}{2})\leq 4\frac{D(V_n)}{(EV_n)^2}\to0
+$$</p>
+<blockquote>
+<p>上面用了著名的chebyshev不等式</p>
+</blockquote>
+<p>所以可以得到<span class="arithmatex">\(P(V_n\geq \frac{EV_n}{2}\to 1)\)</span>，即<span class="arithmatex">\(V_n\overset{P}{\to}\infty\)</span>，又<span class="arithmatex">\(V_n\)</span>单调递增，所以可以得到
+$$
+V_n\to\infty
+$$
+也就证明了布朗运动的几乎所有轨道在任何区间上都不是有界变差。</p>
+<p>尽管布朗运动不是有界变差的，但其却是二次变差的，也即对任何<span class="arithmatex">\(t&gt;0\)</span>，对<span class="arithmatex">\([0,t]\)</span>的任何划分列<span class="arithmatex">\(\left\{t_i\right\}_{i=0}^n\)</span>，当<span class="arithmatex">\(\delta_n=\max_{0\leq i\leq n-1}(t_{i+1}-t_i)\to 0\)</span>时，可以得到
+$$
+M_n=\sum_{i=1}^n[B(t_i)-B(t_{i-1})]^2\overset{L^2}{\to}t
+$$
+也即<span class="arithmatex">\(M_n=\sum_{i=1}^n[B(t_i)-B(t_{i-1})]^2\)</span>均方收敛到<span class="arithmatex">\(t\)</span></p>
+<p>下面我们给出证明：考虑布朗运动的二次变差，对任何<span class="arithmatex">\(t&gt;0\)</span>，对<span class="arithmatex">\([0,t]\)</span>的任何划分列<span class="arithmatex">\(\left\{t_i\right\}_{i=0}^n\)</span>，令<span class="arithmatex">\(\delta_n = \max_{0\leq i\leq n-1}(t_{i+1}-t_i)\)</span>，有
+$$
+E(M_n)=\sum_{i=1}^nE[B(t_i)-B(t_{i-1})]^2
+$$
+我们又知道<span class="arithmatex">\(B(t_i)-B(t_{i-1})\sim N(0,t_i-t_{i-1})\)</span>，所以可以得到
+$$
+E[B(t_i)-B(t_{i-1})]^2=Var(B(t_i)-B(t_{i-1}))+E[B(t_i)-B(t_{i-1})]=t_i-t_{i-1}
+$$
+所以有
+$$
+E(M_n)=\sum_{i=1}^n(t_i-t_{i-1})=t
+$$
+再考虑<span class="arithmatex">\(D(M_n)\)</span>，由独立增量性有
+$$
+D(M_n)=\sum_{i=1}^nD[B(t_i)-B(t_{i-1})]^2=\sum_{i=1}^n2(t_i-t_{i-1})^2\leq \sum_{i=1}^n 2\delta <em i-1="i-1">n(t_i-t</em>)=2\delta_n t
+$$</p>
+<blockquote>
+<p>这里<span class="arithmatex">\(D[B(t_i)-B(t_{i-1})]^2\)</span>是如何考虑的还是有点疑惑</p>
+</blockquote>
+<p>所以有当<span class="arithmatex">\(\delta_n\to 0\)</span>时，
+$$
+E[M_n-t]^2=D(M_n)\to 0
+$$
+也即
+$$
+M_n\overset{L^2}{\to}t
+$$</p>
+<blockquote>
+<p>推广到一般的区间<span class="arithmatex">\([a,b]\)</span>，可以得到<span class="arithmatex">\(M_n\overset{L^2}{\to}b-a\)</span></p>
+</blockquote>
+<h4 id="ito_1">Ito积分<a class="headerlink" href="#ito_1" title="Permanent link">&para;</a></h4>
+<p>这时候我们再回到最开始的问题，如何定义
+$$
+\int_0^TX(t)dB(t)
+$$
+比如如何定义<span class="arithmatex">\(\int_0^TB(t)dB(t)\)</span>呢，我们的思路可能是这样的：首先对<span class="arithmatex">\([0,T]\)</span>作划分列<span class="arithmatex">\(\left\{t_i\right\}_{i=1}^n\)</span>，使得<span class="arithmatex">\(\delta_n=\max_{0\leq i\leq n-1}(t_{i+1}^n-t_i^n)\to 0\)</span>，然后在每个区间<span class="arithmatex">\([t_i,t_{i+1}]\)</span>取点<span class="arithmatex">\(s_i\)</span>，则有
+$$
+S_n=\sum_{i=0}^{n-1}B(s_i)[B(t_{i+1})-B(t_i)]
+$$
+最后取极限，<span class="arithmatex">\(S_n\)</span>的极限就是
+$$
+\int_{0}^T B(t)dB(t)
+$$
+但是其实我们试着写一写就会发现，<strong>极限是依赖于点的选取的</strong></p>
+<p>比如若我们取<span class="arithmatex">\(s_i\)</span>为<span class="arithmatex">\([t_i,t_{i+1}]\)</span>的左端点<span class="arithmatex">\(t_i\)</span>，就会得到
+$$
+S_n=\sum_{i=0}^{n-1}B(t_i)[B(t_{i+1})-B(t_i)]\=\sum_{i=0}^{n-1}[\frac{B(t_{i+1})+B(t_i)}{2}-\frac{B(t_{i+1})-B(t_i)}{2}][B(t_{i+1})-B(t_i)]\=\sum_{i=0}^{n-1}[\frac{B^2(t_{i+1})-B^2(t_i)}{2}]-\frac{1}{2}\sum_{i=0}^{n-1}[B(t_{i+1})-B(t_i)]^2\overset{L^2}{\to}\frac{1}{2}B^2(T)-\frac{1}{2}T
+$$</p>
+<blockquote>
+<p>其中二次变差均方收敛到<span class="arithmatex">\(T\)</span>我们已经证明过</p>
+</blockquote>
+<p>若我们取<span class="arithmatex">\(S_i\)</span>为<span class="arithmatex">\([t_i,t_{i+1}]\)</span>的右端点<span class="arithmatex">\(t_{i+1}\)</span>，则有
+$$
+S_n=\sum_{i=0}^{n-1}S_n=\sum_{i=0}^{n-1}B(t_{i+1})[B(t_{i+1})-B(t_i)]\=\sum_{i=0}^{n-1}[\frac{B(t_{i+1})+B(t_i)}{2}+\frac{B(t_{i+1})-B(t_i)}{2}][B(t_{i+1})-B(t_i)]\=\sum_{i=0}^{n-1}[\frac{B^2(t_{i+1})-B^2(t_i)}{2}]+\frac{1}{2}\sum_{i=0}^{n-1}[B(t_{i+1})-B(t_i)]^2\overset{L^2}{\to}\frac{1}{2}B^2(T)+\frac{1}{2}T
+$$
+所以我们可以发现，<strong>极限是依赖于点的选取的</strong>：</p>
+<ul>
+<li>
+<p>当我们选取左端点的时候，上述积分称为<span class="arithmatex">\(Ito\)</span>积分，记为
+  $$
+  \int_0^TB(t)dB(t)
+  $$</p>
+</li>
+<li>
+<p>当我们选取区间中点的时候，上述积分称为<span class="arithmatex">\(Stratonovich\)</span>积分，记为
+  $$
+  \int_0^TB(t)\circ dB(t)
+  $$</p>
+</li>
+</ul>
+<p>下面我们给出Ito积分的定义</p>
+<p>假设<span class="arithmatex">\(B=(B_t;t\geq 0)\)</span>是标准Brown运动，<span class="arithmatex">\(f(t);t\geq 0\)</span>是一个关于Brown运动<span class="arithmatex">\(B\)</span>适应的随机过程（意思是<span class="arithmatex">\(f(t)\)</span>仅依赖于<span class="arithmatex">\(\left\{B_s;0\leq s\leq t\right\}\)</span>），进一步假设
+$$
+\int_0^{\infty}Ef(s)^2ds&lt;\infty
+$$
+则对任意的<span class="arithmatex">\(t&gt;0\)</span>，我们首先作分割，在<span class="arithmatex">\([0,t]\)</span>上插入<span class="arithmatex">\(n-1\)</span>个分点：<span class="arithmatex">\(0=s_0&lt;s_1&lt;\cdots&lt;s_n=t\)</span>，使得
+$$
+\Delta=\max_{1\leq i\leq n}|s_i-s_{i-1}|\to 0
+$$
+然后取点，选择<span class="arithmatex">\(\xi_i=s_{i-1}\)</span>（区间的左端点），随后作和，有
+$$
+S_n(t)=\sum_{i=1}^nf(s_{i-1})(B(s_i)-B(s_{i-1}))
+$$
+则一定存在一个<strong>随机变量</strong><span class="arithmatex">\(X(t)\)</span>使得
+$$
+E(S_n(t)-X(t))^2\to 0,\qquad n\to\infty
+$$
+此时我们定义
+$$
+\int_0^t f(s)dB_s=X(t)
+$$
+称<span class="arithmatex">\(X(t)\)</span>是<span class="arithmatex">\(f\)</span>关于Brown运动<span class="arithmatex">\(B\)</span>的Ito积分</p>
+<h4 id="ito_2">Ito积分的运算性质<a class="headerlink" href="#ito_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>数学期望
+   $$
+   E\int_0^tf(s)dB_s=0
+   $$</p>
+</li>
+<li>
+<p>Ito积分的等距性质
+   $$
+   E[(\int_0^t f(s)dB_s)^2]=\int_0^tEf^2(s)ds(这里的运算顺序是先平方、再取期望、再积分)
+   $$</p>
+<blockquote>
+<p>需要注意的是，左侧是一个Ito积分，而右侧是一个Riemann积分，毕竟是取了期望之后。</p>
+<p>Ito积分的等距公式表明，Ito积分的二阶矩（即平方期望）等于其权重函数<span class="arithmatex">\(f(s)\)</span>的平方在时间区间<span class="arithmatex">\([0,t]\)</span>上的期望积分。这个性质将随机积分的<span class="arithmatex">\(L^2\)</span>范数与确定性积分的<span class="arithmatex">\(L^2\)</span>范数联系起来，类似于经典的等距性质。</p>
+</blockquote>
+</li>
+<li></li>
+<li>
+<p>线性性质
+   $$
+   \int_0^t(af(s)+bg(s))dBs=a\int_0^tf(s)dB_s+b\int_0^tg(s)dB_s
+   $$</p>
+</li>
+<li>
+<p>可加性
+   $$
+   \int_0^Tf(s)dB_s=\int_0^tf(s)dB_s+\int_t^Tf(s)dB_s
+   $$</p>
+</li>
+</ol>
+<blockquote>
+<p>证明部分就不详细展开了，感觉期末周时间不太够，推测Ito积分的掌握要求也仅仅是会算就行</p>
+</blockquote>
+<p>上面我们给出了<span class="arithmatex">\(f(t)\)</span>关于Brown运动的Ito积分的定义，但是除了少数过程之外，我们很难从定义直接计算出<span class="arithmatex">\(\int_0^tf(s)dB_s\)</span>，所以需要一个基本公式来帮助我们计算<span class="arithmatex">\(\int_0^tf(s)dB_s\)</span></p>
+<h4 id="brownito">适用于Brown运动的Ito积分公式<a class="headerlink" href="#brownito" title="Permanent link">&para;</a></h4>
+<p><strong>1维Ito公式</strong>：</p>
+<p>设<span class="arithmatex">\(f\)</span>在<span class="arithmatex">\(R\)</span>上具有二阶连续导数，则有
+$$
+f(B_t)=f(B_0)+\int_0^tf'(B_s)dB_s+\frac{1}{2}\int_0^tf''(B_s)ds
+$$</p>
+<p>其对应的随机微分方程为
+$$
+df(B_t)=f'(B_t)dB_t+\frac{1}{2}f''(B_t)dt
+$$</p>
+<blockquote>
+<p>而求Ito积分移一下项即可，也即有
+$$
+\int_0^tf'(B_s)dB_s=f(B_t)-f(B_0)-\frac{1}{2}\int_0^tf''(B_s)ds
+$$
+证明这里也不做展开了</p>
+</blockquote>
+<p>下面我们来看一些例子：</p>
+<p><strong>例</strong> 计算<span class="arithmatex">\(\int_0^t B_sdB_s\)</span></p>
+<p><strong>解</strong> 取<span class="arithmatex">\(f'(x)=x\)</span>，则有
+$$
+f(x)=\frac{1}{2}x^2\qquad f''(x)=1
+$$
+所以可以得到
+$$
+\int_0^t f'(B_s)dB_s=\int_0^tB_sdB_s=f(B_t)-f(B_0)-\int_0^t\frac{1}{2}f''(B_s)ds\=\frac{1}{2}B_t^2-B_0-\frac{1}{2}\int_0^t1ds=\frac{1}{2}B_t^2-\frac{1}{2}t
+$$
+<strong>例</strong> 计算<span class="arithmatex">\(\int_0^t B_s^2d B_s\)</span></p>
+<p><strong>解</strong> 取<span class="arithmatex">\(f'(x)=x^2\)</span>，则有
+$$
+f(x)=\frac{1}{3}x^3,\qquad f''(x)=2x
+$$
+所以可以得到
+$$
+\int_0^tB_s^2dB_s=\int_0^tf'(B_s)dB_S=f(B_t)-f(B_0)-\frac{1}{2}\int_0^tf''(B_s)ds\=\frac{1}{3}B_t^3-\frac{1}{2}\int_0^t2B_sds=\frac{1}{3}B_t^3-\int_0^tB_sds
+$$
+<strong>例</strong> 计算<span class="arithmatex">\(\int_0^t \sin B_sdB_s\)</span></p>
+<p><strong>解</strong> 取<span class="arithmatex">\(f'(x)=\sin x\)</span>，则有
+$$
+f(x)=-\cos x,\qquad f''(x)=\cos x
+$$
+则有
+$$
+\int_0^t\sin B_sdB_s=f(B_t)-f(B_0)-\frac{1}{2}\int_0^tf''(B_s)ds\=-\cos B_t-(-\cos B_0)-\frac{1}{2}\int_0^t \cos B_sds=-\cos B_t +1 -\frac{1}{2}\int_0^t \cos B_sds
+$$
+<strong>例</strong> 计算<span class="arithmatex">\(\int_0^t \cos(B_s)dB_s\)</span></p>
+<p><strong>解</strong> 取<span class="arithmatex">\(f'(x)=\cos x\)</span>，则有
+$$
+f(x)=\sin x\qquad f''(x)=-\sin x
+$$
+则有
+$$
+\int_0^t \cos B_s dB_s=f(B_t)-f(B_0)-\frac{1}{2}\int_0^tf''(B_s)ds\=\sin B_t -\sin B_0-\frac{1}{2}\int_0^t -\sin B_sds=\sin B_t+\frac{1}{2}\int_0^t\sin B_sds
+$$
+<strong>例</strong> 计算<span class="arithmatex">\(\int_0^t e^{B_s}d B_s\)</span></p>
+<p><strong>解</strong> 取<span class="arithmatex">\(f'(x)=e^x\)</span>，则有
+$$
+f(x)=e^x,\qquad f''(x)=e^x
+$$
+所以
+$$
+\int_0^t e^{B_s}d B_s = f(B_t)-f(B_0)-\frac{1}{2}\int_0^t f''(B_s)ds\=e^{B_t}-e^{B_0}-\frac{1}{2}\int_0^t e^{B_s}ds=e^{B_t}-1-\frac{1}{2}\int_0^t e^{B_s}ds
+$$
+上面考虑的是一维情形，下面我们叙述<strong>二维情形</strong>的Ito积分计算公式</p>
+<p>假设<span class="arithmatex">\(f(t,x)\)</span>是二元函数，关于<span class="arithmatex">\(t\)</span>和<span class="arithmatex">\(x\)</span>的二阶偏导数存在并且连续，我们记
+$$
+\frac{\partial f(t,x)}{\partial t}=f_1(t,x)\qquad \frac{\partial f(t,x)}{\partial x}=f_2(t,x)\
+\frac{\partial^2 f(t,x)}{\partial t^2}=f_{11}(t,x)\qquad \frac{\partial^2f(t,x)}{\partial x^2}=f_{22}(t,x)\
+\frac{\partial^2 f(t,x)}{\partial x \partial t}=\frac{\partial^2 f(t,x)}{\partial t \partial x}=f_{12}(t,x)
+$$
+则有
+$$
+f(t,B_t)=f(0,0)+\int_0^t f_2(s,B_s)dB_s+\int_0^tf_1(s,B_s)ds+\frac{1}{2}\int_0^t f_{22}(s,B_s)ds
+$$
+其对应的随机微分方程为
+$$
+df(t,B_t)=f_1(t,B_t)dt+f_2(t,B_t)dB_t+\frac{1}{2}f_{22}(t,B_t)dt
+$$
+下面我们来看一个实际的例子：</p>
+<p><strong>例</strong> 考虑下列形式的几何Brown运动<span class="arithmatex">\(X(t)=e^{(\mu-\frac{\sigma^2}{2})t+\sigma B_t}\)</span>，问<span class="arithmatex">\(\left\{X(t);t\geq0 \right\}\)</span>所满足的随机微分方程</p>
+<p><strong>解</strong> 令<span class="arithmatex">\(f(x,t)=e^{(\mu-\frac{\sigma^2}{2})t+\sigma x}\)</span>，则<span class="arithmatex">\(X(t)=f(t,B_t)\)</span></p>
+<p>且有
+$$
+f_1=\frac{\partial f}{\partial t}=(\mu-\frac{\sigma^2}{2})e^{(\mu -\frac{\sigma^2}{2})t+\sigma x}\
+f_2=\frac{\partial f}{\partial x}=\sigma e^{(\mu-\frac{\sigma^2}{2})t+\sigma x}\
+f_{22}=\frac{\partial^2}{\partial x^2}=\sigma^2e^{(\mu-\frac{\sigma^2}{2})t+\sigma x}
+$$
+所以有
+$$
+f_1(t,B_t)=(\mu-\frac{\sigma^2}{2})X_t\
+f_2(t,B_t)=\sigma X_t\
+f_{22}(t,B_t)=\sigma^2X_t
+$$
+则由Ito公式
+$$
+dX_t=f_1(t,B_t)dt+f_2(t,B_t)dB_t+\frac{1}{2}f_{22}(t,B_t)dt=\mu X_t dt+\sigma X_td B_t
+$$
+所以<span class="arithmatex">\(\left\{X((t);t\geq 0\right\}\)</span>满足随机微分方程为
+$$
+dX_t = \mu X_t dt+\sigma X_t d B_t
+$$</p>
+<p>下面是老师补充的一些讲解：</p>
+<p><strong>例</strong> 求
+$$
+(1)E\int_0^TB^2(t)dB(t)\
+(2)Var \int_0^T B^2(t)dB(t)\
+(3)E\int_0^T B^2(t)dt
+$$</p>
+<p><strong>解</strong> </p>
+<p>(1) <span class="arithmatex">\(\int_0^T B^2(t)dB(t)\)</span>是Ito积分，我们由Ito积分的性质可以知道，其期望为0，所以有
+$$
+E\int_0^T B^2(t)dB(t)=0
+$$
+(2) 求Ito积分的期望，其实我们不用想的太复杂，因为Ito积分得到的本身就是一个随机变量，所以我们就当成求解一个随机变量的期望即可，所以有
+$$
+Var \int_0^T B^2(t)dB(t)=E[(\int_0^T B^2(t)dB(t))^2]-[E\int^T_0 B^2(t)dB(t)]^2=E[(\int_0^TB^2(t)dB(t))^2]
+$$
+由Ito积分的等距性质可以得到
+$$
+E[(\int_0^TB^2(t)dB(t))^2]=\int_0^TEB^4(t)dt
+$$
+然后就可以用我们所熟悉的方法，考虑标准正态分布随机变量的期望，然后将<span class="arithmatex">\(B(t)\)</span>标准化。</p>
+<p>我们知道对于一个标准正态分布随机变量<span class="arithmatex">\(\xi \sim N(0,1)\)</span>，有
+$$
+E[\xi^4]=\frac{4!}{2!2^2}=3
+$$
+且<span class="arithmatex">\(\frac{B(t)}{\sqrt{t}}\)</span>也服从标准正态分布，所以可以得到
+$$
+E[(\frac{B(t)}{\sqrt{t}})^4]=3
+$$
+进而可以得到
+$$
+E[B^4(t)]=3t^2
+$$
+所以原式可以计算出来，为
+$$
+Var\int_0^T B^2(t)dB(t)=\int_0^T 3t^2 dt=t^3\big|_0^T = T^3
+$$
+(3) 由Fubini定理可以得到
+$$
+E\int_0^T B^2(t)dt=\int_0^T EB^2(t)dt=\int_0^Ttdt=\frac{T^2}{2}
+$$</p>
+<p><strong>例</strong> 令<span class="arithmatex">\(\mu_n =E B^n(1)\)</span>，证明：<span class="arithmatex">\(\mu_{n+2}=(n+1)\mu_n\)</span></p>
+<p><strong>证明</strong> <span class="arithmatex">\(\mu_{n+2}=EB^{n+2}(1)\)</span></p>
+<p>我们可以考虑使用Ito积分进行推导，取<span class="arithmatex">\(f(x)=x^{n+2}\)</span>则有
+$$
+f(B_1)=f(B_0)+\int_0^1 f'(B_s)dB_s+\frac{1}{2}f''(B_s)ds\iff 
+\B^{n+2}(1)=B^{n+2}(0)+\int_0^1(n+2)B^{n+1}(s)dB_s+\frac{1}{2}\int_0^1(n+2)(n+1)B^n(s)ds
+$$</p>
+<blockquote>
+<p>这里<span class="arithmatex">\(B^{n+2}(1)\)</span>实际上指的是<span class="arithmatex">\((B(1))^{n+2}\)</span></p>
+</blockquote>
+<p>两边同时取期望可以得到
+$$
+\mu_{n+2}=E[\int_0^1(n+2)B^{n+1}(s)dB_s]+E[\frac{1}{2}\int_0^1(n+2)(n+1)B^n(s)ds]=0+\frac{1}{2}\int_0^1(n+2)(n+1)E[B^n(s)]ds\=\frac{1}{2}(n+2)(n+1)\int_0^1E[B^n(s)]ds
+$$
+我们又直到<span class="arithmatex">\(\frac{B(s)}{\sqrt{s}}\overset{d}{=}B(1)\)</span>，所以可以得到<span class="arithmatex">\(E[B^n(s)]=s^{\frac{n}{2}}B^n(1)=s^{\frac{n}{2}}\mu_n\)</span>，所以可以得到
+$$
+\mu_{n+2}=\frac{1}{2}(n+2)(n+1)\int_0^1 s^{\frac{n}{2}}\mu_n ds = \frac{1}{2}(n+2)(n+1)\mu_n=\frac{1}{2}(n+2)(n+1)\mu_n\frac{2}{n+2}=(n+1)\mu_n
+$$
+证毕。</p>
+<p>特别地，我们知道<span class="arithmatex">\(\mu_1 = EB(1)=0\)</span>，<span class="arithmatex">\(\mu_2=EB^2(1)=1\)</span>，所以可以得到
+$$
+\mu_{2k-1}=0\qquad \mu_{2k}=(2k-1)!!
+$$</p>
+<blockquote>
+<p>事实上，参考上面的我们计算<span class="arithmatex">\(E[B^4(t)]\)</span>的方法，我们甚至能把<span class="arithmatex">\(\mu_n\)</span>给求出来，结合一下标准正态分布随机变量的<span class="arithmatex">\(k\)</span>阶矩即可，不过老师的本意是希望我们能够用Ito积分公式完成这道题目，下面我们就直接求<span class="arithmatex">\(\mu_n\)</span>试试看</p>
+<p>考虑到对于标准正态分布随机变量<span class="arithmatex">\(\xi\sim N(0,1)\)</span>，有
+$$
+E[\xi^{2k}]=\frac{(2k)!}{k! 2^k},E[\xi^{2k-1}]=0
+$$
+而<span class="arithmatex">\(\frac{B(t)}{\sqrt{t}}\)</span>也服从标准正态分布，所以有
+$$
+E[(\frac{B(t)}{\sqrt{t}})^{2k}]=\frac{(2k)!}{k! 2^k},\qquad E[(\frac{B(t)}{\sqrt{t}})^{2k-1}]=0
+$$
+所以有
+$$
+E[(B(t))^{2k}]=t^k\frac{(2k)!}{k!2^k}\qquad E[(B(t))^{2k-1}]=0
+$$
+故有
+$$
+E[(B(1))^{2k}]=\frac{(2k)!}{k!2^k}\qquad E[(B(1))^{2k-1}]=0
+$$
+即
+$$
+\mu_{2k}=\frac{(2k!)}{k!2^k}\qquad \mu_{2k-1}=0
+$$
+下面我们考虑<span class="arithmatex">\(\mu_{n+2}=(n+1)\mu_n\)</span>，若<span class="arithmatex">\(n+2\)</span>为偶数，则有
+$$
+\mu_{n+2}=\frac{(n+2)!}{(\frac{n}{2}+1)!2^{\frac{2}{n}+1}}\qquad \mu_n=\frac{n!}{\frac{n}{2}!2^{\frac{n}{2}}}
+$$
+验证即知
+$$
+\frac{\mu_{n+2}}{\mu_n}=\frac{(n+2)!}{(\frac{n}{2}+1)!2^{\frac{2}{n}+1}}\times \frac{\frac{n}{2}!2^{\frac{n}{2}}}{n!}=\frac{(n+2)(n+1)}{2\times \frac{n+2}{2}}=(n+1)
+$$</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 07:37:02 UTC"><span class="timeago" datetime="2025-06-28T07:37:02+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 07:37:02 UTC">2025-06-28</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

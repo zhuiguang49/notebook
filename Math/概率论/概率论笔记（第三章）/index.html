@@ -1,0 +1,2343 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/">
+      
+      
+        <link rel="prev" href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/">
+      
+      
+        <link rel="next" href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter3 数字特征与特征函数 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter3 数字特征与特征函数
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Home/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Home/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学期望
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      方差、协方差与相关系数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征函数
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的分类和定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学期望
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      方差、协方差与相关系数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征函数
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Chapter3 数字特征与特征函数</h1>
+
+<p>分布函数可以全面地描述一个随机变量的概率分布，但是在实际工作中，完全掌握随机变量的分布函数是比较困难的，同时人们发现某些随机变量服从某类分布，它们的一些参数可以由某些数字特征确定，因此，对这些随机变量，数字特征有更重要的意义</p>
+<p>主要的数字特征有：<strong>数学期望</strong>、<strong>方差</strong>、<strong>相关系数（描述两个随机变量之间的线性关系的密切程度）</strong></p>
+<h3 id="_1">数学期望<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h4 id="_2">离散型随机变量的数学期望<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>设离散型随机变量<span class="arithmatex">\(\xi\)</span>的分布列为
+$$
+\begin{array}{c|cccc} \xi &amp; x_1 &amp;\cdot\cdot\cdot &amp; x_k &amp;\cdot\cdot\cdot &amp;x_n \ \hline \mathbf{P} &amp; p_1 &amp;\cdot\cdot\cdot &amp;p_k &amp;\cdot\cdot\cdot &amp;p_n \end{array} 
+$$
+如果级数<span class="arithmatex">\(\sum_kx_kp_k\)</span>绝对收敛，即<span class="arithmatex">\(\sum_k|x_k|p_k&lt;\infty\)</span>，就称<span class="arithmatex">\(\sum_kx_kp_k\)</span>为<span class="arithmatex">\(\xi\)</span>的数学期望或均值，记作
+$$
+E\xi=E(\xi)=\sum_kx_kp_k
+$$</p>
+<blockquote>
+<p>在定义中加入了<span class="arithmatex">\(\sum_kx_kp_k&lt;\infty\)</span>这个条件，是为了保证数学期望的值不受求和次序的影响，从而确保了<span class="arithmatex">\(E\xi\)</span>是一个确定的值，若该条件不被满足，则称<span class="arithmatex">\(\xi\)</span>的数学期望不存在</p>
+</blockquote>
+<p><strong>常见的离散型随机变量的数学期望：</strong></p>
+<ol>
+<li><strong>退化分布</strong><span class="arithmatex">\(\xi \equiv a\)</span>（即<span class="arithmatex">\(P(\xi=a)=1\)</span>）的数学期望</li>
+</ol>
+<p>绝对收敛性显然满足，根据定义有
+   $$
+   E\xi=aP(\xi=a)=a
+   $$
+   即常数的数学期望就是其本身</p>
+<ol>
+<li><strong>二项分布</strong><span class="arithmatex">\(\xi \sim B(n,p)\)</span></li>
+</ol>
+<p>绝对收敛性满足，根据定义有
+   $$
+   E\xi=\sum_{k=0}^nkP(\xi=k)=\sum_{k=0}^nkC_n^kp^k(1-p)^{n-k}\=np\sum_{k=1}^n\frac{(n-1)!}{(k-1)!(n-k)!}p^{k-1}(1-p)^{n-k}=np\sum_{r=0}^n\frac{(n-1)!}{r!(n-r-1)!}p^r(1-p)^{n-r-1}\=np(p+1-p)^r=np
+   $$
+   特别地，当<span class="arithmatex">\(n=1\)</span>时，可知两点分布<span class="arithmatex">\(0-1(p)\)</span>的数学期望为<span class="arithmatex">\(p\)</span></p>
+<ol>
+<li><strong>泊松分布</strong> <span class="arithmatex">\(\xi\sim P(\lambda)\)</span>，求<span class="arithmatex">\(E\xi\)</span></li>
+</ol>
+<p>绝对收敛性满足，根据定义有
+   $$
+   E\xi=\sum_{k=0}^{\infty}kP(\xi=k)=\sum_{k=0}^{\infty}k\frac{\lambda^k}{k!}e^{-\lambda}=\sum_{k=1}^{\infty}\frac{\lambda^k}{(k-1)!}e^{-\lambda}=\lambda e^{-\lambda}\sum_{r=0}^{\infty}\frac{\lambda^r}{r!}=\lambda e^{-\lambda}e^{\lambda}=\lambda 
+   $$
+   即泊松分布的数学期望是<span class="arithmatex">\(\lambda\)</span></p>
+<ol>
+<li>
+<p><strong>几何分布</strong> 设<span class="arithmatex">\(\xi\)</span>服从几何分布，分布列为
+   $$
+   P(\xi=k)=pq^{k-1},\qquad k=1,2,\cdot\cdot\cdot,\ \ 0&lt;p&lt;1,\ q=1-p
+   $$
+   绝对收敛性满足，根据定义有
+   $$
+   E\xi=\sum_{k=1}^{\infty}kP(\xi=k)=p \sum_{k=1}^{\infty} kq^{k-1}\=p\sum_{k=1}^{\infty}(x^k)'\big|<em k="1">{x=q}=p(\sum</em>x^k)'\big|}^{\infty<em x="q">{x=q}=p\frac{1}{(1-x)^2}\big|</em>
+   $$}=\frac{1}{p</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\xi\)</span>的分布列为
+   $$
+   P(\xi=(-1)^k2^k/k)=\frac{1}{2^k},\qquad k=1,2,\cdot\cdot\cdot,
+   $$
+   求<span class="arithmatex">\(E\xi\)</span></p>
+</li>
+</ol>
+<p><strong>解</strong> 我们验证绝对收敛性
+   $$
+   \sum_{k=1}^{\infty}|x_k|p_k=\sum_{k=1}^k\frac{2^k}{k}\frac{1}{2^k}=\sum_{k=1}^{\infty}\frac{1}{k}
+   $$
+   我们知道这个级数是发散的，所以<span class="arithmatex">\(E\xi\)</span>不存在。而如若我们不验证级数的绝对收敛性，就会得到错误的结论：
+   $$
+   E\xi=\sum_{k=1}^{\infty}x_kp_k=\sum_{k=1}^{\infty}(-1)^k\frac{1}{k}&lt;\infty
+   $$</p>
+<p>在此我们约定：<strong>后面遇到的离散型随机变量的数学期望都存在，我们不再验证级数的绝对收敛性</strong></p>
+<h4 id="_3">连续型随机变量的数学期望<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>设<span class="arithmatex">\(\xi\)</span>是连续型随机变量，密度函数为<span class="arithmatex">\(p(x)\)</span>，若<span class="arithmatex">\(\int_{-\infty}^{\infty}xp(x)dx\)</span>绝对收敛，即<span class="arithmatex">\(\int_{-\infty}^{\infty}|x|p(x)dx&lt;\infty\)</span>，则称
+$$
+E\xi=\int_{-\infty}^{\infty}xp(x)dx
+$$
+为<span class="arithmatex">\(\xi\)</span>的数学期望，如果<span class="arithmatex">\(\int_{-\infty}^{\infty}|x|p(x)dx=\infty\)</span>，则称<span class="arithmatex">\(\xi\)</span>的数学期望不存在</p>
+<p><strong>常见的连续型随机变量的数学期望：</strong></p>
+<ol>
+<li><strong>均匀分布</strong> <span class="arithmatex">\(\xi \sim U[a,b]\)</span>，求<span class="arithmatex">\(E\xi\)</span></li>
+</ol>
+<p><strong>解</strong> 容易验证积分的绝对收敛性（放缩即可），根据定义
+   $$
+   E\xi=\int_{-\infty}^{\infty}xp(x)dx=\int_{a}^{b}x\frac{1}{b-a}dx=\frac{a+b}{2}
+   $$</p>
+<ol>
+<li><strong>指数分布</strong> <span class="arithmatex">\(\xi \sim Exp(\lambda)\)</span>，求<span class="arithmatex">\(E\xi\)</span></li>
+</ol>
+<p><strong>解</strong> 容易验证积分的绝对收敛性，根据定义有
+   $$
+   E\xi = \int_{-\infty}^{\infty}xp(x)dx=\int_0^{\infty}x\lambda e^{-\lambda x}dx=-[xe^{-\lambda x}\big|<em 0="0">{0}^{\infty}-\int</em>\lambda
+   $$}^{\infty}e^{-\lambda x}]dx=\frac{1</p>
+<ol>
+<li><strong>正态分布</strong> <span class="arithmatex">\(\xi\ \sim N(a,\sigma^2)\)</span>，求<span class="arithmatex">\(E\xi\)</span></li>
+</ol>
+<p><strong>解</strong> 容易验证积分的绝对收敛性，根据定义有
+   $$
+   E\xi = \int_{-\infty}^{\infty}xp_{\xi}(x)dx=\int_{-\infty}^{\infty}x\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-a)^2}{2\sigma^2}}dx{\overset{\text{令 } t =\frac{x-a}{\sigma}}{=}}\int_{-\infty}^{\infty}\frac{a}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}dt+\frac{\sigma}{\sqrt{2\pi}}\int_{-\infty}^{\infty}te^{-\frac{t^2}{2}}dt
+   $$
+   由于<span class="arithmatex">\(te^{-\frac{t^2}{2}}\)</span>是奇函数，等式右边那一项积分为0，所以
+   $$
+   E\xi=\int_{-\infty}^{\infty}\frac{a}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}dt=a
+   $$</p>
+<ol>
+<li><strong><span class="arithmatex">\(Cauchy\)</span>分布</strong> <span class="arithmatex">\(\xi\)</span>服从标准<span class="arithmatex">\(Cauchy\)</span>分布，求<span class="arithmatex">\(E\xi\)</span></li>
+</ol>
+<p><strong>解</strong> 标准Cauchy分布即<span class="arithmatex">\(p(x)=\frac{1}{\pi(1+x^2)},\ x\in R\)</span></p>
+<p>先验证积分的绝对收敛性，
+   $$
+   \int_{-\infty}^{\infty}|x|\frac{1}{\pi(1+x^2)}dx=2\int_0^{\infty}x\frac{1}{\pi(1+x^2)}dx\=\frac{1}{\pi}[\int_0^{\infty}\frac{1}{(1+x)^2}d(1+x)^2-2\int_0^{\infty}\frac{1}{(1+x)^2}dx]
+   $$
+   显然左边的式子是发散的而右边的式子是收敛的，所以其发散，故<span class="arithmatex">\(E\xi\)</span>不存在</p>
+<p>我们约定：后面遇到的所有连续型随机变量的数学期望都存在，我们不再验证积分的绝对收敛性</p>
+<h4 id="_4">数学期望的一般定义（一般随机变量的数学期望）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>需要用到斯提尔吉斯积分(<span class="arithmatex">\(Stieltjes\)</span>)和离散化思想</p>
+<p><strong>一般随机变量的数学期望</strong></p>
+<p>若随机变量<span class="arithmatex">\(\xi\)</span>的分布函数为<span class="arithmatex">\(F(x)\)</span>，<span class="arithmatex">\(Stieltjes\)</span>积分<span class="arithmatex">\(\int_{-\infty}^{\infty}xdF(x)\)</span>绝对收敛，即<span class="arithmatex">\(\int_{-\infty}^{\infty}|x|dF(x)&lt;\infty\)</span>，则称
+$$
+E\xi=\int_{-\infty}^{\infty}xdF(x)
+$$
+为<span class="arithmatex">\(\xi\)</span>的数学期望，若<span class="arithmatex">\(\int_{-\infty}^{\infty}|x|dF(x)=\infty\)</span>，则称<span class="arithmatex">\(\xi\)</span>的数学期望不存在</p>
+<p>而在离散情形下，<span class="arithmatex">\(E\xi=\sum_{k}x_kp_k\)</span>，在连续情形下，<span class="arithmatex">\(E\xi=\int_{-\infty}^{\infty}xdF(x)=\int_{-\infty}^{\infty}xp(x)dx\)</span></p>
+<p>对于<span class="arithmatex">\(Stieltjes\)</span>积分，有<span class="arithmatex">\(F(x)=\int_{-\infty}^xdF(t)\)</span>，因此对于任何随机变量<span class="arithmatex">\(\xi\)</span>，都有<span class="arithmatex">\(P(a&lt;\xi \leq b)=F(b)-F(a)=\int_a^bdF(x)\)</span>，所以概率<span class="arithmatex">\(P(\xi \in B)\)</span>可以写成<span class="arithmatex">\(P(\xi \in B)=\int_BdF(x)\)</span></p>
+<h4 id="_5">随机变量函数的数学期望<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>设<span class="arithmatex">\(\xi\)</span>是随机变量，<span class="arithmatex">\(f(x)\)</span>是一元Borel函数，记<span class="arithmatex">\(\eta = f(\xi)\)</span>，<span class="arithmatex">\(\xi,\eta\)</span>的分布函数分别是<span class="arithmatex">\(F_{\xi}(x)\)</span>和<span class="arithmatex">\(F_{\eta}(y)\)</span>，若<span class="arithmatex">\(\eta\)</span>的数学期望存在，则有
+$$
+E\eta=Ef(\xi)=\int_{-\infty}^{\infty}ydF_{\eta}(y)=\int_{-\infty}^{\infty}f(x)dF_{\xi}(x)
+$$
+这个公式的意义在于我们无需求出<span class="arithmatex">\(\eta\)</span>的分布函数，而可以直接使用<span class="arithmatex">\(\xi\)</span>的分布函数求得<span class="arithmatex">\(\eta\)</span>的期望。并且其实这个公式的意义我们可以以离散型去理解，这符合我们的直观，<span class="arithmatex">\(f(x)\)</span>就是变换后的<span class="arithmatex">\(\eta\)</span>的值，而由于函数<span class="arithmatex">\(f(x)\)</span>之间的映射关系，所以<span class="arithmatex">\(f(x)\)</span>的概率其实就是<span class="arithmatex">\(x\)</span>的概率，因此我们使用<span class="arithmatex">\(dF_{\xi}(x)\)</span>作为密度函数（在连续情形下是密度函数），这样使得其意义更明确，更容易记忆</p>
+<p>上述公式在离散情形和连续情形下可化为（<span class="arithmatex">\(p(x)为\xi\)</span>的密度函数）：
+$$
+Ef(\xi)=\sum_{k}p_kf(x_k),\qquad Ef(\xi)=\int_{-\infty}^{\infty}f(x)p(x)dx
+$$
+我们将其推广到<strong>n维情形和n维Borel函数</strong>：</p>
+<p>设<span class="arithmatex">\((\xi_1,\cdot\cdot\cdot,\xi_n)\)</span>的分布函数为<span class="arithmatex">\(F(x_1,\cdot\cdot\cdot,x_n)\)</span>，而<span class="arithmatex">\(f(x_1,\cdot\cdot\cdot,x_n)\)</span>是n元Borel函数，若<span class="arithmatex">\(f(\xi_1,\cdot\cdot\cdot,\xi_n)\)</span>的数学期望存在，则
+$$
+Ef(\xi_1,\cdot\cdot\cdot,\xi_n)=\int_{-\infty}^{\infty}\cdot\cdot\cdot\int_{-\infty}^{\infty}f(x_1,\cdot\cdot\cdot,x_n)dF(x_1,\cdot\cdot\cdot,x_n)
+$$
+特别地，有
+$$
+E\xi_i=\int_{-\infty}^{\infty}\cdot\cdot\cdot\int_{-\infty}^{\infty}x_idF(x_1,\cdot\cdot\cdot,x_n)=\int_{-\infty}^{\infty}x_idF_i(x_i)
+$$
+其中<span class="arithmatex">\(F_i(x)\)</span>是<span class="arithmatex">\(\xi\)</span>的边际分布函数，对于二院分布函数<span class="arithmatex">\(F(x,y)\)</span>，有
+$$
+E\xi\eta=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}xydF(x,y),\qquad E\xi^2=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x^2dF(x,y)
+$$
+上述结论最好都能记住</p>
+<p>下面我们看一些例题</p>
+<p><strong>例1</strong> 设某报童每日的潜在卖报数<span class="arithmatex">\(\zeta\)</span>服从泊松分布<span class="arithmatex">\(P(\lambda)\)</span>，假设每卖出一份报可得报酬a，卖不掉而退回每份赔偿b，若某日该报童买进n份报，求其期望所得</p>
+<p><strong>解</strong> 这题其实不难，首先由报童每日的潜在卖报数服从泊松分布我们可以得到
+$$
+P(\zeta=k)=\frac{\lambda^k}{k!}e^{-\lambda}
+$$
+接下来我们只需要搞清楚<span class="arithmatex">\(\zeta=k\)</span>时报童卖报的所得，即可当成离散型随机变量进行期望求解，我们设<span class="arithmatex">\(\zeta=k\)</span>时报童卖报所得为<span class="arithmatex">\(q_k\)</span>，则当<span class="arithmatex">\(k&lt;n\)</span>时，报童的报卖不完，只能卖潜在卖报数k份，可知
+$$
+q_k=ak-(n-k)b=(a+b)k-nk
+$$
+而当<span class="arithmatex">\(k\geq n\)</span>时，报童的报能卖完，也就是卖了<span class="arithmatex">\(n\)</span>份，可知
+$$
+q_k=an
+$$
+故我们考虑期望所得即考虑<span class="arithmatex">\(Eq_k\)</span>
+$$
+Eq_k=\sum_{k=0}^{\infty}q_kP(\xi=k)=\sum_{k=0}^{n-1}q_kP(\xi=k)\sum_{k=n}^{\infty}q_kP(\xi=k)\=\sum_{k=0}^{n-1}[(a+b)k-nk]\frac{\lambda^k}{k!}e^{-\lambda}+\sum_{k=n}^{\infty}an\frac{\lambda^k}{k!}e^{-\lambda}
+$$</p>
+<p><strong>例2</strong> 设<span class="arithmatex">\(\xi \sim U[a,b]\)</span>，求<span class="arithmatex">\(\eta = \xi^2\)</span>的数学期望</p>
+<p><strong>解</strong> 直接算 <span class="arithmatex">\(f(x)=x^2\)</span>
+$$
+E\xi^3=\int_{-\infty}^{\infty}f(x)p_{\xi}(x)dx=\int_{-\infty}^{\infty}x^2\frac{1}{b-a}dx=\frac{a^2+ab+b^2}{3}
+$$</p>
+<h4 id="_6">数学期望的基本性质<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>若<span class="arithmatex">\(a\leq b\)</span>，则<span class="arithmatex">\(E\xi\)</span>存在且<span class="arithmatex">\(a\leq E\xi \leq b\)</span>，特别地，若<span class="arithmatex">\(\xi=c\)</span>，则<span class="arithmatex">\(E\xi=Ec=c\)</span></p>
+</li>
+<li>
+<p>数学期望具有性质量好的线性运算，也即若<span class="arithmatex">\(E\xi_1,\cdot\cdot\cdot,E\xi_n\)</span>都存在，则对任意常数<span class="arithmatex">\(c_1,\cdot\cdot\cdot,c_n\)</span>及<span class="arithmatex">\(b,E(\sum_{i=1}^n c_i\xi_i+b)\)</span>存在，且有
+   $$
+   E(\sum_{i=1}^nc_i\xi_i+b)=\sum_{i=1}^nc_iE\xi_i+b
+   $$
+   特别地，有
+   $$
+   E(\sum_{i=1}^n\xi_i)=\sum_{i=1}^nE\xi_i,\qquad E(c\xi)=cE(\xi)
+   $$</p>
+</li>
+</ol>
+<blockquote>
+<p>性质1和性质2共同说明：若<span class="arithmatex">\(\xi\leq\eta\)</span>，则<span class="arithmatex">\(E\xi \leq E\eta\)</span>，证明也非常简单，即
+$$
+E(\xi-\eta)\leq0 \Rightarrow E\xi-E\eta \leq0 \Rightarrow E\xi \leq E\eta
+$$</p>
+</blockquote>
+<ol>
+<li><strong>若<span class="arithmatex">\(\xi_1,\cdot\cdot\cdot,\xi_n\)</span>相互独立</strong>，各<span class="arithmatex">\(E\xi_i\)</span>存在，则有
+   $$
+   E(\xi_1\cdot\cdot\cdot\xi_n)=E\xi_1\cdot\cdot\cdot E\xi_n
+   $$
+   即相互独立时，乘积的期望等于期望的乘积</li>
+</ol>
+<p>可以得到以下几个重要的不等式</p>
+<ul>
+<li>
+<p><strong>Markov不等式</strong>：对于随机变量<span class="arithmatex">\(\xi\)</span>，对任意的<span class="arithmatex">\(\varepsilon&gt;0\)</span>，都有
+  $$
+  P(|\xi|\geq \varepsilon)\leq\frac{E|\xi|}{\varepsilon}
+  $$
+  证明自己看下课件，这里不贴出来了，第三章课件82页</p>
+</li>
+<li>
+<p><strong>Cauchy-Schwarz不等式</strong>：假设<span class="arithmatex">\(E\xi^2,E\eta^2,E(\xi\eta)\)</span>都存在，则有
+  $$
+  |E(\xi\eta)|\leq\sqrt{E\xi^2\cdot E\eta^2}
+  $$
+  且等号成立当且仅当<span class="arithmatex">\(P(\eta=t_0\xi)=1\)</span>，这里<span class="arithmatex">\(t_0\)</span>是某一个常数，也即<span class="arithmatex">\(\eta\)</span>以概率1等于<span class="arithmatex">\(\eta\)</span>的常数倍</p>
+</li>
+<li>
+<p><strong>Jensen不等式</strong>：设<span class="arithmatex">\(\xi\)</span>为随机变量，<span class="arithmatex">\(g(x)\)</span>是定义在R上的Borel函数且是下凸（上凸）的，如果<span class="arithmatex">\(E\xi\)</span>存在，则有
+  $$
+  g(E\xi)\leq Eg(\xi)\qquad (gE\xi\geq Eg(\xi))
+  $$
+  若<span class="arithmatex">\(g(x)\)</span>是R上的严格下凸（上凸）函数，则等号成立当且仅当
+  $$
+  P(\xi=E\xi)=1
+  $$</p>
+</li>
+</ul>
+<p>下面我们看一些例题</p>
+<p><strong>例1</strong> 设<span class="arithmatex">\(\xi \sim B(n,p)\)</span>，求<span class="arithmatex">\(E\xi\)</span></p>
+<p><strong>解</strong> 固然这里可以将其视作离散型随机变量，求和来求解其数学期望。我们也可以将其拆分为n个相互独立的随机变量（因为二项分布本就是n个相互独立的伯努利试验），我们记
+$$
+\xi = \cases{1, &amp;第i次试验A发生，\0, &amp;第i次试验A不发生}
+$$
+此时有<span class="arithmatex">\(\xi_i \sim 0-1(p)\)</span>分布，<span class="arithmatex">\(p=P(A),E\xi_i=p\)</span>且<span class="arithmatex">\(\xi=\sum_{i=1}^n\xi_i\)</span>，所以有
+$$
+E\xi=\sum_{i=1}^nE\xi_i=np
+$$
+这题启示我们可以把复杂随机变量分解成简单随机变量之和</p>
+<p><strong>例2</strong> 设<span class="arithmatex">\(\xi\)</span>服从超几何分布，分布列为
+$$
+P(\xi = m) =\frac{C_M^mC_{N-M}^{n-m}}{C_N^n}，m=max\left{0,N-M\right},\cdot\cdot\cdot,min(n,M)
+$$
+求<span class="arithmatex">\(E\xi\)</span></p>
+<p><strong>解</strong> 我们可以设计一个不放回抽样，令<span class="arithmatex">\(\xi_i\)</span>为第i次抽取时的废品数，则<span class="arithmatex">\(\xi=\sum_{i=1}^n\xi_i\)</span>，同时可知
+$$
+P(\xi_i=1)=\frac{M}{N},\qquad i=1,2,\cdot\cdot\cdot,n
+$$
+上面结论其实用到了抽签与抽取顺序无关的结论，因此我们可以得到
+$$
+E\xi=\sum_{i=1}^nE\xi_i=\frac{nM}{N}
+$$
+<strong>例3</strong> 一个班级有n位同学，计算同生日同学的平均对数</p>
+<p><strong>解</strong> 记<span class="arithmatex">\(A_{ij}\)</span>={第i,j两位同学同生日}，<span class="arithmatex">\(1\leq i &lt; j \leq n\)</span>，记
+$$
+\xi_{ij} = 
+\begin{cases} 
+1, &amp; \text{若 } A_{ij} \text{ 发生}, \
+0, &amp; \text{否则},
+\end{cases}
+\quad 1 \leq i &lt; j \leq n.
+$$</p>
+<p>则</p>
+<div class="arithmatex">\[
+\xi = \sum_{1 \leq i &lt; j \leq n} \xi_{ij},
+\]</div>
+<p>且</p>
+<div class="arithmatex">\[
+\mathbb{E}[\xi] = \sum_{1 \leq i &lt; j \leq n} \mathbb{E}[\xi_{ij}] = \sum_{1 \leq i &lt; j \leq n} \mathbb{P}(A_{ij}) = \frac{n(n-1)}{2 \times 365}.
+\]</div>
+<blockquote>
+<p>注意这里<span class="arithmatex">\(E_{ij}\)</span>的值其实就是<span class="arithmatex">\(\frac{1}{365}\)</span>，两人的生日都有可能是365天中的一天，所以总共的情况有365*365种，而两人生日相同只能是这365天中的1天，所以以古典概型的角度来看，概率就是<span class="arithmatex">\(\frac{1}{365}\)</span>，而相应地，由于<span class="arithmatex">\(P(A_{ij})\)</span>是一个常数，所以求和的结果就是<span class="arithmatex">\(\frac{n(n-1)}{2 * 365}\)</span></p>
+</blockquote>
+<h4 id="_7">条件数学期望<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>第二章第四节中我们引入的条件分布列和条件概率密度函数具有通常的分布列和概率密度函数的一切性质，因此也可以关于它们求数学期望，称为条件数学期望</p>
+<p><strong>离散情形：</strong>设在<span class="arithmatex">\(\xi=x_i\)</span>的条件下，<span class="arithmatex">\(\eta\)</span>有条件分布列<span class="arithmatex">\(P(\eta=y_j|\xi=x_i),j=1,\cdot\cdot\cdot,n(n&lt;\infty或n=\infty)\)</span>，如果级数<span class="arithmatex">\(\sum_{j=1}^{\infty}y_jP(\eta=y_j|\xi=x_i)\)</span>绝对收敛，即<span class="arithmatex">\(\sum_{j=1}^{\infty}|y_j|P(\eta=y_j|\xi=x_i)&lt;\infty\)</span>，则称
+$$
+E(\eta|\xi=x_i)=\sum_{j=1}^{\infty}y_jP(\eta=y_j|\xi=x_i)
+$$
+为<span class="arithmatex">\(\xi=x_i\)</span>时<span class="arithmatex">\(\eta\)</span>的条件数学期望</p>
+<p><strong>连续情形：</strong>设在<span class="arithmatex">\(\xi=x\)</span>的条件下，<span class="arithmatex">\(\eta\)</span>有条件概率密度函数<span class="arithmatex">\(p_{\eta|\xi}(y|x)\)</span>，如果积分<span class="arithmatex">\(\int_{-\infty}^{\infty}yp_{\eta|\xi}(y|x)dy\)</span>绝对收敛，即<span class="arithmatex">\(\int_{-\infty}^{\infty}|y|p_{\eta|\xi}(y|x)dy&lt;\infty\)</span>，则
+$$
+E(\eta|\xi=x)=\int_{-\infty}^{\infty}yp_{\eta|\xi}(y|x)dy
+$$
+为<span class="arithmatex">\(\xi=x\)</span>时<span class="arithmatex">\(\eta\)</span>的条件数学期望</p>
+<p>下面我们看一些例题：</p>
+<p><strong>例1</strong> 若<span class="arithmatex">\((\xi,\eta)\sim N(a,b,\sigma_1^2,\sigma_2^2,r)\)</span>，求<span class="arithmatex">\(E(\eta|\xi=x)\)</span></p>
+<p><strong>解</strong> 本题需要用到二元正态分布的条件密度函数，暂时先搁着吧</p>
+<p>若以<span class="arithmatex">\(E(\eta|\xi)\)</span>记<span class="arithmatex">\(\xi\)</span>的如下函数：当<span class="arithmatex">\(\xi=x\)</span>时它取值<span class="arithmatex">\(g(x)=E(\eta|\xi=x)\)</span>，这样定义的<span class="arithmatex">\(g(\xi)=E(\eta|\xi)\)</span>是一个随机变量，对<span class="arithmatex">\(g(\xi)\)</span>求数学期望，有如下的结论（<strong>双期望公式</strong>）：
+$$
+E[E(\eta|\xi)]=E(\eta)
+$$
+当<span class="arithmatex">\(\xi\)</span>是离散型随机变量时，记<span class="arithmatex">\(p_i=P(\xi=x_i)\)</span>，则上式可以写作
+$$
+E\eta=Eg(\xi)=\sum_ig(x_i)P(\xi=x_i)=\sum_ip_iE(\eta|\xi=x_i)
+$$
+称上式为全数学期望公式</p>
+<p>连续情形的全数学期望公式为
+$$
+E\eta=Eg(\xi)=\int_{-\infty}^{\infty}p_{\xi}(x)g(x)dx=\int_{-\infty}^{\infty}E(\eta|\xi=x)p_{\xi}(x)dx
+$$
+例题 第三章PPT p133</p>
+<h3 id="_8">方差、协方差与相关系数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">方差<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>称<span class="arithmatex">\(\xi-E\xi\)</span>为随机变量<span class="arithmatex">\(\xi\)</span>对于均值<span class="arithmatex">\(E\xi\)</span>的离差，它是一个随机变量，但是由于<span class="arithmatex">\(E(\xi-E\xi)\)</span>恒为0，因此用<span class="arithmatex">\(E(\xi-E\xi)\)</span>来度量<span class="arithmatex">\(\xi\)</span>取值的离散程度是无效的，考虑用<span class="arithmatex">\(E(\xi-E\xi)^2\)</span>来描述<span class="arithmatex">\(\xi\)</span>取值的离散程度，也即方差</p>
+<p>若<span class="arithmatex">\(E(\xi-E\xi)^2&lt;\infty\)</span>，就称它是随机变量<span class="arithmatex">\(\xi\)</span>的方差，记作<span class="arithmatex">\(Var\xi\)</span>（或<span class="arithmatex">\(D\xi\)</span>），即
+$$
+Var\xi=E(\xi-E\xi)^2
+$$
+而为了统一量纲，我们有时采用<span class="arithmatex">\(\sqrt{Var\xi}\)</span>，称为<span class="arithmatex">\(\xi\)</span>的标准差</p>
+<p><strong>方差的计算公式</strong>：</p>
+<p>一般情形：
+$$
+Var\xi=\int_{-\infty}^{\infty}(x-E\xi)^2dF_{\xi}(x)
+$$
+离散情形：
+$$
+Var\xi=\sum_{i}(x_i-E\xi)^2P(\xi=x_i)
+$$
+连续情形：
+$$
+Var\xi=\int_{-\infty}^{\infty}(x-E\xi)^2p_{\xi}(x)dx
+$$</p>
+<blockquote>
+<p>注意<span class="arithmatex">\(E\xi\)</span>是一个常数</p>
+</blockquote>
+<p>另外，我们还可以如是拆分
+$$
+Var\xi=E(\xi-E\xi)^2=E(\xi^2-2\xi E\xi+(E\xi)^2)=E(\xi^2)-2(E\xi)^2+(E\xi)^2=E(\xi^2)-(E\xi)^2
+$$
+也即，方差等于平方的期望减期望的平方</p>
+<p>同时我们知道<span class="arithmatex">\(E(\xi-E\xi)^2=E(\xi^2)-(E\xi)^2 \geq0\)</span>这是我们之前运用Jensen不等式得到的结论</p>
+<p><strong>一些重要的随机变量的方差</strong></p>
+<ol>
+<li>
+<p><strong>退化分布</strong>： <span class="arithmatex">\(P(\xi=c)=1\)</span>，可以得到<span class="arithmatex">\(E\xi=c\)</span>，<span class="arithmatex">\(Var\xi=E(\xi^2)-(E\xi)^2=c^2-c^2=0\)</span></p>
+</li>
+<li>
+<p><strong>两点分布：</strong> 设<span class="arithmatex">\(\xi \sim 0-1(p)\)</span>分布，求<span class="arithmatex">\(Var\xi\)</span>
+   $$
+   E\xi=p,\qquad E\xi^2=p,\qquad Var\xi=E(\xi^2)-(E\xi)^2=p-p^2=p(1-p)
+   $$</p>
+</li>
+<li>
+<p><strong>泊松分布：</strong> 设<span class="arithmatex">\(\xi \sim P(\lambda)\)</span>分布，求<span class="arithmatex">\(Var \xi\)</span></p>
+</li>
+</ol>
+<p>先求解<span class="arithmatex">\(E\xi\)</span>,
+   $$
+   E\xi=\sum_{k=0}^{\infty}k\frac{\lambda^k}{k!}e^{-\lambda}=\sum_{k=1}^{\infty}k\frac{\lambda^k}{k!}e^{-\lambda}=\lambda e^{-\lambda}\sum_{k=1}^{\infty}\frac{\lambda^{k-1}}{(k-1)!}=\lambda e^{-\lambda}e^{\lambda}=\lambda
+   $$
+   再求解<span class="arithmatex">\(E\xi^2\)</span>
+   $$
+   E\xi^2=\sum_{k=0}^{\infty}k^2\frac{\lambda^k}{k!}e^{-\lambda}=\sum_{k=1}^{\infty}k\frac{\lambda^k}{(k-1)!}e^{-\lambda}=\sum_{k=1}^{\infty}[(k-1)+1]\frac{\lambda^k}{(k-1)!}e^{-\lambda}\=\lambda e^{-\lambda}(\sum_{k=1}^{\infty}\frac{\lambda^{(k-1)}}{(k-1)!}(k-1)+\sum_{k=1}^{\infty}\frac{\lambda^{(k-1)}}{(k-1)!})=\lambda e^{-\lambda}(\lambda e^{\lambda}+e^{\lambda})=\lambda^2+\lambda
+   $$
+   则有
+   $$
+   Var\xi=E(\xi^2)-(E\xi)^2=\lambda^2+\lambda-\lambda^2=\lambda
+   $$</p>
+<ol>
+<li><strong>几何分布：</strong>设<span class="arithmatex">\(\xi\)</span>服从参数为<span class="arithmatex">\(p\)</span>的几何分布，分布列为
+   $$
+   P(\xi=k)=pq^{k-1},\qquad k=1,2,...,\ 0&lt;p&lt;1,\ q=1-p
+   $$
+   求<span class="arithmatex">\(Var\xi\)</span></li>
+</ol>
+<p><strong>解</strong> 先求<span class="arithmatex">\(E\xi\)</span>
+   $$
+   E\xi=\sum_{k=1}^{\infty}kP(\xi=k)=\sum_{k=1}^{\infty}kpq^{k-1}=p\sum_{k=1}^{\infty}kq^{k-1}\
+   =p\sum(kx^k)'\big|<em x="q">{x=q}=p(\sum kx^k)'\big|</em>)'\big|}=p(\frac{x}{1-x<em k="1">{x=q}=\frac{p}{(1-q)^2}=\frac{p}{p^2}=\frac{1}{p}
+   $$
+   再求解<span class="arithmatex">\(E\xi^2\)</span>
+   $$
+   E\xi^2=\sum</em>(kx^k)'\big|}^{\infty}k^2pq^{k-1}=p\sum_{k=1}^{\infty}k^2q^{k-1}=p\sum_{k=1}^{\infty<em k="1">{x=q}=p(\sum</em>kx^k)'\big|}^{\infty<em k="1">{x=q}
+   $$
+   我们记
+   $$
+   S=\sum</em>
+   $$
+   通过错位相减可以求得
+   $$
+   S=\frac{x}{(1-x)^2}
+   $$
+   记得要在错位相减计算结果时用上}^{\infty}kx^k,\qquad xS=\sum_{k=1}^{\infty}kx^{k+1<span class="arithmatex">\(\lim_{n \to \infty}\)</span></p>
+<blockquote>
+<p>或者这里其实可以提取一个x出来，变成<span class="arithmatex">\(x\sum kx^{k-1}\)</span>，这样就能用无穷级数求和的结论了</p>
+</blockquote>
+<p>故可以得到
+   $$
+   E\xi^2=\frac{2-p}{p^2},\qquad Var\xi=\frac{1-p}{p^2}=\frac{q}{p^2}
+   $$</p>
+<ol>
+<li><strong>均匀分布</strong> 设<span class="arithmatex">\(\xi \sim U[a,b]\)</span>分布，求<span class="arithmatex">\(Var\xi\)</span></li>
+</ol>
+<p>比较常规
+   $$
+   E\xi=\int_{-\infty}^{\infty}xp(x)dx=\int_a^bx\frac{1}{b-a}dx=\frac{a+b}{2}
+   $$</p>
+<p>$$
+   E\xi^2=\int_{-\infty}^{\infty}x^2p(x)dx=\int_a^bx^2\frac{1}{b-a}dx=\frac{a^2+ab+b^2}{3}
+   $$</p>
+<p>​   故有
+$$
+Var\xi=\frac{a^2+ab+b^2}{3}-\frac{(a+b)^2}{4}=\frac{(b-a)^2}{12}
+$$</p>
+<ol>
+<li><strong>指数分布</strong> 设<span class="arithmatex">\(\xi \sim Exp(\lambda)\)</span>分布，求<span class="arithmatex">\(Var\xi\)</span></li>
+</ol>
+<p><strong>解</strong> 先计算<span class="arithmatex">\(E\xi\)</span>
+   $$
+   E\xi=\int_{-\infty}^{\infty}\lambda xe^{-\lambda x}dx=-\int_0^{\infty}xd(e^{-\lambda x})\=-[xe^{-\lambda x}\big|<em 0="0">0^{\infty}-\int</em>\big|}^{\infty}e^{-\lambda x}dx]=\int_{0}^{\infty}e^{-\lambda x}dx=\frac{1}{\lambda} e^{-\lambda x<em -_infty="-\infty">{\infty}^0=\frac{1}{\lambda}
+   $$
+   再计算<span class="arithmatex">\(E\xi^2\)</span>
+   $$
+   E\xi^2=\int</em>
+   $$
+   故
+   $$
+   Var\xi=E(\xi^2)-(E\xi)^2=\frac{1}{\lambda^2}
+   $$}^{\infty}x^2\lambda e^{-\lambda x}dx=-\int_{0}^{\infty}x^2d(e^{-\lambda x})=-[x^2 e^{-\lambda x}\big|_0^{\infty}-\int_0^{\infty}e^{-\lambda x}2xdx]\=\int_0^{\infty}2xe^{-\lambda x}dx=2E\xi=\frac{2}{\lambda</p>
+<ol>
+<li><strong>正态分布</strong> 设<span class="arithmatex">\(\xi \sim N(a,\sigma^2)\)</span>分布，求<span class="arithmatex">\(Var\xi\)</span></li>
+</ol>
+<p><img alt="正态分布的方差与期望" src="../images/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%9C%9F%E6%9C%9B.jpg" /></p>
+<p><strong>切比雪夫不等式（Chebyshev）：</strong>设<span class="arithmatex">\(\xi\)</span>为随机变量，数学期望存在，则对任意给定的<span class="arithmatex">\(\varepsilon&gt;0\)</span>，恒有
+$$
+P(|\xi-E\xi|\geq\varepsilon)\leq\frac{Var\xi}{\varepsilon^2}
+$$
+离差的绝对值大于等于<span class="arithmatex">\(\varepsilon\)</span>的概率小于等于方差除以<span class="arithmatex">\(\varepsilon^2\)</span></p>
+<p><strong>证明</strong> 设<span class="arithmatex">\(\xi\)</span>的分布函数为<span class="arithmatex">\(F(x)\)</span>
+$$
+P(|\xi-E\xi|\geq\varepsilon=\int_{|x-E\xi|\geq \varepsilon}dF(x)\leq\int_{|x-E\xi|\geq \varepsilon}\frac{(x-E\xi)^2}{\varepsilon^2}dF(x)\leq \frac{1}{\varepsilon^2}\int_{|x-E\xi|\geq \varepsilon}(x-E\xi)^2dF(x)\=\frac{Var\xi}{\varepsilon^2}
+$$
+事实上，根据Markov不等式可以直接证得Chevyshev不等式</p>
+<p><strong>方差的性质：</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\(Var\xi=0\)</span>的充要条件是<span class="arithmatex">\(P(\xi=c)=1\)</span>，其中<span class="arithmatex">\(c\)</span>是某个常数</p>
+</li>
+<li>
+<p>设<span class="arithmatex">\(b,c\)</span>都是常数，则<span class="arithmatex">\(Var(c\xi+b)=c^2Var(\xi)\)</span></p>
+</li>
+</ul>
+<p><strong>证明</strong> 
+  $$
+  Var(c\xi+b)=E[(c\xi+b-E(c\xi+b))]^2=E[c\xi+b-cE\xi-b]^2=c^2E(\xi-E\xi)^2=c^2Var\xi
+  $$</p>
+<ul>
+<li>若<span class="arithmatex">\(c\neq E\xi\)</span>，则<span class="arithmatex">\(Var\xi &lt; E(\xi-c)^2\)</span>，这个性质也可以理解为方差相对于均值的离散程度最小，<span class="arithmatex">\(E(\xi-c)^2\)</span>表示方差相对于c的离散程度</li>
+</ul>
+<p><strong>证明</strong> 
+  $$
+  E(\xi-c)^2=E(\xi-E\xi+E\xi-c)^2=E[(\xi-E\xi)^2+2(E\xi-c)(\xi-E\xi)+(E\xi-c)^2]\
+  =Var\xi+0+(E\xi-c)^2\geq Var\xi
+  $$
+  等号成立当且仅当<span class="arithmatex">\(E\xi=c\)</span></p>
+<p>而为什么<span class="arithmatex">\(E[(E\xi-c)(\xi-E\xi)]=0\)</span>呢
+  $$
+  E[(E\xi-c)(\xi-E\xi)]=E(\xi E\xi-(E\xi)^2-c\xi+cE\xi)=(E\xi)^2-(E\xi)^2-cE\xi+cE\xi=0
+  $$</p>
+<ul>
+<li>
+<div class="arithmatex">\[
+  \text{Var}\left(\sum_{i=1}^{n} \xi_i\right) = \sum_{i=1}^{n} \text{Var}(\xi_i) + 2 \sum_{1 \leq i &lt; j \leq n} \mathbb{E}\left[(\xi_i - \mathbb{E}[\xi_i])(\xi_j - \mathbb{E}[\xi_j])\right].
+  \]</div>
+</li>
+</ul>
+<p>特别地，若<span class="arithmatex">\(\xi_1,\cdot\cdot\cdot,\xi_n\)</span>两两独立(注意这里只要求两两独立，不要求相互独立，因为实际上两两独立就能保证上式的右边的交叉项为0)，则
+  $$
+  Var(\sum_{i=1}^{n}\xi_i)=\sum_{i=1}^nVar\xi_i
+  $$</p>
+<p>下面我们看一些例题</p>
+<p><strong>例1</strong> 设<span class="arithmatex">\(\xi\sim B(n,p)\)</span>，求<span class="arithmatex">\(Var \xi\)</span></p>
+<p><strong>解</strong> 这题可以拆成n重伯努利试验，记<span class="arithmatex">\(\xi_i\)</span>为第i次试验的结果（独立同分布），则<span class="arithmatex">\(\xi=\sum_{i=1}^n\xi_i\)</span>，且<span class="arithmatex">\(\xi_i\)</span>相互独立，则可以得到
+$$
+Var\xi=\sum_{i=1}^nVar\xi_i=np(1-p)
+$$
+<strong>例2</strong> 设随机变量 <span class="arithmatex">\(\xi_1, \cdots, \xi_n\)</span> 相互独立同分布，<span class="arithmatex">\(\mathbb{E}[\xi_i] = a\)</span>，<span class="arithmatex">\(\text{Var}[\xi_i] = \sigma^2\)</span>，<span class="arithmatex">\(i = 1, \cdots, n\)</span>。记 <span class="arithmatex">\(\bar{\xi} = \frac{1}{n} \sum_{i=1}^{n} \xi_i\)</span>。求 <span class="arithmatex">\(\mathbb{E}[\bar{\xi}]\)</span>，<span class="arithmatex">\(\text{Var}[\bar{\xi}]\)</span>。</p>
+<p><strong>解</strong> 直接算
+$$
+E\xi=E(\frac{1}{n}\sum_{i=1}^n\xi_i)=\frac{1}{n}\sum_{i=1}^nE\xi_i=a \Var\xi=Var(\frac{1}{n}\sum_{i=1}^n\xi_i)=\frac{1}{n^2}\sum_{i=1}^nVar\xi_i=\frac{\sigma^2}{n}
+$$
+这个例子说明，<strong>在独立同分布情形下，<span class="arithmatex">\(\xi\)</span>的数学期望与各<span class="arithmatex">\(\xi_i\)</span>的数学期望相同，而方差只有<span class="arithmatex">\(\xi_i\)</span>的1/n倍，这一事实在数理统计中有重要意义</strong></p>
+<p><strong>例3</strong> 设随机变量<span class="arithmatex">\(\xi\)</span>的数学期望和方差都存在，<span class="arithmatex">\(Var\xi&gt;0\)</span>，令
+$$
+\xi^*=\frac{\xi-E\xi}{\sqrt{Var\xi}}
+$$
+称它为随机变量<span class="arithmatex">\(\xi\)</span>的标准化，求<span class="arithmatex">\(E\xi^*,Var\xi^*\)</span></p>
+<blockquote>
+<p>其实正态分布的标准化正符合这个定义，在标准化正态分布中，我们令<span class="arithmatex">\(t=\frac{x-a}{\sigma}\)</span>，也符合这个定义，我们也可以用正态分布标准化来辅助记忆</p>
+</blockquote>
+<p><strong>解</strong> 直接计算即可
+$$
+E\xi^<em>=\frac{1}{\sqrt{Var\xi}}E(\xi-E\xi)=0\
+Var\xi^</em>=\frac{1}{Var\xi}Var(\xi-E\xi)=\frac{Var\xi}{Var\xi}=1
+$$</p>
+<blockquote>
+<p>也即标准化的随机变量期望为0，方差为1，标准化正态分布正是如此</p>
+</blockquote>
+<h4 id="_10">协方差<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>对于随机向量，我们除了关心它的每个分量的情况之外，还希望知道各个分量之间的联系，这光靠数学期望和方差是办不到的，因此我们引入下面的一个概念——协方差</p>
+<p>记<span class="arithmatex">\(\xi_i\)</span>和<span class="arithmatex">\(\xi_j\)</span>的联合分布函数为<span class="arithmatex">\(F_{ij}(x,y)\)</span>，若
+$$
+E|(\xi_i-E\xi_i)(\xi_j-E\xi_j)|&lt;\infty
+$$
+就称
+$$
+E[(\xi_i-E\xi_i)(\xi_j-E\xi_j)]=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(x-E\xi_i)(y-E\xi_j)dF_{ij}(x,y)
+$$
+为<span class="arithmatex">\(\xi_i,\xi_j\)</span>的协方差，记作<span class="arithmatex">\(Cov(\xi_i,\xi_j)\)</span></p>
+<blockquote>
+<p>并且很显然的是<span class="arithmatex">\(Cov(\xi_i,\xi_i)=Var\xi_i\)</span>，且方差的性质4可以写作
+$$
+Var(\sum_{i=1}^n\xi_i)=\sum_{i=1}^nVar\xi_i+2\sum_{1\leq i&lt;j\leq n}Cov(\xi_i,\xi_j)
+$$</p>
+</blockquote>
+<p><strong>协方差的性质</strong></p>
+<ol>
+<li>
+<p>$$
+   Cov(\xi,\eta)=Cov(\eta,\xi)=E(\xi\eta)-E\xi E\eta
+   $$
+   <strong>证明</strong> 从协方差的定义出发即可，</p>
+</li>
+<li>
+<p>设<span class="arithmatex">\(a,b\)</span>是常数，则<span class="arithmatex">\(Cov(a\xi,b\eta)=abCov(\xi,\eta)\)</span></p>
+</li>
+</ol>
+<p><strong>证明</strong> 也从定义出发即可
+   $$
+   Cov(a\xi,b\eta)=E[(a\xi-aE\xi)(b\eta-bE\eta)]=ab[E(\xi\eta)-E\xi E\eta]=abCov(\xi,\eta)
+   $$</p>
+<ol>
+<li><span class="arithmatex">\(Cov(\sum_{i=1}^n\xi_i,\eta)=\sum_{i=1}^nCov(\xi_i,\eta)\)</span></li>
+</ol>
+<p><strong>证明</strong> 由定义展开
+   $$
+   Cov(\sum_{i=1}^n\xi_i,\eta)=E[(\sum_{i=1}^n\xi_i-\sum_{i=1}^nE\xi_i)(\eta-E\eta)]=E(\sum_{i=1}^n\xi_i\eta-\sum_{i=1}^n\eta E\xi_i-E\eta \sum_{i=1}^n\xi_i+\sum_{i=1}^nE\eta E\xi_i)
+   \=\sum_{i=1}^nE(\xi_i\eta)-\sum_{i=1}^nE\eta E\xi_i=\sum_{i=1}^nCov(\xi_i.\eta)
+   $$
+   该性质还可以推广到
+   $$
+   Cov(\sum_{i=1}^n\xi_i,\sum_{j=1}^m\eta_j)=\sum_{i=1}^n\sum_{j=1}^mCov(\xi_i,\eta_j)
+   $$
+   应用两次性质3即可得，可以理解为双线性</p>
+<p>对于 <span class="arithmatex">\(n\)</span> 维随机向量 <span class="arithmatex">\(\boldsymbol{\xi} = (\xi_1, \cdots, \xi_n)'\)</span>，定义它的协方差矩阵为</p>
+<div class="arithmatex">\[
+B = \text{Cov}(\boldsymbol{\xi}) = \mathbb{E}[(\boldsymbol{\xi} - \mathbb{E}\boldsymbol{\xi})(\boldsymbol{\xi} - \mathbb{E}\boldsymbol{\xi})']
+= \begin{pmatrix}
+b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1n} \\
+b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{nn}
+\end{pmatrix},
+\]</div>
+<p>其中 <span class="arithmatex">\(b_{ij} = \text{Cov}(\xi_i, \xi_j)\)</span>。显然 <span class="arithmatex">\(B\)</span> 是一个对称矩阵，且对任何实数 <span class="arithmatex">\(t_i \in \mathbb{R}\)</span>，<span class="arithmatex">\(i = 1, \cdots, n\)</span>，二次型</p>
+<p>$$
+\sum_{i=1}^{n} \sum_{j=1}^{n} t_i t_j b_{ij} = \sum_{i=1}^{n} \sum_{j=1}^{n} t_i t_j \mathbb{E}[(\xi_i - \mathbb{E}\xi_i)(\xi_j - \mathbb{E}\xi_j)]\= \mathbb{E}\left[\sum_{i=1}^{n} t_i (\xi_i - \mathbb{E}\xi_i)\right]^2 \geq 0.
+$$
+所以，随机向量 <span class="arithmatex">\(\boldsymbol{\xi}\)</span> 的协方差矩阵 <span class="arithmatex">\(\boldsymbol{B}\)</span> 是非负定的。</p>
+<ol>
+<li>设</li>
+</ol>
+<p>$$
+   \xi = (\xi_1, \cdots, \xi_n)', \quad C = \begin{pmatrix}
+   c_{11} &amp; \cdots &amp; c_{1n} \
+   \vdots &amp; \ddots &amp; \vdots \
+   c_{m1} &amp; \cdots &amp; c_{mn}
+   \end{pmatrix},
+   $$</p>
+<p>则 <span class="arithmatex">\(C\xi\)</span> (C为常数矩阵) 的协方差矩阵为 <span class="arithmatex">\(CBC'\)</span>，其中 <span class="arithmatex">\(B\)</span> 是 <span class="arithmatex">\(\xi\)</span> 的协方差矩阵。</p>
+<p>​   <strong>证明</strong> 
+$$
+\mathbb{E}[C(\xi - \mathbb{E}\xi)(C(\xi - \mathbb{E}\xi))']
+= \mathbb{E}[C(\xi - \mathbb{E}\xi)(\xi - \mathbb{E}\xi)'C']
+= C \mathbb{E}[(\xi - \mathbb{E}\xi)(\xi - \mathbb{E}\xi)'] C'
+= CBC'.
+$$</p>
+<h4 id="_11">相关系数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>协方差虽然在某种意义上表示了两个随机变量间的关系，但<span class="arithmatex">\(Cov(\xi,\eta)\)</span>的取值大小与<span class="arithmatex">\(\xi,\eta\)</span>的量纲有关，而为了避免这一点，我们下面使用<span class="arithmatex">\(\xi,\eta\)</span>的标准化随机变量来探讨</p>
+<p>称
+$$
+r_{\xi\eta}=Cov(\xi^<em>,\eta^</em>)=E(\xi^<em>\eta^</em>)=\frac{E(\xi-E\xi)(\eta-E\eta)}{\sqrt{Var\xi\cdot Var\eta}}=\frac{Cov(\xi,\eta)}{\sqrt{Var\xi \cdot Var\eta}}
+$$
+为<span class="arithmatex">\(\xi,\eta\)</span>的相关系数</p>
+<blockquote>
+<p>这里<span class="arithmatex">\(Cov(\xi^*,\eta^*)=E(\xi^*\eta^*)\)</span>是因为<span class="arithmatex">\(\xi^*,\eta^*\)</span>都是标准化随机变量，他们的期望为0，而<span class="arithmatex">\(Cov(\xi^*,\eta^*)=E(\xi^*\eta^*)-E\xi^*E\eta^*=E(\xi^*\eta^*)\)</span></p>
+</blockquote>
+<p><strong>相关系数的性质：</strong></p>
+<ol>
+<li>
+<p>对相关系数<span class="arithmatex">\(r_{\xi\eta}\)</span>，恒有<span class="arithmatex">\(|r_{\xi\eta}|\leq1\)</span>，<span class="arithmatex">\(r_{\xi\eta}=1\)</span>当且仅当
+   $$
+   P(\eta^<em>=\xi^</em>)=1
+   $$
+   <span class="arithmatex">\(r_{\xi\eta}=-1\)</span>当且仅当
+   $$
+   P(\eta^<em>=-\xi^</em>)=1
+   $$
+   此性质表明相关系数<span class="arithmatex">\(r_{\xi\eta}\)</span>的取值为±1时，<span class="arithmatex">\(\xi,\eta\)</span>以概率1存在着线性关系，另一极端情形是<span class="arithmatex">\(r_{\xi\eta}=0\)</span>，此时称<span class="arithmatex">\(\xi\)</span>与<span class="arithmatex">\(\eta\)</span>不相关</p>
+</li>
+<li>
+<p>对随机变量<span class="arithmatex">\(\xi,\eta\)</span>，下列事实等价：
+   $$
+   (1)Cov(\xi,\eta)=0\qquad (2)\xi,\eta\text{不相关}\
+   (3)E(\xi\eta)=E\xi E\eta\qquad (4)Var(\xi+\eta)=Var\xi+Var\eta
+   $$</p>
+</li>
+<li>
+<p>若<span class="arithmatex">\(\xi,\eta\)</span>独立，则<span class="arithmatex">\(\xi,\eta\)</span>不相关</p>
+</li>
+</ol>
+<p>这里我们要弄清楚，独立和不相关并不等价，独立<span class="arithmatex">\(\Rightarrow\)</span>不相关，不相关<span class="arithmatex">\(\nRightarrow\)</span>独立</p>
+<p>下面我们来看一些例题</p>
+<p><strong>例1</strong> 设随机变量<span class="arithmatex">\(\theta \sim U[0,2\pi],\xi=cos\theta,\eta=sin\theta\)</span>，以这个例子说明不相关<span class="arithmatex">\(\nRightarrow\)</span>独立</p>
+<p><strong>解</strong> 首先我们验证<span class="arithmatex">\(\xi,\eta\)</span>不相关
+$$
+E\xi=\int_{-\infty}^{\infty}cosx\frac{1}{2\pi}dx=\int_{0}^{2\pi}cosx\frac{1}{2\pi}dx=0\
+E\eta=\int_{-\infty}^{\infty}sinx\frac{1}{2\pi}dx=\int_{0}^{2\pi}sinx\frac{1}{2\pi}dx=0\
+E(\xi\eta)=\int_{-\infty}^{\infty}sinx\cdot cosx\frac{1}{2\pi}dx=\int_{0}^{2\pi}sinx\cdot cosx\frac{1}{2\pi}dx=0
+$$
+故有<span class="arithmatex">\(Cov(\xi,\eta)=E(\xi\eta)-E\xi E\eta=\)</span></p>
+<p>下面我们验证其不独立，只需取两个Borel集，有
+$$
+P(\xi \in B_1,\eta \in B_2)=P(\xi \in B_1)P(\eta \in B_2)
+$$
+取 <span class="arithmatex">\(B_1 = B_2 = (0, 1/2)\)</span>。则有 $$ {\xi \in B_1} = \left{0 &lt; \cos \theta &lt; \frac{1}{2}\right} = \left{\frac{\pi}{3} &lt; \theta &lt; \frac{\pi}{2}\right} \cup \left{\frac{3\pi}{2} &lt; \theta &lt; \frac{5\pi}{3}\right}, $$ $$ {\eta \in B_2} = \left{0 &lt; \sin \theta &lt; \frac{1}{2}\right} = \left{0 &lt; \theta &lt; \frac{\pi}{6}\right} \cup \left{\frac{5\pi}{6} &lt; \theta &lt; \pi\right}. $$ 这表明 $$ {\xi \in B_1} \cap {\eta \in B_2} = \phi. $$ 因此， $$ \mathbb{P}(\xi \in B_1) = \mathbb{P}(\eta \in B_2) = \frac{1}{6}, \quad \mathbb{P}(\xi \in B_1, \eta \in B_2) = 0. $$ 所以 <span class="arithmatex">\(\xi\)</span> 与 <span class="arithmatex">\(\eta\)</span> 不独立。</p>
+<blockquote>
+<p>事实上，<span class="arithmatex">\(\xi,\eta\)</span>存在着非线性关系：
+$$
+\xi^2+\eta^2=cos^2\theta+sin^2\theta=1
+$$</p>
+</blockquote>
+<p>综上所述，相关系数<span class="arithmatex">\(r_{\xi\eta}\)</span>是<span class="arithmatex">\(\xi,\eta\)</span>线性相关关系的一种刻画，当<span class="arithmatex">\(|r_{\xi\eta}|=1\)</span>时，<span class="arithmatex">\(\xi\)</span>与<span class="arithmatex">\(\eta\)</span>之间以概率1存在线性关系，当<span class="arithmatex">\(|r_{\xi\eta}|=0\)</span>时，<span class="arithmatex">\(\xi,\eta\)</span>不相关，它们之间不存在线性关系，但是仍然可能存在其他相依关系，所以并不一定相互独立，但是对于二维正态分布却是一个例外</p>
+<ol>
+<li>对于二元正态分布，两个分量不相关与相互独立是等价的</li>
+</ol>
+<p><strong>证明</strong> 要用到二元正态分布的联合密度函数，先暂时搁置着吧</p>
+<h4 id="_12">矩<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>数学期望、方差、协方差都是随机变量最常用的数字特征，它们都是某种矩，矩是最广泛使用的一种数字特征，在概率论和数理统计中占有重要地位，最常用的矩有两种：原点矩和中心矩</p>
+<p><strong>原点矩：</strong>对于正整数k（可以拓展到非负实数），称<span class="arithmatex">\(m_k=E\xi^k\)</span>为<span class="arithmatex">\(\xi\)</span>的k阶（原点）矩（一阶矩即数学期望）</p>
+<p>若高阶矩存在，则低阶矩也存在，即<span class="arithmatex">\(E\xi^n\)</span>存在<span class="arithmatex">\(\Rightarrow\)</span><span class="arithmatex">\(E\xi^k(0\leq k\leq n)\)</span>存在，证明如下：</p>
+<p>假设 <span class="arithmatex">\(\mathbb{E}|\xi|^n\)</span> 存在（这意味着 <span class="arithmatex">\(\mathbb{E}|\xi|^n &lt; \infty\)</span>）。若 <span class="arithmatex">\(0 \leq k \leq n\)</span>，则
+$$
+\begin{aligned}
+\mathbb{E}|\xi|^k &amp;= \int_{-\infty}^{\infty} |x|^k \mathrm{d}F(x) \
+&amp;= \int_{|x| \leq 1} |x|^k \mathrm{d}F(x) + \int_{|x| &gt; 1} |x|^k \mathrm{d}F(x) \
+&amp;\leq \mathbb{P}(|\xi| \leq 1) + \int_{|x| &gt; 1} |x|^n \mathrm{d}F(x) \
+&amp;\leq 1 + \mathbb{E}|\xi|^n &lt; \infty.
+\end{aligned}
+$$
+所以 <span class="arithmatex">\(\mathbb{E}|\xi|^k\)</span> (<span class="arithmatex">\(0 \leq k \leq n\)</span>) 存在。（或直接利用Jensen不等式证明）</p>
+<p><strong>中心矩：</strong>对正整数k（可以拓展到非负实数），称<span class="arithmatex">\(c_k=E(\xi-E\xi)^k\)</span>为<span class="arithmatex">\(\xi\)</span>的k阶中心矩（方差是二阶中心矩）</p>
+<p>下面我们看几道例题</p>
+<p><strong>例1</strong> 设<span class="arithmatex">\(\xi \sim N(0,\sigma^2)\)</span>，此时<span class="arithmatex">\(E\xi=0\)</span>且
+$$
+m_n=c_n=\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty}x^n e^{-\frac{x^2}{2\sigma^2}}dx
+$$
+显然，$ n $ 为奇数时，$ m_n = 0 <span class="arithmatex">\(；\)</span> n $ 为偶数时，
+$$
+\begin{aligned}
+m_n &amp;= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \frac{x^n}{\sigma} \exp\left{-\frac{x^2}{2\sigma^2}\right} \, \mathrm{d}x \
+&amp;= \sqrt{\frac{2}{\pi}} \sigma^n 2^{\frac{n-1}{2}} \int_{0}^{\infty} z^{\frac{n-1}{2}} e^{-z} \, \mathrm{d}z \
+&amp;= \sqrt{\frac{2}{\pi}} \sigma^n 2^{\frac{n-1}{2}} \Gamma\left(\frac{n+1}{2}\right) \
+&amp;= 1 \times 3 \times \cdots \times (n-1) \sigma^n.
+\end{aligned}
+$$
+特别地，$ m_4 = c_4 = 3\sigma^4 $。因此 $ N(0, \sigma^2) $ 分布的偏态系数与峰态系数都为 0。</p>
+<p>称 $ M_\alpha = \mathbb{E}|\xi|^\alpha $ 为 <span class="arithmatex">\(\xi\)</span> 的 <span class="arithmatex">\(\alpha\)</span> 阶绝对矩。那么当 <span class="arithmatex">\(\xi \sim N(0, \sigma^2)\)</span> 时，有
+$$
+\mathbb{E}|\xi|^n = 
+\begin{cases}
+\sqrt{\frac{2}{\pi}} \sigma^n 2^{\frac{n-1}{2}} \Gamma\left(\frac{n+1}{2}\right) = \sqrt{\frac{2}{\pi}} 2^k k! \sigma^{2k+1}, &amp; n = 2k + 1, \
+1 \times 3 \times \cdots \times (n-1) \sigma^n, &amp; n = 2k.
+\end{cases}
+$$
+<strong>例2</strong> 若<span class="arithmatex">\(\xi \sim Exp(\lambda)\)</span>，那么对任意的<span class="arithmatex">\(k\geq1\)</span>
+$$
+E|\xi|^k=E\xi^k=\int_0^{\infty}x^k \lambda e^{-\lambda x}dx=\frac{k}{\lambda}E\xi^{k-1}\=\cdot\cdot\cdot=\frac{k!}{\lambda^k}E\xi^0=\frac{k!}{\lambda^k}&lt;\infty
+$$
+所以指数分布的任意阶矩存在</p>
+<h3 id="_13">特征函数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>数字特征只反映了概率分布的某些侧面，一般说来，数字特征不能完全确定随机变量的分布，本节我们将介绍特征函数这个工具，它既能完全决定分布函数而又具有良好的分析性质</p>
+<h4 id="_14">定义<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>我们首先拓展一下随机变量的概念，引入复随机变量</p>
+<p>设<span class="arithmatex">\(\xi,\eta\)</span>为实值随机变量，称<span class="arithmatex">\(\zeta=\xi+\mathrm{i}\eta\)</span>为复随机变量，这里<span class="arithmatex">\(\mathrm{i}^2=-1\)</span>，同时定义<span class="arithmatex">\(E\zeta=E\xi+\mathrm{i}E\eta\)</span>为<span class="arithmatex">\(\zeta\)</span>的数学期望</p>
+<blockquote>
+<p>对复随机变量的研究本质上是对二维随机变量的研究，比如若二维随机变量<span class="arithmatex">\((\xi_1,\eta_1)\)</span>与<span class="arithmatex">\((\xi_2,\eta_2)\)</span>是相互独立的，则称复随机变量<span class="arithmatex">\(\zeta_1=\xi_1+i\eta_1\)</span>与<span class="arithmatex">\(\zeta_2=\xi_2+i\eta_2\)</span>是相互独立的；若<span class="arithmatex">\(\zeta_1,\cdot\cdot\cdot,\zeta_n\)</span>是相互独立的，可以证明
+$$
+E(\zeta_1\cdot\cdot\cdot\zeta_n)=E\zeta_1\cdot\cdot\cdot E\zeta_n
+$$</p>
+</blockquote>
+<p><strong>特征函数：</strong>设<span class="arithmatex">\(\xi\)</span>为实随机变量，称
+$$
+f(t)=Ee^{it\xi}=\int_{-\infty}^{\infty}e^{itx}dF(x),\ t\in R
+$$
+为<span class="arithmatex">\(\xi\)</span>的特征函数，这是一个关于t的函数</p>
+<p><strong>注：</strong></p>
+<ul>
+<li>
+<p>对于<span class="arithmatex">\(e^{itx}\)</span>，我们有时会用欧拉公式来处理
+  $$
+  e^{itx}=cos(tx)+isin(tx)
+  $$</p>
+</li>
+<li>
+<p>由于<span class="arithmatex">\(Ee^{|it\xi|}=1\)</span>，所以对一切<span class="arithmatex">\(t\in R\)</span>，特征函数都是有意义的，也就是说任何随机变量都有相应的特征函数</p>
+</li>
+<li>
+<p>特征函数只与分布函数有关，因此也称为某一分布函数的特征函数</p>
+</li>
+</ul>
+<p><strong>离散型随机变量的特征函数</strong></p>
+<p>若<span class="arithmatex">\(\xi\)</span>的分布列为
+$$
+P(\xi=x_k)=p_k,\qquad k=1,\cdot\cdot\cdot,n(n&lt;\infty或n=\infty)
+$$
+则
+$$
+f(t)=Ee^{it\xi}=\sum_{k=1}^ne^{itx_k}p_k
+$$
+<strong>连续型随机变量的特征函数</strong></p>
+<p>若随机变量<span class="arithmatex">\(\xi\)</span>有密度函数<span class="arithmatex">\(p(x)\)</span>，则
+$$
+f(t)=Ee^{it\xi}=\int_{-\infty}^{\infty}e^{itx}p(x)dx=\int_{-\infty}^{\infty}cos(tx)p(x)dx+i\int_{-\infty}^{\infty}sin(tx)p(x)dx
+$$
+若<span class="arithmatex">\(p(x)\)</span>为偶函数，则该连续型随机变量的特征函数为实函数</p>
+<p>下面我们考虑一些重要随机变量/分布的特征函数</p>
+<ol>
+<li>
+<p><strong>退化分布</strong><span class="arithmatex">\(P(\xi=c)=1\)</span>的特征函数<span class="arithmatex">\(f(t)=e^{itc},\ t\in R\)</span></p>
+</li>
+<li>
+<p><strong>二项分布</strong><span class="arithmatex">\(B(n,p)\)</span>的特征函数为
+   $$
+   f(t)=\sum_{k=0}^ne^{itk}P(\xi=k)=\sum_{k=0}^ne^{itk}C_n^kp^kq^{n-k}=\sum_{k=0}^nC_n^k(pe^{it})^kq^{n-k}=(pe^{it}+q)^n,\ t\in R
+   $$</p>
+</li>
+<li>
+<p><strong>两点分布</strong><span class="arithmatex">\(0-1(p)\)</span>的特征函数为<span class="arithmatex">\(f(t)=pe^{it}+q,\ t \in R\)</span>，其实就是n=1时的二项分布</p>
+</li>
+<li>
+<p><strong>泊松分布</strong><span class="arithmatex">\(P(\lambda)\)</span>的特征函数
+   $$
+   f(t)=Ee^{it\xi}=\sum_{k=0}^{\infty}e^{itk}\frac{\lambda^k}{k!}e^{-\lambda}=e^{-\lambda}\sum_{k=0}^{\infty}\frac{(\lambda e^{it})^k}{k!}=e^{-\lambda}e^{\lambda e^{it}}=e^{\lambda(e^{it}-1)},\ t \in R
+   $$</p>
+</li>
+<li>
+<p><strong>指数分布</strong><span class="arithmatex">\(Exp(\lambda)\)</span>的特征函数</p>
+</li>
+</ol>
+<div class="arithmatex">\[
+f(t)=Ee^{it\xi}=\int_{-\infty}^{\infty}e^{itx}\lambda e^{-\lambda x}dx=\int_0^{\infty}e^{itx}\lambda e^{-\lambda x}dx\\=\int_0^{\infty}cos(tx)\lambda e^{-\lambda x}dx+i\int_0^{\infty}sin(tx)\lambda e^{-\lambda x}dx
+\]</div>
+<p><img alt="指数分布的特征函数" src="../images/%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E7%9A%84%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0.jpg" />
+故
+$$
+f(t)=I_1+iI_2=\frac{\lambda(\lambda+it)}{\lambda^2+t^2}=\frac{\lambda}{\lambda-it}=(1-i\frac{t}{\lambda})^{-1}
+$$</p>
+<h4 id="_15">特征函数的性质<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<div class="arithmatex">\[
+   |f(t)|\leq f(0)=1,\ f(-t)=\overline{f(t)}
+   \]</div>
+</li>
+</ol>
+<p><strong>证明</strong> 
+   $$
+   |f(t)|=|Ee^{it\xi}|=\big|\int_{-\infty}^{\infty}e^{itx}dF(x)\big|\leq\int_{-\infty}^{\infty}|e^{itx}|dF(x)=F(\infty)-F(-\infty)=1\
+   f(-t)=\int_{-\infty}^{\infty}cos(-tx)dF(x)+i\int_{-\infty}^{\infty}sin(-tx)dF(x)\=\int_{-\infty}^{\infty}cos(tx)dF(x)-i\int_{-\infty}^{\infty}sin(tx)dF(x)=\overline{f(t)}
+   $$</p>
+<ol>
+<li><span class="arithmatex">\(f(t)\)</span>在<span class="arithmatex">\((-\infty,\infty)\)</span>上一致连续</li>
+</ol>
+<p><strong>证明</strong> 对任意的<span class="arithmatex">\(t \in R\)</span>和<span class="arithmatex">\(\varepsilon &gt;0\)</span>
+   $$
+   \big|f(t+h)-f(t)\big|=\big|\int_{-\infty}^{\infty}e^{i(t+h)x}-e^{itx}dF(x)\big| \
+   =|e^{itx}||\int_{-\infty}^{\infty}(e^{ihx}-1)dF(x)|=|\int_{-\infty}^{\infty}(e^{ihx}-1)dF(x)|\
+   \leq \int_{-\infty}^{\infty}\big|e^{ihx}-1\big|dF(x)
+   $$
+   这个式子的值已经同t无关，我们将其拆分为两块
+   $$
+   (\int_{|x|\geq A}+\int_{|x| \leq A})|e^{ihx}-1|dF(x)
+   $$
+   分别记为<span class="arithmatex">\(I_1,I_2\)</span></p>
+<p>由 <span class="arithmatex">\(\int_{-\infty}^{\infty} \mathrm{d}F(x) = 1\)</span> 知，存在充分大的 <span class="arithmatex">\(A &gt; 0\)</span> 使得：</p>
+<p>$$
+   \int_{|x| \geq A} \mathrm{d}F(x) &lt; \frac{\varepsilon}{4}.
+   $$</p>
+<p>因此：</p>
+<p>$$
+   I_1 \leq \int_{|x| \geq A} (|e^{ihx}| + 1) \mathrm{d}F(x) = 2 \int_{|x| \geq A} \mathrm{d}F(x) &lt; \frac{\varepsilon}{2}.
+   $$
+   又因为</p>
+<p>$$
+   |e^{ihx} - 1| = |e^{ihx/2}| \cdot |e^{ihx/2} - e^{-ihx/2}| = 2|\sin(hx/2)| \leq |hx|,
+   $$</p>
+<p>所以对已取定的 <span class="arithmatex">\(A\)</span>，取 <span class="arithmatex">\(\delta = \varepsilon / (2A)\)</span>。当 <span class="arithmatex">\(|x| &lt; A\)</span> 及 <span class="arithmatex">\(0 &lt; h &lt; \delta\)</span> 时，有</p>
+<p>$$
+   |e^{ihx} - 1| \leq |hx| \leq A\delta = \frac{\varepsilon}{2}.
+   $$</p>
+<p>因此</p>
+<p>$$
+   I_2 \leq \frac{\varepsilon}{2} \int_{-A}^A \mathrm{d}F(x) \leq \frac{\varepsilon}{2}.
+   $$</p>
+<p>所以当<span class="arithmatex">\(0&lt;h&lt;\delta\)</span>时<span class="arithmatex">\(\big|f(t+h)-f(t)\big|&lt;\varepsilon\)</span>，且<span class="arithmatex">\(\delta\)</span>的选取与t无关，所以<span class="arithmatex">\(f(t)\)</span>在<span class="arithmatex">\((-\infty,\infty)\)</span>上一致连续</p>
+<ol>
+<li><span class="arithmatex">\(f(t)\)</span>是非负定的：对任意的正整数n及任意实数<span class="arithmatex">\(t_1,\cdot\cdot\cdot,t_n\)</span>，复数<span class="arithmatex">\(\lambda_1,\cdot\cdot\cdot,\lambda_n\)</span>，有
+   $$
+   \sum_{k=1}^n\sum_{j=1}^nf(t_k-t_j)\lambda_k\overline{\lambda_j}\geq 0
+   $$</li>
+</ol>
+<p>$$
+   \sum_{k=1}^n \sum_{j=1}^n f(t_k - t_j) \lambda_k \overline{\lambda_j}
+   = \sum_{k=1}^n \sum_{j=1}^n \mathbb{E} e^{i(t_k - t_j) \xi} \lambda_k \overline{\lambda_j}
+   \
+   =E(\sum_{k=1}^ne^{it_k\xi}\lambda_k\sum_{j=1}^ne^{-it_j\xi}\overline{\lambda_j})
+   \
+   = \mathbb{E} \left( \sum_{k=1}^n e^{it_k \xi} \lambda_k \right) \overline{\left( \sum_{j=1}^n e^{it_j \xi} \lambda_j \right)}
+   \
+   = \mathbb{E} \left| \sum_{k=1}^n e^{it_k \xi} \lambda_k \right|^2 \geq 0.
+   $$</p>
+<p>而在考虑完上述三个性质之后，我们引出一个很重要的定理，<strong>波赫纳尔-辛钦定理：</strong></p>
+<p><strong>函数<span class="arithmatex">\(f(t)\)</span>为特征函数的充要条件是<span class="arithmatex">\(f(t)\)</span>非负定、连续且<span class="arithmatex">\(f(0)=1\)</span></strong></p>
+<p>该定理在理论上给出了一个判定特征函数的方法，但是在实际应用中却是不方便使用的，我们倒是可以用其来判断某个函数不是特征函数。</p>
+<ol>
+<li>若<span class="arithmatex">\(\xi_1,\xi_2,\cdot\cdot\cdot,\xi_n\)</span>相互独立，<span class="arithmatex">\(\eta=\xi_1+\xi_2+\cdot\cdot\cdot+\xi_n\)</span>，<span class="arithmatex">\(\xi_k\)</span>的特征函数为<span class="arithmatex">\(f_k(t)\)</span>，则</li>
+</ol>
+<div class="arithmatex">\[
+f_\eta(t)=f_1(t)f_2(t)\cdot\cdot\cdot f_n(t)
+\]</div>
+<p>​   根据定义直接进行验证即可，因为<span class="arithmatex">\(\xi_1,\cdot\cdot\cdot,\xi_n\)</span>相互独立，所以<span class="arithmatex">\(e^{it\xi_1},\cdot\cdot\cdot,e^{it\xi_n}\)</span>也相互独立，因此有
+$$
+Ee^{it\eta}=E(e^{it\xi_1}\cdot\cdot\cdot e^{it\xi_n})=Ee^{it\xi_1}\cdot\cdot\cdot Ee^{it\xi_n}=f_1(t)f_2(t)\cdot\cdot\cdot f_n(t)
+$$</p>
+<ol>
+<li>若<span class="arithmatex">\(E\xi^n\)</span>存在，则<span class="arithmatex">\(f(t)\)</span>是n次可微的，且当<span class="arithmatex">\(k\leq n\)</span>时，</li>
+</ol>
+<div class="arithmatex">\[
+   f^{(k)}(0)=i^kE\xi^k
+\]</div>
+<p>​   由于对任意的 $ t \in \mathbb{R} $ 和 $ 0 \leq k \leq n $，</p>
+<div class="arithmatex">\[
+\int_{-\infty}^{\infty} \left| \frac{\mathrm{d}^k}{\mathrm{d}t^k} e^{itx} \right| \, \mathrm{d}F(x)
+= \int_{-\infty}^{\infty} \left| i^k x^k e^{itx} \right| \, \mathrm{d}F(x)
+\]</div>
+<div class="arithmatex">\[
+= \int_{-\infty}^{\infty} |x|^k \, \mathrm{d}F(x)
+= \mathbb{E} |\xi|^k &lt; \infty,
+\]</div>
+<p>​   因此 <span class="arithmatex">\(\int_{-\infty}^{\infty} \frac{\mathrm{d}^k}{\mathrm{d}t^k} e^{itx} \, \mathrm{d}F(x)\)</span> 对 $ t $ 一致收敛，故 $ f^{(k)}(t) $ 存在。</p>
+<p>​   且有
+$$
+f^{(k)}(t)=\frac{d^k}{dt^k}\int_{-\infty}^{\infty}e^{itx}dF(x)=\int_{-\infty}^{\infty}\frac{d^k}{dt^k}e^{itx}dF(x)=i^k\int_{-\infty}^{\infty}x^k e^{itx}dF(x)
+$$
+​   <strong>故有<span class="arithmatex">\(f^{(k)}(0)=i^k\int_{-\infty}^{\infty}x^kdF(x)=i^kE\xi^k\)</span>（这个结论要记下来）</strong></p>
+<p>​   而<strong>由这个性质，我们就可以把期望、方差等数字特征同特征函数联系起来</strong>，例如
+$$
+E\xi=-if'(0),\qquad E\xi^2=-f''(0),\qquad Var\xi=-f''(0)+[f'(0)]^2
+$$</p>
+<ol>
+<li>设<span class="arithmatex">\(\eta=a\xi+b\)</span>，<span class="arithmatex">\(a,b\)</span>为任意常数，则
+$$
+   f_{\eta}(t)=e^{itb}f_{\xi}(at)
+$$</li>
+</ol>
+<p>​   根据定义进行验证即可
+$$
+f_{\eta}(t)=Ee^{it\eta}=Ee^{it(a\xi+b)}=e^{itb}Ee^{i(at)\xi}=e^{itb}f_{\xi}(at)
+$$
+而了解了这六个性质之后，我们来看一些均匀分布和正态分布的特征函数</p>
+<p><strong>例1</strong> <strong>均匀分布</strong><span class="arithmatex">\(U[a,b]\)</span>的特征函数为<span class="arithmatex">\(f(t)=\frac{e^{itb}-e^{ita}}{(b-a)it},t \in R\)</span>，特别地，<span class="arithmatex">\(U[-b,b]\)</span>的特征函数为<span class="arithmatex">\(f(t)=\frac{sin(bt)}{bt},t \in R\)</span></p>
+<p><strong>解</strong>  这题的思路是，我们首先考虑均匀分布<span class="arithmatex">\(U[-1,1]\)</span>的特征函数，然后通过变量代换求出原来的随机变量的特征函数，后面的正态分布的思路也同样如此。</p>
+<p><img alt="均匀分布的特征函数" src="../images/%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%E7%9A%84%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0.jpg" />
+<strong>例2</strong> <strong>正态分布</strong><span class="arithmatex">\(N(a,\sigma^2)\)</span>的特征函数为<span class="arithmatex">\(f(t)=e^{iat-\sigma^2t^2/2},t\in R\)</span></p>
+<p><strong>证明</strong> 同均匀分布一样的思路，我们可以先求标准化正态分布<span class="arithmatex">\(N(0,1)\)</span>的特征函数，设<span class="arithmatex">\(\xi \sim N(0,1)\)</span>，则
+$$
+f_{\xi}(t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{itx}e^{-\frac{x^2}{2}}dx=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}cos(tx)e^{-\frac{x^2}{2}}dx
+$$
+但是比较困难的是，这个计算并不能通过分部积分解决，而是需要考虑其导函数并求解微分方程。
+$$
+f'<em -_infty="-\infty">\xi(t) = - \frac{1}{\sqrt{2\pi}} \int</em>x
+$$}^{\infty} x \sin(tx) e^{-x^2/2} \, \mathrm{d</p>
+<div class="arithmatex">\[
+= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \sin(tx) \, \mathrm{d}e^{-x^2/2}
+\]</div>
+<div class="arithmatex">\[
+= - \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} t \cos(tx) e^{-x^2/2} \, \mathrm{d}x
+\]</div>
+<div class="arithmatex">\[
+= - t f_\xi(t).
+\]</div>
+<p>求解以上的微分方程得</p>
+<div class="arithmatex">\[
+f_\xi(t) = C e^{-t^2/2}.
+\]</div>
+<p>又因为 $ f_\xi(0) = 1 $，所以 $ C = 1 $，</p>
+<div class="arithmatex">\[
+f_\xi(t) = e^{-t^2/2}.
+\]</div>
+<p>令</p>
+<div class="arithmatex">\[
+\eta = a + \sigma \xi,
+\]</div>
+<p>则 <span class="arithmatex">\(\eta \sim N(a, \sigma^2)\)</span>。由性质6，</p>
+<p>$$
+f_\eta(t) = e^{\mathrm{i}at} f_\xi(\sigma t) = e^{\mathrm{i}at - \sigma^2 t^2/2}.
+$$
+<strong>例3</strong> 若<span class="arithmatex">\(\xi \sim N(a,\sigma^2)\)</span>，用特征函数方法求解<span class="arithmatex">\(E\xi,Var\xi\)</span></p>
+<p><strong>解</strong> <span class="arithmatex">\(\xi\)</span>的特征函数为<span class="arithmatex">\(f(t)=e^{iat-\frac{\sigma^2t^2}{2}}\)</span></p>
+<p>则有
+$$
+f'(t)=(ia-\sigma^2t)e^{iat-\frac{\sigma^2t^2}{2}},\qquad f'(0)=ia
+\f''(t)=[-\sigma^2+(ia-\sigma^2t)^2]e^{iat-\frac{\sigma^2t^2}{2}},\qquad f''(0)=-a^2-\sigma^2
+$$
+可得
+$$
+E\xi=a,\ E\xi^2=a^2+\sigma^2,\ Var\xi=\sigma^2
+$$</p>
+<h4 id="_16">逆转公式与唯一性定理<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>前面我们已经知道，随机变量的分布函数可以唯一确定它的特征函数；反之，从特征函数是否可以唯一确定相应的分布函数呢？答案是肯定的。</p>
+<p>下面有两个引理，无需掌握，了解即可</p>
+<p>狄利克雷积分：
+$$
+\lim_{x \to \infty}\int_{0}^x\frac{sin(au)}{u}du=\frac{\pi}{2}sgn\left{a\right}
+$$
+其中<span class="arithmatex">\(sgn\left\{a\right\}\)</span>是符号函数，当<span class="arithmatex">\(a&gt;0\)</span>时取值为1，当<span class="arithmatex">\(a=0\)</span>时取值为0，当<span class="arithmatex">\(a&lt;0\)</span>时取值为-1</p>
+<p>逆转公式：设分布函数<span class="arithmatex">\(F(x)\)</span>的特征函数为<span class="arithmatex">\(f(t)\)</span>，又<span class="arithmatex">\(x_1,x_2\)</span>是<span class="arithmatex">\(F(x)\)</span>的两个连续点，则
+$$
+F(x_2)-F(x_1)=\lim_{T\to \infty}\frac{1}{2\pi}\int_{-T}^{T}\frac{e^{-itx_1}-e^{-itx_2}}{it}f(t)dt
+$$
+唯一性定理：分布函数可以由特征函数唯一确定</p>
+<p>结合上述定理和特征函数的定义我们可以知道：<strong>分布函数和特征函数相互唯一确定</strong></p>
+<blockquote>
+<p>但是需要注意的是，用唯一性定理和逆转公式计算分布函数是困难的，它的意义主要是理论上的</p>
+</blockquote>
+<p>下面我们介绍如何通过特征函数求解分布函数（或概率密度函数）</p>
+<p><strong>逆Fourier变换</strong>：设<span class="arithmatex">\(f(t)\)</span>是特征函数，且<span class="arithmatex">\(\int_{-\infty}^{\infty}\big|f(t)\big|dt&lt;\infty\)</span>（<span class="arithmatex">\(f(t)\)</span>绝对可积），则分布函数<span class="arithmatex">\(F(x)\)</span>的导数存在且连续，此时
+$$
+F'(x)=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{itx}f(t)dt
+$$
+上式恰与连续性随机变量的特征函数公式<span class="arithmatex">\(f(t)=\int_{\infty}^{\infty}e^{itx}p(x)dx\)</span>恰为一对<span class="arithmatex">\(Fourier\)</span>变换</p>
+<p>对于<strong>离散型随机变量</strong>有类似的结果，假设<span class="arithmatex">\(\xi\)</span>是取非负整数值的随机变量，分布列为
+$$
+P(\xi=k)=p_k, k=0,1,2,\cdot\cdot\cdot
+$$
+那么其特征函数为
+$$
+f(t)=\sum_{k=0}^{\infty}e^{itk}p_k
+$$
+由于
+$$
+\int_{0}^{2\pi}e^{itn}dt=\begin{cases}
+2\pi, &amp; n=0 \
+0, &amp; n \neq 0
+\end{cases}
+$$
+则有
+$$
+p_k=\frac{1}{2\pi}\int_0^{2\pi}e^{-itk}f(t)dt
+$$
+下面我们看一些例题</p>
+<p><strong>例1</strong> 求证<span class="arithmatex">\(f(t)=cost\)</span>是某随机变量的特征函数，并求出它的概率分布</p>
+<p><strong>解</strong>
+$$
+f(t)=cost=\frac{1}{2}(e^{it}+e^{-it})=\frac{1}{2}e^{it}+\frac{1}{2}e^{-it}
+$$
+这是分布列为</p>
+<div class="arithmatex">\[
+\begin{array}{c|cc}
+\xi &amp; -1 &amp; 1 \\
+\hline
+\mathrm{P} &amp; \frac{1}{2} &amp; \frac{1}{2}
+\end{array}
+\]</div>
+<p>的随机变量的特征函数.</p>
+<p>一般地，若 $ f(t) $ 能写成 $ f(t) = \sum_{k=1}^n a_k e^{itx_k} $ 的形式 ($ n &lt; \infty $ 或 $ n = \infty $)，其中 $ a_k &gt; 0 <span class="arithmatex">\(，\)</span>\sum_{k=1}^n a_k = 1$，则 $ f(t) $ 是特征函数，相应的随机变量的分布列为</p>
+<p>$$
+\mathrm{P}(\xi = x_k) = a_k, \quad k = 1, \cdots, n.
+$$
+<strong>例2</strong> 若<span class="arithmatex">\(f(t)\)</span>是某随机变量的特征函数，求证<span class="arithmatex">\(\overline{f(t)},|f(t)|^2\)</span>以及<span class="arithmatex">\(f^n(t)(n \in N,n\geq1)\)</span>都是特征函数</p>
+<p><strong>解</strong> 假设 $ f(t) $ 是随机变量 $ \xi $ 的特征函数。</p>
+<p>易知 $ \overline{f(t)} = f(-t) $ 是 $ -\xi $ 的特征函数。</p>
+<p>设 $ \xi_1, \cdots, \xi_n $ 相互独立且与 $ \xi $ 具有相同的概率分布。易知 $ \eta = \xi_1 - \xi_2 $ 的特征函数为</p>
+<div class="arithmatex">\[
+f(t) \cdot \overline{f(t)} = |f(t)|^2.
+\]</div>
+<p>$ f^n(t) $ 显然是 $ \zeta = \xi_1 + \cdots + \xi_n $ 的特征函数。</p>
+<h4 id="_17">分布函数的可加性<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>在第二章中我们曾用卷积公式来考虑分布函数的可加性，这个性质用特征函数来研究最为方便，下面通过几个例子来说明</p>
+<p><strong>例1</strong> 若 <span class="arithmatex">\(\xi_j, j = 1, \cdots, k\)</span> 各自服从二项分布 <span class="arithmatex">\(B(n_j, p)\)</span>，且相互独立，则
+$$
+\sum_{j=1}^k \xi_j \sim B\left( \sum_{j=1}^k n_j, p \right).
+$$</p>
+<p><strong>解</strong> <span class="arithmatex">\(\xi_j\)</span> 的特征函数为
+$$
+f_j(t) = (pe^{it} + q)^{n_j}, \quad t \in \mathbb{R}. \quad (p + q = 1)
+$$</p>
+<p>由独立性，可知 <span class="arithmatex">\(\sum_{j=1}^k \xi_j\)</span> 的特征函数为</p>
+<div class="arithmatex">\[
+\prod_{j=1}^k f_j(t) = (pe^{it} + q)^{\sum_{j=1}^k n_j}, \quad t \in \mathbb{R}.
+\]</div>
+<p>根据唯一性定理可知 <span class="arithmatex">\(\sum_{j=1}^k \xi_j \sim B\left( \sum_{j=1}^k n_j, p \right)\)</span>.</p>
+<p><strong>例2</strong> 若 <span class="arithmatex">\(\xi_j, j = 1, \cdots, k\)</span> 各自服从Poisson分布 <span class="arithmatex">\(P(\lambda_j)\)</span>，且相互独立，则
+$$
+\sum_{j=1}^k \xi_j \sim P\left( \sum_{j=1}^k \lambda_j \right).
+$$</p>
+<p><strong>解</strong> <span class="arithmatex">\(\xi_j\)</span> 的特征函数为
+$$
+f_j(t) = \exp \left{ \lambda_j (e^{it} - 1) \right}, \quad t \in \mathbb{R}.
+$$</p>
+<p>由独立性，可知 <span class="arithmatex">\(\sum_{j=1}^k \xi_j\)</span> 的特征函数为</p>
+<div class="arithmatex">\[
+\prod_{j=1}^k f_j(t) = \exp \left\{ \sum_{j=1}^k \lambda_j (e^{it} - 1) \right\}, \quad t \in \mathbb{R}.
+\]</div>
+<p>根据唯一性定理可知 <span class="arithmatex">\(\sum_{j=1}^k \xi_j \sim P\left( \sum_{j=1}^k \lambda_j \right)\)</span>.</p>
+<p><strong>例3</strong> 若 <span class="arithmatex">\(\xi_j, j = 1, \cdots, k\)</span> 各自服从正态分布 <span class="arithmatex">\(N(a_j, \sigma_j^2)\)</span>，且相互独立，则
+$$
+\sum_{j=1}^k \xi_j \sim N\left( \sum_{j=1}^k a_j, \sum_{j=1}^k \sigma_j^2 \right).
+$$</p>
+<p><strong>解</strong> <span class="arithmatex">\(\xi_j\)</span> 的特征函数为
+$$
+f_j(t) = \exp \left{ \mathrm{i} a_j t - \frac{\sigma_j^2 t^2}{2} \right}, \quad t \in \mathbb{R}.
+$$</p>
+<p>由独立性，可知 <span class="arithmatex">\(\sum_{j=1}^k \xi_j\)</span> 的特征函数为</p>
+<div class="arithmatex">\[
+\prod_{j=1}^k f_j(t) = \exp \left\{ \mathrm{i} \left( \sum_{j=1}^k a_j \right) t - \left( \sum_{j=1}^k \sigma_j^2 \right) \frac{t^2}{2} \right\}, \quad t \in \mathbb{R}.
+\]</div>
+<p>根据唯一性定理可知 <span class="arithmatex">\(\sum_{j=1}^k \xi_j \sim N\left( \sum_{j=1}^k a_j, \sum_{j=1}^k \sigma_j^2 \right)\)</span>.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 05:50:11 UTC"><span class="timeago" datetime="2025-06-28T05:50:11+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 05:50:11 UTC">2025-06-28</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
