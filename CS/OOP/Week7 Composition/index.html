@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#w7-composition" class="md-skip">
+        <a href="#embedded-objects" class="md-skip">
           跳转至
         </a>
       
@@ -595,28 +595,70 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#w7-composition" class="md-nav__link">
-    <span class="md-ellipsis">
-      W7 Composition（组合）
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="W7 Composition（组合）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#embedded-objects" class="md-nav__link">
     <span class="md-ellipsis">
       嵌入对象(Embedded objects)
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="嵌入对象(Embedded objects)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入对象的初始化
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      初始化列表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入对象的析构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fullyby-reference" class="md-nav__link">
     <span class="md-ellipsis">
       完全嵌入(Fully)与引用嵌入(by reference)的比较
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="完全嵌入(Fully)与引用嵌入(by reference)的比较">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      完全嵌入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      引用嵌入
     </span>
   </a>
   
@@ -1170,28 +1212,70 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#w7-composition" class="md-nav__link">
-    <span class="md-ellipsis">
-      W7 Composition（组合）
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="W7 Composition（组合）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#embedded-objects" class="md-nav__link">
     <span class="md-ellipsis">
       嵌入对象(Embedded objects)
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="嵌入对象(Embedded objects)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入对象的初始化
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      初始化列表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入对象的析构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fullyby-reference" class="md-nav__link">
     <span class="md-ellipsis">
       完全嵌入(Fully)与引用嵌入(by reference)的比较
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="完全嵌入(Fully)与引用嵌入(by reference)的比较">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      完全嵌入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      引用嵌入
     </span>
   </a>
   
@@ -1223,7 +1307,6 @@
 
   <h1>Week7 Composition</h1>
 
-<h2 id="w7-composition">W7 Composition（组合）<a class="headerlink" href="#w7-composition" title="Permanent link">&para;</a></h2>
 <p>组合是一种<code>"has-a"</code>关系，通过将现有的对象嵌入到新对象中来重用代码，每个对象拥有自己的内存，又包含其他对象。</p>
 <p>组合的实现方式有两种：</p>
 <ul>
@@ -1244,14 +1327,14 @@
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">};</span>
 </code></pre></div>
 <p>这个例子中<code>SavingsAccount</code>类就是通过嵌入<code>Person</code>和<code>Currency</code>对象来实现组合的</p>
-<h3 id="embedded-objects">嵌入对象(Embedded objects)<a class="headerlink" href="#embedded-objects" title="Permanent link">&para;</a></h3>
-<h4 id="_1">嵌入对象的初始化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<h2 id="embedded-objects">嵌入对象(Embedded objects)<a class="headerlink" href="#embedded-objects" title="Permanent link">&para;</a></h2>
+<h3 id="_1">嵌入对象的初始化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>所有嵌入对象在构造新对象的时候都会被自动初始化</li>
 <li>如果没有为嵌入对象提供构造函数的参数（外层类的构造函数中没有使用<strong>初始化列表</strong>来为嵌入对象制定构造参数），且嵌入对象的类有默认构造函数（或可以自动生成默认构造函数），则会调用默认构造函数（如果有的话）</li>
 <li>嵌入对象的初始化是由编译器自动管理的，无需手动调用</li>
 </ul>
-<h4 id="_2">初始化列表<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h3 id="_2">初始化列表<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>构造函数可以使用初始化列表来为嵌入对象提供构造参数</li>
 <li>初始化列表是可选的，可以包含任意数量的嵌入对象，用逗号分隔</li>
@@ -1304,16 +1387,16 @@
 </code></pre></div>
 <p>无论初始化列表写成：<code>m_saver(name, address), m_balance(0, cents)</code>还是<code>m_balance(0, cents), m_saver(name, address)</code>，构造顺序总是先构造<code>m_saver</code>，然后再构造<code>m_balance</code></p>
 </div>
-<h4 id="_3">嵌入对象的析构<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h3 id="_3">嵌入对象的析构<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>当包含嵌入对象的外层对象被销毁时，嵌入对象的析构函数会被自动调用</li>
 <li>析构过程也是由编译器管理的，我们无需显式地调用嵌入对象的析构函数</li>
 </ul>
 <p>一般来说，<strong>嵌入对象我们通常声明为<code>private</code></strong>，不过如果我们希望嵌入对象的整个公共接口都直接对外部可用的话，也可以将嵌入对象声明为<code>public</code></p>
-<h3 id="fullyby-reference">完全嵌入(Fully)与引用嵌入(by reference)的比较<a class="headerlink" href="#fullyby-reference" title="Permanent link">&para;</a></h3>
-<h4 id="_4">完全嵌入<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h2 id="fullyby-reference">完全嵌入(Fully)与引用嵌入(by reference)的比较<a class="headerlink" href="#fullyby-reference" title="Permanent link">&para;</a></h2>
+<h3 id="_4">完全嵌入<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>嵌入对象是外层对象的一部分，存储在同一块内存中，并且与外层对象紧密绑定，生命周期由外层对象完全管理，所以它的构造和析构都是自动管理的，其内存也与外层对象一起分配，固定且静态，适用于这些场景：嵌入对象是外层对象不可分割的一部分、嵌入对象的大小在编译时已知、需要强生命周期管理</p>
-<h4 id="_5">引用嵌入<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h3 id="_5">引用嵌入<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>嵌入对象存储在其他地方（通过指针或引用指向外部对象），外层对象仅持有对嵌入对象的引用，不直接拥有其内存，所以我们需要手动地去管理它的构造和析构。除此之外，引用的对象可以动态分配，可以指向已经存在的对象，比较灵活。多个外层对象也可以引用同一个嵌入对象。适用于以下场景：嵌入对象不完全属于外层对象，可能被其他对象共享；嵌入对象的大小在编译的时候是未知的；嵌入对象需要再运行时动态分配或链接</p>
 <div class="admonition note">
 <p class="admonition-title">Tip</p>
@@ -1339,7 +1422,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 05:50:11 UTC"><span class="timeago" datetime="2025-06-28T05:50:11+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 05:50:11 UTC">2025-06-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 08:39:22 UTC"><span class="timeago" datetime="2025-06-28T08:39:22+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 08:39:22 UTC">2025-06-28</span>
   </span>
 
     

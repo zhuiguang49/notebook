@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#w10-copy-and-move" class="md-skip">
+        <a href="#copyingcopy-constructor" class="md-skip">
           跳转至
         </a>
       
@@ -658,28 +658,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#w10-copy-and-move" class="md-nav__link">
-    <span class="md-ellipsis">
-      W10 Copy and Move（拷贝和移动）
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="W10 Copy and Move（拷贝和移动）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#copyingcopy-constructor" class="md-nav__link">
     <span class="md-ellipsis">
       拷贝(Copying)与拷贝构造函数(Copy Constructor)
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="拷贝(Copying)与拷贝构造函数(Copy Constructor)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      拷贝
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      移动构造函数
+      拷贝构造函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      拷贝构造函数何时被调用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constructionassignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      构造(Construction)和赋值(Assignment)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数参数和返回值
     </span>
   </a>
   
@@ -687,6 +714,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      移动构造函数
+    </span>
+  </a>
   
 </li>
       
@@ -1170,28 +1206,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#w10-copy-and-move" class="md-nav__link">
-    <span class="md-ellipsis">
-      W10 Copy and Move（拷贝和移动）
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="W10 Copy and Move（拷贝和移动）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#copyingcopy-constructor" class="md-nav__link">
     <span class="md-ellipsis">
       拷贝(Copying)与拷贝构造函数(Copy Constructor)
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="拷贝(Copying)与拷贝构造函数(Copy Constructor)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      拷贝
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      移动构造函数
+      拷贝构造函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      拷贝构造函数何时被调用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constructionassignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      构造(Construction)和赋值(Assignment)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数参数和返回值
     </span>
   </a>
   
@@ -1199,6 +1262,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      移动构造函数
+    </span>
+  </a>
   
 </li>
       
@@ -1223,9 +1295,8 @@
 
   <h1>Week10 Copy and Move</h1>
 
-<h2 id="w10-copy-and-move">W10 Copy and Move（拷贝和移动）<a class="headerlink" href="#w10-copy-and-move" title="Permanent link">&para;</a></h2>
-<h3 id="copyingcopy-constructor">拷贝(Copying)与拷贝构造函数(Copy Constructor)<a class="headerlink" href="#copyingcopy-constructor" title="Permanent link">&para;</a></h3>
-<h4 id="_1">拷贝<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<h2 id="copyingcopy-constructor">拷贝(Copying)与拷贝构造函数(Copy Constructor)<a class="headerlink" href="#copyingcopy-constructor" title="Permanent link">&para;</a></h2>
+<h3 id="_1">拷贝<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>拷贝指的是从现有对象创建新对象的副本，比如常见的值传递、初始化等等都是这么进行的，可以看下面这个例子：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">Currency</span><span class="w"> </span><span class="n">p</span><span class="p">){</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;X=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">dollars</span><span class="p">();</span><span class="w"> </span><span class="cm">/* 这里函数func接受一个Currency类型的参数p，以值传递的方式传递；</span>
@@ -1237,7 +1308,7 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">func</span><span class="p">(</span><span class="n">bucks</span><span class="p">);</span>
 </code></pre></div>
 <p>创建了一个<code>Currency</code>对象<code>bucks</code>，<code>func(bucks)</code>调用<code>func</code>，将<code>bucks</code>作为参数传递，由于<code>func</code>使用值传递，C++会调用<code>Currency</code>的拷贝构造函数，基于<code>bucks</code>创建一个新对象<code>p</code>，<code>p</code>是<code>bucks</code>的副本，包含相同的数据，但是位于不同的内存地址。</p>
-<h4 id="_2">拷贝构造函数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h3 id="_2">拷贝构造函数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>拷贝构造函数的典型签名是<code>T::T(const T&amp;)</code>，用于实现拷贝。需要注意的是，拷贝构造函数的<strong>第一个参数必须是同类对象的引用</strong>，并且<strong>无返回类型</strong>，像以下几个都是不对的：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">MyClass</span><span class="o">&amp;</span><span class="p">(</span><span class="n">MyClass</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">MyClass</span><span class="p">(</span><span class="n">Myclass</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
@@ -1256,7 +1327,7 @@
 </code></pre></div>
 <p>对于这个例子来说，如果<code>Person</code>类没有定义拷贝构造函数的话，那么编译器生成的默认拷贝构造函数就会直接拷贝<code>name</code>指针的值，结果是两个<code>name</code>对象（原对象和副本）的<code>name</code>指针指向同一块内存（浅拷贝），那么就会导致当其中一个对象被销毁的时候，其析构函数已经释放了<code>name</code>指向的内存，此时另一个对象的<code>name</code>指针就会变成<strong>悬空指针（指向已释放的内存）</strong>，后续访问或释放会导致未定义行为。</p>
 <p>这里有必要先简单介绍一下拷贝的两种类型——<strong>浅拷贝</strong>和<strong>深拷贝</strong>，浅拷贝是在拷贝指针；而深拷贝是拷贝整个数据块。具体来说，浅拷贝仅仅拷贝了指针的值，新对象和原对象的指针指向的是同一块内存，这样会导致内存共享，析构时可能双重释放或产生悬空指针；深拷贝则是为新对象分配新内存，并复制指针指向的数据。</p>
-<h4 id="_3">拷贝构造函数何时被调用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h3 id="_3">拷贝构造函数何时被调用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>对象初始化</strong>：即使用现有对象初始化新对象的时候，如下面的例子：</li>
 </ol>
@@ -1280,7 +1351,7 @@
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">local</span><span class="p">;</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
 </code></pre></div>
-<h4 id="constructionassignment">构造(Construction)和赋值(Assignment)<a class="headerlink" href="#constructionassignment" title="Permanent link">&para;</a></h4>
+<h3 id="constructionassignment">构造(Construction)和赋值(Assignment)<a class="headerlink" href="#constructionassignment" title="Permanent link">&para;</a></h3>
 <ul>
 <li>每个对象只会被构造一次（通过构造函数或者拷贝构造函数等）</li>
 <li>每个对象只会被销毁一次（通过析构函数），如果没有正确调用<code>delete</code>，则可能导致内存泄漏；如果多次调用<code>delete</code>，则可能导致未定义行为</li>
@@ -1296,7 +1367,7 @@
 <li>如果类不需要拷贝构造函数，我们可以在类中声明一个私有的拷贝构造函数（不提供定义），这会阻止编译器生成默认拷贝构造函数，并且如果我们尝试按值传递对象的话，编译器会报错</li>
 </ul>
 </div>
-<h4 id="_4">函数参数和返回值<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h3 id="_4">函数参数和返回值<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>参数的传入方式有三种：</p>
 <ul>
 <li><code>void f(Student i)</code>，即按值传递，会调用拷贝构造函数创建新对象<code>i</code>，开销比较大</li>
@@ -1309,7 +1380,7 @@
 <li><code>Student* f()</code>，返回指向<code>Student</code>的指针，但是我们需要负责释放内存，很容易导致内存泄漏或者悬空指针。</li>
 <li><code>Student &amp;f()</code>，返回引用，通常引用函数内部的局部对象或传入的对象。<strong>返回局部对象的引用会导致未定义行为。</strong></li>
 </ul>
-<h3 id="_5">移动构造函数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h2 id="_5">移动构造函数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 
 
 
@@ -1330,7 +1401,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 05:50:11 UTC"><span class="timeago" datetime="2025-06-28T05:50:11+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 05:50:11 UTC">2025-06-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 08:39:22 UTC"><span class="timeago" datetime="2025-06-28T08:39:22+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 08:39:22 UTC">2025-06-28</span>
   </span>
 
     
