@@ -1,0 +1,2466 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/">
+      
+      
+        <link rel="prev" href="../Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/">
+      
+      
+        <link rel="next" href="../Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter4 Markov链 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter4-markov" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter4 Markov链
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Home/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Home/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的分类和定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter4-markov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter4 Markov链
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter4 Markov链">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#markov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markov链的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markov_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markov链的状态分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      平稳分布
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      闭集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      吸收概率与平均吸收时间
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markov_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      可逆Markov链
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter4-markov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter4 Markov链
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter4 Markov链">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#markov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markov链的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markov_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markov链的状态分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      平稳分布
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      闭集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      吸收概率与平均吸收时间
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markov_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      可逆Markov链
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Chapter4 Markov链</h1>
+
+<h2 id="chapter4-markov">Chapter4 Markov链<a class="headerlink" href="#chapter4-markov" title="Permanent link">&para;</a></h2>
+<h3 id="markov">Markov链的定义<a class="headerlink" href="#markov" title="Permanent link">&para;</a></h3>
+<h4 id="_1">马尔科夫链的定义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>我们约定对于条件概率<span class="arithmatex">\(P(A|B)\)</span>都是在假设<span class="arithmatex">\(P(B)&gt;0\)</span>的条件下</p>
+</blockquote>
+<p>定义1：设随机过程<span class="arithmatex">\(\left\{X_n;n=0,1,2,\dots\right\}\)</span>的状态空间<span class="arithmatex">\(I\)</span>有限或可列，如果具有Markov性（无后效性或无记忆性），也即
+$$
+P(X_{n+1}=j|X_0=i_0,\cdots,X_{n-1}=i_{n-1}，X_n=i)=P(X_{n+1}=j|X_n = i)
+$$
+则称<span class="arithmatex">\(\left\{X_n\right\}\)</span>是马尔科夫链(Markov chain)。如果状态空间<span class="arithmatex">\(I\)</span>是有限的，我们称<span class="arithmatex">\(\left\{X_n\right\}\)</span>是有限马尔科夫链</p>
+<blockquote>
+<p>Markov性的直观含义：</p>
+<p>我们令<span class="arithmatex">\(A=\left\{X_0=i_0,\dots,X_{n-1}=i_{n-1}\right\},B=\left\{X_n = i\right\},C=\left\{X_{n+1}=j\right\}\)</span>，其分别代表过去、现在、将来，则Markov性可以表示为<span class="arithmatex">\(P(C|AB)=P(C|B)\)</span>，即已知到现在为止的所有状态，则将来的分布只与现在状态有关，而与过去的状态无关。</p>
+<p>我们记<span class="arithmatex">\(P_B(D)=P(D|B)\)</span>，则Markov性可以表示为：
+$$
+P(C|AB)=P(C|B) \iff P_B(C|A)=P_B(C)
+$$
+也就是说，<strong>在已知现在状态的条件下，过去与将来是相互独立的</strong>，在本题的情境下，即已知<span class="arithmatex">\(X_n=i\)</span>的条件下，则有<span class="arithmatex">\((X_0,\dots,X_{n-1})\)</span>与<span class="arithmatex">\((X_{n+1})\)</span>是相互独立的，但是<strong>过去与将来并非独立，这种独立是条件性的</strong></p>
+</blockquote>
+<p>下面我们进行一些记号的说明：</p>
+<ul>
+<li>对<span class="arithmatex">\(n\geq m \geq 0\)</span>和状态<span class="arithmatex">\(i,j\)</span>，我们记
+  $$
+  P_{ij}(m,n)=P(X_n=j|X_m =i)
+  $$
+  它表示在<span class="arithmatex">\(m\)</span>时处于状态<span class="arithmatex">\(i\)</span>的条件下，到<span class="arithmatex">\(n\)</span>时转移到状态<span class="arithmatex">\(j\)</span>的转移概率</li>
+</ul>
+<p>其有以下性质：</p>
+<ul>
+<li><span class="arithmatex">\(p_{ij}(m,n)\geq 0\)</span></li>
+<li><span class="arithmatex">\(\sum_{j \in I}p_{ij}(m,n) =1\)</span></li>
+</ul>
+<blockquote>
+<p>如若状态空间<span class="arithmatex">\(I = \left\{x_1,x_2,\dots\right\}\)</span>，其元素个数为<span class="arithmatex">\(K\)</span>，我们令
+$$
+P(m,n) = (p_{x_i,x_j}(m,n))<em x_1_x_1="x_1,x_1">{K \times K}
+\\=
+\begin{pmatrix}
+p</em>(m,n) \
+p_{x_2,x_1}(m,n) &amp; p_{x_2,x_2}(m,n) &amp; \cdots &amp; p_{x_2,x_K}(m,n) \
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+p_{x_K,x_1}(m,n) &amp; p_{x_K,x_2}(m,n) &amp; \cdots &amp; p_{x_K,x_K}(m,n)
+\end{pmatrix}
+$$
+我们称其为}(m,n) &amp; p_{x_1,x_2}(m,n) &amp; \cdots &amp; p_{x_1,x_K<span class="arithmatex">\(m\)</span>时到<span class="arithmatex">\(n\)</span>时的转移矩阵（矩阵的第<span class="arithmatex">\(i+1\)</span>行就是给定<span class="arithmatex">\(X_n=i\)</span>时，<span class="arithmatex">\(X_{n+1}\)</span>的条件概率分布），其具有以下性质：</p>
+<ul>
+<li>各元素非负，每行元素之和为1</li>
+</ul>
+</blockquote>
+<p>定义2：如果对任何状态<span class="arithmatex">\(i,j\)</span>，转移概率<span class="arithmatex">\(P(X_{n+1}=j|X_n = i)\)</span>与<span class="arithmatex">\(n\)</span>无关，则称<span class="arithmatex">\(\left\{X_n\right\}\)</span>是时间齐次的Markov链，也称该Markov链有平稳转移概率，此时我们将<span class="arithmatex">\(P(X_{n+1}=j|X_n=i)\)</span>记为<span class="arithmatex">\(p_{ij}\)</span>，称其为从<span class="arithmatex">\(i\)</span>到<span class="arithmatex">\(j\)</span>的一步转移概率，令<span class="arithmatex">\(P=P(n,n+1)\)</span>，则称它为一步转移矩阵</p>
+<blockquote>
+<p>对于这种时间齐次的Markov链<span class="arithmatex">\(\left\{X_n\right\}\)</span>，一旦我们到达了状态<span class="arithmatex">\(i\)</span>，就独立于过去，也忘记所处的时间，接下来的行为就如同0时刻从<span class="arithmatex">\(i\)</span>出发的行为，下一步以概率<span class="arithmatex">\(p_{ij}\)</span>到达状态<span class="arithmatex">\(j\)</span></p>
+</blockquote>
+<h4 id="_2">马尔科夫链的例子<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p><strong>例1</strong> （车险中的NCD系统）欧亚洲大部分汽车保险年金由所谓的好-坏系统确定，也就是无赔款优待系统，即NCD(No Claim Discount)系统，按照如下方式定义：</p>
+<ol>
+<li>保险人被分成级别<span class="arithmatex">\(1,2,\dots,m\)</span></li>
+<li>每年的保费只依赖于被保险人当年的级别</li>
+<li>下一年被保险人所处的级别由今年的级别和今年的理赔次数唯一确定</li>
+</ol>
+<blockquote>
+<p>低级别对应于低的保险年金，无理赔是好的，一般会导致级别和保费下降；而有理赔是坏的，一般会导致级别和保费上升；理赔次数越多，级别和保费就会上升越多，下面我们以一个只有三个级别的NCD系统来说明问题：</p>
+<p><img alt="image-20250404113919659" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250404113919659.png" /></p>
+</blockquote>
+<p>我们设某参保人的初始级别是2，各年理赔次数独立同分布，且都服从均值为<span class="arithmatex">\(\lambda&gt;0\)</span>的泊松分布，令<span class="arithmatex">\(X_i\)</span>是他在第<span class="arithmatex">\(i\)</span>年的级别，则<span class="arithmatex">\(\left\{X_n;n\geq 0\right\}\)</span>是时齐Markov链，状态空间为<span class="arithmatex">\(I=\left\{1,2,3\right\}\)</span>，则一步转移矩阵为
+$$
+\begin{pmatrix}
+p_0+p_1 &amp; 1-p_0-p_1 &amp; 0\
+p_0 &amp;p_1&amp;1-p_0-p_1\
+0&amp;p_0&amp;1-p_0
+\end{pmatrix}
+$$
+这里<span class="arithmatex">\(p_k=\frac{\lambda^k}{k!}e^{-\lambda},k=0,1\)</span></p>
+<blockquote>
+<p>回顾一下一步转移矩阵的元素<span class="arithmatex">\(p_{11}(n,n+1)=P(X_{n+1}=1|X_n=1)=p_0+p_1\)</span></p>
+</blockquote>
+<p><strong>例2</strong> （排队模型）有一个修理店，每天只能修好一个机器，不修当天送来的机器，假定第<span class="arithmatex">\(n\)</span>天有<span class="arithmatex">\(\xi_n\)</span>个机器损坏，则第<span class="arithmatex">\(n+1\)</span>天把这<span class="arithmatex">\(\xi_n\)</span>个机器送往此店维修，令<span class="arithmatex">\(X_n\)</span>表示第<span class="arithmatex">\(n\)</span>天结束时此店中机器的个数，则有
+$$
+X_{n+1}=\max(X_n-1,0)+\xi_n
+$$
+如果有<span class="arithmatex">\(\xi_1,\xi_2,\dots\)</span>独立同分布，且与<span class="arithmatex">\(X_0\)</span>独立，则<span class="arithmatex">\(\left\{X_n;n\geq 0\right\}\)</span>是时齐Markov链，状态空间<span class="arithmatex">\(I=\left\{0,1,2,\dots\right\}\)</span></p>
+<blockquote>
+<p>这里要取<span class="arithmatex">\(\max(X_n-1,0)\)</span>是因为店里有可能没有损坏的机器，在这种情况下<span class="arithmatex">\(X_{N+1}\)</span>取0</p>
+</blockquote>
+<p>我们令<span class="arithmatex">\(P(\xi_1=k)=a_k,k\geq 0\)</span>，则根据<span class="arithmatex">\(X_{n+1}=\max(X_n-1,0)+\xi_n\)</span>得一步转移概率为：
+$$
+p_{ij}=\begin{cases}
+a_j,&amp;i=0\
+a_{j-i+1},&amp;i&gt;0且j\geq i-1\
+0，&amp;其他
+\end{cases}
+$$</p>
+<blockquote>
+<p>这里的推导是这样的，对于<span class="arithmatex">\(i\geq 1,p_{ij}=P(X_{n+1}=j|X_n=i)=P(i-1+\xi_n=j)=P(\xi_n=j-i+1)=a_{j-i+1}\)</span></p>
+</blockquote>
+<p><strong>例3</strong> （波利亚罐子模型）设一个罐子中装有<span class="arithmatex">\(r\)</span>个红球，<span class="arithmatex">\(b\)</span>个黑球，每次从罐子中任取一球，记录其颜色后将球放回，并加入<span class="arithmatex">\(a\)</span>个相同颜色的球，持续进行这一过程，令<span class="arithmatex">\(X_n\)</span>表示第<span class="arithmatex">\(n\)</span>次试验结束时罐子中的红球数，则随机过程<span class="arithmatex">\(\left\{X_n;n\geq 0\right\}\)</span>的状态空间为<span class="arithmatex">\(I=\left\{r,r+a,r+2a,\dots\right\}\)</span>，这是一个Markov链吗</p>
+<p><strong>解</strong> 要说明这是一个Markov链，则要证明对正整数<span class="arithmatex">\(n\)</span>和状态<span class="arithmatex">\(i_0,i_1,\dots,i_{n-1},i,j\)</span>，在<span class="arithmatex">\(X_0=i_0,\cdots,X_{n-1}=i_{n-1},X_n=i\)</span>的条件下，第<span class="arithmatex">\(n+1\)</span>次取球时罐子中共有<span class="arithmatex">\(r+b+na\)</span>个球，其中有<span class="arithmatex">\(i\)</span>个红球，考虑
+$$
+P(X_{n+1}=j|X_0=i_0,\cdots,X_{n-1}=i_{n-1},X_n=i)=\begin{cases}
+\frac{i}{r+b+na},&amp;j=i+a\
+1-\frac{i}{r+b+na},&amp;j=i\
+0,&amp;其他
+\end{cases}
+$$
+其与<span class="arithmatex">\(i_0,i_1,\dots,i_{n-1}\)</span>无关，但是其与<span class="arithmatex">\(n\)</span>有关，所以这是一个Markov链，但不是一个时间齐次的Markov链</p>
+<p><strong>例4</strong> 独立同分布的随机变量序列是时间齐次的Markov链</p>
+<p><strong>例5</strong> （定期清理模型）假设某人在某周一0:00（把这个当成0时刻）开始使用某部手机，他会在每周日下午整理并清空除本周和上周之外的所有照片，对于<span class="arithmatex">\(i\geq 0\)</span>，我们令<span class="arithmatex">\(X_i\)</span>表示第<span class="arithmatex">\(i+1\)</span>周新产生的手机照片的数量，令<span class="arithmatex">\(Y_i\)</span>表示第<span class="arithmatex">\(i+2\)</span>周最后时刻手机里的照片数量，则有<span class="arithmatex">\(Y_i=X_i+X_{i+1}\)</span>，设<span class="arithmatex">\(X_0,X_1,\dots\)</span>独立同分布，都服从均值为<span class="arithmatex">\(\lambda &gt;0\)</span>的泊松分布，则<span class="arithmatex">\(\left\{X_n;n\geq 0\right\}\)</span>是时间齐次的Markov链，问<span class="arithmatex">\(\left\{Y_n;n\geq 0\right\}\)</span>是Markov链吗，为什么</p>
+<blockquote>
+<p>提示，计算<span class="arithmatex">\(P(Y_2=0|Y_0=0,Y_1=1)\)</span>和<span class="arithmatex">\(P(Y_2=0|Y_1=1)\)</span>，如果具有Markov性，两者应该相等</p>
+<p><span class="arithmatex">\(Y_0=0\iff X_0=0,X_1=0\qquad Y_1=1\iff X_1=0,X_2=1 \qquad Y_2=0 \iff X_2=0,X_3=0\)</span></p>
+<p>我们发现这是矛盾的，所以左边的条件概率值必然为0；而对于右边的条件概率，则有
+$$
+P(Y_2=0|Y_1=1)=P(X_2+X_3=0|X_1+X_2=1)=\frac{P(X_2=0,X_3=0,X_1=1)}{P(X_1=0,X_2=1)+P(X_1=1,X_2=0}\=\frac{P(X_2=0)P(X_3=0)P(X_1=1)}{P(X_1=0)P(X_2=1)+P(X_1=1)P(X_2=0)}=\frac{P(X_2=0)}{2}=\frac{e^{-\lambda}}{2}\neq 0
+$$
+故<span class="arithmatex">\(Y_n\)</span>不是Markov链</p>
+</blockquote>
+<h4 id="_3">马尔科夫链的有限维分布<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>从这一讲开始，我们只考虑<strong>时间齐次</strong>的Markov链</p>
+<p>首先我们介绍它的各步转移概率之间满足著名的Chapman-Kolmogorov方程，简称C-K方程</p>
+<p><strong>引理 C-K方程</strong>：</p>
+<p>对任何$n\geq 0,m,l\geq 1,i,j\in R  $，有
+$$
+p_{ij}(n,n+m+l)=\sum_{k\in I}p_{ik}(n,n+m)p_{kj}(n+m,n+m+l)
+$$</p>
+<blockquote>
+<p>即先从<span class="arithmatex">\(i\)</span>转移到<span class="arithmatex">\(k\)</span>，再从<span class="arithmatex">\(k\)</span>转移到<span class="arithmatex">\(j\)</span></p>
+</blockquote>
+<p>写成矩阵形式就是
+$$
+P(n,n+m+l)=P(n,n+m)P(n+m,n+m+l)
+$$
+其证明用到了全概率公式和Markov性：
+$$
+p_{ij}(n,n+m+l)=P(X_{n+m+l}=j|X_n=i)=\sum_{k\in I}P(X_{n+m}=k|X_n=i)P(X_{n+m+l=j}=j|X_n=i,X_{n+m}=k)\=\sum_{k\in I}P(X_{n+m}=k|X_n=i)P(X_{n+m+l}=j|X_{n+m}=k)=\sum_{k\in I}p_{ik}(n,n+m)p_{kj}(n+m,n+m+l)
+$$</p>
+<p>若我们记<span class="arithmatex">\(P(n,n+1)=P\)</span>那么由C-K方程我们就可以得到，对任何<span class="arithmatex">\(n\geq 0\)</span>和<span class="arithmatex">\(m\geq 1\)</span>，有
+$$
+P(n,n+m)=P^m
+$$
+不依赖于<span class="arithmatex">\(n\)</span>，其证明可以由归纳法完成：</p>
+<p>因为<span class="arithmatex">\(\left\{X_n\right\}\)</span>是一个时间齐次的Markov过程，所以有<span class="arithmatex">\(P(n,n+1)\)</span>不依赖于<span class="arithmatex">\(n\)</span>，即结论对于<span class="arithmatex">\(m=1\)</span>成立，我们假设对于<span class="arithmatex">\(m=k\)</span>成立，则由C-K方程可以得到：
+$$
+P(n,n+k+1)=P(n,n+k)P(n+k,n+k+1)=P^kP=P^{k+1}
+$$
+也即结论对于<span class="arithmatex">\(m=k+1\)</span>也成立，那么由数学归纳法可以知道，结论对于所有的<span class="arithmatex">\(m\geq 1\)</span>均成立。</p>
+<p>我们记<span class="arithmatex">\(P^{(m)}=P(n,n+m)=P^m\)</span>，称为<span class="arithmatex">\(m\)</span>步转移矩阵，即<span class="arithmatex">\(p_{ij}^{(m)}=p_{ij}(n,n+m)\)</span>，其表示从<span class="arithmatex">\(i\)</span>到<span class="arithmatex">\(j\)</span>的<span class="arithmatex">\(m\)</span>步转移概率</p>
+<blockquote>
+<p>简单来说，<span class="arithmatex">\(P^n\)</span>是Markov链的<span class="arithmatex">\(n\)</span>步转移矩阵，而<span class="arithmatex">\(P^{(n)}\)</span>可以通过转移概率矩阵<span class="arithmatex">\(P\)</span>求出，即
+$$
+P^{(n)}=P\times P\times \cdots\times P=P^n
+$$
+也即<span class="arithmatex">\(n\)</span>步转移矩阵<span class="arithmatex">\(P^n\)</span>可以由一步转移矩阵<span class="arithmatex">\(P\)</span>自乘<span class="arithmatex">\(n\)</span>次得到</p>
+</blockquote>
+<p>我们希望<strong>由初始分布和一步转移矩阵写出Markov链的有限维分布</strong>，则有以下命题：</p>
+<blockquote>
+<p>下面这个命题是非常重要的，我个人觉得对初学者理解Markov链很重要</p>
+</blockquote>
+<p>(1) 对任何<span class="arithmatex">\(n\geq 1\)</span>，有<span class="arithmatex">\(P(X_n=j)=\sum_{i\in I}P(X_0=i)P(X_n=j|X_0=i)=\sum_{i}P(X_0=i)p_{ij}^{(n)}\)</span></p>
+<p>(2) 对任何<span class="arithmatex">\(n_1&lt;n_2&lt;\dots&lt;n_k\)</span>（这里时间是按照递增顺序排列的），有
+$$
+P(X_{n_1}=i_1,X_{n_2}=i_2,\dots,X_{n_k}=i_k)=P(X_{n_1}=i_1)P(X_{n_2}=i_2|X_{n_1}=i_1)P(X_{n_3}=i_3|X_{n_2}=i_2,X_{n_1}=i_1)\cdots\=P(X_{n_1}=i_1)p_{i_1i_2}^{(n_2-n_1)}\cdots p_{i_{k-1}i_k}^{n_k-n_{k-1}}
+$$
+若我们把初始分布和<span class="arithmatex">\(n\)</span>步分布分别写成行向量的形式，则可以得到：
+$$
+\mu^{(0)}=(P(X_0=x_1),P(X_0=x_2),\dots)\
+\mu^{(n)}=(P(X_n=x_1),P(X_n=x_2),\dots)
+$$
+则有<span class="arithmatex">\(\mu^{(n)}=\mu^{(0)}P^n\)</span></p>
+<p>即我们可以得到结论：一个Markov链可由它的初始状态<span class="arithmatex">\(X_0\)</span>，或初始状态的概率分布以及转移概率矩阵完全确定（有限维分布由初始分布和一步转移概率决定）</p>
+<p>下面我们来看一道例题</p>
+<p><strong>例</strong> 设<span class="arithmatex">\(\left\{X_n;n\geq 0\right\}\)</span>是具有三个状态0,1,2的时间齐次的Markov链，一步转移矩阵为：</p>
+<p><img alt="image-20250404172534443" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250404172534443.png" /></p>
+<p>且初始分布为<span class="arithmatex">\(P(X_0=0)=P(X_0=1)=\frac{1}{2}\)</span>，计算</p>
+<p>(1)<span class="arithmatex">\(P(X_0=0,X_1=1,X_3=1)\)</span></p>
+<p>(2)<span class="arithmatex">\(P(X_3=1,X_1=1|X_0=0)\)</span></p>
+<p>(3)<span class="arithmatex">\(P(X_3=1)\)</span></p>
+<p>(4)<span class="arithmatex">\(P(X_0=0|X_3=1)\)</span></p>
+<p><strong>解</strong> </p>
+<p>对于第一问，则有
+$$
+P(X_0=0,X_1=1,X_3=1)=P(X_0=0)P(X_1=1|X_0=0)P(X_3=1|X_1=1,X_0=1)\=P(X_0=0)p_{01}p_{11}^{(2)}=\frac{1}{2}\times1\times \frac{7}{8}=\frac{7}{16}
+$$
+上面用到了两步转移矩阵，也即</p>
+<p><img alt="image-20250404173636490" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250404173636490.png" /></p>
+<p>对于第二问，也就是初始分布发生了变化，从<span class="arithmatex">\(X_0=0\)</span>出发
+$$
+P(X_3=1,X_1=1|X_0=0)=p_{01}p_{11}^{(2)}=\frac{7}{8}
+$$
+对于第三问，利用全概率公式
+$$
+P(X_3=1)=\sum_{i}P(X_0=i)p_{i1}^{(3)}\=P(X_0=0)p_{01}^{(3)}+P(X_0=1)p_{11}^{(3)}+P(X_0=2)p_{21}^{(3)}\=\frac{1}{2}\times\frac{7}{8}+\frac{1}{2}\times \frac{3}{32}+0=\frac{31}{64}
+$$
+上面用到了三步转移矩阵，也即</p>
+<p><img alt="image-20250404173719708" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250404173719708.png" /></p>
+<p>对于第四问，我们回到条件概率的定义，则有
+$$
+P(X_0=0|X_3=1)=\frac{P(X_0=0,X_3=1)}{P(X_3=1)}=\frac{P(X_3=1|X_0=0)P(X_0=0)}{P(X_3=1)}\=\frac{\frac{1}{2}p_{01}^{(3)}}{\frac{31}{64}}=\frac{28}{31}
+$$</p>
+<blockquote>
+<p>我们也可以不计算两步转移矩阵和三步转移矩阵<span class="arithmatex">\(P^2,P^3\)</span>，而是根据状态转移图和C-K方程来计算<span class="arithmatex">\(p_{11}^{(2)},p_{01}^{(3)},p_{11}^{(3)}\)</span></p>
+<p><img alt="image-20250404174304709" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250404174304709.png" /></p>
+<p>则我们可以得到
+$$
+p_{11}^{(2)}=p_{10}p_{01}+p_{12}p_{21}=\frac{7}{8}\
+p_{01}^{(3)}=p_{01}p_{11}^{(2)}=\frac{7}{8}\
+p_{11}^{(3)}=p_{12}p_{22}p_{21}=\frac{3}{32}
+$$</p>
+</blockquote>
+<p><strong>例</strong> 淘宝网上有5家网店卖同一种产品，设每位购买此种产品的顾客独立地任选一家网店进行购买，问经过5名顾客购买后，恰有3个网店被购买过的概率？</p>
+<p><strong>解</strong> 我们以<span class="arithmatex">\(X_n\)</span>表示前<span class="arithmatex">\(n+1\)</span>个顾客购买后被购买过的网店数目，那么<span class="arithmatex">\(\left\{X_n\right\}\)</span>是以<span class="arithmatex">\(I=\left\{1,2,3,4,5\right\}\)</span>为状态空间的时齐Markov链</p>
+<p><span class="arithmatex">\(X_0=1\)</span>，我们考虑其转移概率，
+$$
+P(X_{n+1}=j|X_n=i)=\begin{cases}
+\frac{i}{5} &amp;j=i\
+1-\frac{i}{5} &amp; j=i+1
+\end{cases}
+$$
+我们需要计算<span class="arithmatex">\(P(X_4=3)=p_{13}^{(4)}\)</span></p>
+<p><img alt="image-20250404191139659" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250404191139659.png" /></p>
+<p>有<span class="arithmatex">\(p_{13}^{(4)}=\sum_{i=1}^5p_{1i}^{(2)}p_{i3}^{(2)}=0.04\times0.48+0.48\times0.60+0.48\times0.3=0.48\)</span></p>
+<h3 id="markov_1">Markov链的状态分类<a class="headerlink" href="#markov_1" title="Permanent link">&para;</a></h3>
+<h4 id="_4">常返和暂留（瞬过）的定义（浙大版）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>我们提出一些问题：</p>
+<ol>
+<li>从一个状态出发是不是一定能够在有限时间内返回该状态？（是不一定的，如果是就称为常返态，否则称为暂留态）</li>
+<li>如果能够返回，那么平均返回时间（平均回转时）一定有限吗？（不一定，如果是则称为正常返，否则称为零常返）</li>
+<li>如果平均回转时有限，那么它的精确值是多少？（和平稳分布有关）</li>
+</ol>
+<p>定义<span class="arithmatex">\(\tau_i=\min\left\{n\geq 1:X_n=i\right\}\)</span>（我们约定<span class="arithmatex">\(\min \emptyset=\infty\)</span>），称为<span class="arithmatex">\(i\)</span>的首中时（首次击中<span class="arithmatex">\(i\)</span>的时刻）</p>
+<p>则<span class="arithmatex">\(\tau_i\)</span>的取值范围为<span class="arithmatex">\(\left\{1,2,3,\dots\right\}\cup\left\{ \infty\right\}\)</span></p>
+<blockquote>
+<p><span class="arithmatex">\(T_i=\min\left\{n\geq 0, X_n=i\right\}\)</span>，称为<span class="arithmatex">\(i\)</span>的首访时（后面在讲吸收概率与平均吸收时间的时候会提到）</p>
+</blockquote>
+<p>则有
+$$
+状态i\begin{cases}
+常返：&amp;P(\tau_i&lt;\infty|X_0=i)=1\
+暂留：&amp;P(\tau_i&lt;\infty|X_0=i)&lt;1
+\end{cases}
+$$
+<span class="arithmatex">\(i\)</span>常返：从<span class="arithmatex">\(i\)</span>出发以概率1在有限时间内返回<span class="arithmatex">\(i\)</span></p>
+<p><span class="arithmatex">\(i\)</span>暂留：从<span class="arithmatex">\(i\)</span>出发以正概率不再返回状态<span class="arithmatex">\(i\)</span></p>
+<p>若<span class="arithmatex">\(i\)</span>常返，我们定义
+$$
+\mu_i=E(\tau_i|X_0=i)
+$$
+为<span class="arithmatex">\(i\)</span>的平均回转时</p>
+<p>则有
+$$
+i常返\begin{cases}
+正常返：&amp;\mu_i&lt;\infty\
+零常返:  &amp;\mu_i=\infty
+\end{cases}
+$$</p>
+<p>从平均回转时来看，正常返返回速度快于零常返态</p>
+<p>为了计算<span class="arithmatex">\(P(\tau_i&lt;\infty|X_0=i),\mu_i\)</span>，我们需要引进概率，令
+$$
+f_{ij}^{(n)}=P(X_n=j,X_{n-1}\neq j,\cdots,X_1\neq j|X_0=i)=P(\tau_j=n|X_0=i)
+$$
+表示从<span class="arithmatex">\(i\)</span>出发第<span class="arithmatex">\(n\)</span>步首次击中<span class="arithmatex">\(j\)</span>的概率，令
+$$
+f_{ij}=P(\tau_j&lt;\infty|X_0=i)
+$$
+表示从<span class="arithmatex">\(i\)</span>出发有限时间内击中<span class="arithmatex">\(j\)</span>的概率，特别地，<span class="arithmatex">\(f_{ii}=P(\tau_i&lt;\infty|X_0=i)\)</span></p>
+<p>则有
+$$
+f_{ij}=\sum_{n=1}^{\infty}f_{ij}^{(n)}=\lim_{N\to \infty}\sum_{n=1}^{N}f_{ij}^{(n)}
+$$</p>
+<blockquote>
+<ul>
+<li><span class="arithmatex">\(i\)</span>常返<span class="arithmatex">\(\iff\)</span><span class="arithmatex">\(f_{ii}=1\)</span>，<span class="arithmatex">\(i\)</span>暂留<span class="arithmatex">\(\iff\)</span><span class="arithmatex">\(f_{ii}&lt;1\)</span></li>
+<li>若<span class="arithmatex">\(i\)</span>常返，则有<span class="arithmatex">\(\mu_i=\sum_{n=1}^{\infty}nf_{ii}^{(n)}\)</span></li>
+</ul>
+</blockquote>
+<p>下面我们给出<strong>吸收态</strong>的定义</p>
+<p>如果<span class="arithmatex">\(p_{ii}=1\)</span>，则称状态<span class="arithmatex">\(i\)</span>是吸收态，其具有以下性质：</p>
+<ul>
+<li>Markov链一旦到达吸收态<span class="arithmatex">\(i\)</span>，就将永远待在状态<span class="arithmatex">\(i\)</span></li>
+<li>如果<span class="arithmatex">\(i\)</span>是吸收态，则<span class="arithmatex">\(f_{ii}=1,\mu_i=1,i\)</span>是正常返态</li>
+</ul>
+<p>下面我们看一个例子：如下图所示的两状态Markov链，判断状态0的常返性</p>
+<p><img alt="image-20250411091258009" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250411091258009.png" /></p>
+<p><strong>解</strong> <span class="arithmatex">\(f_{00}^{(1)}=0.2,n\geq 2时，f_{00}^{(n)}=0\)</span></p>
+<p>所以有<span class="arithmatex">\(f_{00}=0.2&lt;1\)</span>，故<span class="arithmatex">\(0\)</span>是暂留态</p>
+<h5 id="_5">常返和暂留的等价概率含义<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
+<p>若我们以<span class="arithmatex">\(N_i\)</span>表示<span class="arithmatex">\(X_0,X_1,\cdots\)</span>访问<span class="arithmatex">\(i\)</span>的次数，则<span class="arithmatex">\(i\)</span><strong>常返</strong><span class="arithmatex">\(\iff P(N_i=\infty|X_0=i)=1\)</span>，也即从<span class="arithmatex">\(i\)</span>出发以概率1返回<span class="arithmatex">\(i\)</span>无穷多次（经常返回），如下所示
+$$
+i\overset{以概率1返回}{\to}i\overset{以概率1返回}{\to}i\overset{以概率1返回}{\to}i\cdots
+$$
+<span class="arithmatex">\(i\)</span><strong>暂留</strong><span class="arithmatex">\(\iff P(N_i=\infty|X_0=i)=0\)</span>，也即从<span class="arithmatex">\(i\)</span>出发以概率1返回<span class="arithmatex">\(i\)</span>有限多次，如下图所示</p>
+<p><img alt="image-20250411092631018" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250411092631018.png" /></p>
+<p>则有
+$$
+P(N_i\geq2|X_0=i)=f_{ii}\qquad P(N_i\geq n+1|X_0=i)=f_{ii}^{(n)}\
+n\to \infty ,\ P(N_i=\infty|X_0=i)=0
+$$
+下面我们看一些例题</p>
+<p><a id="section-1"></a>  </p>
+<p><img alt="image-20250411093310288" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250411093310288.png" /></p>
+<p>这里看状态转移图会比看矩阵容易一些，矩阵的话就是计算矩阵的乘积（这里和离散数学中的图有点像）</p>
+<p>先考虑状态<span class="arithmatex">\(0\)</span>，<span class="arithmatex">\(f_{00}^{(1)}=0,f_{00}^{(2)}=p_{03}p_{30}=\frac{1}{4},f_{00}^{(3)}=p_{03}p_{33}p_{30}=\frac{1}{8}\)</span></p>
+<p><span class="arithmatex">\(n\geq 4\)</span>时，<span class="arithmatex">\(f_{00}^{(n)}=p_{03}p_{33}^{(n-2)}p_{30}+p_{01}p_{12}p_{23}p_{33}^{(n-4)}p_{30}=\frac{1}{2^n}+\frac{1}{2^{n-2}}\)</span></p>
+<p>所以有<span class="arithmatex">\(f_{00}=\sum_{n=1}^{\infty}f_{00}^{(n)}=\sum_{n=2}^{\infty}\frac{1}{2^n}+\sum_{n=4}^{\infty}\frac{1}{2^{n-2}}=1\)</span>，故<span class="arithmatex">\(0\)</span>是常返态。进一步我们考虑平均回转时，有
+$$
+\mu_0=\sum_{n=2}^{\infty}n\frac{1}{2^n}+\sum_{n=4}^{\infty}n\frac{1}{2^{n-2}}=4
+$$
+所以<span class="arithmatex">\(0\)</span>是正常返态</p>
+<p>再考虑状态<span class="arithmatex">\(3\)</span>，有<span class="arithmatex">\(f_{33}^{(1)}=\frac{1}{2},f_{33}^{(2)}=p_{30}p_{03}=\frac{1}{4},f_{33}^{(4)}=p_{30}p_{01}p_{12}p_{23}=\frac{1}{4}\)</span></p>
+<p>当<span class="arithmatex">\(n\geq 5\)</span>时，有<span class="arithmatex">\(f_{33}^{(n)}=0\)</span>（不可能是这种情况，最多4步即返回，而且上面三个概率的和也已经为1了）</p>
+<p>所以有<span class="arithmatex">\(f_{33}=\sum_{n=1}^{\infty}f_{33}^{(n)}=1\)</span>，故3是常返态，又有<span class="arithmatex">\(\mu_3=1*\frac{1}{2}+2*\frac{1}{4}+4*\frac{1}{4}=2\)</span>，所以3也是正常返态</p>
+<blockquote>
+<p>虽然状态0和状态3都是正常返态，但是考虑到平均回转时，状态3的平均回转时更小，所以返回状态3更频繁</p>
+<p>这里计算<span class="arithmatex">\(f_{11}^{(n)},f_{22}^{(n)}\)</span>很复杂，需要引入新的方法</p>
+</blockquote>
+<p><a id="section-2"></a>  </p>
+<p><img alt="image-20250411095147289" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250411095147289.png" /></p>
+<p><span class="arithmatex">\(f_{00}^{(1)}=p_{00}=q_0\)</span>，对<span class="arithmatex">\(n\geq2\)</span>
+$$
+f_{00}^{(n)}=p_{01}p_{12}\cdots p_{n-2,n-1}p_{n-1,0}=p_0p_1\cdots p_{n-2}(1-p_{n-1})\=p_0p_1\cdots p_{n-2}-p_0p_1\cdots p_{n-1}
+$$
+ 我们记<span class="arithmatex">\(u_0=1,u_n=p_0p_1\cdots p_{n-1},\forall n\geq 1\)</span>，则有
+$$
+f_{00}^{(n)}=u_{n-1}-u_{n},\forall n\geq 1
+$$
+所以<span class="arithmatex">\(f_{00}=(1-u_1)+(u_1-u_2)+\cdots+(u_{n-1}-u_n)+\cdots=1-\lim_{n\to \infty}u_n\)</span></p>
+<p>所以<span class="arithmatex">\(0\)</span>是常返态<span class="arithmatex">\(\iff \lim_{n\to \infty}u_n =0\)</span></p>
+<p>当<span class="arithmatex">\(0\)</span>是常返态时，<span class="arithmatex">\(u_n\)</span>递减且<span class="arithmatex">\(\lim_{n\to \infty }u_n=0\)</span>，我们接着考虑平均回转时，以确定<span class="arithmatex">\(0\)</span>是正常返还是零常返，考虑到
+$$
+\sum_{n=1}^{k}nf_{00}^{(n)}=(u_0-u_1)+2(u_1-u_2)+\cdots+k(u_{k-1}-u_k)=u_0+u_1+\cdots+u_{k-1}-ku_k\=(u_0-u_k)+(u_1-u_k)+\cdots+(u_{k-1}-u_k)
+$$
+则有
+$$
+\mu_0=\sum_{n=1}^{\infty}nf_{00}^{(n)}=\lim_{k\to \infty}\sum_{n=1}^{k}nf_{00}^{(n)}=\lim_{k\to\infty}\sum_{n=0}^{\infty}(u_n-u_k)=\sum_{n=0}^{\infty}u_n
+$$
+所以<span class="arithmatex">\(0\)</span>是正常返态<span class="arithmatex">\(\iff \lim_{n\to \infty }u_n =0,\ \sum_{n=0}^{\infty}u_n&lt;\infty\)</span>（第一个条件保证常返，第二个条件保证平均回转时有限）</p>
+<p>又由于<span class="arithmatex">\(\sum_{n=0}^{\infty}u_n&lt;\infty\)</span>包含了<span class="arithmatex">\(\lim_{n\to \infty }u_n =0\)</span>的条件，所以<span class="arithmatex">\(0\)</span>是正常返态<span class="arithmatex">\(\iff \sum_{n=0}^{\infty}u_n&lt;\infty\)</span></p>
+<p>那么总结一下可以得到
+$$
+0\begin{cases}
+暂留&amp;\lim_{n\to\infty}u_n &gt; 0\
+零常返 &amp;\lim_{n\to \infty}u_n=0但\sum_{n}u_n=\infty\
+正常返 &amp;\sum_{n}u_n&lt;\infty
+\end{cases}
+$$</p>
+<blockquote>
+<p>其实状态<span class="arithmatex">\(0\)</span>的常返性还可以这么考虑，对<span class="arithmatex">\(n\geq1\)</span>，我们考虑
+$$
+P(\tau_0&gt;n|X_0=0)=p_0p_1\cdots p_{n-1}记为u_n
+$$
+则有<span class="arithmatex">\(P(\tau_0=\infty|X_0=0)=\lim_{n\to \infty}u_n\)</span></p>
+<p>所以有<span class="arithmatex">\(0\)</span>是常返态当且仅当<span class="arithmatex">\(\lim_{n\to\infty}u_n=0\)</span></p>
+<p>这样怎么考虑平均回转时<span class="arithmatex">\(\mu_0=E[\tau_0|X_0=i]\)</span>呢，我们可以考虑伪概率的和，也即
+$$
+E[\tau_0|X_0=i]=\sum_{n=0}^{\infty}P(\tau_0&gt;n|X_0=i)=\sum_{n=0}^{\infty}u_n
+$$</p>
+</blockquote>
+<p>例如</p>
+<ul>
+<li>如果 $ p_i = e^{-\frac{1}{(i+1)^2}} $，那么 $ u_n = e^{-(1 + \frac{1}{2^2} + \cdots + \frac{1}{n^2})} \to e^{-\sum_{i=1}^\infty \frac{1}{i^2}} &gt; 0 $， 因此 $ 0 $ 是暂留态。 </li>
+<li>如果 $ p_i = \frac{i+1}{i+2} $，那么 $ u_n = \frac{1}{n+1} <span class="arithmatex">\(，\)</span>\lim_{n \to \infty} u_n = 0<span class="arithmatex">\(，\)</span>\sum_{n=0}^\infty u_n = \infty$，因此 $ 0 $ 是零常返态。 </li>
+<li>如果 $ p_i = \frac{(i+1)^2}{(i+2)^2} $，那么 $ u_n = \frac{1}{(n+1)^2} <span class="arithmatex">\(，\)</span>\lim_{n \to \infty} u_n = 0<span class="arithmatex">\(，\)</span>\sum_{n=0}^\infty u_n &lt; \infty$，因此 $ 0 $ 是正常返态。</li>
+</ul>
+<p>其样本轨道如下图所示</p>
+<p><img alt="image-20250411102400163" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250411102400163.png" /></p>
+<p>那么我们再提出一个问题，其他状态的常返性怎么去判断呢，我们给出的答案是：考虑<strong>互达关系</strong></p>
+<h4 id="_6">常返和暂留（瞬过）的定义（中科大版）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>首先引入一个重要的概率<span class="arithmatex">\(f_{ij}^{(n)}\)</span>，它表示从<span class="arithmatex">\(i\)</span>出发在<span class="arithmatex">\(n\)</span>步转移时首次到达<span class="arithmatex">\(j\)</span>的概率，用式子表达即
+$$
+f_{ij}^{(n)}=0\
+f_{ij}^{(n)}=P\left{X_n=j,X_k\neq j,k=1,\cdots,n-1|X_0=i\right}
+$$
+而<span class="arithmatex">\(f_{ii}^{(n)}\)</span>就代表从<span class="arithmatex">\(i\)</span>出发在第<span class="arithmatex">\(n\)</span>次转移时首次回到状态<span class="arithmatex">\(i\)</span>的概率，因不曾出发就不可能有回来，所以约定<span class="arithmatex">\(f_{ii}^{(0)}=0\)</span>，同样定义
+$$
+f_{ii}^{(n)}=P\left{X_n=i,X_k\neq i,k=1,\cdots,n-1|X_0=i\right}
+$$
+记<span class="arithmatex">\(f_{ij}=\sum_{n=1}^{\infty}f_{ij}^{(n)}\)</span>，它是从<span class="arithmatex">\(i\)</span>出发最终转入状态<span class="arithmatex">\(j\)</span>的概率，当<span class="arithmatex">\(i\neq j\)</span>时，<span class="arithmatex">\(i\to j\)</span>当且仅当<span class="arithmatex">\(f_{ij}&gt;0\)</span>（这是因为<span class="arithmatex">\(f_{ij}\)</span>囊括了所有从<span class="arithmatex">\(i\)</span>经过有限步到达<span class="arithmatex">\(j\)</span>的可能，如果<span class="arithmatex">\(f_{ij}=0\)</span>，就说明不可能经过有限步到达<span class="arithmatex">\(j\)</span>）</p>
+<p>引入这个概率之后，就可以给出<strong>常返和瞬过的定义：</strong></p>
+<p>如果<span class="arithmatex">\(f_{ii}=1\)</span>，我们称状态<span class="arithmatex">\(i\)</span>是常返的，一个非常返状态就称为瞬过的</p>
+<blockquote>
+<p>从定义知道如果<span class="arithmatex">\(i\)</span>是常返的状态，那么从<span class="arithmatex">\(i\)</span>出发经过有限步转移后最终又回到<span class="arithmatex">\(i\)</span>的概率为1</p>
+</blockquote>
+<p>而我们怎么去判断一个状态<span class="arithmatex">\(i\)</span>是常返的呢？我们给出用<span class="arithmatex">\(n\)</span>步转移概率<span class="arithmatex">\(P_{ii}^{(n)}\)</span>表示的一个判别准则：</p>
+<p><strong>定理：</strong>状态<span class="arithmatex">\(i\)</span>常返的充分必要条件是
+$$
+\sum_{n=1}^{\infty}P_{ii}^{(n)}=\infty
+$$
+当然与此等价地有，状态<span class="arithmatex">\(i\)</span>是瞬过的当且仅当
+$$
+\sum_{n=1}^{\infty}P_{ii}^{(n)}&lt;\infty
+$$
+其证明如下：先考虑瞬过状态<span class="arithmatex">\(i\)</span>，这时过程从<span class="arithmatex">\(i\)</span>出发至少返回<span class="arithmatex">\(i\)</span>一次的概率为<span class="arithmatex">\(f_{ii}\)</span>且<span class="arithmatex">\(f_{ii}&lt;1\)</span>，由过程的Markov性，一旦回到<span class="arithmatex">\(i\)</span>，过程以后得发展只依赖当前，因此从<span class="arithmatex">\(i\)</span>出发至少回到<span class="arithmatex">\(i\)</span>两次的概率为<span class="arithmatex">\(f_{ii}^2\)</span>，这样不断地重复，并记随机变量<span class="arithmatex">\(K\)</span>为过程返回<span class="arithmatex">\(i\)</span>的次数，则<span class="arithmatex">\(K\)</span>在给定<span class="arithmatex">\(X_0=i\)</span>下的条件概率分布应该满足
+$$
+P\left{K\geq k|X_0=i\right}=f_{ii}^{k}
+$$
+这正是参数为<span class="arithmatex">\(f_{ii}\)</span>的几何分布，于是<span class="arithmatex">\(K\)</span>的条件期望为
+$$
+E(K|X_0=i)=\sum_{k=1}^{\infty}P(K\geq k|X_0=i)=\sum_{k=1}^{\infty}f_{ii}^k=\frac{f_{ii}}{1-f_{ii}}
+$$
+显然，当<span class="arithmatex">\(f_{ii}&lt;1\)</span>时，<span class="arithmatex">\(E(K|X_0=i)&lt;\infty\)</span>，即过程从<span class="arithmatex">\(i\)</span>出发平均返回<span class="arithmatex">\(i\)</span>的次数是有限的，另一方面记
+$$
+I_n=\begin{cases}
+1,&amp;若X_n=i\
+0,&amp;其他
+\end{cases}
+$$
+则有<span class="arithmatex">\(K=\sum_{n=1}^{\infty}I_n\)</span>，于是有
+$$
+\sum_{n=1}^{\infty}P_{ii}^{(n)}=\sum_{n=1}^{\infty}P\left{X_n=i|X_0=i\right}=\sum_{n=1}^{\infty}E\left{I_n|X_0=i\right}\=E\left{\sum_{n=1}^{\infty}I_n|X_0=i\right}=E\left{K|X_0=i\right}&lt;\infty
+$$
+反之，如果有<span class="arithmatex">\(\sum_{n=1}^{\infty}P_{ii}^{(n)}&lt;\infty\)</span>，则必有<span class="arithmatex">\(i\)</span>为瞬过的，如若不然，设<span class="arithmatex">\(i\)</span>是常返的，则从<span class="arithmatex">\(i\)</span>出发最终回到<span class="arithmatex">\(i\)</span>的概率为1，由Markov性过程继续不断的重复，不断地返回<span class="arithmatex">\(i\)</span>，因此以概率1，过程返回<span class="arithmatex">\(i\)</span>的次数是无穷大，也即<span class="arithmatex">\(E\left\{K|X_0=i\right\}=\infty\)</span>，与<span class="arithmatex">\(\sum_{n=1}^{\infty}P_{ii}^{(n)}\)</span>收敛相矛盾，证毕</p>
+<p>对于常返状态<span class="arithmatex">\(i\)</span>，我们定义<span class="arithmatex">\(T_i\)</span>为首次返回状态<span class="arithmatex">\(i\)</span>的时刻，称作常返时，记<span class="arithmatex">\(\mu_i=ET_i\)</span>，则有
+$$
+\mu_i=\sum_{n=1}^{\infty}nf_{ii}^{(n)}
+$$
+回想<span class="arithmatex">\(f_{ii}^{(n)}\)</span>代表从<span class="arithmatex">\(i\)</span>出发在第<span class="arithmatex">\(n\)</span>步转移时首次回到<span class="arithmatex">\(i\)</span>的概率，所有<span class="arithmatex">\(\mu_i\)</span>是首次返回<span class="arithmatex">\(i\)</span>的期望步数，也叫状态<span class="arithmatex">\(i\)</span>的平均常返时，利用<span class="arithmatex">\(\mu_i\)</span>可以对常返状态进行进一步的分类，分为零常返和正常返，也即以下定义：</p>
+<p>一个常返状态<span class="arithmatex">\(i\)</span>当且仅当<span class="arithmatex">\(\mu_i=\infty\)</span>时称为零常返的，而当且仅当<span class="arithmatex">\(\mu_i&lt;\infty\)</span>时称为正常返的</p>
+<blockquote>
+<p>对于只有有限多个状态的Markov链，<span class="arithmatex">\(\mu_i\)</span>总是有限的，所以只有在有可列无穷多个状态时才可能出现零常返的状态</p>
+</blockquote>
+<h4 id="_7">常返和暂留（瞬过）的等价刻画<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><strong>定理1：</strong></p>
+<ul>
+<li>
+<p>状态<span class="arithmatex">\(i\)</span>常返<span class="arithmatex">\(\iff\)</span> <span class="arithmatex">\(\sum_{n=0}^{\infty}p_{ii}^{(n)}=\infty\)</span></p>
+</li>
+<li>
+<p>状态<span class="arithmatex">\(i\)</span>暂留<span class="arithmatex">\(\iff\)</span><span class="arithmatex">\(\sum_{n=0}^{\infty}p_{ii}^{(n)}&lt;\infty \Rightarrow \lim_{n\to \infty}p_{ii}^{(n)}=0\)</span></p>
+</li>
+</ul>
+<p>其证明如下，用<span class="arithmatex">\(N_i\)</span>表示<span class="arithmatex">\(X_0,X_1,\cdots\)</span>访问<span class="arithmatex">\(i\)</span>的总次数，我们先证明<span class="arithmatex">\(\sum_{n=0}^{\infty}p_{ii}^{(n)}=E[N_i|X_0=i]\)</span></p>
+<p>令
+$$
+Y_n=\begin{cases}
+1 &amp;若X_n=i\
+0 &amp;若X_n\neq i
+\end{cases}
+$$
+则有<span class="arithmatex">\(N_i=\sum_{n=0}^{\infty}Y_n\)</span>，所以有
+$$
+E[N_i|X_0=i]=\sum_{n=0}^{\infty}E[Y_n|X_0=i]=\sum_{n=0}^{\infty}P(X_n=i|X_0=i)=\sum_{n=0}^{\infty}p_{ii}^{(n)}
+$$
+这时再去理解上面的式子就很好理解了，<span class="arithmatex">\(\sum_{n=0}^{\infty}p_{ii}^{(n)}\)</span>的含义其实是在<span class="arithmatex">\(X_0=i\)</span>的条件下访问<span class="arithmatex">\(i\)</span>的平均次数，状态<span class="arithmatex">\(i\)</span>常返意味着平均访问次数是无穷的，状态<span class="arithmatex">\(i\)</span>暂留意味着平均访问次数是有限的</p>
+<p>并且我们可以得到：</p>
+<p>(1) 若<span class="arithmatex">\(i\)</span>常返，则<span class="arithmatex">\(P(N_i=\infty|x_0=i)=1\)</span>，所以有<span class="arithmatex">\(E(N_i|X_0=i)=\infty\)</span></p>
+<p>(2) 若<span class="arithmatex">\(i\)</span>暂留，则有<span class="arithmatex">\(1-f_{ii}&gt;0\)</span>，在<span class="arithmatex">\(X_0=i\)</span>的条件下，<span class="arithmatex">\(N_i\)</span>服从参数为<span class="arithmatex">\(1-f_{ii}\)</span>的几何分布，也即对<span class="arithmatex">\(n=1,2,\cdots\)</span>，有
+$$
+P(N_i=n|X_0=i)=f_{ii}^{n-1}(1-f_{ii})
+$$
+所以有<span class="arithmatex">\(E(N_i|X_0=i)=\frac{1}{1-f_{ii}}&lt;\infty\)</span></p>
+<p><strong>定理2：</strong> （定理1判断状态时常返还是暂留，定理2则判断是正常返还是零常返）</p>
+<ul>
+<li>
+<p>状态<span class="arithmatex">\(i\)</span>正常返<span class="arithmatex">\(\iff \lim_{n\to \infty}\frac{1}{n}\sum_{k=1}^{n}p_{ii}^{(k)}=\frac{1}{\mu_i}&gt;0\iff \lim_{n\to \infty }\sup \ p_{ii}^{(n)}&gt;0\)</span></p>
+</li>
+<li>
+<p>状态<span class="arithmatex">\(i\)</span>零常返<span class="arithmatex">\(\iff \sum_{n=0}^{\infty}p_{ii}^{(n)}=\infty\)</span>但<span class="arithmatex">\(\lim_{n\to \infty}p_{ii}^{(n)}=0\)</span>（暂留其实也有右边这个极限性质，由级数收敛就可以知道）</p>
+</li>
+</ul>
+<blockquote>
+<p>并且其实我们知道，由<span class="arithmatex">\(\lim_{n\to \infty}p_{ii}^{(n)}=0\)</span>可以推出<span class="arithmatex">\(\lim_{n\to \infty}\frac{1}{n}\sum_{k=1}^{n}p_{ii}^{(k)}=0\)</span>，所以其实<span class="arithmatex">\(\lim_{n\to \infty}\frac{1}{n}\sum_{k=1}^{n}p_{ii}^{(k)}\)</span>也是区分正常返和零常返的一个标志，正常返结果是平均回转时的倒数，大于0；零常返的结果就是0</p>
+</blockquote>
+<p>下面我们给出上面定理第1条的证明思路 ：</p>
+<p>若<span class="arithmatex">\(i\)</span>常返且<span class="arithmatex">\(X_0=i\)</span>，则以概率1返回<span class="arithmatex">\(i\)</span>无穷次，记这些返回<span class="arithmatex">\(i\)</span>的时间间隔分别是<span class="arithmatex">\(\sigma_1,\sigma_2,\sigma_3,\cdots\)</span>，则由Markov性可以知道，<span class="arithmatex">\(\sigma_1,\sigma_2,\sigma_3,\cdots\)</span>独立同分布，且<span class="arithmatex">\(E(\sigma_1)=\mu_1\)</span>，我们令<span class="arithmatex">\(S_n=\tau_1+\tau_2+\cdots+\tau_n\)</span>，由大数定律可知，当<span class="arithmatex">\(n\to \infty\)</span>时，有<span class="arithmatex">\(\frac{S_n}{n}\to \mu_i\)</span>，令<span class="arithmatex">\(N_i^{(n)}\)</span>表示<span class="arithmatex">\(X_1,X_2,\cdots,X_n\)</span>访问<span class="arithmatex">\(i\)</span>的次数，则有<span class="arithmatex">\(S_{N_{i}^{(n)}}\leq n &lt; S_{N_i^{(n)}+1}\)</span>，因此有
+$$
+\frac{S_{N_i^{(n)}}}{N_{i}^{(n)}}\leq \frac{n}{N_i^{(n)}}&lt;\frac{S_{N_i^{(n)}+1}}{N_{i}^{(n)}+1}\frac{N_{i}^{(n)}+1}{N_i^{(n)}}
+$$</p>
+<p>注意到<span class="arithmatex">\(\lim_{n\to \infty}N_i^{(n)}=\infty\)</span>，所以
+$$
+\lim_{n\to \infty}\frac{N_i^{(n)}}{n}=\frac{1}{\mu_i}\
+\lim_{n\to \infty}\frac{E(N_i^{(n)})}{n}=\lim_{n\to \infty}\frac{1}{n}\sum_{k=1}^{n}p_{ii}^{(k)}=\frac{1}{\mu_i}
+$$</p>
+<p>则当<span class="arithmatex">\(n\to \infty\)</span>时，有
+$$
+\frac{1}{n}\sum_{k=1}^{n}p_{ii}^{(k)} \to \frac{1}{\mu_i}=\begin{cases}</p>
+<blockquote>
+<p>0 &amp;正常返\
+=0 &amp;零常返
+\end{cases}
+$$
+也就是说，若<span class="arithmatex">\(i\)</span>正常返，则从<span class="arithmatex">\(i\)</span>出发长远来看，访问<span class="arithmatex">\(i\)</span>的时间比例为<span class="arithmatex">\(\frac{1}{\mu_i}&gt;0\)</span>，<span class="arithmatex">\(\mu_i\)</span>越小，访问越频繁；若<span class="arithmatex">\(i\)</span>零常返，则从<span class="arithmatex">\(i\)</span>的出发长远来看，访问<span class="arithmatex">\(i\)</span>的时间比例为0</p>
+<p>这个证明反正我有点看不明白</p>
+</blockquote>
+<p>下面我们来看一个例子</p>
+<p><strong>例</strong>（对称随机游动）设<span class="arithmatex">\(d\)</span>是正整数，<span class="arithmatex">\(X=\left\{X_n;n\geq 0\right\}\)</span>是<span class="arithmatex">\(Z^d\)</span>上的对称随机游动，讨论状态<span class="arithmatex">\(0\)</span>的常返性，这里<span class="arithmatex">\(0\)</span>表示原点 </p>
+<p><strong>解</strong> (1)当<span class="arithmatex">\(d=1\)</span>时，对任意整数<span class="arithmatex">\(i\)</span>有：
+$$
+p_{i,i-1}=p_{i,i+1}=\frac{1}{2}
+$$
+<img alt="image-20250411225242167" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250411225242167.png" /></p>
+<p>如上图所示，我们想去计算<span class="arithmatex">\(f_{00}\)</span>肯定是不好计算的，但是我们可以考虑其等价刻画<span class="arithmatex">\(p_{00}\)</span>，显然，奇数步是不可能从0回到0的，只有偶数步才可以，于是我们就得到
+$$
+p_{00}^{(2n-1)}=0,\ p_{00}^{(2n)}=C_{2n}^{n}(\frac{1}{2})^{2n}=\frac{(2n)!}{n!n!}(\frac{1}{2})^{2n},\qquad n=1,2,\cdots
+$$
+则由<span class="arithmatex">\(Strling\)</span>公式可以得到<span class="arithmatex">\(n! \sim \sqrt{2\pi n}e^{-n}n^n\)</span>得<span class="arithmatex">\(p_{00}^{2n}\sim \frac{1}{\sqrt{\pi n }}\)</span>，所以可以得到
+$$
+\sum_{n}p_{00}^{(n)}=\infty但\lim_{n\to\infty}p_{00}^{(n)}=0
+$$
+于是可以得到状态<span class="arithmatex">\(0\)</span>是零常返的</p>
+<p>(2) 若<span class="arithmatex">\(d=2\)</span> ，则对每一对整数<span class="arithmatex">\((i,j)\)</span>有
+$$
+p_{(i,j),(i,j+1)}=p_{(i,j),(i,j-1)}=p_{(i,j),(i-1,j)}=p_{(i,j),(i+1,j)}=\frac{1}{4}
+$$
+并且同样地有<span class="arithmatex">\(p_{00}^{(2n-1)}=0\)</span>，
+$$
+p_{00}^{(2n-1)}=\sum_{k=0}^{n}P(前2n步中往上走k步，往下走k步，往左走n-k步，往右走n-k步)\=\sum_{k=0}^nC_{2n}^nC_n^kC_n^k\frac{1}{4^{2n}}=\frac{1}{4^{2n}}(C_{2n}^{n})^2\sim \frac{1}{\pi n}
+$$
+（左上占n步，从2n中选n；左上对应的n中有k步向上，右下对应的n中有k步向下）</p>
+<p>这说明<span class="arithmatex">\(\sum_{n}p_{00}^{(n)}=\infty\)</span>但<span class="arithmatex">\(\lim_{n\to \infty}p_{00}^{(n)}=0\)</span>，因此状态<span class="arithmatex">\(0\)</span>零常返</p>
+<p>(3) 已有：</p>
+<div class="arithmatex">\[ d = 1 \text{ 时, } p_{00}^{(2n-1)} = 0, \quad p_{00}^{(2n)} \sim \frac{1}{\sqrt{\pi n}} \]</div>
+<p><span class="arithmatex">\(d = 2 \text{ 时, } p_{00}^{(2n-1)} = 0, \quad p_{00}^{(2n)} \sim \frac{1}{\pi n}\)</span></p>
+<p>事实上<span class="arithmatex">\(d \geq 3\)</span>，则$p_{00}^{(2n-1)} = 0, \quad p_{00}^{(2n)} = O(n^{-d/2}) $</p>
+<blockquote>
+<p>这个收敛半径有更直观的理解 </p>
+</blockquote>
+<p>$$ \therefore \sum_{n} p_{00}^{(n)} &lt; \infty$$，因此状态 0 <strong>暂留</strong></p>
+<p>比如在3维对称随机游动中：必然有往上的步数等于往下的步数，往左的步数等于往右的步数，往前的步数等于往后的步数，那么对于<span class="arithmatex">\(p_{00}^{2n}\)</span>来说，2n中有n步是往上往左往前的和，有n步是往下往右往后的和，不妨记往上<span class="arithmatex">\(k_1\)</span>步，往左<span class="arithmatex">\(k_2\)</span>步，往前<span class="arithmatex">\(k_3\)</span>步，则<span class="arithmatex">\(k_1+k_2+k_3=n\)</span>
+$$
+p_{00}^{(2n)}=\frac{1}{6^{2n}}C_{2n}^{2n}\sum_{k_1+k_2+k_3=n}(\frac{n!}{k_1!k_2!k_3!})^2\leq \frac{1}{6^{2n}}C_{2n}^{n}3^n\max_{k_1\leq k_2 \leq k_3,k_1+k_2+k_3=n}(\frac{n!}{k_1!k_2!k_3!})
+$$
+上面这一步是用到了放缩<span class="arithmatex">\(\sum a_n^2 \leq (\sum a_n) \times \max\left\{a_n\right\}\)</span>，以及<span class="arithmatex">\(\sum_{k_1+k_2+k_3=n}\frac{n!}{k_1!k_2!k_3!}=3^n\)</span>，接下来我们就需要估计上面的最大值在何处取得，和二维情形类似，当<span class="arithmatex">\(k_1,k_2,k_3\)</span>最接近时取得最大值，也即
+$$
+\max_{k_1\leq k_2 \leq k_3,k_1+k_2+k_3=n}(\frac{n!}{k_1!k_2!k_3!})在k_3=k_1或k_3=k_1+1时达到
+$$
+则由<span class="arithmatex">\(Stirling\)</span>公式有
+$$
+\max_{k_1\leq k_2 \leq k_3,k_1+k_2+k_3=n}\frac{n!}{k_1!k_2!k_3!}\sim \frac{3^n}{n!}
+$$
+所以有<span class="arithmatex">\(p_{00}^{(2n)}=O(n^{-\frac{3}{2}})\)</span>，因为<span class="arithmatex">\(\sum_{n}p_{00}^{(2n)}&lt;\infty\)</span>，因此暂留</p>
+<blockquote>
+<p>一维和二维对称随机游动都是零常返的</p>
+<p>三维和三维以上的对称随机游动都是暂留的</p>
+</blockquote>
+<p><strong>例</strong>（<span class="arithmatex">\(Z\)</span>上的随机游动）设<span class="arithmatex">\(X=\left\{X_n;n\geq 0\right\}\)</span>是<span class="arithmatex">\(Z\)</span>上的随机游动，且有<span class="arithmatex">\(p_{i,i+1}=p=1-p_{i,i-1},i=0,\pm 1.\pm 2,\cdots, 0&lt;p&lt;1\)</span>，讨论状态0的常返性，这里0表示原点</p>
+<p><strong>解</strong> 显然我们知道<span class="arithmatex">\(p_{00}^{(2n-1)}=0\)</span>，下面我们考虑<span class="arithmatex">\(p_{00}^{(2n)}\)</span>，有
+$$
+p_{00}^{(2n)}=C_{2n}^{n}p^n(1-p)^n=\frac{(2n)!}{n!n!}[p(1-p)]^n,n=1,2,\cdots
+$$
+那么由<span class="arithmatex">\(Stirling\)</span>公式可以得到
+$$
+p_{00}^{(2n)} \sim \frac{[4p(1-p)]^n}{\sqrt{\pi n}}\to 0
+$$</p>
+<blockquote>
+<p>这里还要再回顾一下数学分析的内容斟酌一下</p>
+</blockquote>
+<p>由均值不等式知<span class="arithmatex">\(p\neq\frac{1}{2}\)</span>时<span class="arithmatex">\(p_{00}^{(2n)}&lt; \frac{1}{\sqrt{\pi n}}\)</span>那么<span class="arithmatex">\(\sum_{n}p_{00}^{(2n)}\)</span>（等比数列求和）有限，<span class="arithmatex">\(\sum_{n} p_{00}^{(n)}=\infty\)</span>当且仅当<span class="arithmatex">\(p=\frac{1}{2}\)</span></p>
+<p>所以我们得到一个结论，当<span class="arithmatex">\(p=\frac{1}{2}\)</span>是，状态<span class="arithmatex">\(0\)</span>是零常返的；否则状态<span class="arithmatex">\(0\)</span>是暂留的</p>
+<h4 id="_8">互达性和周期性<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h5 id="_9">周期性<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
+<p>设<span class="arithmatex">\(i\)</span>为Markov的一个状态，使<span class="arithmatex">\(P_{ii}^{(n)}&gt;0\)</span>的所有正整数<span class="arithmatex">\(n(n\geq1)\)</span>的最大公约数称作是状态<span class="arithmatex">\(i\)</span>的<strong>周期</strong>（也即可以返回<span class="arithmatex">\(i\)</span>的步数的最大公约数），记作<span class="arithmatex">\(d(i)\)</span>，如果对所有<span class="arithmatex">\(n\geq 1\)</span>，都有<span class="arithmatex">\(P_{ii}^{(n)}=0\)</span>则约定周期为<span class="arithmatex">\(\infty\)</span>（浙大版规定周期为0）；<span class="arithmatex">\(d(i)=1\)</span>的状态<span class="arithmatex">\(i\)</span>则称为是<strong>非周期的</strong>。若<span class="arithmatex">\(i\)</span>是非周期且正常返的，我们则称<span class="arithmatex">\(i\)</span>是<strong>遍历的</strong></p>
+<blockquote>
+<p>由定义我们很容易知道，如果<span class="arithmatex">\(n\)</span>不能被周期<span class="arithmatex">\(d(i)\)</span>整除，则必有<span class="arithmatex">\(P_{ii}^{(n)}=0\)</span></p>
+</blockquote>
+<h5 id="_10">互达性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<p>如果对某一<span class="arithmatex">\(n\geq 0\)</span>，有<span class="arithmatex">\(P_{ij}^{(n)}&gt;0\)</span>，则称状态<span class="arithmatex">\(j\)</span>是从状态<span class="arithmatex">\(i\)</span>可达的（<span class="arithmatex">\(i\)</span>可达<span class="arithmatex">\(j\)</span>），记作<span class="arithmatex">\(i\to j\)</span>，它表示从状态<span class="arithmatex">\(i\)</span>经过有限步的转移可以达到状态<span class="arithmatex">\(j\)</span>。两个互相可达的状态<span class="arithmatex">\(i,j\)</span>则称为是互达的，记作<span class="arithmatex">\(i\leftrightarrow j\)</span>。</p>
+<p>如果两个状态<span class="arithmatex">\(i,j\)</span>不是互达的，那么对所有的<span class="arithmatex">\(n\geq0,P_{ij}^{(n)}=0\)</span>或者对所有<span class="arithmatex">\(n\geq 0,P_{ji}^{(n)}=0\)</span>或两者都成立，三种情况必居其一。</p>
+<p>互达性是一种等价关系，满足自反性、对称性和传递性，由所有与<span class="arithmatex">\(i\)</span>互达的状态组成的集合成为状态<span class="arithmatex">\(i\)</span>的<strong>互达等价类</strong>，而我们知道，互达等价类有以下性质：</p>
+<ul>
+<li>对任何状态<span class="arithmatex">\(i\)</span>和<span class="arithmatex">\(j\)</span>，<span class="arithmatex">\(i\)</span>的互达等价类和<span class="arithmatex">\(j\)</span>的互达等价类相等或者互斥</li>
+<li>状态空间可以表示成互不相交的互达等价类的并</li>
+</ul>
+<p>下面我们给出<strong>随机过程</strong>与其状态空间的一些联系：</p>
+<blockquote>
+<p>下文的<span class="arithmatex">\(X_n\)</span>代表一个马尔科夫链，它有一个状态空间<span class="arithmatex">\(I\)</span>，表示所有可能状态的集合</p>
+</blockquote>
+<ul>
+<li>如果任意两个状态互达我们就称<span class="arithmatex">\(\left\{X_n\right\}\)</span>不可约，也即其状态空间<span class="arithmatex">\(I\)</span>是一个互达等价类</li>
+<li>
+<p>若所有状态常返（暂留、正常返、零常返、非周期），我们就称<span class="arithmatex">\(\left\{X_n\right\}\)</span>常返（暂留、正常返、零常返、非周期）</p>
+</li>
+<li>
+<p>若<span class="arithmatex">\(\left\{X_n\right\}\)</span>不可约、非周期、正常返，我们就称<span class="arithmatex">\(\left\{X_n\right\}\)</span>遍历</p>
+</li>
+</ul>
+<h5 id="_11">互达等价类的同一性质<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<p>如果<span class="arithmatex">\(i \leftrightarrow j\)</span>，则有：</p>
+<ul>
+<li><span class="arithmatex">\(d(i)=d(j)\)</span></li>
+<li><span class="arithmatex">\(i\)</span>常返<span class="arithmatex">\(\iff j\)</span>常返</li>
+<li><span class="arithmatex">\(i\)</span>正常返<span class="arithmatex">\(\iff j\)</span>正常返 </li>
+</ul>
+<p>下面我们给出<strong>定理的证明</strong>：</p>
+<p>设<span class="arithmatex">\(i\iff j, j\neq i\)</span>，则存在正整数<span class="arithmatex">\(m,n\)</span>使得<span class="arithmatex">\(p_{ij}^{(m)}&gt;0,p_{ji}^{(n)}&gt;0\)</span></p>
+<p>(1) 如果<span class="arithmatex">\(p_{ii}^{(k)}&gt;0\)</span>，则有<span class="arithmatex">\(p_{jj}^{(k+m+n)}\geq p_{ji}^{(n)}p_{ii}^{(k)}p_{ij}^{(m)}&gt;0\)</span>，所以<span class="arithmatex">\(d(j)|k+m+n\)</span>，特别地有<span class="arithmatex">\(d(j)|m+n\)</span>，这是考虑<span class="arithmatex">\(p_{ii}^{(0)}&gt;0\)</span>的情况，所以有<span class="arithmatex">\(d(j)|k\)</span>，这里可以得到<span class="arithmatex">\(d(j)|d(i)\)</span>，同理也有<span class="arithmatex">\(d(i)|d(j)\)</span>，最终我们可以得到<span class="arithmatex">\(d(i)=d(j)\)</span></p>
+<p>(2) 我们已经得到<span class="arithmatex">\(p_{jj}^{(k+m+n)}\geq p_{ji}^{(n)}p_{ii}^{(k)}p_{ij}^{(m)}\)</span>，如果<span class="arithmatex">\(i\)</span>常返，则有<span class="arithmatex">\(\sum_{k}p_{ii}^{(k)}=\infty\)</span>，所以有
+$$
+\sum_{k}p_{jj}^{(k+m+n)}\geq (p_{ji}^{n}p_{ij}^{(m)})\sum_{k}p_{ii}^{(k)}=\infty
+$$
+所以即有<span class="arithmatex">\(j\)</span>也是常返的</p>
+<p>(3) 如果<span class="arithmatex">\(i\)</span>正常返，则有<span class="arithmatex">\(\lim_{k\to \infty} \sup p_{ii}^{(k)}&gt;\infty\)</span>，所以有
+$$
+\lim_{k\to \infty} \sup p_{jj}^{(k+m+n) }\geq (p_{ji}^{(n)}p_{ij}^{(m)})\lim_{k\to \infty}\sup p_{ii}^{(k)}&gt;0
+$$
+即<span class="arithmatex">\(j\)</span>也是正常返的</p>
+<blockquote>
+<p>同一个互达等价类具有相同的周期和常返性（平均回转时不一定相同）</p>
+<p>互达等价类给我们的启示是，当我们判断一个状态的性质时，我们可以从它的互达等价类中找出一个容易判断的状态来判断</p>
+</blockquote>
+<p>下面我们来看一道例题，比如我们曾经在上面的<a href="#section-1">例子</a>（按住ctrl点击即可跳转）</p>
+<p><img alt="image-20250412102138330" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250412102138330.png" /></p>
+<p>我们已经计算得到状态<span class="arithmatex">\(0\)</span>是正常返的，且我们容易看出各状态互达的，而<span class="arithmatex">\(d(3)=1\)</span>，那么由互达等价类的性质就可以得到，各状态是非周期正常返的，则这是一个遍历的Markov链</p>
+<p>再比如之前的<a href="#section-2">例题</a></p>
+<p><img alt="image-20250412102327927" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250412102327927.png" /></p>
+<p>由于<span class="arithmatex">\(p_{00}&gt;0,d(0)=1\)</span>，且各状态是互达的，那么所有状态都是非周期的，且与0具有相同的常返性：</p>
+<ul>
+<li>当<span class="arithmatex">\(\lim_{n\to \infty}u_n &gt;0\)</span>时，各状态是暂留的</li>
+<li>当<span class="arithmatex">\(\lim_{n \to \infty} u_n =0\)</span>但<span class="arithmatex">\(\sum_{n=0}^{\infty} u_n =\infty\)</span>时，各状态是零常返的</li>
+<li>当<span class="arithmatex">\(\sum_{n=0}^{\infty}u_n&lt;\infty\)</span>时，各状态是正常返的</li>
+</ul>
+<p>再比如之前提到的对称随机游动，由于各状态是互达的，随机过程<span class="arithmatex">\(X_n\)</span>不可约，且<span class="arithmatex">\(p_{00}^{(n)}&gt;0\)</span>当且仅当<span class="arithmatex">\(n\)</span>是偶数，所以<span class="arithmatex">\(d(0)=2\)</span>，所以所有状态周期为2，且与状态0具有相同的常返性</p>
+<blockquote>
+<p>在引入互达性、周期性之后，正常返和零常返就有了一些新的等价描述：</p>
+<ul>
+<li><span class="arithmatex">\(i\)</span>正常返<span class="arithmatex">\(\iff \lim_{n\to \infty} \frac{1}{n} \sum_{k=1}^{n}p_{ii}^{(k)}=\frac{1}{\mu_i}&gt;0 \iff \lim_{n\to \infty} \sup p_{ii}^{(n)}&gt;0 \iff \lim_{n\to \infty} p_{ii}^{(nd)}=\frac{d}{\mu_i}&gt;0\)</span>，这里<span class="arithmatex">\(d=d(i)\)</span></li>
+<li><span class="arithmatex">\(i\)</span>零常返<span class="arithmatex">\(\iff \sum_{n=0}^{\infty} p_{ii}^{(n)}=\infty\)</span>但<span class="arithmatex">\(\lim_{n\to \infty}p_{ii}^{(n)}=0\)</span></li>
+</ul>
+</blockquote>
+<p>下面我们考虑一下<span class="arithmatex">\(p_{ij}\)</span>与<span class="arithmatex">\(f_{ij}\)</span>的关系，设<span class="arithmatex">\(i\neq j\)</span></p>
+<ol>
+<li>如果<span class="arithmatex">\(j\)</span>常返且<span class="arithmatex">\(f_{ij}&gt;0\)</span>，则有
+   $$
+   \sum_{n}p_{ij}^{(n)}=E(N_j|X_0=i)=\infty
+   $$
+   且
+   $$
+   P(N_j=\infty | X_0=i)=f_{ij}
+   $$</li>
+</ol>
+<blockquote>
+<p>其实上式是比较好理解的，从<span class="arithmatex">\(i\)</span>出发以<span class="arithmatex">\(f_{ij}\)</span>概率访问<span class="arithmatex">\(j\)</span>，以<span class="arithmatex">\(1-f_{ij}\)</span>概率不访问<span class="arithmatex">\(j\)</span>，而一旦访问了<span class="arithmatex">\(j\)</span>之后，概率<span class="arithmatex">\(P(N_j=\infty | X_0=j)=1\)</span>，所以其实这个概率就等于前置的从<span class="arithmatex">\(i\)</span>出发访问<span class="arithmatex">\(j\)</span>的概率<span class="arithmatex">\(f_{ij}\)</span></p>
+</blockquote>
+<ol>
+<li>
+<p>如果<span class="arithmatex">\(j\)</span>暂留，则有
+   $$
+   \sum_{n}p_{ij}^{(n)}=E[N_j|X_0=i]=f_{ij}E[N_j|X_0=j]&lt;\infty
+   $$
+   且
+   $$
+   P(N_j=\infty|X_0=i)=0
+   $$</p>
+</li>
+<li>
+<p><span class="arithmatex">\(p_{ij}^{(n)}\)</span>与<span class="arithmatex">\(f_{ij}^{(n)}\)</span>的关系：</p>
+</li>
+</ol>
+<p><span class="arithmatex">\(n=1\)</span>时
+   $$
+   p_{ij}^{(0)}=\begin{cases}
+   1 &amp;若i=j\
+   0,&amp;若i\neq j
+   \end{cases}
+   \qquad
+   f_{ij}^{(0)}=0
+   $$
+   当<span class="arithmatex">\(n\geq 1\)</span>时，
+   $$
+   p_{ij}^{(n)}=\sum_{k=1}^{n}f_{ij}^{(k)}p_{jj}^{(n-k)}
+   $$</p>
+<blockquote>
+<p>上式很好理解，<span class="arithmatex">\(f_{ij}^{(k)}\)</span>表示第一次击中<span class="arithmatex">\(i\)</span>用了<span class="arithmatex">\(k\)</span>步的概率，则剩下<span class="arithmatex">\(n-k\)</span>步只需要返回就行，其严格证明如下：
+$$
+p_{ij}^{(n)} = P(X_n = j \mid X_0 = i)   = \sum_{k=1}^n P(\tau_j = k \mid X_0 = i) P(X_n = j \mid \tau_j = k, X_0 = i) \ = \sum_{k=1}^n f_{ij}^{(k)} P(X_n = j \mid X_k = j, X_{k-1} \neq j, \ldots, X_1 \neq j, X_0 = i) \ = \sum_{k=1}^n f_{ij}^{(k)} P(X_n = j \mid X_k = j) = \sum_{k=1}^n f_{ij}^{(k)} p_{jj}^{(n-k)}
+$$</p>
+</blockquote>
+<h3 id="_12">平稳分布<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>平稳分布最开始可能不太好理解它的意思，它指的是一个随机过程的概率分布在时间推移中保持不变的特性，意味着如果系统在某一时刻处于平稳分布，那么在下一时刻仍然将保持这个分布</p>
+</blockquote>
+<h4 id="_13">平稳分布的定义<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>设<span class="arithmatex">\(\pi = (\pi_j;j \in I)\)</span>，<span class="arithmatex">\(P(x_0=i)=\pi_i\)</span>满足：</p>
+<ul>
+<li>
+<p><strong>分布律：</strong><span class="arithmatex">\(\pi_j \geq 0,\sum_{j} \pi_j=1\)</span></p>
+</li>
+<li>
+<p><strong>平稳性：</strong><span class="arithmatex">\(\pi =\pi P\)</span>（矩阵形式），也即<span class="arithmatex">\(\pi_k= \sum_{i}\pi_i p_{ik},\ \forall k\)</span> 
+  $$
+  (\pi_1,\pi_2,\cdots,\pi_n)=(\pi_1,\pi_2,\cdots,\pi_n)\begin{pmatrix}
+  p_{11}&amp;p_{12}&amp;\cdots&amp;p_{1n}\
+  p_{21}&amp;p_{22}&amp;\cdots&amp;p_{2n}\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+  p_{n1}&amp;p_{n2}&amp;\cdots&amp;p_{nn}
+  \end{pmatrix}
+  $$</p>
+</li>
+</ul>
+<p>则称<span class="arithmatex">\(\pi\)</span>是<span class="arithmatex">\(\left\{X_n\right\}\)</span>的平稳分布</p>
+<p><strong>平稳分布的性质：</strong></p>
+<p>设初始分布为平稳分布<span class="arithmatex">\(\pi\)</span>，则对任意<span class="arithmatex">\(k\geq 1\)</span>，有：</p>
+<ul>
+<li><span class="arithmatex">\(X_k\)</span>的分布为<span class="arithmatex">\(\pi\)</span></li>
+<li><span class="arithmatex">\(\left\{X_k,X_{k+1},\cdots\right\}\)</span>与<span class="arithmatex">\(\left\{X_0,X_1,\cdots\right\}\)</span>具有相同的有限维分布</li>
+<li>当初始分布为平稳分布时，Markov链为<strong>严平稳过程</strong></li>
+</ul>
+<p>证明如下：</p>
+<p>(1) <span class="arithmatex">\(X_n\)</span>的分布为<span class="arithmatex">\(\pi P^n=(\pi P)P^{n-1}=\pi P^{n-1}\)</span>与<span class="arithmatex">\(X_n\)</span>的分布相同，所以所有的<span class="arithmatex">\(X_n\)</span>的分布均为<span class="arithmatex">\(\pi\)</span></p>
+<p>(2) 对<span class="arithmatex">\(0\leq n_1 &lt; n_2 &lt;\cdots &lt; n_k\)</span>和状态<span class="arithmatex">\(i_1,i_2,\cdots,i_k\)</span>有
+$$
+P(X_{n_1} = i_1,X_{n_2}=i_2,\cdots,X_{n_k}=i_k)=P(X_{n_1}=i_1)p_{i_1,i_2}^{(n_2-n_1)}p_{i_2,i_3}^{(n_3-n_2)}\cdots p_{i_{k-1},i_k}^{(n_k-n_{k-1})}\=\pi_{i_1}p_{i_1,i_2}^{(n_2-n_1)}p_{i_2,i_3}^{(n_3-n_2)}\cdots p_{i_{k-1},i_k}^{(n_k-n_{k-1})}
+$$</p>
+<blockquote>
+<ol>
+<li>我们发现，对于平稳分布，它的定义里由分布律和平稳性两条性质似乎可以得到<span class="arithmatex">\(k+1\)</span>个方程，但却只有<span class="arithmatex">\(k\)</span>个未知数，我们可能会担心这样的方程组没有解，但事实上，这<span class="arithmatex">\(k+1\)</span>个方程其实是线性相关的，因此方程可以少一个（在实际计算中我们可以把难算的那个方程去掉）</li>
+</ol>
+<p>我们对方程组<span class="arithmatex">\(\pi_k=\sum_i \pi_i p_{ik} ,\forall k\in I\)</span>两边进行求和可以得到，<span class="arithmatex">\(LHS=\sum_k \pi_k\)</span>，</p>
+<p><span class="arithmatex">\(RHS=\sum_k\sum_i \pi_i p_{ik}=\sum_{i}\sum_{k}\pi_ip_{ik}=\sum_i \pi_i \sum_{k}p_{ik}=\sum_i \pi_i\)</span></p>
+<ol>
+<li>假设初始分布是平稳分布<span class="arithmatex">\(\pi\)</span>，则有<span class="arithmatex">\(\pi_k=\sum_i \pi_i p_{ik}=\pi_k p_{kk}+\sum_{i\neq j}\pi_i p_{ik}\)</span>，又可以写成
+   $$
+   \pi_k(1-p_{kk})=\sum_{i\neq k}\pi_i p_{ik}
+   $$
+   这也就是说，<strong>离开k的概率与进入k的概率相等</strong>，从而保证了平稳性</li>
+</ol>
+</blockquote>
+<p>下面我们来做一些平稳分布的计算，</p>
+<p><img alt="image-20250417184734956" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250417184734956.png" /></p>
+<p>试求上图中的平稳分布</p>
+<p><strong>解</strong> 显然，状态空间<span class="arithmatex">\(I=\left\{0,1,2,3\right\}\)</span>，我们设平稳分布<span class="arithmatex">\(\pi=(\pi_0,\pi_1,\pi_2,\pi_3)\)</span></p>
+<p>那么由平稳分布的定义则有
+$$
+(\pi_1,\pi_2,\pi_3,\pi_4)=(\pi_1,\pi_2,\pi_3,\pi_4)\begin{pmatrix}</p>
+<p>0&amp;0.5&amp;0&amp;0.5\0&amp;0&amp;1&amp;0\0 &amp; 0&amp; 0 &amp; 1 \0.5&amp;0&amp;0&amp;0.5
+\end{pmatrix}
+$$
+则可以得到
+$$
+\begin{cases}
+\pi_0+\pi_1+\pi_2+\pi-3=1\
+\pi_0=\frac{1}{2}\pi_3\
+\pi_1=\frac{1}{2}\pi_0\
+\pi_2=\pi_1
+\end{cases}
+$$
+解得<span class="arithmatex">\(\pi=(\frac{1}{4},\frac{1}{8},\frac{1}{8},\frac{1}{2})\)</span>，而我们之前已经算得<span class="arithmatex">\(\mu_0=4,\mu_3=2\)</span>，我们发现其恰好就是<span class="arithmatex">\(\frac{1}{\pi_0},\frac{1}{\pi_3}\)</span>，这时我们不禁要问，是否也有<span class="arithmatex">\(\pi_1=\frac{1}{\mu_1},\pi_2=\frac{1}{\mu_2}\)</span>甚至<span class="arithmatex">\(\forall i,\pi_i=\frac{1}{\mu_i}\)</span>呢？答案是肯定的。</p>
+<p>再来看一道题</p>
+<p><img alt="image-20250417185516023" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250417185516023.png" /></p>
+<p>求这个例子中的平稳分布</p>
+<p><strong>解</strong> 我们设平稳分布为<span class="arithmatex">\(\pi\)</span>，则有<span class="arithmatex">\(\pi_1=p_0\pi_0,\pi_2=\pi_1 p_1=\pi_0p_0p_1,\cdots,\pi_n=p_0p_1\cdots p_{n-1}\pi_0=u_n\pi_0\)</span></p>
+<p>而我们知道，<span class="arithmatex">\(\sum_{n=0}^{\infty}\pi_n=(\sum_{n=0}^{\infty}u_n)\pi_0=1\)</span>，则有<span class="arithmatex">\(\pi_0=\frac{1}{\sum_{n=0}^{\infty}u_n}\)</span>，但是需要注意的是，我们还需要保证<span class="arithmatex">\(\sum_{n=0}^{\infty}u_n\)</span>是收敛的，否则就会有<span class="arithmatex">\(\pi_0=0,\pi_1=0,\cdots,\pi_n=0\)</span>，这就不符合分布律的条件了，所以我们可以得到：</p>
+<p>平稳分布存在<span class="arithmatex">\(\iff\sum_{n=0}^{\infty}u_n &lt;\infty \iff \left\{X_n\right\}\)</span>正常返</p>
+<p>最终我们可以得到，当<span class="arithmatex">\(\left\{X_n\right\}\)</span>正常返时，有唯一的平稳分布
+$$
+\pi_i = \frac{u_i}{\sum_{n=0}^{\infty}u_n},\ i=0,1,\cdots
+$$
+且我们之前已经算得<span class="arithmatex">\(\mu_0=\sum_{n=0}^{\infty}u_n\)</span>，也就是说<span class="arithmatex">\(\pi_0=\frac{1}{\mu_0}\)</span>，事实上是有<span class="arithmatex">\(\pi_i=\frac{1}{\mu_i},\forall i\)</span>的，这与我们在上一题中得到的结果一致，我们在后面给出证明</p>
+<p>下面我们再来看<strong>几个定理：</strong></p>
+<ol>
+<li>设状态<span class="arithmatex">\(j\)</span>是暂留或者零常返的，则有</li>
+<li>对所有状态<span class="arithmatex">\(i\)</span>，有<span class="arithmatex">\(\lim_{n \to \infty} p_{ij}^{(n)}=0\)</span></li>
+<li>不管初始分布如何，恒有<span class="arithmatex">\(\lim_{n\to \infty} P(X_n=j)=0\)</span></li>
+<li>设<span class="arithmatex">\(\pi\)</span>是<span class="arithmatex">\(\left\{X_n\right\}\)</span>的平稳分布，则有<span class="arithmatex">\(\pi_j=0\)</span></li>
+<li>若<span class="arithmatex">\(\left\{X_n\right\}\)</span>是有限Markov链，则至少存在一个正常返态</li>
+<li>若<span class="arithmatex">\(\left\{X_n\right\}\)</span>是不可约的有限Markov链，则<span class="arithmatex">\(\left\{X_n\right\}\)</span>正常返</li>
+</ol>
+<blockquote>
+<p>形象的来说，这个定理的意义是其保证了有限马尔科夫链存在平稳分布，正常返状态是构成平稳分布的“支柱”，平稳分布会在这些状态上赋予正的概率</p>
+<p>这几个定理也共同描述了Markov链长期行为的本质特征，也即系统会逐渐“忘记”初始状态，最终概率质量会集中在正常返状态上，形成稳定的平稳分布</p>
+</blockquote>
+<p>证明如下：</p>
+<p>对于定理第一条</p>
+<p>(1) 因为状态<span class="arithmatex">\(j\)</span>是暂留的或者零常返的，所以我们知道有<span class="arithmatex">\(\lim_{n\to \infty }p_{jj}^{(n)}=0\)</span>，我们知道了<span class="arithmatex">\(p_{jj}\)</span>的性质，现在要考虑<span class="arithmatex">\(p_{ij}\)</span>的性质，我们不妨将其进行转化，对于<span class="arithmatex">\(n\geq 1\)</span>，有
+$$
+p_{ij}^{(n)}=\sum_{k=1}^{n}f_{ij}^{(k)}p_{jj}^{(n-k)}=\sum_{k=1}^{\infty}f_{ij}(k)p_{jj}^{(n-k)}\qquad(这里我们令p_{jj}^{(n-k)}在k&gt;n时值为0)
+$$
+上面这一步的转化相当于引入了示性随机变量，将求和上限从变量<span class="arithmatex">\(n\)</span>转化成了<span class="arithmatex">\(\infty\)</span>，由控制收敛定理，知
+$$
+\lim_{n \to \infty}p_{ij}^{(n)}=\sum_{k=1}^{\infty}f_{ij}^{(k)}\lim_{n\to \infty}p_{jj}^{(n-k)}=0
+$$
+(2) 由控制收敛定理和(1)知，
+$$
+\lim_{n \to \infty }P(X_n = j) = \lim_{n\to \infty}\sum_{i \in I}P(X_0=i)p_{ij}^{(n)}=\sum_{i \in I}P(X_0=i)\lim_{n\to \infty}p_{ij}^{(n)}=0
+$$
+(3) 设<span class="arithmatex">\(\pi\)</span>是<span class="arithmatex">\(\left\{X_n\right\}\)</span>的平稳分布，<span class="arithmatex">\(X_0 \sim \pi\)</span>，则对所有<span class="arithmatex">\(n\)</span>，<span class="arithmatex">\(X_n\sim \pi,P(X_n=j)=\pi_j\)</span>，由(2)知<span class="arithmatex">\(\pi_j=0\)</span></p>
+<p>对于定理第二条 ，我们可以使用反证法，假设<span class="arithmatex">\(\left\{X_n\right\}\)</span>没有正常返态，则对所有的状态暂留或零常返，则由定理第一条的(1)，可以得到<span class="arithmatex">\(\lim_{n\to \infty}p_{ij}^{(n)}=0\)</span>对所有的<span class="arithmatex">\(i,j\)</span>成立，而对任何<span class="arithmatex">\(n\)</span>，显然有<span class="arithmatex">\(\sum_{j\in I}p_{ij}^{(n)}=1\)</span>，两边取极限可以得到
+$$
+1=\lim_{n\to\infty}\sum_{j \in I}p_{ij}^{(n)}=\sum_{j\in I}\lim_{n\to \infty}p_{ij}^{(n)}=0
+$$
+矛盾了，所以<span class="arithmatex">\(\left\{X_n\right\}\)</span>至少存在一个正常返态</p>
+<p>上述极限和求和可以交换次序是因为这是<strong>有限项求和（状态空间是有限的）</strong></p>
+<p>对于定理第三条，因为<span class="arithmatex">\(\left\{X_n\right\}\)</span>不可约，所以所有状态的常返性相同，由定理第二条我们又知道，有限Markov链至少存在一个正常返态，所以对不可约的有限的Markov链来说，其所有状态都是正常返的，也即<span class="arithmatex">\(\left\{X_n\right\}\)</span>正常返</p>
+<h4 id="_14">平稳分布的存在性<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>定理1：设<span class="arithmatex">\(\left\{X_n\right\}\)</span>不可约，则有</p>
+<p>(1) 存在平稳分布当且仅当<span class="arithmatex">\(\left\{X_n\right\}\)</span>正常返</p>
+<p>(2)当<span class="arithmatex">\(\left\{X_n\right\}\)</span>正常返时：平稳分布<span class="arithmatex">\(\pi\)</span>唯一且对任何状态<span class="arithmatex">\(i\)</span>有<span class="arithmatex">\(\pi_i=\frac{1}{\mu_i}\)</span>；对任何状态<span class="arithmatex">\(i,j\)</span>有<span class="arithmatex">\(\lim_{n\to \infty}\frac{1}{n}\sum_{k=1}^{n}p_{ij}^{(k)}=\pi_j\)</span></p>
+<p>(3) 若<span class="arithmatex">\(\left\{X_n\right\}\)</span>遍历（不可约、非周期、正常返），则对任何状态<span class="arithmatex">\(i,j\)</span>有<span class="arithmatex">\(\lim_{n\to \infty}p_{ij}^{(n)}=\pi_j\)</span></p>
+<p>证明如下：</p>
+<p>(1) 因为<span class="arithmatex">\(\left\{X_n\right\}\)</span>是不可约的，所以<span class="arithmatex">\(\left\{X_n\right\}\)</span>正常返，零常返或暂留，设<span class="arithmatex">\(\left\{X_n\right\}\)</span>有平稳分布<span class="arithmatex">\(\pi\)</span>，则若<span class="arithmatex">\(\left\{X_n\right\}\)</span>零常返或暂留，将有<span class="arithmatex">\(\pi_j=0\)</span>，这与<span class="arithmatex">\(\sum_{j\in I}\pi_j=1\)</span>矛盾，所以<span class="arithmatex">\(\left\{X_n\right\}\)</span>是正常返的。</p>
+<p>反之，若有<span class="arithmatex">\(\left\{X_n\right\}\)</span>是正常返的，我们需要找到一个平稳分布 </p>
+<blockquote>
+<p>只需要会用就行，懒得写了（）</p>
+</blockquote>
+<p>当<span class="arithmatex">\(\left\{X_n\right\}\)</span>不可约正常返我们就可以先计算平稳分布<span class="arithmatex">\(\pi\)</span>，再利用<span class="arithmatex">\(\mu_i=\frac{1}{\pi_i}\)</span>来计算平均回转时。从长远来看，访问<span class="arithmatex">\(j\)</span>的时间比例为<span class="arithmatex">\(\pi_j\)</span>，与出发点无关，<span class="arithmatex">\(\pi_j\)</span>越大访问<span class="arithmatex">\(j\)</span>越频繁。进一步地，若<span class="arithmatex">\(\left\{X_n\right\}\)</span>还是非周期的（<strong>此时这个随机过程是遍历的</strong>），则<strong>极限分布存在，极限分布就是平稳分布，与出发点无关</strong>（与初始分布无关）。下面我们介绍Markov链的极限分布</p>
+<h4 id="markov_2">Markov链的极限分布<a class="headerlink" href="#markov_2" title="Permanent link">&para;</a></h4>
+<p>对于时间齐次的Markov链<span class="arithmatex">\(\left\{X_n\right\}\)</span>，如果存在状态空间<span class="arithmatex">\(I\)</span>上的概率分布<span class="arithmatex">\(\mu=(\mu_i;i \in I)\)</span>使得对所有状态<span class="arithmatex">\(i\)</span>，有<span class="arithmatex">\(\lim_{n \to \infty}(X_n=i)=\mu_i\)</span>，则称<span class="arithmatex">\(\mu\)</span>是<span class="arithmatex">\(\left\{X_n\right\}\)</span>的极限分布</p>
+<blockquote>
+<ul>
+<li>极限分布可以不存在，比如</li>
+</ul>
+<p><img alt="image-20250417205010937" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250417205010937.png" /></p>
+<p>有<span class="arithmatex">\(P(X_n=0)=\begin{cases}0&amp;n为奇数\\1,&amp;n为偶数  \end{cases}\)</span>，所以<span class="arithmatex">\(\lim_{n\to \infty}P(X_n=0)\)</span>不存在，极限分布也就不存在</p>
+<ul>
+<li>极限分布可以依赖于初始分布，如下图，<span class="arithmatex">\(P(X_0=0)=\alpha=1-P(X_0=1,0\leq \alpha \leq1)\)</span></li>
+</ul>
+<p><img alt="image-20250417205158852" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250417205158852.png" /></p>
+<p>则有<span class="arithmatex">\(P(X_n=0)=\alpha \to \alpha,\ P(X_n=1)=1-\alpha \to 1-\alpha\)</span></p>
+</blockquote>
+<p>下面我们再看一道例题：</p>
+<p><strong>例1</strong> 对于如图所示的0-1传输系统，计算它的平稳分布，对<span class="arithmatex">\(i,j \in I,\lim_{n\to \infty}p_{ij}^{(n)}\)</span>存在吗，如存在，计算之</p>
+<p><img alt="image-20250417205635741" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250417205635741.png" /></p>
+<p>我们对<span class="arithmatex">\(p\)</span>的情形分三种情况考虑，因为<span class="arithmatex">\(p\)</span>的情况会影响互达等价类。</p>
+<p>(1)若有<span class="arithmatex">\(0&lt;p&lt;1\)</span>，则<span class="arithmatex">\(I=\left\{0,1\right\}\)</span>是一个互达等价类，所以<span class="arithmatex">\(\left\{X_n\right\}\)</span>是不可约的有限的Markov链，则<span class="arithmatex">\(\left\{X_n\right\}\)</span>是正常返的，又由<span class="arithmatex">\(d(X_0)=1\)</span>知其是非周期的，则平稳分布存在，且Markov极限分布就是平稳分布。因此我们设平稳分布为<span class="arithmatex">\(\pi=(\pi_0,\pi_1)\)</span>，则可以得到
+$$
+\pi_0+\pi_1=1\\pi_0=p\pi_0+(1-p)\pi_1
+$$
+解得<span class="arithmatex">\((\pi_0,\pi_1)=(\frac{1}{2},\frac{1}{2})\)</span>，且<span class="arithmatex">\(\lim_{n\to \infty}P_{ij}^{(n)}=\pi_j,\forall i,j\)</span></p>
+<p>(2) 若<span class="arithmatex">\(p=1\)</span>，则<span class="arithmatex">\(\left\{X_n\right\}\)</span>非周期正常返，但是可约，可以得到
+$$
+\lim_{n \to \infty}p_{00}^{(n)}=\lim_{n\to \infty}p_{11}^{(n)}=1,\qquad \lim_{p\to \infty}p_{10}^{(n)}=\lim_{n\to \infty}p_{01}^{(n)}=0
+$$
+这说明<span class="arithmatex">\(\lim_{n\to \infty}p_{ij}^{(n)}\)</span>存在但是依赖于出发点，我们设平稳分布为<span class="arithmatex">\((\pi_0,\pi_1)\)</span>，则可以得到
+$$
+\pi_0+\pi_1=1,\qquad \pi_0=\pi_0
+$$
+解得<span class="arithmatex">\((\pi_0,\pi_1)=(\pi_0,1-\pi_0)\)</span>，这里<span class="arithmatex">\(0\leq \pi_0\leq 1\)</span>，所以有无穷个平稳分布</p>
+<p>(3) 若<span class="arithmatex">\(p=0\)</span>，在<span class="arithmatex">\(\left\{X_n\right\}\)</span>不可约正常返，但是周期为2（不是非周期），对<span class="arithmatex">\(i \in I\)</span>，有
+$$
+p_{ii}^{(n)}=\begin{cases}
+0&amp;n是奇数\
+1&amp;n是偶数
+\end{cases} \qquad p_{i,1-i}^{(n)}=\begin{cases}
+0&amp;n是偶数\
+1&amp;n是奇数
+\end{cases}
+$$
+所以<span class="arithmatex">\(\forall i,j \in I,\lim_{n\to \infty}p_{ij}^{(n)}\)</span>不存在，设平稳分布为<span class="arithmatex">\((\pi_0,\pi_1)\)</span>，则有
+$$
+\pi_0+\pi_1=1,\pi_0=\pi_1
+$$
+解得<span class="arithmatex">\((\pi_0,\pi_1)=(\frac{1}{2},\frac{1}{2})\)</span>，也即从长远来看访问状态<span class="arithmatex">\(i\)</span>的时间比例是<span class="arithmatex">\(\pi_i=\frac{1}{2}\)</span></p>
+<blockquote>
+<p>如果Markov链不可约、正常返，但不是非周期的，那么Markov链就不存在极限分布，因为周期性会导致状态分布无法收敛到单一的固定分布，其状态的访问具有周期性规律</p>
+</blockquote>
+<p><strong>例2</strong>（图上的简单随机游动）设V是一个无向图的顶点集，并且每个定点至少有一个邻居，按下面方式访问V的顶点：对任意<span class="arithmatex">\(n\geq 0\)</span>，若第<span class="arithmatex">\(n\)</span>步在顶点<span class="arithmatex">\(i\)</span>，则独立于过去下一步等概率地访问<span class="arithmatex">\(i\)</span>的邻居，若以<span class="arithmatex">\(X_n\)</span>表示第<span class="arithmatex">\(n\)</span>步访问的顶点，则<span class="arithmatex">\(\left\{X_n\right\}\)</span>是时间齐次的Markov链，状态空间为V，一步转移概率为
+$$
+ p_{ij}=\begin{cases}
+ \frac{1}{d_i} &amp;j是i的邻居\
+ 0 &amp;其他
+ \end{cases}
+$$
+这里<span class="arithmatex">\(d_i\)</span>为<span class="arithmatex">\(i\)</span>的邻居数</p>
+<p><img alt="image-20250418001654743" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250418001654743.png" /></p>
+<p>上图简单随机游动对应的状态空间为<span class="arithmatex">\(I=\left\{0,1,2,3\right\}\)</span>，一步转移矩阵
+$$
+P=\begin{pmatrix}
+0&amp;\frac{1}{3}&amp;\frac{1}{3}&amp;\frac{1}{3}\
+\frac{1}{2}&amp;0&amp;\frac{1}{2}&amp;0\
+\frac{1}{2}&amp;\frac{1}{2}&amp;0&amp;0\
+1&amp;0&amp;0&amp;0
+\end{pmatrix}
+$$
+可以证明这是一个遍历的Markov链，求得平稳分布为<span class="arithmatex">\(\pi=(0.375,0.25,0.25,0.125)\)</span></p>
+<p>而因为这个Markov链是遍历的，则极限分布就是平稳分布，也即有<span class="arithmatex">\(\lim_{n\to \infty}p_{ij}^{(n)}=\pi_j\)</span></p>
+<p><strong>例3</strong></p>
+<p><img alt="image-20250418002344831" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250418002344831.png" /></p>
+<p>如果<span class="arithmatex">\(\lambda=0.5\)</span>，问长远来看此参保人平均所付的保险年金是多少？</p>
+<p><strong>解</strong> 当<span class="arithmatex">\(\lambda = 0.5\)</span>时，可以证明，<span class="arithmatex">\(\left\{X_n\right\}\)</span>是遍历的，设它的平稳分布为<span class="arithmatex">\(\pi=(\pi_1,\pi_2,\pi_3)\)</span>则可以求得平稳分布为<span class="arithmatex">\(\pi=(0.8541,0.1270,0.0189)\)</span>，这里<span class="arithmatex">\(\pi_i\)</span>代表的是长远来看此人位于级别<span class="arithmatex">\(i\)</span>的时间比例，所以长远来看此参保人平均所付的保险年金为
+$$
+3000\pi_1+4000\pi_2+6000\pi_3=3000<em>0.8541+4000</em>0.1270+6000*0.0189=3183.7
+$$</p>
+<h3 id="_15">闭集<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="_16">闭集的定义<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>对于状态空间<span class="arithmatex">\(I\)</span>的子集<span class="arithmatex">\(C\)</span>，如果对任意的状态<span class="arithmatex">\(i \in C\)</span>和任意状态<span class="arithmatex">\(j \notin C\)</span>，都有<span class="arithmatex">\(p_{ij}=0\)</span>，就称<span class="arithmatex">\(C\)</span>为闭集。</p>
+<p>闭集具有以下性质：若<span class="arithmatex">\(C\)</span>是闭集，<span class="arithmatex">\(P(X_0\in C)=1\)</span>，则有<span class="arithmatex">\(P(X_n \in C,\forall n)=1\)</span>（即C是封闭的，从C出发将永远留在C中），此时我们可以将<span class="arithmatex">\(\left\{X_n\right\}\)</span>看作是状态空间<span class="arithmatex">\(C\)</span>上的Markov链</p>
+<p>定理1：</p>
+<ol>
+<li>如果<span class="arithmatex">\(i\)</span>常返且<span class="arithmatex">\(i \to j\)</span>，则有<span class="arithmatex">\(i \leftrightarrow j\)</span>且<span class="arithmatex">\(f_{ij}=f_{ji}=1\)</span></li>
+<li>如果<span class="arithmatex">\(i\)</span>常返，则<span class="arithmatex">\(i\)</span>的互达等价类是闭的（如果<span class="arithmatex">\(i\)</span>的互达等价类不闭，则<span class="arithmatex">\(i\)</span>暂留）</li>
+<li>如果<span class="arithmatex">\(i\)</span>的互达等价类是有限闭集，则<span class="arithmatex">\(i\)</span>正常返</li>
+</ol>
+<p>证明如下：</p>
+<p>(1) 因为<span class="arithmatex">\(i\to j\)</span>，所以存在<span class="arithmatex">\(n\)</span>使得<span class="arithmatex">\(p_{ij}^{(n)}&gt;0\)</span>，又因为<span class="arithmatex">\(i\)</span>常返，所以有
+$$
+0=P(N_i&lt;\infty|X_0=i)=p_{ij}^{(n)}P(N_i &lt;\infty|X_n=j,X_0=i)+(1-p_{ij}^{(n)})P(N_i&lt;\infty|X_n\neq j,X_0=i)
+$$
+又因为<span class="arithmatex">\(p_{ij}^{(n)}&gt;0\)</span>，所以有<span class="arithmatex">\(P(N_i&lt;\infty|X_n=j,X_0=i)=0\)</span>，也即<span class="arithmatex">\(P(N_i=\infty|X_n=j,X_0=i)=1\)</span>，则由Markov性，<span class="arithmatex">\(P(N_i=\infty|X_0=j)=1\)</span>，所以有<span class="arithmatex">\(f_{ij}=1\)</span>，因此<span class="arithmatex">\(i\leftrightarrow j\)</span>，<span class="arithmatex">\(j\)</span>也常返，从而<span class="arithmatex">\(f_{ij}=1\)</span></p>
+<blockquote>
+<p>上面根据第<span class="arithmatex">\(n\)</span>步是否在<span class="arithmatex">\(j\)</span>应用了全概率公式</p>
+</blockquote>
+<p>(2) 用反证法，假设<span class="arithmatex">\(i\)</span>的互达等价类不闭，则存在<span class="arithmatex">\(j\in C,K\notin C\)</span>使得<span class="arithmatex">\(p_{jk}&gt;0\)</span>于是又<span class="arithmatex">\(i \to k\)</span>，由于<span class="arithmatex">\(i\)</span>常返，则<span class="arithmatex">\(k \to i\)</span>否则与<span class="arithmatex">\(i\)</span>常返矛盾，所以有<span class="arithmatex">\(i \leftrightarrow k\)</span>，即<span class="arithmatex">\(k \in C\)</span>这与<span class="arithmatex">\(k \notin C\)</span>矛盾</p>
+<p>(3) 如果<span class="arithmatex">\(i\)</span>的互达等价类<span class="arithmatex">\(C\)</span>是有限闭集，则把<span class="arithmatex">\(\left\{X_n\right\}\)</span>限制在C上得到一个不可约的有限Markov链，那么它是正常返的</p>
+<blockquote>
+<p>总结一下，有如下结论：</p>
+<p>假设<span class="arithmatex">\(I\)</span>有限，则有</p>
+<ul>
+<li><span class="arithmatex">\(i\)</span>正常返<span class="arithmatex">\(\iff i\)</span>的互达等价类是闭集</li>
+<li><span class="arithmatex">\(i\)</span>暂留<span class="arithmatex">\(\iff i\)</span>的互达等价类不是闭集</li>
+<li><span class="arithmatex">\(\left\{X_n\right\}\)</span>没有零常返态（有限Markov链是没有零常返态的）</li>
+</ul>
+<p>假设<span class="arithmatex">\(I\)</span>可数，则</p>
+<ul>
+<li><span class="arithmatex">\(i\)</span>的互达等价类不是闭集<span class="arithmatex">\(\Rightarrow\)</span>状态<span class="arithmatex">\(i\)</span>暂留</li>
+<li><span class="arithmatex">\(i\)</span>的互达等价类是闭集，则状态<span class="arithmatex">\(i\)</span>都有可能（例如爬梯子模型是不可约的，<span class="arithmatex">\(I\)</span>可数，但它可能正常返，也可能零常返，也可能）</li>
+</ul>
+</blockquote>
+<p>下面我们来看一些例题：
+<img alt="image-20250418092433995" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250418092433995.png" /></p>
+<p><strong>解</strong> </p>
+<p>(1) 互达等价类有<span class="arithmatex">\(\left\{0,1,2\right\},\left\{3\right\}\)</span>，而<span class="arithmatex">\(\left\{0,1,2\right\}\)</span>是闭的，正常返，<span class="arithmatex">\(\left\{3\right\}\)</span>是不闭的，因此为暂留态。</p>
+<p>且容易知道，<span class="arithmatex">\(d(0)=1,d(3)=\infty\)</span>，所以0,1,2是非周期的</p>
+<p>(2) 只考虑状态0,1,2，把<span class="arithmatex">\(\left\{X_n\right\}\)</span>限制在<span class="arithmatex">\(\left\{0,1,2\right\}\)</span>上得到一个遍历的Markov链<span class="arithmatex">\(\left\{Y_n\right\}\)</span>，其一步转移矩阵为P的前三列前三行，设<span class="arithmatex">\(\left\{Y_n\right\}\)</span>的平稳分布为<span class="arithmatex">\((\pi_0,\pi_1,\pi_2)\)</span>，则可以得到
+$$
+\pi_0+\pi_1+\pi_2=1\
+\pi_1=0.7\pi_2\
+\pi_2=\pi_0
+$$
+于是可以得到<span class="arithmatex">\((\pi_0,\pi_1,\pi_2)=(\frac{10}{27},\frac{7}{27},\frac{10}{27})\)</span>，所以最终可以得到<span class="arithmatex">\((\mu_0,\mu_1,\mu_2)=(\frac{1}{\pi_0},\frac{1}{\pi_1},\frac{1}{\pi_2})=(\frac{27}{10},\frac{27}{7},\frac{27}{10})\)</span></p>
+<p>(3) 相邻两次变空的平均时间间隔为<span class="arithmatex">\(\mu_0=2.7\)</span></p>
+<h3 id="_17">吸收概率与平均吸收时间<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>有限Markov链的状态可以分解为
+$$
+I=T\cup C_1\cup C_2\cup \cdots\cup C_k
+$$
+这里<span class="arithmatex">\(C_1,C_2,\cdots,C_k\)</span>是所有闭的互达等价类（所有状态都是正常返态），<span class="arithmatex">\(T\)</span>是所有暂留态的集合（互达等价类不是闭集的全体），则有以下结论：</p>
+<ul>
+<li>如果<span class="arithmatex">\(X_0\in C_i\)</span>，则将永远待在<span class="arithmatex">\(C_i\)</span>，那么我们可以把<span class="arithmatex">\(\left\{X_n\right\}\)</span>限制在<span class="arithmatex">\(C_i\)</span>上得到不可约正常返的Markov链</li>
+<li>如果<span class="arithmatex">\(X_0 \in T\)</span>，则最终会进入某个<span class="arithmatex">\(C_i\)</span>并将不再离开（被某个互达等价类所吸收）</li>
+</ul>
+<p>那么我们就会提出这样的问题：进入<span class="arithmatex">\(C_1,\cdots,C_k\)</span>的概率分别是多少？进入<span class="arithmatex">\(C=C_1\cup C_2\cup\cdots\cup C_k\)</span>的平均时间是多少？</p>
+<p>我们首先先引入一些定义：</p>
+<p>对状态<span class="arithmatex">\(i\)</span>，我们记<span class="arithmatex">\(T_i=\min\left\{n \geq 0:X_n=i\right\}\)</span>为首次访问状态<span class="arithmatex">\(i\)</span>的时刻；对状态空间<span class="arithmatex">\(I\)</span>的子集<span class="arithmatex">\(A\)</span>，令<span class="arithmatex">\(T_A=\min\left\{n\geq 0:X_n \in A\right\}\)</span>为首次访问子集<span class="arithmatex">\(A\)</span>的时刻。并且我们约定<span class="arithmatex">\(\min \emptyset = \infty\)</span> </p>
+<p>下面来看一个经典的例题</p>
+<p><strong>例1</strong> （赌徒输光问题）甲乙两人独立重复玩游戏，每一局甲赢1元和输1元的概率都是<span class="arithmatex">\(\frac{1}{2}\)</span>，游戏一直到某人输光结束，一开始甲带有<span class="arithmatex">\(i\)</span>元钱，乙带有<span class="arithmatex">\(m-i\)</span>元钱，这里<span class="arithmatex">\(i\)</span>与<span class="arithmatex">\(m-i\)</span>都是非负整数，计算：</p>
+<p>(1) 游戏在有限时间内结束的概率</p>
+<p>(2) 甲输光的概率</p>
+<p>(3) 游戏平均持续时间</p>
+<p><strong>解</strong>  (1) 我们以<span class="arithmatex">\(S_n\)</span>表示<span class="arithmatex">\(n\)</span>局游戏后甲所拥有的钱数，则<span class="arithmatex">\(\left\{S_n;n\geq 0\right\}\)</span>是时间齐次的Markov链，状态空间为<span class="arithmatex">\(I=\left\{0,1,\cdots,m\right\}\)</span>，一步转移概率为<span class="arithmatex">\(p_{00}=p_{mm}=1,p_{i,i+1}=p_{i,i-1}=\frac{1}{2}\)</span>，共有三个互达等价类<span class="arithmatex">\(\left\{0\right\},\left\{1,2,\cdots,m-1\right\},\left\{m\right\}\)</span>，其中只有<span class="arithmatex">\(\left\{0\right\},\left\{m\right\}\)</span>是闭集，令<span class="arithmatex">\(C_1=\left\{0\right\},C_2=\left\{m\right\},T=\left\{1,2,\cdots,m-1\right\}\)</span>，则有<span class="arithmatex">\(I=T\cup C_1\cup C_2\)</span>，则有<span class="arithmatex">\(T\)</span>中状态暂留，所以最终会进入$C_1\cup C_2 $此时游戏结束，因此游戏在有限时间内结束的概率为1</p>
+<p>(2)<img alt="image-20250418102036561" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250418102036561.png" />  </p>
+<p>显然输光概率与最开始带的钱数是有关系的，我们不妨令<span class="arithmatex">\(h_i=P(输光|S_0=i)=P(T_0&lt;\infty|S_0=i)\)</span>，则<span class="arithmatex">\(h_0=1,h_m=0\)</span>，则对<span class="arithmatex">\(0&lt;i&lt;m\)</span>，由全概率公式和Markov性可以得到：
+$$
+h_i=h_{i+1}\times \frac{1}{2}+h_{i-1}\times \frac{1}{2}
+$$
+也即<span class="arithmatex">\(h_i\)</span>是等差数列，则容易得到
+$$
+h_i=\frac{m-i}{m},\qquad \forall 0\leq i\leq m
+$$</p>
+<blockquote>
+<p>通用公式为
+$$
+h_i=\sum_{j}P(S_1=j|S_0=i)P(T_0&lt;\infty|S_1=j,S_0=i)=\sum_{j}p_{ij}P(T_0&lt;\infty|S_0=j)\=\sum_{j}p_{ij}h_j
+$$
+其中<span class="arithmatex">\(P(S_1=j|S_0=i)\)</span>表示从<span class="arithmatex">\(i\)</span>转移到<span class="arithmatex">\(j\)</span>的一步转移概率，<span class="arithmatex">\(P(T_0&lt;\infty|S_1=j,S_0=i)\)</span>考虑到Markov性即<span class="arithmatex">\(P(T_0&lt;\infty|S_0=j)\)</span></p>
+</blockquote>
+<p>(3) <img alt="image-20250418102100892" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250418102100892.png" /></p>
+<p>我们令<span class="arithmatex">\(C=\left\{0,m\right\}\)</span>，<span class="arithmatex">\(T_c\)</span>为游戏结束时间，令<span class="arithmatex">\(a_i=E[T_c|S_0=i]\)</span>，则有<span class="arithmatex">\(a_0=0,a_m=0\)</span>，下面我们考虑<span class="arithmatex">\(0&lt;i&lt;m\)</span>，则显然能得到
+$$
+a_i=1+\frac{1}{2}(a_{i+1}+a_{i-1})
+$$</p>
+<blockquote>
+<p>严格推理如下：
+$$
+a_i=1+E[T_c-1|S_0=i]=1+\sum_{j}P(S_1=j|S_0=i)E[T_c-1|S_1=j,S_0=i]\=1+\sum_{j}p_{ij}E<a href="这一步用到了Markov性">T_c|S_0=j</a>\=1+\sum_{j}p_{ij}a_j=1+\frac{1}{2}(a_{i+1}+a_{i-1})
+$$</p>
+</blockquote>
+<p>最后容易解得
+$$
+a_i=i(m-1),\forall 0\leq i\leq m
+$$
+<strong>例2</strong> （迷宫中的老鼠）</p>
+<p><img alt="image-20250418102955323" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250418102955323.png" /></p>
+<p><strong>解</strong> 一旦老鼠跑到3号或7号房间，我们就认为老鼠将永远呆在那个房间，我们用<span class="arithmatex">\(X_n\)</span>表示<span class="arithmatex">\(n\)</span>步后老鼠所在的位置，则<span class="arithmatex">\(\left\{X_n\right\}\)</span>是时间齐次的Markov链，状态空间为<span class="arithmatex">\(I=\left\{1,2,\cdots,9\right\}\)</span>，其中3和7是两个吸收态，其他状态组成<span class="arithmatex">\(T\)</span>，我们<strong>所要求的就是从2出发最终被7吸收的概率</strong></p>
+<p>我们令<span class="arithmatex">\(h_i=P(T_7&lt;\infty |X_0=i)\)</span>，则有<span class="arithmatex">\(h_7=1,h_3=0\)</span>，则利用位置对称性可以得到，<span class="arithmatex">\(h_1=h_5=h_9=\frac{1}{2}\)</span>，那么我们利用全概率公式和Markov性就可以得到：
+$$
+h_2=\sum_{j}p_{2j}h_j=\frac{1}{3}h_1+\frac{1}{3}h_5+\frac{1}{3}h_3=\frac{1}{3}
+$$
+<strong>例3</strong></p>
+<p><img alt="image-20250418103518259" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250418103518259.png" /></p>
+<p><strong>解</strong> (1) 因为我们其实并不关心股票价格涨到4元或跌到1元之后如何，且我们所求的概率为<span class="arithmatex">\(P(T_4&lt;T_1)\)</span>，这个值与到达1或4之后的过程没有关系，所以我们可以将1和4看成是吸收态，令
+$$
+h_i=P(T_4&lt;T_1|X_0=i)
+$$
+则我们可以得到，<span class="arithmatex">\(h_1=0,h_4=1\)</span>，且
+$$
+h_2=\sum_{j}p_{2j}h_j=\frac{1}{3}h_1+\frac{1}{3}h_2+\frac{1}{3}h_3\
+h_3=\sum_{j}p_{3j}h_j=\frac{1}{4}h_2+\frac{1}{4}h_3+\frac{1}{2}h_4
+$$
+可以解得<span class="arithmatex">\(h_2=\frac{2}{5},h_3=\frac{4}{5}\)</span></p>
+<p>由全概率公式可以得到
+$$
+P(T_4&lt;T_1)=\sum_{i=1}^4 P(X_0=i)h_i=\frac{1}{2}h_2+\frac{1}{2}h_3=\frac{3}{5}
+$$
+(2) 第二问我们并不关心股票价格涨到4元之后如何，且我们所求为<span class="arithmatex">\(E(T_4)\)</span>，这个值与到达4之后的过程没有关系，所以我们可以将4看成是吸收态，令<span class="arithmatex">\(a_i=E[T_4|X_0=i]\)</span>，则<span class="arithmatex">\(a_4=0\)</span>，对于<span class="arithmatex">\(i\neq 4\)</span>，有<span class="arithmatex">\(a_i=1+\sum_{j}p_{ij}a_j\)</span></p>
+<p><img alt="image-20250418104403468" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250418104403468.png" /></p>
+<p>则有
+$$
+a_4=0,\a_1=1+\frac{1}{2}a_1+\frac{1}{2}a_2\
+a_2=1+\frac{1}{3}a_1+\frac{1}{3}a_2+\frac{1}{3}a_3\
+a_3=1+\frac{1}{4}a_2+\frac{1}{4}a_3+\frac{1}{2}a_4
+$$
+则可以解得<span class="arithmatex">\(a_1=\frac{23}{2},a_2=\frac{19}{2},a_3=\frac{9}{2}\)</span></p>
+<p>所以最后我们可以得到<span class="arithmatex">\(E(T_4)=\sum_{i=1}^4P(X_0=i)E(T_4|X_0=i)=\frac{1}{2}a_2+\frac{1}{2}a_3=7\)</span></p>
+<h3 id="markov_3">可逆Markov链<a class="headerlink" href="#markov_3" title="Permanent link">&para;</a></h3>
+<p>设<span class="arithmatex">\(\left\{X_n\right\}\)</span>是不可约的Markov链，且<span class="arithmatex">\(X_0\)</span>的分布为平稳分布<span class="arithmatex">\(\pi\)</span>，则对任何<span class="arithmatex">\(n&gt;m\geq 1\)</span>，任何状态<span class="arithmatex">\(i,j,i_{m+1},\cdots,i_n\)</span>有
+$$
+P(X_{m-1}=j|X_m=i,X_{m+1}=i_{m+1},\cdots,X_n=i_n)=P(X_{m-1}=j|X_m=i)=\frac{P(X_{m-1}=j,X_m=i)}{P(X_m=i)}\=\frac{P(X_{m-1}=j)p_{ji}}{P(X_m=i)}=\frac{\pi_jp_{ji}}{\pi_{i}}
+$$
+也就是说，对于任何<span class="arithmatex">\(n\)</span>，随机序列<span class="arithmatex">\(X_n,X_{n-1},\cdots,X_{0}\)</span>都是时间齐次的Markov链，我们将上式其定义为<span class="arithmatex">\(q_{ij}\)</span>，代表这个Markov链的一步转移概率。</p>
+<p>而可逆Markov链要求逆过来的Markov链的一步转移概率<span class="arithmatex">\(q_{ij}\)</span>和原来的一步转移概率<span class="arithmatex">\(p_{ij}\)</span>是相等的，也即如下定义：</p>
+<p><strong>可逆分布：</strong>一个概率分布<span class="arithmatex">\(\pi\)</span>若对所有的状态<span class="arithmatex">\(i,j\)</span>满足<span class="arithmatex">\(\pi_ip_{ij}=\pi_jp_{ji}\)</span>（称为细致平衡条件），则这个概率分布<span class="arithmatex">\(\pi\)</span>称为是可逆分布。</p>
+<p><strong>可逆Markov链：</strong>设<span class="arithmatex">\(\left\{X_n\right\}\)</span>是不可约的具有平稳分布<span class="arithmatex">\(\pi\)</span>的Markov链，如果对所有状态<span class="arithmatex">\(i,j\)</span>有<span class="arithmatex">\(q_{ij}=p_{ij}\)</span>，也即<span class="arithmatex">\(\pi_ip_{ij}=\pi_jp_{ji}\)</span>，则称<span class="arithmatex">\(\left\{X_n\right\}\)</span>为可逆的Markov链。（满足细致平衡条件的Markov链即可逆的Markov链）</p>
+<blockquote>
+<p><strong>可逆分布一定是平稳分布</strong>，其条件比平稳分布更强，下面我们给出证明：</p>
+<p>设<span class="arithmatex">\(\pi\)</span>是可逆分布，则对任何状态<span class="arithmatex">\(j\)</span>都有
+$$
+\sum_i\pi_ip_{ij}=\sum_i\pi_j p_{ji}=\pi_j
+$$
+也即满足了<span class="arithmatex">\(\pi=\pi P\)</span></p>
+</blockquote>
+<p>下面我们来看一些可逆分布的例子：</p>
+<p><strong>例1</strong> 有A，B两只容器，中间有一细管相连，有<span class="arithmatex">\(m\)</span>只跳蚤，每次有一只随机地从一个容器跳到另一个容器，以<span class="arithmatex">\(X_n\)</span>表示<span class="arithmatex">\(n\)</span>次后A中跳蚤数，则<span class="arithmatex">\(\left\{X_n\right\}\)</span>是时间齐次的Markov链，转移概率为
+$$
+p_{i,i+1}=\frac{m-i}{m},\qquad p_{i,i-1}=\frac{i}{m},\ i=0,\cdots,m
+$$
+求其平稳分布</p>
+<p><strong>解</strong> 这题如果选择直接求平稳分布，用最开始的方法<span class="arithmatex">\(\pi=\pi P\)</span>解方程组显然非常难计算，而我们又知道可逆分布一定是平稳分布，且这是一个不可约的Markov链，我们不妨先考虑其是否是可逆分布，如果是可逆分布，那么这个可逆分布也是唯一的平稳分布。</p>
+<p>对于可逆分布<span class="arithmatex">\(\pi\)</span>，有<span class="arithmatex">\(\pi_ip_{i,i-1}=\pi_{i-1}p_{i-1,i},i=1,\cdots,m\)</span>，则可以得到：
+$$
+\pi_i=\frac{m-i+1}{i}\pi_{i-1}=\cdots=\frac{(m-i+1)(m-i+2)\cdots m}{i!}\pi_0=\frac{m!}{(m-i)!i!}\pi_0=C_m^i \pi_0,\ i=0,\cdots,m
+$$
+所以可以得到<span class="arithmatex">\(\pi_i=\frac{C_m^i}{2^m},i=0,1,\cdots,m\)</span></p>
+<p>又因为<span class="arithmatex">\(\left\{X_n\right\}\)</span>不可约，所以这个可逆分布<span class="arithmatex">\(\pi\)</span>也是唯一的平稳分布</p>
+<p><strong>例2</strong> 设<span class="arithmatex">\(\left\{X_n\right\}\)</span>是平稳的时齐Markov链，状态空间<span class="arithmatex">\(I=\left\{1,2\right\}\)</span>，一步转移矩阵为
+$$
+P=\begin{pmatrix}</p>
+<p>0&amp;1\
+0.5&amp;0.5
+\end{pmatrix}
+$$
+问<span class="arithmatex">\(\left\{X_n\right\}\)</span>是否可逆</p>
+<p><strong>解</strong> 我们设<span class="arithmatex">\(\pi=(\pi_1,\pi_2)\)</span>是可逆分布，则有<span class="arithmatex">\(\pi_1p_{12}=\pi_2p_{21}\)</span>，即有<span class="arithmatex">\(\pi_1=0.5\pi_2\)</span>，又<span class="arithmatex">\(\pi_1+\pi_2=1\)</span>，所以有<span class="arithmatex">\(\pi=(\frac{1}{3},\frac{2}{3})\)</span>，又<span class="arithmatex">\(\left\{X_n\right\}\)</span>不可约且可逆分布存在，所以<span class="arithmatex">\(\left\{X_n\right\}\)</span>可逆</p>
+<p><strong>例3</strong>设<span class="arithmatex">\(\{X_n\}\)</span>是平稳的时序Markov链, 状态空间<span class="arithmatex">\(=\{1,2,3\}\)</span>,</p>
+<p>一步转移矩阵为<span class="arithmatex">\(P=\begin{pmatrix}
+0 &amp; 0.6 &amp; 0.4 \\
+0.1 &amp; 0.7 &amp; 0.2 \\
+0.3 &amp; 0 &amp; 0.7
+\end{pmatrix}\)</span></p>
+<p>问:<span class="arithmatex">\(\{X_n\}\)</span>可逆吗？</p>
+<p><strong>解</strong> 设<span class="arithmatex">\(\pi=(\pi_1,\pi_2,\pi_3)\)</span>是可逆分布,</p>
+<p>则<span class="arithmatex">\(\pi_2P_{23}=\pi_3P_{32}\)</span>, 即<span class="arithmatex">\(\pi_2=0\)</span>,</p>
+<p>又<span class="arithmatex">\(\pi_1P_{12}=\pi_2P_{21}\)</span>, 得到<span class="arithmatex">\(\pi_1=0\)</span>,</p>
+<p>再有<span class="arithmatex">\(\pi_1P_{13}=\pi_3P_{31}\)</span>, 得到<span class="arithmatex">\(\pi_3=0\)</span></p>
+<p>但<span class="arithmatex">\(\pi_1+\pi_2+\pi_3=0\neq 1\)</span>,所以不满足可逆分布,</p>
+<p>所以<span class="arithmatex">\(\{X_n\}\)</span>不可逆</p>
+<h4 id="kolmogorov">Kolmogorov准则<a class="headerlink" href="#kolmogorov" title="Permanent link">&para;</a></h4>
+<p>设<span class="arithmatex">\(\{X_n\}\)</span>是不可约的时齐Markov链，初始分布为平稳分布<span class="arithmatex">\(\pi\)</span>，则该Markov链可逆当且仅当对于任意正整数<span class="arithmatex">\(N\)</span>和任意状态<span class="arithmatex">\(i_0,i_1,\ldots,i_{N-1}\)</span>有：<span class="arithmatex">\(<span class="arithmatex">\(P_{i_0 i_1} P_{i_1 i_2} \cdots P_{i_{N-1} i_0} = P_{i_0 i_{N-1}} P_{i_{N-1} i_{N-2}} \cdots P_{i_1 i_0}\)</span>\)</span></p>
+<blockquote>
+<p>Kolmogorov准则指出，当Markov链对于任意一个闭合路径，如<span class="arithmatex">\(i_0\to i_1\to \cdots \to i_{N-1}\to i_0\)</span>，正向转移概率的乘积等于逆向转移概率的乘积时，这个Markov链是可逆的</p>
+</blockquote>
+<p>那么由Kolmogorov准则，对于例3，我们考虑<span class="arithmatex">\(1\to2\to3\to1\)</span>和<span class="arithmatex">\(1\to3\to2\to1\)</span>这样的一个闭合路径，因为
+$$
+p_{13}p_{32}p_{21}=0,\qquad p_{12}p_{23}p_{31}&gt;0
+$$
+所以其不是可逆的Markov链</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 07:37:02 UTC"><span class="timeago" datetime="2025-06-28T07:37:02+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 07:37:02 UTC">2025-06-28</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

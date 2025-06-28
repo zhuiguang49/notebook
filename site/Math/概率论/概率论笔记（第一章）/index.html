@@ -1,0 +1,1842 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/">
+      
+      
+        <link rel="prev" href="../../../CS/OOP/Week13%20Exception/">
+      
+      
+        <link rel="next" href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter1 事件及其概率 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter1 事件及其概率
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Home/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Home/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机现象与统计规律性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      古典概型与几何概型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="古典概型与几何概型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      古典概型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      几何概型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率的公理化定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概率的公理化定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率的性质：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件概率与事件的独立性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="条件概率与事件的独立性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件概率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      全概率公式、贝叶斯公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      事件的独立性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的分类和定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机现象与统计规律性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      古典概型与几何概型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="古典概型与几何概型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      古典概型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      几何概型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率的公理化定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概率的公理化定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率的性质：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件概率与事件的独立性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="条件概率与事件的独立性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件概率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      全概率公式、贝叶斯公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      事件的独立性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Chapter1 事件及其概率</h1>
+
+<h2 id="_1">随机现象与统计规律性<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>概率的统计定义：<span class="arithmatex">\(F_N(A) = \frac{n}{N}\)</span> 为A在N此实验中出现的频率，其中n为事件A出现的频数</p>
+<p><strong>频率的性质</strong>：</p>
+<ul>
+<li>非负性：<span class="arithmatex">\(F_N(a) \geq 0\)</span></li>
+<li>规范性：对必然事件 <span class="arithmatex">\(\Omega\)</span> ，有<span class="arithmatex">\(F_n(\Omega) = 1\)</span></li>
+<li>可加性：若A与B是互斥事件，以A+B记A与B至少有一个发生这一事件，则有<span class="arithmatex">\(F_N(A+B) = F_N(A) + F_N(B)\)</span>，并且该性质可以推广到任意有限个事件</li>
+</ul>
+<h2 id="_2">古典概型与几何概型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">古典概型<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>满足下列两个条件的试验模型被称为古典概型：</p>
+<ul>
+<li>样本空间有限</li>
+<li>各样本点的出现等可能</li>
+</ul>
+<p><strong>古典概率</strong>的定义：</p>
+<p>设一试验有n个等可能发生的样本点，而事件A包含其中的m个样本点，则事件A发生的概率P（A）定义为</p>
+<div class="arithmatex">\[
+P(A)=\frac{m}{n}=\frac{A包含的样本点个数}{样本空间中的样本点总数}=\frac{card(A)}{card(\Omega)}
+\]</div>
+<p><strong>古典概率</strong>的性质：</p>
+<ul>
+<li>非负性：<span class="arithmatex">\(P(A)\geq0\)</span></li>
+<li>规范型：对于必然事件<span class="arithmatex">\(\Omega\)</span>，<span class="arithmatex">\(P(\Omega)=1\)</span></li>
+<li>可加性：若A与B是互斥事件，以A+B记A与B至少有一个发生这一事件，则有<span class="arithmatex">\(P(A+B)=P(A)+P(B)\)</span>，并且该性质可以推广到任意有限个事件</li>
+</ul>
+<p><strong>古典概型中常用的计数方法</strong>：</p>
+<ol>
+<li>从n个不同的元素有放回地抽取每一个，依次抽取m个排成一列，可以得到的不同排列数是<span class="arithmatex">\(n^m\)</span></li>
+<li>
+<p>从n个不同的元素不放回地抽取m个元素排成一列时，可以得到的排列数是
+$$
+A_n^m=\frac{n!}{(n-m)!}
+$$</p>
+</li>
+<li>
+<p>从n个不同的元素中不放回地抽取m个元素，不论次序地组成一组，可以得到的组合数是
+$$
+C_n^m=\frac{n!}{m!(n-m)!}
+$$</p>
+</li>
+<li>
+<p>将n个不同的元素分成有次序的k组（注意<strong>这些组是区分次数的</strong>），不考虑每组中元素的次序，第<span class="arithmatex">\(i(1 \leq i \leq k)\)</span>组恰有<span class="arithmatex">\(n_i(1 \leq i \leq k)\)</span>个不同的元素的结果数是</p>
+</li>
+</ol>
+<div class="arithmatex">\[
+C_n^{n_1}C_{n-n_1}^{n_2}...C_{n-n_1-...-n_{k-1}}^{n_k}=\frac{n!}{n_1!n_2!...n_k!}
+\]</div>
+<p><strong>一些经典例题</strong></p>
+<ol>
+<li>
+<p>有<span class="arithmatex">\(n\)</span>个球, <span class="arithmatex">\(N\)</span>个格子 (<span class="arithmatex">\(n \leq N\)</span>) , 球与格子都是可以区分的. 每个球落在各个格子内的概率相同(设格子足够大, 可以容纳任意多个球). 将这<span class="arithmatex">\(n\)</span>个球随机地放入<span class="arithmatex">\(N\)</span>个格子, 求: </p>
+<p>(1) 指定的<span class="arithmatex">\(n\)</span>个格子各有一球的概率; </p>
+<p>(2) 有<span class="arithmatex">\(n\)</span>格各有一球的概率. </p>
+<p><br></p>
+<p><strong>解答：</strong> 第一问，我们可以用古典概型来计算，记事件A为指定的格子各有一球，则我们只需要计算出<span class="arithmatex">\(card(A)\)</span>和<span class="arithmatex">\(card(\Omega)\)</span>即可，有</p>
+<p>$$
+  card(A)=n!\qquad card(\Omega)=N^n
+  $$</p>
+<p>​这是因为指定的格子各有一球其实相当于在n个格子中放入n个球的全排列，而在计算<span class="arithmatex">\(\Omega\)</span>的时候我们要注意每一个    球都可以放进任意一个格子里去，所以为指数形式，所以最终的答案为<span class="arithmatex">\(P(A)=\frac{n!}{N^n}\)</span></p>
+<p>对于第二问，仍然可以使用古典概型来计算，我们记B事件为有n格各有一球，这里相对于第一问的A区别在于并非指定的n格，也就是从N个格子中挑选n个格子并排序，故有
+  $$
+  card(N)=A_N^n\qquad card(\Omega)=N^n
+  $$
+  所以有
+  $$
+  P(B)=\frac{A^n_N}{N^n}
+  $$
+  <br></p>
+</li>
+<li>
+<p><strong>(生日问题)</strong> 求n人的班级里至少有2位同学生日相同的概率</p>
+<p><br></p>
+<p>​这题可以这么考虑，我们把一年365天看成365个格子，n人看成n个球，如果它们放进了同一个格子，就代表两人的生日在同一天。那么由上一题我们知道，每个格子各有一球的概率是<span class="arithmatex">\(\frac{A_{365}^n}{365^n}\)</span>，而我们需要的是对立事件，是需要某个各自里面至少有两个球的，所以最终的结果是<span class="arithmatex">\(1-\frac{A_{365}^n}{365^n}\)</span>，其实这题看出来是从反面考虑并不难，因为题目要求至少，很明显的提示。<strong>这个结论一定要记住</strong></p>
+<p><br>
+  ​<strong>变式:</strong> n人的班级，给定第j位同学，剩下的n-1位同学里至少有一位与第j位同学同生日的概率有多大？</p>
+<p>答案是<span class="arithmatex">\(1-(\frac{364}{365})^{n-1}\)</span>，因为剩下n-1位同学的生日可以是除第j位同学生日那天外的364天任意一天
+  <br>
+  <br></p>
+</li>
+<li>
+<p><strong>（摸球问题）</strong> 口袋中有<span class="arithmatex">\(a\)</span>只白球，<span class="arithmatex">\(b\)</span>只黑球，随机地一只只摸球，求：</p>
+<ol>
+<li>若是有放回摸球，求第k次摸得白球的概率</li>
+<li>若是不放回摸球，求第k次摸得白球的概率
+  <br>
+  <br></li>
+</ol>
+<p><strong>解答：</strong> 第一问，<span class="arithmatex">\(\frac{a}{a+b}\)</span></p>
+<p>第二问，有点难度，我们可以从排列和组合两种角度去考虑（其实就是把同颜色的球视作不同or相同）。</p>
+<p><strong>排列</strong>：我们先将a只白球和b只黑球都看做是不同的，若把a+b个球排列在一条直线上，则一共有<span class="arithmatex">\((a+b)!\)</span>种排列方法。第k次为白球，即第k个位置为白球有a种情况（因为这时候我们将白球视作不同的球），其余a+b-1个球排列共有<span class="arithmatex">\((a+b-1)!\)</span>种情况，故共有<span class="arithmatex">\(a(a+b-1)!\)</span>中情况，则第k次摸得白球的概率为</p>
+<p>$$
+  \frac{a(a+b-1)!}{(a+b)!}=\frac{a}{a+b}
+  $$</p>
+<p><strong>组合</strong>：我们将同种颜色的球看作是相同的，同时将a+b个球放置在同一条直线上，此时若我们取定b个白球的位置，则黑球的位置也随之确定，故总的方案数为<span class="arithmatex">\(C_{a+b}^a\)</span>，而第k次摸得白球的的方案数为<span class="arithmatex">\(C_{a+b-1}^{a-1}\)</span>，即在剩下a+b-1个位置挑a-1个位置放白球，所以第k次摸得白球的概率为<span class="arithmatex">\(\frac{C_{a+b-1}^{a-1}}{C_{a+b}^a}=\frac{a}{a+b}\)</span></p>
+<p>我们从这题可以得到一个<strong>非常重要的结论</strong>：摸球与顺序无关，抽签概率等等亦如此。</p>
+</li>
+</ol>
+<h3 id="_4">几何概型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>几何概率的性质：</p>
+<ul>
+<li>非负性：<span class="arithmatex">\(P(A)\geq 0\)</span></li>
+<li>规范性：对必然事件<span class="arithmatex">\(\Omega\)</span>，<span class="arithmatex">\(P(\Omega)=1\)</span></li>
+<li>可加性：若A与B是互斥事件，以A+B记A与B至少有一个发生这一事件，则有<span class="arithmatex">\(P(A+B)=P(A)+P(B)\)</span>，并且该性质可以推广到任意有限个事件</li>
+</ul>
+<p><strong>一些经典例题</strong></p>
+<ol>
+<li>（会面问题）两人相约7点到8点在某地会面，先到者等候另一人20分钟，过时离去，求两人能会面的概率</li>
+</ol>
+<p><strong>​解：</strong> 样本点由甲乙两人各自到达的时刻组成，以7点作为计算时间的起点，设甲乙各在第x分钟和第y分钟到达，则样本空间为<span class="arithmatex">\(\Omega=\left\{(x,y)|0 \leq x,y\leq60\right\}\)</span>，会面的充要条件是<span class="arithmatex">\(|x-y|\leq20\)</span>，如图所示：</p>
+<p><img alt="会面问题" src="../images/%E4%BC%9A%E9%9D%A2%E9%97%AE%E9%A2%98.png" /></p>
+<p>则由几何概型可知相应的概率为<span class="arithmatex">\(\frac{5}{9}\)</span>，即面积比</p>
+<ol>
+<li><strong>（蒲丰投针问题）</strong>：平面上画很多平行线，间距为a，向此平面投资长为l(l&lt;a)的针，求此针能与平行线相交的概率</li>
+</ol>
+<p>解：这题我们以针的位置为样本点，而针的位置可以由两个参数决定，针的中点与最接近的平行线之间的距离x，针与平行线的夹角θ。样本空间
+   $$
+   \Omega=\left{ (\theta,x)|0\leq\theta\leq\pi,0\leq x\leq \frac{a}{2}\right}
+   $$
+   <span class="arithmatex">\(，容易发现，针与平行线相交的充分必要条件是\)</span>x\leq\frac{lsin\theta}{2}<span class="arithmatex">\(，所以我们可以以\)</span>\theta$为横轴，x为纵轴，图示如下：</p>
+<p><img alt="蒲丰投针问题" src="../images/%E8%92%B2%E4%B8%B0%E6%8A%95%E9%92%88%E9%97%AE%E9%A2%98.png" /></p>
+<p>​   则可得概率为
+   $$
+   \frac{\int_{0}^{\pi}\frac{l}{2}sin\theta d\theta}{\frac{a\pi}{2}}=\frac{2l}{a\pi}
+   $$</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>事实上，用频率逼近概率，可以得到π的近似值，我们可以重复投针N次，统计与平行线相交的次数n，则<span class="arithmatex">\(p\approx\frac{n}{N}\)</span>，又a与l是可以精确测量的，则可以由蒲丰投针的公式得到π的近似值</p>
+</div>
+<h2 id="_5">概率的公理化定义<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>事件：样本空间<span class="arithmatex">\(\Omega\)</span>的子集</p>
+<p>事件的关系：包含、相等、和（并）、积（交）、差事件、互斥、逆（对立、余）</p>
+<p>事件的运算：交换律、结合律、分配律、德摩根律</p>
+<p>概率空间：三个要素，样本空间、事件域、概率</p>
+<p>概率满足的三个条件：</p>
+<ul>
+<li>
+<p>非负性：对事件域中的任一事件A，$P(A)\geq0 $</p>
+</li>
+<li>
+<p>规范性：<span class="arithmatex">\(P(\Omega)=1\)</span></p>
+</li>
+<li>
+<p>可列可加性：若<span class="arithmatex">\(A_1,…，A_n…\)</span>是事件域中两两互不相容的事件，则有
+  $$
+  P(\sum_{n=1}^{\infty}A_n )=\sum_{n=1}^{\infty}P(A_n)
+  $$</p>
+</li>
+</ul>
+<h3 id="_6">概率的性质：<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li><span class="arithmatex">\(P(\emptyset)=0\)</span></li>
+</ol>
+<p>可以用可列可加性证明：
+   $$
+   P(\Omega)=P+(\Omega)+P(\emptyset)+P(\emptyset)+…,
+   $$
+   即可得<span class="arithmatex">\(P(\emptyset)=0\)</span></p>
+<ol>
+<li>
+<p>有限可加性：若<span class="arithmatex">\(A_iA_j=\emptyset,i,j=1,2,…,n,i\neq j\)</span>，则
+   $$
+   P(\sum_{i=1}^{n}A_n )=\sum_{i=1}^{n}P(A_n)
+   $$
+   也可以由可列可加性得，令<span class="arithmatex">\(A_i=\emptyset,i\textgreater n\)</span>，结合性质1即可</p>
+</li>
+<li>
+<p><span class="arithmatex">\(P(\overline{A})=1-P(A)\)</span></p>
+</li>
+</ol>
+<p>利用有限可加性和<span class="arithmatex">\(\Omega=A+\overline{A}\)</span>即可得</p>
+<ol>
+<li>若<span class="arithmatex">\(B\subset A\)</span>，则<span class="arithmatex">\(P(A\backslash B)=P(A)-P(B)\)</span></li>
+</ol>
+<p>推论1：若<span class="arithmatex">\(B\subset A\)</span>，则<span class="arithmatex">\(P(B)\textless P(A)\)</span></p>
+<p>推论2：对事件域中的任何事件B，均有<span class="arithmatex">\(P(B)\leq1\)</span></p>
+<ol>
+<li><span class="arithmatex">\(P(A\backslash B)=P(A)-P(AB)\)</span></li>
+</ol>
+<p>因为<span class="arithmatex">\(P(A\backslash B)=P(A-AB)=P(A)-P(AB)\)</span></p>
+<ol>
+<li>
+<p>加法公式：<span class="arithmatex">\(P(A\cup B)=P(A)+P(B)-P(AB)\)</span>,概率版的容斥原理</p>
+</li>
+<li>
+<p>多还少补定理（容斥原理）
+   $$
+   \mathrm{P}\Bigl(\bigcup_{i=1}^{n} A_i\Bigr) = \sum_{i=1}^{n} \mathrm{P}(A_i) - \sum_{1 \leq i &lt; j \leq n} \mathrm{P}(A_i A_j) + \sum_{1 \leq i &lt; j &lt; k \leq n} \mathrm{P}(A_i A_j A_k) - \cdots + (-1)^{n-1} \mathrm{P}(A_1 A_2 \cdots A_n).
+   $$</p>
+</li>
+<li>
+<p>次可加性
+   $$
+   \mathrm{P}\Bigl(\bigcup_{i=1}^{\infty} A_i\Bigr) \leq \sum_{i=1}^{\infty} \mathrm{P}(A_i)\qquad\mathrm{P}\Bigl(\bigcup_{i=1}^{n} A_i\Bigr) \leq \sum_{i=1}^{n} \mathrm{P}(A_i)
+   $$</p>
+</li>
+</ol>
+<p><strong>我们可以利用概率的定义和性质来求解一下复杂事件的概率</strong></p>
+<ol>
+<li>某城有N辆卡车，车牌号从1到N，有一个外地人到该城去，把遇到的n辆车子的牌号抄下来（可能重复地抄到某些车牌号），求抄到的最大号码正好为k的概率</li>
+</ol>
+<p>解：记<span class="arithmatex">\(A_k\)</span>为抄到的最大号码为k这一事件，<span class="arithmatex">\(B_k\)</span>为抄到的最大号码不超过k这一事件，则有
+   $$
+   B_{k-1}\subset B_k,\qquad A_k=B_k-B_{k-1}
+   $$
+   且容易知道<span class="arithmatex">\(P(B_k)=\frac{k^n}{N^n}\)</span>，则我们可以得到<span class="arithmatex">\(P(A_k)=P(B_k)-P(B_{k-1})=\frac{k^n-(k-1)^n}{N^n}\)</span></p>
+<ol>
+<li><strong>（匹配问题）：</strong>某班有n个士兵，每人各有一支枪，这些枪外形完全一致，在一次夜里紧急集合中，每人随机取一支步枪，求至少有一人拿到自己的枪的概率<blockquote>
+<p>这题的反面其实是错排公式，每个人都没能拿到自己的枪，我们可以由容斥原理推导出结果</p>
+</blockquote>
+</li>
+</ol>
+<p>解：记<span class="arithmatex">\(A_i=\left\{第i个人拿到自己的枪\right\},i=1,…,n\)</span>，则所求概率为
+$$
+P(\bigcup_{i=1}^{n} A_i)
+$$
+​   又因为<span class="arithmatex">\(P(A_i)=\frac{1}{n},P(A_iA_j)=\frac{1}{n(n-1)},…,P(A_1A_2…A_n)=\frac{1}{n!}\)</span>，由容斥原理有
+$$
+p_n := \mathrm{P}\Bigl(\bigcup_{i=1}^{n} A_i\Bigr)= n \cdot \frac{1}{n} - C_n^2 \cdot \frac{1}{n(n-1)}+ C_n^3 \cdot \frac{1}{n(n-1)(n-2)} - \cdots + (-1)^{n-1} \cdot \frac{1}{n!}\= 1 - \frac{1}{2!} + \frac{1}{3!} - \cdots + (-1)^{n-1} \cdot \frac{1}{n!}.
+$$</p>
+<blockquote>
+<p>所以下次要是遇到了错排公式，就可以像这样用容斥原理来推导</p>
+</blockquote>
+<h4 id="_7">概率测度的连续性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>给定一概率空间 <span class="arithmatex">\((\Omega, \mathscr{F}, \mathrm{P})\)</span>，假定 <span class="arithmatex">\(\{A_n \in \mathscr{F}, n \geq 1\}\)</span> 是一列单调增加的事件序列，即</p>
+<div class="arithmatex">\[
+A_1 \subset A_2 \subset \cdots \subset A_n \subset \cdots,
+\]</div>
+<p>记 <span class="arithmatex">\(A = \bigcup_{n=1}^{\infty} A_n\)</span>，称 <span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(A_n\)</span> 的极限。若<span class="arithmatex">\(\{A_n \in \mathscr{F}, n \geq 1\}\)</span> 是一列单调减少的事件序列，即
+$$
+A_1 \supset A_2 \supset \cdots \supset A_n \supset \cdots,
+$$</p>
+<p>记 <span class="arithmatex">\(A = \bigcap_{n=1}^{\infty} A_n\)</span>，称 <span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(A_n\)</span> 的极限。</p>
+<p>那么如何求事件A的概率呢，我们给出如下定义：</p>
+<p>如果<span class="arithmatex">\(\left\{A_n,n\geq1\right\}\)</span>是一列单调增加或单调减少的事件序列，且具有极限A，那么有
+$$
+P(A) = \lim_{n \to \infty} P(A_n)
+$$
+对单调递增的事件序列 <span class="arithmatex">\(\{A_n \in \mathscr{F}, n \geq 1\}\)</span>，记</p>
+<div class="arithmatex">\[
+\lim_{n \to \infty} A_n = A = \bigcup_{n=1}^{\infty} A_n,
+\]</div>
+<p>那么上述定理说明</p>
+<div class="arithmatex">\[
+\mathrm{P}(\lim_{n \to \infty} A_n) = \lim_{n \to \infty} \mathrm{P}(A_n),
+\]</div>
+<p>称之为概率(测度)的下连续性。</p>
+<p>而对单调递减的事件序列 <span class="arithmatex">\(\{A_n \in \mathscr{F}, n \geq 1\}\)</span>，记</p>
+<div class="arithmatex">\[
+\lim_{n \to \infty} A_n = A = \bigcap_{n=1}^{\infty} A_n,
+\]</div>
+<p>那么上述定理说明</p>
+<div class="arithmatex">\[
+\mathrm{P}(\lim_{n \to \infty} A_n) = \lim_{n \to \infty} \mathrm{P}(A_n),
+\]</div>
+<p>称之为概率(测度)的上连续性。</p>
+<h2 id="_8">条件概率与事件的独立性<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">条件概率<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>取定概率空间后，A发生的概率为P(A)，若事件B发生，在这一前提下A发生的概率就不一定是P（A）了，因为样本空间发生了变化，这时样本空间已经被压缩了，只由B中的样本点组成，即在新的试验条件下，B成为样本空间。记B发生条件下A发生的概率为<span class="arithmatex">\(P(A|B)\)</span>，<span class="arithmatex">\(P(A)\)</span>和<span class="arithmatex">\(P(A|B)\)</span>是在两个不同的概率空间里对事件A的概率度量，它们通常不相等。而在求解条件概率的时候，我们既可以在压缩后的样本空间求条件概率，也可以在原来的样本空间中求条件概率。</p>
+<p><strong>条件概率的定义</strong>：对任一事件A和B，若<span class="arithmatex">\(P(B)\neq 0\)</span>，则“在事件B发生的条件下A发生的概率”记作<span class="arithmatex">\(P(A|B)\)</span>，定义为
+$$
+P(A|B)=\frac{P(AB)}{P(B)}
+$$
+容易验证其非负性、规范性、可列可加性</p>
+<p>由条件概率可以得到<strong>概率的乘法公式：</strong></p>
+<ul>
+<li>若<span class="arithmatex">\(P(B)\neq 0\)</span>，则<span class="arithmatex">\(P(AB)=P(B)P(A|B)\)</span></li>
+<li>若<span class="arithmatex">\(P(A)\neq 0\)</span>，则<span class="arithmatex">\(P(AB)=P(A)P(B|A)\)</span></li>
+<li>若<span class="arithmatex">\(P(A_1A_2…A_{n-1})\neq 0\)</span>，则<span class="arithmatex">\(P(A_1A_2…A_n)=P(A_1)P(A_2|A_1)P(A_3|A_1A_2)…P(A_n|A_1A_2…A_{n-1})\)</span></li>
+</ul>
+<p>例题：</p>
+<ol>
+<li>n张彩票中有一张中奖票。</li>
+<li>已知前面k-1个人没摸到中奖票，求第k人摸到中奖票的概率</li>
+<li>第k人摸到中奖票的概率</li>
+</ol>
+<p><strong>解</strong> 记 $ A_i = {\text{第}i\text{人摸到中奖票}} $.</p>
+<p><strong>（1）</strong> 这是求条件概率 $ \mathbf{P}(A_k|\bar{A}<em k-1="k-1">1\bar{A}_2\cdots\bar{A}</em>) $. 在压缩后的样本空间里进行计算, 可得
+$ \mathbf{P}(A_k|\bar{A}<em k-1="k-1">1\bar{A}_2\cdots\bar{A}</em>. $}) = \frac{1}{n-k+1</p>
+<p><strong>（2）</strong> 根据 “摸球与顺序无关” 这一结论, 马上可知所求为 $ \mathbf{P}(A_k) = \frac{1}{n} $. 或利用乘法公式得:
+$ \begin{aligned}
+\mathbf{P}(A_k) &amp;= \mathbf{P}(\bar{A}<em k-1="k-1">1\bar{A}_2\cdots\bar{A}</em>A_k) \
+&amp;= \mathbf{P}(\bar{A}<em k-1="k-1">1)\mathbf{P}(\bar{A}_2|\bar{A}_1)\cdots\mathbf{P}(A_k|\bar{A}_1\bar{A}_2\cdots\bar{A}</em>) \
+&amp;= \frac{n-1}{n}\frac{n-2}{n-1}\cdots\frac{1}{n-k+1} \
+&amp;= \frac{1}{n}.
+\end{aligned} $</p>
+<ol>
+<li>罐中有 $ b $ 只黑球及 $ r $ 只红球，随机取出一只，把原球放回，并加进与抽出球同色的球 $ c $ 只，再摸第二次，这样下去共摸了 $ n $ 次。问前面的 $ n_1 $ 次出现黑球，后面的 $ n_2 = n - n_1 $ 次出现红球的概率是多少 ($ c = 0 $ 表示有放回摸球，$ c = -1 $ 表示不放回摸球)?</li>
+</ol>
+<p><strong>解</strong> $ A_1 $ 表示第一次摸出黑球，<span class="arithmatex">\(\cdots\)</span>，$ A_{n_1} $ 表示第 $ n_1 $ 次摸出黑球，$ A_{n_1+1} $ 表示第 $ n_1 + 1 $ 次摸出红球，<span class="arithmatex">\(\cdots\)</span>，$ A_n $ 表示第 $ n $ 次摸出红球。则 $$ \mathbf{P}(A_1) = \frac{b}{b + r}, \mathbf{P}(A_2 | A_1) = \frac{b + c}{b + r + c}, $$ $$ \mathbf{P}(A_3 | A_1 A_2) = \frac{b + 2c}{b + r + 2c}, \cdots, $$ $$ \mathbf{P}(A_{n_1} | A_1 \cdots A_{n_1-1}) = \frac{b + (n_1 - 1)c}{b + r + (n_1 - 1)c}, $$ $$ \mathbf{P}(A_{n_1+1} | A_1 \cdots A_{n_1}) = \frac{r}{b + r + n_1 c}. $$$$ \mathbf{P}(A_{n_1+2} | A_1 \cdots A_{n_1+1}) = \frac{r + c}{b + r + (n_1 + 1)c}, \cdots, $$ $$ \mathbf{P}(A_n | A_1 \cdots A_{n-1}) = \frac{r + (n_2 - 1)c}{b + r + (n - 1)c}. $$ 因此 $$ \mathbf{P}(A_1 A_2 \cdots A_n) = \frac{b}{b + r} \cdot \frac{b + c}{b + r + c} \cdot \frac{b + 2c}{b + r + 2c} \cdots \frac{b + (n_1 - 1)c}{b + r + (n_1 - 1)c} \cdot \frac{r}{b + r + n_1 c} \cdot \frac{r + c}{b + r + (n_1 + 1)c} \cdots \frac{r + (n_2 - 1)c}{b + r + (n - 1)c}. $$</p>
+<ol>
+<li>（三枚银币骗局）某人在街头设一赌局。他向观众出示了放在帽子里的三枚银币（记为甲、乙、丙）。银币甲的两面涂了黑色，银币丙的两面涂了红色，银币乙的一面涂了黑色，另一面涂了红色。游戏规则是：他让一个观众从帽子里随机地取出一枚银币放到桌面上（这里不用“投掷银币”是为了避免暴露银币两面的颜色），然后由设局人猜银币另一面的颜色。如果猜中了，该观众付给他1元钱；如果猜错了，他付给该观众1元钱。
+试问：这一赌局是公平的吗？</li>
+</ol>
+<p><strong>解：</strong> 这题其实逻辑比较简单，我们只需要去考虑展示面和反面的情况就行。</p>
+<p><span class="arithmatex">\(P(反面是黑色|展示面是黑色)=P(\frac{反面是黑色，展示面是黑色}{展示面是黑色})=P(\frac{抽到甲硬币}{展示面是黑色})\)</span>，而很明显的是，展示面是黑色的概率为<span class="arithmatex">\(\frac{1}{2}\)</span>，所以这个条件概率的值为<span class="arithmatex">\(\frac{2}{3}\neq \frac{1}{2}\)</span>所以这个赌局是不公平的</p>
+<ol>
+<li>在前面的匹配问题中，已经求得了n个士兵中至少有一个人拿对了自己的枪的概率，现在我们求恰好有k个士兵拿对了自己的枪的概率</li>
+</ol>
+<p><strong>解</strong> 记 $ n $ 个士兵中恰好有 $ k $ 个士兵拿对了自己的枪的概率为 $ P_k^{(n)} $。则由匹配问题知 $$ P_0^{(n)} = 1 - \left[ 1 - \frac{1}{2!} + \frac{1}{3!} - \cdots + (-1)^{n-1} \frac{1}{n!} \right] = \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \cdots + \frac{(-1)^n}{n!}. $$ 记 $ A_i $ 表示第 $ i $ 个士兵拿对了自己的枪。为了计算恰好有 $ k $ 个士兵拿对了自己的枪的概率，考察一组固定的 $ k $ 个士兵，如编号为 $ {i_1, \cdots, i_k} $ 的士兵。只有他们拿对了自己的枪的概率为 $$ \begin{aligned} \mathbf{P}(A_{i_1} \cdots A_{i_k} \bar{A}<em k_1="k+1">{i</em>}} \cdots \bar{A<em i_1="i_1">{i_n}) \ = &amp; \mathbf{P}(A</em>}) \mathbf{P}(A_{i_2} | A_{i_1}) \cdots \mathbf{P}(A_{i_k} | A_{i_1} \cdots A_{i_{k-1}}) \cdot \mathbf{P}(\bar{A<em k_1="k+1">{i</em>}} \cdots \bar{A<em i_1="i_1">{i_n} | A</em> $$} \cdots A_{i_k}) \ = &amp; \frac{1}{n} \frac{1}{n-1} \cdots \frac{1}{n-(k-1)} q_{n-k}, \end{aligned</p>
+<p>其中 $ q_{n-k} $ 是在已知这 $ k $ 个士兵拿对了自己的枪的条件下其他 $ n-k $ 个士兵都没有拿对自己的枪的概率。因此 $$ q_{n-k} = P_0^{(n-k)} = \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \cdots + \frac{(-1)^{n-k}}{(n-k)!}. $$ 由于从 $ n $ 个士兵中选 $ k $ 个士兵共有 $ C_n^k $ 种不同的选法，所以所求的概率为 </p>
+<div class="arithmatex">\[ \begin{aligned} P_k^{(n)} &amp;= \sum_{i_1 &lt; \cdots &lt; i_k} \mathbf{P}(A_{i_1} \cdots A_{i_k} \bar{A}_{i_{k+1}} \cdots \bar{A}_{i_n}) \\ &amp;= C_n^k \cdot \frac{(n-k)!}{n!} q_{n-k} \\ &amp;= \frac{1}{k!} \left[ \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \cdots + \frac{(-1)^{n-k}}{(n-k)!} \right]. \end{aligned} \]</div>
+<h3 id="_10">全概率公式、贝叶斯公式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><strong>完备事件组：</strong></p>
+<ul>
+<li>
+<p>若事件组<span class="arithmatex">\(\left\{A_i,i\geq1\right\}\)</span>两两互不相容，且<span class="arithmatex">\(P(A_i)&gt;0\)</span>（不交）</p>
+</li>
+<li>
+<div class="arithmatex">\[
+  \sum_{i=1}^{n}A_i=\Omega（不漏）
+  \]</div>
+</li>
+</ul>
+<p>则称<span class="arithmatex">\(\left\{A_i,i\geq1\right\}\)</span>是<span class="arithmatex">\(\Omega\)</span>的一个完备事件组</p>
+<p><strong>全概率公式：</strong></p>
+<p>若<span class="arithmatex">\(\left\{A_i,i\geq1\right\}\)</span>是<span class="arithmatex">\(\Omega\)</span>的一个完备事件组，则对任意事件B，有<span class="arithmatex">\(P(B)=\sum_{i=1}^nP(A_i)P(B|A_i)\)</span></p>
+<p>这里的部分例题可以参考课件251页例7（敏感问题调查）和例8（赌金分配问题）</p>
+<p>解释一下例8赌金分配问题中的递推公式是如何建立的：</p>
+<p>下一局的比赛有两种情况：</p>
+<ol>
+<li><strong>甲赢下一局</strong>，状态变为<span class="arithmatex">\((x+1,y)\)</span></li>
+<li><strong>乙赢下一局</strong>，状态变为<span class="arithmatex">\((x,y+1)\)</span></li>
+</ol>
+<p>由此根据全概率公式建立递推公式：
+$$
+f_6(x,y)=P(甲赢|下一局甲赢)P（下一局甲赢）+P（甲赢|下一局乙赢）P（下一局乙赢）\</p>
+<p>即得：f_6(x,y)=\frac{1}{2}f_6(x+1,y)+\frac{1}{2}f_6(x,u+1)
+$$
+<strong>贝叶斯公式：</strong></p>
+<p>若<span class="arithmatex">\(\left\{A_i,i\geq1 \right\}\)</span>是<span class="arithmatex">\(\Omega\)</span>的一个完备事件组，则
+$$
+P(A_i|B)=\frac{P(A_iB)}{P(B)}=\frac{P(A_i)P(B|A_i)}{\sum_{k=1}^\infty P(A_k)P(B|A_k)} \ ,i\geq 1
+$$
+其中<span class="arithmatex">\(P(A_i)\)</span>是没有进一步信息（不知B是否发生）的情况下人们对于<span class="arithmatex">\(A_i\)</span>发生的可能性大小的认知，称为<strong>先验概率</strong>；现在有了新的信息（知道B发生）人们对<span class="arithmatex">\(A_i\)</span>发生的可能性大小有了新的认知，得到了条件概率<span class="arithmatex">\(P(A_i|B)\)</span>，称为后验概率</p>
+<h3 id="_11">事件的独立性<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">两个事件的独立性<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[
+P(A|B)=P(A)(或P(B|A)=P(B))
+\]</div>
+<p>当<span class="arithmatex">\(P(B)&gt;0(或P(B)&gt;0)\)</span>时上式和<span class="arithmatex">\(P(AB)=P(A)P(B)\)</span>等价，但<span class="arithmatex">\(P(AB)=P(A)P(B)\)</span>形式较为对称，便于推广到n个事件，所以采用这个作为事件独立性的定义。</p>
+<blockquote>
+<p>由独立性的定义可知，任何事件都与<span class="arithmatex">\(\emptyset\)</span>独立，任何事件都与<span class="arithmatex">\(\Omega\)</span>独立</p>
+</blockquote>
+<p>事件域的相互独立：</p>
+<p>两个事件域<span class="arithmatex">\(\mathscr{F_1}\)</span>和<span class="arithmatex">\(\mathscr{F_2}\)</span>，若对于任意的事件<span class="arithmatex">\(A_1\in\mathscr{F_1}\)</span>，<span class="arithmatex">\(A_2\in\mathscr{F_2}\)</span>都有<span class="arithmatex">\(P(A_1A_2)=P(A_1)P(A_2)\)</span>，则称这两个事件域独立</p>
+<h4 id="_13">多个事件的独立性<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><strong>三个事件的独立性</strong>：两两相互独立且<span class="arithmatex">\(P(ABC)=P(A)P(B)P(C)\)</span></p>
+<p>也即：
+$$
+P(AB)=P(A)P(B)\
+P(AC)=P(A)P(C)\
+P(BC)=P(B)P(C)\
+P(ABC)=P(A)P(B)P(C)
+$$
+则称A,B,C相互独立</p>
+<p><strong>n个事件的独立性</strong>：对于 $ n $ 个事件 $ A_1, A_2, \cdots, A_n $，若对其中的任意 $ k $ ( $ 2 \leq k \leq n $ ) 个事件 $ A_{i_1}, A_{i_2}, \cdots, A_{i_k} $，有 $$P(A_{i_1} A_{i_2} \cdots A_{i_k}) = P(A_{i_1}) P(A_{i_2}) \cdots P(A_{i_k}), $$ 则称 $ n $ 个事件 $ A_1, A_2, \cdots, A_n $ 相互独立。</p>
+<p>所以要说明n个事件 $ A_1, A_2, \cdots, A_n $是相互独立的，需要验证上式中的
+$$
+C_n^2+C_n^3+...+C_n^n=2^n-n-1
+$$
+个等式</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 05:50:11 UTC"><span class="timeago" datetime="2025-06-28T05:50:11+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 05:50:11 UTC">2025-06-28</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

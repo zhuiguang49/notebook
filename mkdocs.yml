@@ -1,13 +1,14 @@
 site_name: 追光的笔记本         
 site_author: 追光          
-site_url: https://your.domain.com 
+site_url: https://note.zhuiguang.tech
 
 repo_url: https://github.com/zhuiguang49/notebook
 repo_name: zhuiguang49/notebook
 
 theme:
   name: material
-  language: zh                
+  language: zh  
+  custom_dir: overrides              
   
   font:
     text: Roboto
@@ -82,9 +83,8 @@ markdown_extensions:
 
 
 nav:
-  - 'Home': 'index.md'
+  - 'Home': 'Home/index.md'
   - 'Computer Science':
-    - '数据结构和算法（数院）': 'CS/数据结构和算法/数据结构和算法（数院）.md'
     - 'OOP':
       - 'Week1 Using Object': 'CS/OOP/Week1 Using Object.md'
       - 'Week2 Grouping Object': 'CS/OOP/Week2 Grouping Object.md'

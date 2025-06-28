@@ -1,0 +1,1896 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/">
+      
+      
+        <link rel="prev" href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/">
+      
+      
+        <link rel="next" href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter4 极限定理 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter4 极限定理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Home/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Home/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      极限定理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="极限定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      依分布收敛与中心极限定理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      依概率收敛与弱大数定律
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的分类和定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      极限定理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="极限定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      依分布收敛与中心极限定理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      依概率收敛与弱大数定律
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Chapter4 极限定理</h1>
+
+<h2 id="_1">极限定理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">依分布收敛与中心极限定理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">随机变量依分布收敛、分布函数弱收敛、特征函数逐点收敛<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>我们之前提到，分布函数可以刻画随机变量的全部概率性质，下面我们首先来研究分布函数的极限行为</p>
+<p><strong>分布函数弱收敛</strong></p>
+<p>设 $ F $ 是一分布函数，<span class="arithmatex">\(\{F_n, n \geq 1\}\)</span> 是一列分布函数。如果对 <strong>$ F $ 的每个连续点</strong> $ x \in \mathbb{R} $，都有 $ F_n(x) \to F(x) $，则称 $ F_n $ 弱收敛(weak converges)于 $ F $，记作 $ F_n \xrightarrow{w} F $.</p>
+<blockquote>
+<p>分布函数逐点收敛得到的极限函数未必是分布函数，例如
+$$
+F_n(x)=\cases{0,&amp;x&lt;n,\1,&amp;x≥n,}
+$$
+对任意的<span class="arithmatex">\(x \in R，F_{n}(x)\to 0\)</span>，但极限函数<span class="arithmatex">\(G(x)\)</span>恒等于0，不是分布函数，因为分布函数满足<span class="arithmatex">\(F(\infty)=1,F(-\infty)=0\)</span></p>
+</blockquote>
+<p><strong>随机变量依分布收敛</strong></p>
+<p>设<span class="arithmatex">\(\xi\)</span>为一随机变量，<span class="arithmatex">\(\left\{\xi_n,n\geq1\right\}\)</span>是一列随机变量，如果<span class="arithmatex">\(\xi_n\)</span>的分布函数弱收敛于<span class="arithmatex">\(\xi\)</span>的分布函数，则称<span class="arithmatex">\(\xi_n\)</span>依分布收敛于<span class="arithmatex">\(\xi\)</span>，记作<span class="arithmatex">\(\xi_n\xrightarrow{d}\xi\)</span></p>
+<p><strong>Helly第一定理（了解即可）</strong></p>
+<p>设 <span class="arithmatex">\(\{F_n, n \geq 1\}\)</span> 是一列分布函数，那么存在一个单调不减右连续的函数 <span class="arithmatex">\(F\)</span> (不一定是分布函数)，<span class="arithmatex">\(0 \leq F(x) \leq 1\)</span> (<span class="arithmatex">\(x \in \mathbb{R}\)</span>)，和一子列 <span class="arithmatex">\(\{F_{n_k}, k \geq 1\}\)</span>，使得对 <span class="arithmatex">\(F\)</span> 的每个连续点 <span class="arithmatex">\(x\)</span>，<span class="arithmatex">\(F_{n_k}(x) \to F(x)\)</span> (<span class="arithmatex">\(k \to \infty\)</span>)。</p>
+<p><strong>Helly第二定理（掌握第一条）</strong></p>
+<p>(1) 设 $ F $ 是一<strong>分布函数</strong>，<span class="arithmatex">\(\{F_n, n \geq 1\}\)</span> 是一列<strong>分布函数</strong>，$ F_n \xrightarrow{w} F $. 如果 $ g(x) $ 是 <span class="arithmatex">\(\mathbb{R}\)</span> 上的<strong>有界连续函数</strong>，则</p>
+<p>$$
+\int_{-\infty}^{\infty} g(x) \, \mathrm{d}F_n(x) \to \int_{-\infty}^{\infty} g(x) \, \mathrm{d}F(x).
+$$
+(2) 设 $ F $ 和 $ F_n $ 是单调不减右连续函数（不一定是分布函数），并且对 $ F $ 的任一连续点 $ x $ 有 $ F_n(x) \to F(x) $. 如果 $ a &lt; b $ 是 $ F $ 的连续点，$ g(x) $ 是 <span class="arithmatex">\([a, b]\)</span> 上的连续函数，则</p>
+<p>$$
+\int_{a}^{b} g(x) \, \mathrm{d}F_n(x) \to \int_{a}^{b} g(x) \, \mathrm{d}F(x).
+$$
+若在Helly第二定理中取<span class="arithmatex">\(g(x)=e^{itx}\)</span>，则可得到下面的Levy连续性定理（正极限定理）</p>
+<p><strong>Levy连续型定理（正极限定理）</strong></p>
+<p>设 $ F $ 是一分布函数，<span class="arithmatex">\(\{F_n, n \geq 1\}\)</span> 是一列分布函数，且 $ F_n \xrightarrow{w} F $. 则相应的特征函数 <span class="arithmatex">\(\{f_n(t), n \geq 1\}\)</span> 收敛于 $ F $ 的特征函数 $ f(t) $，且在 $ t $ 的任一有限区间内收敛是一致的。</p>
+<p>而在第三章中，我们已经知道特征函数和分布函数可以相互唯一确定，同样地，Levy连续型定理的逆命题同样成立</p>
+<p><strong>逆极限定理</strong></p>
+<p>设 <span class="arithmatex">\(\{f_n(t), n \geq 1\}\)</span> 是分布函数 <span class="arithmatex">\(\{F_n(x), n \geq 1\}\)</span> 的特征函数。若对每一 $ t \in \mathbb{R} $，有 $ f_n(t) \to f(t) $，且 $ f(t) $ 在 $ t = 0 $ 处连续，则 $ f(t) $ 一定是某个分布函数 $ F $ 的特征函数，且 $ F_n \xrightarrow{w} F $</p>
+<blockquote>
+<p>这里如果我们知道<span class="arithmatex">\(\{f_n(t), n \geq 1\}\)</span> 收敛于某个特征函数的话，则可以直接得出结论，因为特征函数在<span class="arithmatex">\((-\infty,\infty)\)</span>上是一致收敛的</p>
+</blockquote>
+<p>而根据上述几个定理，我们可以得到以下的等价关系
+$$
+F_n\xrightarrow{w}F\iff\xi_n\xrightarrow{d}\xi\iff f_{n}(t)\to f(t),\qquad \forall t\in R
+$$</p>
+<blockquote>
+<p>也就是说，当我们想要证明某个随机变量依分布收敛的时候，我们可以证明分布函数弱收敛，也可以证明特征函数逐点收敛，我们用的比较多的是特征函数逐点收敛</p>
+</blockquote>
+<p>下面我们看一些例题：</p>
+<p><strong>例1</strong> 用特征函数方法证明二项分布的Possion逼近定理</p>
+<p><strong>证明</strong> 设<span class="arithmatex">\(\xi_n \sim B(n,p_n)\)</span>，且<span class="arithmatex">\(\lim_{n\to \infty}np_n=\lambda\)</span>，<span class="arithmatex">\(\xi_n\)</span>的特征函数为
+$$
+f_n(t)=(p_ne^{it}+q_n)^n,\qquad t\in R
+$$
+因此对任意的<span class="arithmatex">\(t \in R\)</span>
+$$
+\lim_{n\to \infty}f_n(t)=\lim_{n\to \infty}\big[1+\frac{np_n(e^{it}-1)}{n}\big]^n=e^{\lambda(e^{it}-1)}
+$$
+这正是<span class="arithmatex">\(\xi \sim P(\lambda)\)</span>的特征函数，所以由逆极限定理，<span class="arithmatex">\(\xi_n\)</span>依分布收敛于<span class="arithmatex">\(\xi\)</span></p>
+<blockquote>
+<p>这里用到了一个重要极限</p>
+</blockquote>
+<div class="arithmatex">\[
+\lim_{n\to \infty}(1+\frac{x}{n})^n=e^x
+\]</div>
+<p><strong>例2</strong> 设<span class="arithmatex">\(\xi_n \sim P(\lambda_n)\)</span>，且<span class="arithmatex">\(\lambda_n \to \infty\)</span>，证明
+$$
+\frac{\xi_n-\lambda_n}{\sqrt{\lambda_n}} \xrightarrow{d}N(0,1)
+$$
+这里的<span class="arithmatex">\(N(0,1)\)</span>是指标准正态随机变量</p>
+<p><strong>证明</strong> </p>
+<p><img alt="第四章例2.jpg" src="../images/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BE%8B2.jpg" /></p>
+<p><strong>分布函数弱收敛的性质</strong></p>
+<ol>
+<li>设{<span class="arithmatex">\(F_{n},n\geq1\)</span>}是一列分布函数，如果<span class="arithmatex">\(F_n\xrightarrow{w}F\)</span>,<span class="arithmatex">\(F\)</span>是一连续的分布函数，则<span class="arithmatex">\(F_n\)</span>在R上一致收敛于<span class="arithmatex">\(F\)</span></li>
+<li>设<span class="arithmatex">\(\xi\)</span>是一随机变量，{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}是一列随机变量，<span class="arithmatex">\(g(x)\)</span>是<span class="arithmatex">\(R\)</span>上的        连续函数，如果<span class="arithmatex">\(\xi_n \xrightarrow{d} \xi\)</span>，则<span class="arithmatex">\(g(\xi_n)\xrightarrow{d}g(\xi)\)</span></li>
+</ol>
+<p>​     <strong>证明</strong> 假设 <span class="arithmatex">\(\xi\)</span> 和 <span class="arithmatex">\(\{\xi_n, n \geq 1\}\)</span> 的分布函数分别为 <span class="arithmatex">\(F\)</span> 和 <span class="arithmatex">\(\{F_n, n \geq 1\}\)</span>。若 <span class="arithmatex">\(\xi_n \xrightarrow{d} \xi\)</span>，则 <span class="arithmatex">\(F_n \xrightarrow{w} F\)</span>。由Helly第二定理知</p>
+<div class="arithmatex">\[
+\int_{-\infty}^{\infty} e^{itg(x)} \, \mathrm{d}F_n(x) \to \int_{-\infty}^{\infty} e^{itg(x)} \, \mathrm{d}F(x), \quad \forall t \in \mathbb{R}.
+\]</div>
+<p>​   上式将<span class="arithmatex">\(e^{itg(x)}\)</span>视作Helly第二定理要求的有界连续函数，由逆极限定理可知 <span class="arithmatex">\(g(\xi_n)\)</span> 的分布函数弱收敛于 <span class="arithmatex">\(g(\xi)\)</span> 的分布函数（上式是特征函数逐点收敛），即可得到随机变量弱收敛</p>
+<div class="arithmatex">\[
+g(\xi_n) \xrightarrow{d} g(\xi).
+\]</div>
+<ol>
+<li>设{<span class="arithmatex">\(a_n,n\geq1\)</span>}和{<span class="arithmatex">\(b_n,n\geq1\)</span>}是两列常数，<span class="arithmatex">\(F\)</span>是一分布函数，{<span class="arithmatex">\(F_n,n\geq1\)</span>}是一列分布函数，如果有<span class="arithmatex">\(a_n \to a,b_n\to b,F_n\xrightarrow{w}F\)</span>，则
+   $$
+   F_n(a_nx+b_n)\to F(ax+b)
+   $$
+   其中<span class="arithmatex">\(x\)</span>使得<span class="arithmatex">\(ax+b\)</span>是<span class="arithmatex">\(F\)</span>的连续点</li>
+</ol>
+<p>​   <strong>证明</strong>  令 <span class="arithmatex">\(\varepsilon &gt; 0\)</span> 使得 <span class="arithmatex">\(F\)</span> 在 <span class="arithmatex">\(ax + b \pm \varepsilon\)</span> 处连续（因为 <span class="arithmatex">\(F\)</span> 的连续点在 <span class="arithmatex">\(\mathbb{R}\)</span> 上是稠密的）。显然 <span class="arithmatex">\(a_n x + b_n \to ax + b\)</span>，因此对充分大的 <span class="arithmatex">\(n\)</span> 有
+$$
+ax + b - \varepsilon \leq a_n x + b_n \leq ax + b + \varepsilon.
+$$</p>
+<p>​   因此</p>
+<p>$$
+F_n(ax + b - \varepsilon) \leq F_n(a_n x + b_n) \leq F_n(ax + b + \varepsilon).
+$$
+​   由于 $ F_n \xrightarrow{w} F $，则</p>
+<div class="arithmatex">\[
+F(ax + b - \varepsilon) \leq \liminf_{n \to \infty} F_n(a_n x + b_n)
+\]</div>
+<div class="arithmatex">\[
+\leq \limsup_{n \to \infty} F_n(a_n x + b_n)
+\]</div>
+<div class="arithmatex">\[
+\leq F(ax + b + \varepsilon).
+\]</div>
+<p>​   令 <span class="arithmatex">\(\varepsilon \to 0\)</span>，由于 <span class="arithmatex">\(F\)</span> 在 <span class="arithmatex">\(ax + b\)</span> 处连续，所以结论得证。</p>
+<p>​   <strong>推论</strong>：若<span class="arithmatex">\(\xi_n\xrightarrow{d}\xi,a_n\to a,b_n \to b\)</span>，则<span class="arithmatex">\(a_n\xi_n+b_n \xrightarrow{d} a\xi+b\)</span>，其中<span class="arithmatex">\(a\neq0\)</span></p>
+<p>​   <strong>证明</strong> 不妨假设 <span class="arithmatex">\(a &gt; 0\)</span> (<span class="arithmatex">\(a &lt; 0\)</span> 情形类似可证). 由于 <span class="arithmatex">\(a_n \to a\)</span>，所以当 <span class="arithmatex">\(n\)</span> 充分大时，<span class="arithmatex">\(a_n &gt; 0\)</span>. 此时，对于任意的使得 <span class="arithmatex">\(\frac{x - b}{a}\)</span> 为 <span class="arithmatex">\(F\)</span> 的连续点的实数 <span class="arithmatex">\(x\)</span>，根据性质3，有
+$$
+\mathbb{P}(a_n \xi_n + b_n \leq x) = F_n\left(\frac{x - b_n}{a_n}\right) \to F\left(\frac{x - b}{a}\right) = \mathbb{P}(a \xi + b \leq x).
+$$</p>
+<p>​   所以 <span class="arithmatex">\(a_n \xi_n + b_n \xrightarrow{d} a \xi + b\)</span>.</p>
+<h4 id="_4">中心极限定理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>考虑一个n重伯努利试验，每次试验成功的概率为<span class="arithmatex">\(p(0&lt;p&lt;1)\)</span>，记<span class="arithmatex">\(S_n\)</span>为n重伯努利试验中成功的总次数，它是<span class="arithmatex">\(n\)</span>个相互独立的<span class="arithmatex">\(0-1(p)\)</span>随机变量的和，显然有
+$$
+S_n \sim B(n,p)
+$$
+人们往往对下列的概率大小感兴趣
+$$
+P(\alpha \leq S_n \leq \beta)=\sum_{\alpha \leq k \leq \beta}C_n^kp^k(1-p)^{n-k}
+$$
+其中<span class="arithmatex">\(\alpha,\beta\)</span>是非负整数，直接计算上述和式是比较困难的，如何找到近似计算的公式呢？</p>
+<p><strong>棣莫弗-拉普拉斯定理</strong></p>
+<p>设<span class="arithmatex">\(\Phi(x)\)</span>为标准正态随机变量的分布函数，则对<span class="arithmatex">\(x \in R\)</span>，有
+$$
+\lim_{n\to \infty}P(\frac{S_n-np}{\sqrt{npq}}\leq x)=\Phi(x)
+$$
+其中<span class="arithmatex">\(q=1-p\)</span></p>
+<blockquote>
+<p>事实上，<span class="arithmatex">\(\frac{S_n-np}{\sqrt{npq}}\)</span>是<span class="arithmatex">\(S_n\)</span>的标准化随机变量，棣莫弗-拉普拉斯定理告诉我们，当n充分大时，可以将<span class="arithmatex">\(\frac{S_n-np}{\sqrt{npq}}\)</span>近似为标准正态随机变量<span class="arithmatex">\(N(0,1)\)</span></p>
+</blockquote>
+<p>所以我们在计算上述的概率是可以借用标准正态分布随机变量的分布函数
+$$
+P(\alpha\leq S_n \leq \beta)=P(\frac{\alpha-np}{\sqrt{npq}}\leq\frac{S_n-np}{\sqrt{npq}}\leq\frac{\beta-np}{\sqrt{npq}})\approx\Phi(\frac{\beta-np}{\sqrt{npq}})-\Phi(\frac{\alpha-np}{\sqrt{npq}})
+$$</p>
+<blockquote>
+<p>棣莫弗-拉普拉斯定理与我们第二章中提到的二项分布的泊松逼近定理并无矛盾，在泊松逼近定理中，我们要求<span class="arithmatex">\(np_n \to \lambda\)</span>，而棣莫弗-拉普拉斯定理中要求<span class="arithmatex">\(p\)</span>是常数，在实际应用中，当n很大时，若p大小适中，我们就用正态分布逼近二项分布；若p接近0或者1，且np较小或较大，此时二项分布的图像偏斜度太大，宜用泊松分布去逼近二项分布</p>
+<p>并且在实际计算中，如果n不是很大，我们通常会将上式修正为
+$$
+\Phi(\frac{\beta+0.5-np}{\sqrt{npq}})-\Phi(\frac{\alpha-0.5-np}{\sqrt{npq}})
+$$
+因为由于<span class="arithmatex">\(\alpha,\beta\)</span>是非负整数
+$$
+P(\alpha\leq S_n \leq \beta)\approx\Phi(\frac{\beta-np}{\sqrt{npq}})-\Phi(\frac{\alpha-np}{\sqrt{npq}})\
+P(\alpha\leq S_n \leq \beta)=P(\alpha-1&lt;S_n&lt;\beta+1)=\Phi(\frac{\beta+1-np}{\sqrt{npq}})-\Phi(\frac{\alpha-1-np}{\sqrt{npq}})
+$$
+因此折中一下，加减0.5是合理的</p>
+</blockquote>
+<p>下面我们看一道例题</p>
+<p><strong>例1</strong> 抛一枚质量均匀的硬币，需要抛多少次才能保证出现正面的频率在<span class="arithmatex">\((0.4,0.6]\)</span>之间的概率不小于<span class="arithmatex">\(90\%\)</span></p>
+<p><strong>解</strong> 令n为抛掷次数，<span class="arithmatex">\(S_n\)</span>为出现正面的次数，则<span class="arithmatex">\(S_n \sim B(n,0.5)\)</span>，由题意，需要求n使得
+$$
+P(0.4&lt;S_n/n\leq0.6)\geq0.9
+$$
+且<span class="arithmatex">\(ES_n=0.5n,VarS_n=n/4\)</span>，利用棣莫弗-拉普拉斯定理则有
+$$
+P(0.4&lt;S_n/n\leq0.6)=P(\frac{0.4n-0.5n}{\sqrt{n/4}}&lt;\frac{S_n-0.5n}{\sqrt{n/4}}\leq\frac{0.6n-0.5n}{\sqrt{n/4}})\approx\Phi(0.2\sqrt{n})-\Phi(-0.2\sqrt{n})\=2\Phi(0.2\sqrt{n})-1
+$$
+那么现在问题即转化为求n使得
+$$
+2\Phi(0.2\sqrt{n})-1\geq0.9
+$$
+我们知道0.95介于<span class="arithmatex">\(\Phi(1.64),\Phi(1.65)\)</span>之间，因此我们认为<span class="arithmatex">\(\Phi(1.645)=0.95\)</span>，易知当<span class="arithmatex">\(n\geq69\)</span>时满足要求</p>
+<blockquote>
+<p>注意理解出现正面的频率在(0.4,0.6]之间的概率不小于90%，怎么把它转化为某个事件的概率？</p>
+</blockquote>
+<p><strong>中心极限定理</strong></p>
+<p>设{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}是一列随机变量，如果存在常数列{<span class="arithmatex">\(B_n&gt;0,n\geq1\)</span>}以及{<span class="arithmatex">\(A_n,n\geq1\)</span>}使得
+$$
+\frac{\sum_{k=1}^n\xi_k-A_n}{B_n}\xrightarrow{d}N(0,1)
+$$
+则称<span class="arithmatex">\(\left\{\xi_n,n\geq1 \right\}\)</span>满足中心极限定理，通常我们称<span class="arithmatex">\(A_n\)</span>为中心化因子，<span class="arithmatex">\(B_n\)</span>为正则化因子，称<span class="arithmatex">\(\sum_{k=1}^n\xi_k\)</span>为部分和</p>
+<p><strong>林德贝格-列维中心极限定理</strong></p>
+<p>设{$\xi_n,n\geq1 $}是一列<strong>独立同分布</strong>的随机变量序列，记
+$$
+S_n=\sum_{k=1}^n\xi_k,\qquad E\xi_1=a,\qquad Var\xi_1=\sigma^2 \in (0,\infty)
+$$
+则中心极限定理成立，也即
+$$
+\frac{S_n-na}{\sqrt{n\sigma^2}}\xrightarrow{d}N(0,1)
+$$</p>
+<blockquote>
+<p>我们需要注意的是，定理中给出的都是单个随机变量的期望和方差，而对于<span class="arithmatex">\(S_n\)</span>来说，其期望是<span class="arithmatex">\(na\)</span>，方差是<span class="arithmatex">\(n\sigma^2\)</span>，所以其实上式也是标准化后的<span class="arithmatex">\(S_n\)</span>依分布收敛于标准正态随机变量。并且林德贝格-列维中心极限定理要求这一列随机变量独立同分布</p>
+</blockquote>
+<p><strong>证明</strong> 利用特征函数来证明此定理，记<span class="arithmatex">\(f^k(t)\)</span>与<span class="arithmatex">\(f_n(t)\)</span>分别为<span class="arithmatex">\(\xi_k-a\)</span>与<span class="arithmatex">\(\frac{S_n-na}{\sqrt{n}\sigma}\)</span>的特征函数，因为序列{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}是独立同分布的，有
+$$
+f_n(t)=Ee^{it\frac{S_n-na}{\sqrt{n}\sigma}}=Ee^{it\frac{\sum_{k=1}^n(\xi_k-a)}{\sqrt{n}\sigma}}=Ee^{\frac{it}{\sqrt{n}\sigma}\sum_{k=1}^n(\xi_k-a)}=\prod_{k=1}^nEe^{\frac{it}{\sqrt{n}\sigma}(\xi_k-a)}=\prod_{k=1}^n f^k(\frac{t}{\sqrt{n}\sigma})\=[f(\frac{t}{\sqrt{n}\sigma})]^n
+$$
+又因为<span class="arithmatex">\(E\xi_1=a,Var\xi_1=\sigma^2\)</span>，所以<span class="arithmatex">\(f(t)\)</span>有二阶连续导数且有下列的Taylor展开式
+$$
+f(x)=f(0)+f'(0)x+\frac{1}{2}f''(0)x^2+o(x^2),\qquad x\to0
+$$
+因为
+$$
+f'(0)=iE(\xi_1-a)=0,\qquad f''(0)=i^2E(\xi_1-a)^2=-\sigma^2
+$$
+故
+$$
+\forall t \in R,f(\frac{t}{\sqrt{n}\sigma})=1-\frac{t^2}{2n}+o(\frac{1}{n})\qquad(n\to \infty)
+$$
+从而
+$$
+\forall t\in R,f_{n}(t)=[f(\frac{t}{\sqrt{n}\sigma})]^n=\lim_{n\to \infty}(1+\frac{-\frac{t^2}{2}}{n})^n=e^{-\frac{t^2}{2}}\qquad (n\to \infty)
+$$
+即有其特征函数逐点收敛于标准正态分布的特征函数，所以随机变量依分布收敛于标准正态随机变量</p>
+<p>下面我们看一道例题</p>
+<p><strong>例1</strong> 当辐射的强度超过每小时0.5毫伦琴(mr)时，辐射会对人的健康造成伤害。设一台彩电工作时的平均辐射强度是0.036mr/h，方差是0.0081，则家庭中一台彩电的辐射一般不会对人造成健康伤害。但是彩电销售店同时有多台彩电工作时，辐射可能对人造成健康伤害。现在有16台彩电同时工作，问这16台彩电的辐射量可以对人造成健康伤害的概率。</p>
+<p><strong>解</strong> 用 <span class="arithmatex">\(\xi_k\)</span> 表示第 <span class="arithmatex">\(k\)</span> 台彩电的辐射量 (mr/h)，则
+$$
+\mathrm{E}\xi_k = 0.036, \quad \mathrm{Var}\xi_k = 0.0081,
+$$</p>
+<p>并且 <span class="arithmatex">\(S_{16} = \sum_{k=1}^{16} \xi_k\)</span> 是 <span class="arithmatex">\(n = 16\)</span> 台彩电的辐射量。题目要求 <span class="arithmatex">\(\mathrm{P}(S_{16} &gt; 0.5)\)</span>。认为 <span class="arithmatex">\(\{\xi_k, k \geq 1\}\)</span> 是 i.i.d. 的，由 Lindeberg–Lévy CLT 知：</p>
+<div class="arithmatex">\[
+\frac{S_{16} - 16 \times 0.036}{\sqrt{16 \times 0.09}} \sim N(0, 1).
+$$
+所以
+$$
+\begin{aligned}
+\mathrm{P}(S_{16} &gt; 0.5) &amp;= \mathrm{P}\left(\frac{S_{16} - 16 \times 0.036}{\sqrt{16 \times 0.09}} &gt; \frac{0.5 - 16 \times 0.036}{\sqrt{16 \times 0.09}}\right) \\
+&amp;= \mathrm{P}\left(\frac{S_{16} - 16 \times 0.036}{\sqrt{16 \times 0.09}} &gt; -0.211\right) \\
+&amp;\approx \Phi(0.211) = 0.58.
+\end{aligned}
+\]</div>
+<p>林德贝格-列维中心极限定理要求各<span class="arithmatex">\(\xi_k\)</span>同分布，事实上这一条件可以放宽，即在和式
+$$
+\frac{\sum_{k=1}^n\xi_k-E(\sum_{k=1}^n\xi_k)}{\sqrt{\sum_{k=1}^nVar\xi_k}}
+$$
+中，只要被加项
+$$
+\frac{\xi_k-E(\xi_k)}{\sqrt{\sum_{k=1}^nVar\xi_k}}
+$$
+均匀的小，则中心极限定理仍然成立</p>
+<p>下面<strong>两个定理了解即可</strong></p>
+<p><strong>林德贝格-费勒中心极限定理</strong></p>
+<p>设 <span class="arithmatex">\(\{\xi_k, k \geq 1\}\)</span> 是独立随机变量序列，则</p>
+<div class="arithmatex">\[
+\lim_{n \to \infty} \frac{\max_{1 \leq k \leq n} \operatorname{Var} \xi_k}{\sum_{k=1}^n \operatorname{Var} \xi_k} = 0 \quad (\text{Feller 条件})
+\]</div>
+<p>和</p>
+<div class="arithmatex">\[
+\frac{S_n - E S_n}{\sqrt{\operatorname{Var} S_n}} = \frac{\sum_{k=1}^n \xi_k - E \left( \sum_{k=1}^n \xi_k \right)}{\sqrt{\sum_{k=1}^n \operatorname{Var} \xi_k}} \xrightarrow{d} N(0, 1)
+\]</div>
+<p>成立的充要条件是 Lindeberg 条件被满足:</p>
+<p>$$
+\frac{1}{\sum_{k=1}^n \operatorname{Var} \xi_k} \sum_{k=1}^n \int_{\frac{|x - E \xi_k|}{\sqrt{\sum_{k=1}^n \operatorname{Var} \xi_k}} \geq \tau} (x - E \xi_k)^2 \mathrm{d} F_k(x) \to 0, \quad \forall \tau &gt; 0.
+$$
+<strong>李雅普诺夫中心极限定理</strong></p>
+<p>若对独立随机变量序列 <span class="arithmatex">\(\{\xi_k, k \geq 1\}\)</span> 存在常数 <span class="arithmatex">\(\delta &gt; 0\)</span>，使得当 <span class="arithmatex">\(n \to \infty\)</span> 时有
+$$
+\frac{1}{\left( \sum_{k=1}^n \operatorname{Var} \xi_k \right)^{1 + \delta/2}} \sum_{k=1}^n \mathbb{E} |\xi_k - \mathbb{E} \xi_k|^{2 + \delta} \to 0,
+$$</p>
+<p>则CLT成立，即</p>
+<div class="arithmatex">\[
+\frac{S_n - \mathbb{E} S_n}{\sqrt{\operatorname{Var} S_n}} = \frac{\sum_{k=1}^n \xi_k - \mathbb{E} \left( \sum_{k=1}^n \xi_k \right)}{\sqrt{\sum_{k=1}^n \operatorname{Var} \xi_k}} \xrightarrow{d} N(0, 1).
+\]</div>
+<blockquote>
+<p>这两个定理不要求随机变量同分布，当我们遇到随机变量独立但不同分布的时候，可以考虑使用这两个定理</p>
+</blockquote>
+<h3 id="_5">依概率收敛与弱大数定律<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">依概率收敛<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>分布函数可以完整地描述随机变量取值的分布规律，但是分布函数的收敛性并不能反应<strong>随机变量序列取值的接近程度</strong></p>
+<p>举例如下：我们向区间<span class="arithmatex">\([0,1]\)</span>上随机等可能投点，样本点<span class="arithmatex">\(\omega\)</span>表示落点的位置，定义
+$$
+\xi(\omega) = 
+\begin{cases} 
+1, &amp; \omega \in [0, 0.5], \
+0, &amp; \omega \in (0.5, 1],
+\end{cases}\qquad</p>
+<p>\eta(\omega) = 
+\begin{cases} 
+0, &amp; \omega \in [0, 0.5], \
+1, &amp; \omega \in (0.5, 1].
+\end{cases}
+$$
+则<span class="arithmatex">\(\xi,\eta\)</span>具有相同的分布函数
+$$
+F(x)=\begin{cases}
+0,&amp;x=0,\
+\frac{1}{2},&amp;0\leq x&lt;1,\
+1,&amp;x\geq1
+\end{cases}
+$$
+即两个不同的随机变量可以有相同的分布函数，若定义<span class="arithmatex">\(\xi_n=\xi,n\geq1\)</span>，则<span class="arithmatex">\(\xi_n \xrightarrow{d}\eta\)</span>，但<span class="arithmatex">\(|\xi_n-\eta|=|\xi-\eta| \equiv1\)</span></p>
+<p>所以我们需要引入另外的收敛性来度量随机变量取值的接近程度</p>
+<p><strong>依概率收敛</strong> 设<span class="arithmatex">\(\xi\)</span>和{<span class="arithmatex">\(\xi_n,n&gt;1\)</span>}是定义在同一概率空间上的随机变量序列，如果对任意的<span class="arithmatex">\(\varepsilon&gt;0\)</span>，有
+$$
+\lim_{n\to \infty}P(|\xi_n-\xi|\geq0)=0
+$$
+或
+$$
+\lim_{n\to \infty}P(|\xi_n-\xi|&lt;\varepsilon)=1
+$$
+则称{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}依概率收敛于<span class="arithmatex">\(\xi\)</span>，记作<span class="arithmatex">\(\xi_n \xrightarrow{P}\xi\)</span></p>
+<blockquote>
+<p><span class="arithmatex">\(\xi_n \xrightarrow{P}\xi\)</span>可以直观地理解为：除去极小的可能性，只要n充分大，<span class="arithmatex">\(\xi\)</span>和<span class="arithmatex">\(\xi_n\)</span>的取值可以任意接近；并且<strong>依分布收敛不能推出依概率收敛</strong></p>
+</blockquote>
+<p>关于<strong>依分布收敛和依概率收敛的关系</strong>有如下定理：</p>
+<p>设<span class="arithmatex">\(\xi\)</span>和<span class="arithmatex">\(\xi_n,n\geq1\)</span>是定义在同一概率空间上的随机变量，则</p>
+<ul>
+<li>如果<span class="arithmatex">\(\xi_n \xrightarrow{P}\xi\)</span>，则<span class="arithmatex">\(\xi_n \xrightarrow{d}\xi\)</span></li>
+<li>如果<span class="arithmatex">\(\xi_n \xrightarrow{d}c\)</span>，c是常数，则<span class="arithmatex">\(\xi_n \xrightarrow{P}c\)</span></li>
+</ul>
+<p>即依概率收敛可以推出依分布收敛；而若某个随机变量依分布收敛到某个常数，则可以推出依概率收敛</p>
+<p><strong>证明</strong> 对<strong>第一条</strong>，设<span class="arithmatex">\(F,F_n\)</span>分别是<span class="arithmatex">\(\xi,\xi_n\)</span>的分布函数，<span class="arithmatex">\(x\)</span>为<span class="arithmatex">\(F\)</span>的连续点，任意给定<span class="arithmatex">\(\varepsilon&gt;0\)</span>，有
+$$
+\left{\xi\leq x-\varepsilon\right}=\left{\xi\leq x-\varepsilon,\xi_n\leq x\right}\bigcup\left{\xi\leq x-\varepsilon,\xi_n &gt;x\right}\subset(\left{\xi_n\leq x\right}\bigcup\left{\xi_n-\xi \geq \varepsilon\right})
+$$
+这里由<span class="arithmatex">\(\left\{\xi\leq x-\varepsilon,\xi_n &gt;x\right\}\)</span>放大到{<span class="arithmatex">\(\xi_n-\xi \geq \varepsilon\)</span>}</p>
+<p>取其概率有
+$$
+P(\xi \leq x-\varepsilon)\leq P(\left{\xi_n\leq x\right}\bigcup\left{\xi_n-\xi \geq \varepsilon\right})\leq P(\xi_n \leq x)+P(\xi_n-\xi \geq \varepsilon)
+$$
+也即
+$$
+F(x-\varepsilon)\leq F_n(x)+P(\xi_n-\xi\geq \varepsilon)
+$$
+又有<span class="arithmatex">\(\xi_n \xrightarrow{P}\xi\)</span>，所以
+$$
+P(\xi_n-\xi \geq \varepsilon)\leq P(|\xi_n-\xi|\geq\varepsilon)\to0
+$$
+从而有
+$$
+F(x-\varepsilon)\leq \lim_{n\to \infty}infF_n(x)
+$$
+类似地有
+$$
+\begin{aligned}
+{\xi_n \leq x} &amp;= {\xi_n \leq x, \xi \leq x + \varepsilon} \cup {\xi_n \leq x, \xi &gt; x + \varepsilon} \
+&amp;\subset {\xi \leq x + \varepsilon} \cup {\xi - \xi_n \geq \varepsilon},
+\end{aligned}
+$$</p>
+<p>从而</p>
+<div class="arithmatex">\[
+F_n(x) \leq F(x + \varepsilon) + \mathbb{P}(\xi - \xi_n \geq \varepsilon).
+\]</div>
+<p>因此</p>
+<p>$$
+\limsup_{n \to \infty} F_n(x) \leq F(x + \varepsilon). \tag{4.2.2}
+$$
+所以我们可以得到对任意的<span class="arithmatex">\(\varepsilon&gt;0\)</span>，有
+$$
+F(x-\varepsilon)\leq\lim_{n\to \infty}inf F_n(x)\leq\lim_{n \to \infty}supF_n(x)\leq F(x+\varepsilon)
+$$
+由于<span class="arithmatex">\(x\)</span>是F的连续点，令<span class="arithmatex">\(\varepsilon \to 0\)</span>得
+$$
+\lim_{x\to \infty}F_n(x) = F(x)
+$$
+得到分布函数弱收敛，故可以得到随机变量依分布收敛，即<span class="arithmatex">\(\xi_n \xrightarrow{d}\xi\)</span></p>
+<p>对<strong>第二条</strong>，如果<span class="arithmatex">\(\xi_n \xrightarrow{d}c\)</span>，则当<span class="arithmatex">\(x\neq c\)</span>时，
+$$
+\lim_{n\to \infty}F_{n}(x)=\begin{cases}0,&amp;x&gt;c\1,&amp;x&lt;c\end{cases}
+$$</p>
+<blockquote>
+<p>这里本来对于c的分布函数来说是有<span class="arithmatex">\(x\leq c\)</span>的，但是<span class="arithmatex">\(x=c\)</span>是不连续点，我们将其剔除，才符合分布函数弱收敛的定义</p>
+</blockquote>
+<p>因此对任意的<span class="arithmatex">\(\varepsilon&gt;0\)</span>有
+$$
+P(|\xi_n-c|\geq\varepsilon)=P(\xi_n \geq c+\varepsilon)+P(\xi_n \leq c- \varepsilon)\=1-P(\xi_n&lt;c+\varepsilon)+P(\xi_n \leq c-\varepsilon)=1-F_n(c+\varepsilon-0)+F_n(c-\varepsilon)\to0
+$$</p>
+<blockquote>
+<p>这是因为<span class="arithmatex">\(c+\varepsilon-0&gt;c\)</span>，分布函数在这点的值趋向于1，而<span class="arithmatex">\(c-\varepsilon&lt;c\)</span>，分布函数在这点的值趋向于0</p>
+</blockquote>
+<p>所以有<span class="arithmatex">\(\xi_n \xrightarrow{P}c\)</span></p>
+<blockquote>
+<p>我们不管要证明什么，都从其定义或结论的式子和结果去尝试观察一下，不然光干瞪眼也做不出来</p>
+</blockquote>
+<p><strong>Slutsky引理</strong></p>
+<p>如果<span class="arithmatex">\(\xi_n \xrightarrow{d}\xi\)</span>，<span class="arithmatex">\(\eta_n \xrightarrow{d} c\)</span>，则<span class="arithmatex">\(\xi_n+\eta_n \xrightarrow{d} \xi +c\)</span></p>
+<blockquote>
+<p>注意这里的其中一个随机变量是依分布收敛到<strong>非退化随机变量</strong>，而另一个随机变量是依分布收敛到<strong>退化随机变量（常数）</strong>，如果两个都收敛到非退化随机变量的话，就需要<span class="arithmatex">\(\xi_n,\eta_n\)</span>相互独立，否则在一般情况下无法得到<span class="arithmatex">\(\xi_n+\eta_n \xrightarrow{d} \xi +\eta\)</span></p>
+</blockquote>
+<p>下面我们看一道例题</p>
+<p><strong>例1</strong> 设{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}独立同分布，都为<span class="arithmatex">\([0,a]\)</span>上的均匀分布，<span class="arithmatex">\(\eta_n = max_{1\leq k\leq n}\xi_k\)</span>，求证<span class="arithmatex">\(\eta_n \xrightarrow{P}a\)</span></p>
+<p><strong>证明</strong> 只需证明<span class="arithmatex">\(\eta_n \xrightarrow{d}a\)</span>，因为依概率收敛到一个常数，只需依分布收敛即可证得</p>
+<p>这里我们通过证明分布函数弱收敛来证明随机变量依分布收敛，易知<span class="arithmatex">\(\xi_k\)</span>的分布函数为
+$$
+F(x)=\begin{cases}
+0,&amp;x&lt;0,\
+x/a, &amp;0\leq x&lt;a,\
+1,&amp;x\geq a
+\end{cases}
+$$
+所以<span class="arithmatex">\(\eta_n\)</span>的分布函数<span class="arithmatex">\(G_n(x)\)</span>为
+$$
+G_n(x)=[F(x)]^n=\begin{cases}
+0,&amp;x&lt;0,\
+(x/a)^n,&amp;0\leq x&lt;a,
+\1,&amp;x\geq a
+\end{cases}</p>
+<p>\ \ \to 
+\begin{cases}
+0,&amp;x&lt;a\
+1,&amp;x\geq a
+\end{cases}
+$$
+而后者正是在a点退化的分布函数，于是我们得到了分布函数弱收敛，自然有随机变量依分布收敛到常数，从而得到依概率收敛</p>
+<p>关于依概率收敛，有如下的重要结论：</p>
+<p>设<span class="arithmatex">\(\xi\)</span>与{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}是定义在同一概率空间上的随机变量序列，则有</p>
+<ul>
+<li>若<span class="arithmatex">\(\xi_n \xrightarrow{P} \xi,\xi_n \xrightarrow{P}\eta\)</span>，则<span class="arithmatex">\(P(\xi=\eta)=1\)</span></li>
+<li>若<span class="arithmatex">\(\xi_n \xrightarrow{P}\xi\)</span>，g是<span class="arithmatex">\((-\infty,\infty)\)</span>上的连续函数，则<span class="arithmatex">\(g(\xi_n)\xrightarrow{P}g(\xi)\)</span></li>
+</ul>
+<p><strong>证明</strong> </p>
+<p>对<strong>第一条</strong>，其证明如下：我们想要证明对任意的<span class="arithmatex">\(\varepsilon&gt;0\)</span>，<span class="arithmatex">\(P(|\xi-\eta|&gt;\varepsilon)=0\)</span></p>
+<p>考虑事件{<span class="arithmatex">\(|\xi-\eta| \geq \varepsilon\)</span>}，我们希望利用上两个依概率收敛的条件，所以我们利用绝对值不等式构造出<span class="arithmatex">\(\xi_n-\xi,\xi_n-\eta\)</span>两个结构
+$$
+\left{|\xi-\eta|\geq\varepsilon \right}=\left{|\xi-\xi_n+\xi_n-\eta|\geq \varepsilon\right} \sub \left{|\xi_n-\xi|\geq \varepsilon/2\right}\bigcup\left{|\xi_n-\eta| \geq \varepsilon/2\right}
+$$
+这里有一个概率论中很常用的手法，如果有事件A，B满足<span class="arithmatex">\(A\sub B\)</span>，那么对于它们的概率就会有<span class="arithmatex">\(P(A) \leq P(B)\)</span></p>
+<p>所以就会有
+$$
+P(|\xi-\eta| \geq \varepsilon)=P(|\xi -\xi_n+\xi_n-\eta| \geq \varepsilon)\leq P(|\xi_n-\xi| \geq \varepsilon/2)+P(|\xi_n-\eta|\geq \varepsilon/2)
+$$
+而由于<span class="arithmatex">\(\xi_n \xrightarrow{P} \xi,\xi_n \xrightarrow{P}\eta\)</span>，令<span class="arithmatex">\(n\to \infty\)</span>
+$$
+P(|\xi-\eta|\geq\varepsilon) \leq \lim_{n\to \infty}[P(|\xi_n-\xi| \geq \varepsilon/2)+P(|\xi_n-\eta|\geq \varepsilon/2)]=0
+$$
+现在我们再考虑事件{<span class="arithmatex">\(|\xi-\eta|&gt;0\)</span>}，有
+$$
+P(|\xi-\eta|&gt;0)=P(\bigcup_{n=1}^{\infty}|\xi-\eta|\geq1/n)\leq\sum_{n=1}^{\infty}P(|\xi-\eta|\geq1/n)=0
+$$
+所以有<span class="arithmatex">\(P(\xi=\eta)=1\)</span></p>
+<p>对<strong>第二条</strong>，首先因为<span class="arithmatex">\(g(x)\)</span>在R上连续，所以其在R上的任意一个闭区间上一致连续。那么就会有对任意的<span class="arithmatex">\(M&gt;0\)</span>，<span class="arithmatex">\(g(x)\)</span>在<span class="arithmatex">\([-M,M]\)</span>上一致连续，即有当<span class="arithmatex">\(|x|\leq M,|y| \leq M\)</span>时，对给定的<span class="arithmatex">\(\varepsilon&gt;0\)</span>，存在<span class="arithmatex">\(\delta&gt;0\)</span>使得当<span class="arithmatex">\(|x-y|&lt;\delta\)</span>时，<span class="arithmatex">\(|g(x)-g(y)|&lt;\varepsilon\)</span></p>
+<p>所以有
+$$
+\begin{aligned}
+\mathbb{P}(|g(\xi_n) - g(\xi)| \geq \varepsilon) &amp; \
+\leq &amp; \mathbb{P}(|g(\xi_n) - g(\xi)| \geq \varepsilon, |\xi_n| \leq M, |\xi| \leq M) \
+&amp; + \mathbb{P}(|\xi_n| &gt; M) + \mathbb{P}(|\xi| &gt; M) \
+\leq &amp; \mathbb{P}(|\xi_n - \xi| \geq \delta, |\xi_n| \leq M, |\xi| \leq M) \
+&amp; + \mathbb{P}(|\xi_n - \xi + \xi| &gt; M) + \mathbb{P}(|\xi| &gt; M) \
+\leq &amp; \mathbb{P}(|\xi_n - \xi| \geq \delta) + \mathbb{P}(|\xi_n - \xi| &gt; M/2) + \mathbb{P}(|\xi| &gt; M/2) \
+&amp; + \mathbb{P}(|\xi| &gt; M). 
+\end{aligned}
+$$
+而对固定的<span class="arithmatex">\(M&gt;0\)</span>，我们令<span class="arithmatex">\(n \to \infty\)</span>，就可以得到
+$$
+\lim_{n \to \infty}P(|g(\xi_n)-g(\xi)|\geq \varepsilon)\leq P(|\xi|&gt;M/2)+P(|\xi|&gt;M)
+$$
+再由<span class="arithmatex">\(M\)</span>的任意性，令<span class="arithmatex">\(M \to \infty\)</span>，就可以得到
+$$
+\lim_{n \to \infty}P(|g(\xi_n)-g(\xi)|\geq \varepsilon)\leq \lim_{M\to \infty}[ P(|\xi|&gt;M/2)+P(|\xi|&gt;M)]=0
+$$
+所以可以得到<span class="arithmatex">\(g(\xi_n)\xrightarrow{P}g(\xi)\)</span></p>
+<p><strong>依概率收敛的Slutsky引理</strong></p>
+<ul>
+<li>若<span class="arithmatex">\(\xi_n \xrightarrow{P}\xi,\eta_n \xrightarrow{P} \eta\)</span>，则<span class="arithmatex">\(\xi_n \pm \eta_n \xrightarrow{P} \xi \pm \eta\)</span></li>
+<li>若<span class="arithmatex">\(\xi_n \xrightarrow{P} \xi, \eta_n \xrightarrow{P}\eta\)</span>，则<span class="arithmatex">\(\xi_n\eta_n\xrightarrow{P}\xi\eta\)</span></li>
+<li>若<span class="arithmatex">\(\xi_n \xrightarrow{P} \xi, \eta_n \xrightarrow{P}c\)</span>，<span class="arithmatex">\(c\)</span>为一常数，假设<span class="arithmatex">\(\eta_n\)</span>与<span class="arithmatex">\(c\)</span>都不为0，则有<span class="arithmatex">\(\frac{\xi_n}{\eta_n} \xrightarrow{P} \frac{\xi}{\eta}\)</span></li>
+</ul>
+<blockquote>
+<p>因为以概率收敛的条件比依分布收敛的条件更强，所以Slutsky引理的结论也更强，对于加减乘三种运算，两列随机变量都可以以概率分布收敛到随机变量，但是对于除法，其中一个随机变量必须以概率收敛到退化随机变量（常数）；而依分布收敛则需要<span class="arithmatex">\(\xi_n,\eta_n\)</span>相互独立</p>
+</blockquote>
+<p><strong>广义Markov（马尔科夫）不等式</strong></p>
+<p>设 <span class="arithmatex">\(\xi\)</span> 是定义在概率空间 <span class="arithmatex">\((\Omega, \mathcal{F}, P)\)</span> 上的随机变量，<span class="arithmatex">\(g(x)\)</span> 是 <span class="arithmatex">\([0, \infty)\)</span> 上<strong>非负单调不减</strong>函数。则对任意的 <span class="arithmatex">\(x &gt; 0\)</span>，</p>
+<p>$$
+P(|\xi| \geq x) \leq \frac{E g(|\xi|)}{g(x)}.
+$$
+<strong>证明</strong> 
+$$
+P(|\xi|\geq x)\leq P(g(|\xi|\geq g(x))\leq\frac{Eg(|\xi|)}{g(x)}
+$$
+这里左边的不等式是因为<span class="arithmatex">\(g(x)\)</span>是非负单调不减函数，<span class="arithmatex">\(|\xi| \geq x \Rightarrow g(|\xi|) \geq g(x)\)</span>，事件是包含关系，那么反映到概率上就是小于等于关系；等式右边则是用到了第三章中提及的马尔科夫不等式</p>
+<p>由马尔科夫不等式我们可以得到一个定理，其反映了随机变量序列依概率收敛的充分必要条件：
+$$
+\xi_n \xrightarrow{P} \xi当且仅当 E\frac{|\xi_n-\xi|^2}{1+|\xi_n-\xi|^2}\to 0
+$$
+<strong>证明</strong> 充分性：我们取<span class="arithmatex">\(f(x)=\frac{x^2}{1+x^2}\)</span>，这个函数在<span class="arithmatex">\([0,\infty)\)</span>上是非负单调不减的函数，所以对任意的<span class="arithmatex">\(\varepsilon&gt;0\)</span>，由Markov不等式可以知道
+$$
+P(|\xi_n-\xi|\geq \varepsilon) \leq \frac{1+\varepsilon^2}{\varepsilon^2}E\frac{|\xi_n -\xi|^2}{1+|\xi_n-\xi|^2}\to0
+$$
+所以<span class="arithmatex">\(\xi_n \xrightarrow{P}\xi\)</span></p>
+<p>必要性：设<span class="arithmatex">\(F_n(x)\)</span>为<span class="arithmatex">\(\xi_n-\xi\)</span>的分布函数，对任意的<span class="arithmatex">\(\xi&gt;0\)</span>，有
+$$
+E\frac{|\xi_n-\xi|^2}{1+|\xi_n-\xi|^2}=\int_{-\infty}^{\infty}\frac{x^2}{1+x^2}dF_n(x)=\int_{|x|&lt;\varepsilon}\frac{x^2}{1+x^2}dF_n(x)+\int_{|x|\geq \varepsilon}\frac{x^2}{1+x^2}dF_n(x)\
+\leq \frac{\varepsilon^2}{1+\varepsilon^2}\int_{|x|\leq \varepsilon}dF_n(x)+\int_{|x|\geq \varepsilon}dF_n(x)=\frac{\varepsilon^2}{1+\varepsilon^2}P(|\xi_n-\xi|&lt;\varepsilon)+P(|\xi_n-\xi|\geq \varepsilon)\\leq \frac{\varepsilon^2}{1+\varepsilon^2}+P(|\xi_n-\xi|\geq \varepsilon)
+$$</p>
+<blockquote>
+<p>这里第一行到第二行，是由于<span class="arithmatex">\(f(x) \leq f(\varepsilon)\)</span>和<span class="arithmatex">\(f(x) \leq 1\)</span>两个放缩</p>
+</blockquote>
+<p>因为<span class="arithmatex">\(\xi_n \xrightarrow{P}\xi\)</span>，先令<span class="arithmatex">\(n \to \infty\)</span>，再令<span class="arithmatex">\(\varepsilon \to 0\)</span>，就可以得到
+$$
+E\frac{|\xi_n -\xi|^2}{1+|\xi_n-\xi|^2}\to 0
+$$</p>
+<h4 id="_7">弱大数定律<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>设{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}是定义在概率空间 <span class="arithmatex">\((\Omega, \mathcal{F}, P)\)</span>上的随机变量序列，如果存在常数列{<span class="arithmatex">\(a_n,n\geq1\)</span>}和{<span class="arithmatex">\(b_n ,n\geq1\)</span>}使得
+$$
+\frac{1}{a_n}\sum_{k=1}^n\xi_k-b_n \xrightarrow{P}0
+$$
+则称{<span class="arithmatex">\(\xi_n,n \geq 1\)</span>}服从弱大数定律，简称{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}服从大数定律</p>
+<p><strong>伯努利大数定律</strong></p>
+<p>设{<span class="arithmatex">\(\xi_n ,n\geq1\)</span>}是一列独立同分布（服从两点分布）的随机变量序列
+$$
+P(\xi_k=1)=p,\ P(\xi_k=0)=1-p,\ 0&lt;p&lt;1
+$$
+记<span class="arithmatex">\(S_n=\sum_{k=1}^n \xi_k\)</span>，则
+$$
+\frac{S_n}{n}\xrightarrow{P}p
+$$
+伯努利大数定律是切比雪夫大数定律的特例</p>
+<p><strong>切比雪夫大数定律</strong></p>
+<p>设{<span class="arithmatex">\(\xi_n,n \geq 1\)</span>}是一列<strong>独立</strong>随机变量序列(不要求同分布)，<span class="arithmatex">\(E\xi_k = \mu_k, Var\xi_k =\sigma_k^2\)</span>，如果
+$$
+\frac{1}{n^2}\sum_{k=1}^n \sigma_k^2 \to 0  \qquad 也即\frac{1}{n^2}\sum_{k=1}^n Var\xi_k \to 0
+$$
+则{<span class="arithmatex">\(\xi_n,n\geq1\)</span>}服从大数定律，即
+$$
+\frac{1}{n}\sum_{k=1}^n\xi_k-\frac{1}{n}\sum_{k=1}^n \mu_k \xrightarrow{P}0
+$$
+部分和序列-期望依概率收敛到0</p>
+<blockquote>
+<p>若把条件中的<span class="arithmatex">\(\frac{1}{n^2}\sum_{k=1}^n \sigma_k^2 \to 0\)</span>改成<span class="arithmatex">\(\frac{1}{n^2}Var(\sum_{k=1}^n \xi_k)\)</span>，此时不需要假设{<span class="arithmatex">\(\xi_n,n \geq 1\)</span>}是独立随机变量序列，则定理的结论仍然成立，成为Markov大数定律</p>
+</blockquote>
+<p><strong>证明（对切比雪夫大数定律）</strong> 
+$$
+E(\frac{1}{n}\sum_{k=1}^n\xi_k)=\frac{1}{n}\sum_{k=1}^n \mu_k,\ Var(\frac{1}{n}\sum_{k=1}^n \xi_k)=\frac{1}{n^2}\sum_{k=1}^nVar \xi_k
+$$
+由切比雪夫不等式可知，对任意的<span class="arithmatex">\(\varepsilon&gt;0\)</span>
+$$
+P(|\frac{1}{n}\sum_{k=1}^n\xi_k-\frac{1}{n}\sum_{k=1}^n \mu_k|\geq \varepsilon)\leq \frac{1}{\varepsilon^2}Var(\frac{1}{n}\sum_{k=1}^n \xi_k)=\frac{1}{\varepsilon^2}\cdot\frac{1}{n^2}\sum_{k=1}^n\sigma_k^2 \to 0
+$$
+所以结论成立</p>
+<p>若{<span class="arithmatex">\(\xi_n,n \geq 1\)</span>}不仅独立，而且同分布，可以把切比雪夫大数定律改进到下面的辛钦大数定律（这是最经典的大数定律）</p>
+<p><strong>辛钦大数定律</strong></p>
+<p>设{<span class="arithmatex">\(\xi_n ,n \geq 1\)</span>}是一列独立同分布随机变量序列，<span class="arithmatex">\(E|\xi_1|&lt;\infty\)</span>，记<span class="arithmatex">\(E\xi_1=\mu\)</span>，<span class="arithmatex">\(S_n = \sum_{k=1}^n \xi_k\)</span>，则{<span class="arithmatex">\(\xi_n ,n \geq 1\)</span>}服从大数定律，即
+$$
+\frac{S_n}{n}\xrightarrow{P}\mu
+$$</p>
+<blockquote>
+<p>辛钦大数定律不能用切比雪夫不等式进行证明，因为条件只给出了数学期望存在，也即一阶矩存在，而方差是否存在我们并不知道</p>
+</blockquote>
+<p><strong>证明</strong> 因为要证<span class="arithmatex">\(\frac{S_n}{n}\)</span>依概率收敛到某个常数，我们可以证明其依分布收敛到该常数，也即<span class="arithmatex">\(\frac{S_n}{n}\xrightarrow{d} \mu\)</span>，我们采用特征函数进行证明</p>
+<p>分别令<span class="arithmatex">\(f(t),f_n(t)\)</span>为<span class="arithmatex">\(\xi_1,\frac{S_n}{n}\)</span>的特征函数，因为{<span class="arithmatex">\(\xi_n,n \geq 1\)</span>}是独立同分布的随机变量序列，所以
+$$
+f_n(t)=Ee^{it\frac{S_n}{n}}=\prod_{k=1}^nEe^{it\frac{\xi_k}{n}}=[f(\frac{t}{n})]^n
+$$
+又由于<span class="arithmatex">\(E\xi_1=\mu\)</span>，所以<span class="arithmatex">\(f'(0)=i\cdot E\xi_1=i\mu\)</span>，从而
+$$
+f(x)=1+f'(0)x+o(x)=1+i\mu x+o(x)\qquad (x\to0)
+$$
+因此对任意的<span class="arithmatex">\(t \in R\)</span>，有
+$$
+f_n(t)=[1+i\mu t/n+o(1/n)]^n \to e^{i\mu t}\qquad (n \to \infty)
+$$
+后者正是恒等于<span class="arithmatex">\(\mu\)</span>的退化随机变量的特征函数，所以由逆极限定理可以知道<span class="arithmatex">\(\frac{S_n}{n} \xrightarrow{d} \mu\)</span>，即<span class="arithmatex">\(\frac{S_n}{n} \xrightarrow{P} \mu\)</span></p>
+<p>下面我们看一些例题</p>
+<p><strong>例1</strong> 设{<span class="arithmatex">\(\xi_k ,k \geq1\)</span>}有分布列<span class="arithmatex">\(P(\xi_k = \pm k^s)=1/2,s &lt; 1/2\)</span>为正常数，且<span class="arithmatex">\({\xi_k,k\geq 1}\)</span>相互独立，试证{<span class="arithmatex">\(\xi_k , k\geq 1\)</span>}服从大数定律</p>
+<p><strong>证明</strong> 因为<span class="arithmatex">\(\xi_k\)</span>独立但不一定同分布，我们使用切比雪夫大数定律来证明
+$$
+E\xi_k = 0,\ \ \  Var \xi_k = k^{2s} 
+$$
+所以当<span class="arithmatex">\(0&lt;s&lt;1/2\)</span>时
+$$
+\frac{1}{n^2}\sum_{k=1}^nVar\xi_k=\frac{1}{n^2}\sum_{k=1}^nk^{2s}&lt;\frac{1}{n^2}\sum_{k=1}^nn^{2s}=n^{2s-1} \to 0
+$$
+所以{<span class="arithmatex">\(\xi_k ,k \geq 1\)</span>}服从大数定律：
+$$
+\frac{\sum_{k=1}^n\xi_k}{n} \xrightarrow{P}0
+$$
+<strong>例2</strong> （矩估计的相合性）假定总体<span class="arithmatex">\(\xi\)</span>的一阶矩（即数学期望）<span class="arithmatex">\(m_1\)</span>存在（隐含<span class="arithmatex">\(E|\xi&lt;\infty|\)</span>）但未知，通常的做法是对<span class="arithmatex">\(\xi\)</span>进行n次独立重复观测，得到样本<span class="arithmatex">\(\xi_1,\cdot\cdot\cdot,\xi_n\)</span>，并以它们的算术平均（也称为样本的1阶矩）<span class="arithmatex">\(A_1=\frac{1}{n}\sum_{j=1}^n \xi_j\)</span>作为<span class="arithmatex">\(m_1\)</span>的估计量，这种做法的依据就是辛钦大数定律
+$$
+A_1 \xrightarrow{P}m_1
+$$
+更重要的是，根据辛钦大数定律，若总体的k阶矩<span class="arithmatex">\(m_k=E\xi^k\)</span>存在（隐含<span class="arithmatex">\(E|\xi|^k&lt;\infty\)</span>），这时样本的<span class="arithmatex">\(k\)</span>阶矩<span class="arithmatex">\(A_k =\frac{1}{n}\sum_{j=1}^n \xi_j^k\)</span>可作为<span class="arithmatex">\(m_k\)</span>的估计量，依据是
+$$
+A_k \xrightarrow{P} m_k
+$$</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 05:50:11 UTC"><span class="timeago" datetime="2025-06-28T05:50:11+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 05:50:11 UTC">2025-06-28</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

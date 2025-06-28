@@ -1,0 +1,1576 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/">
+      
+      
+        <link rel="prev" href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/">
+      
+      
+        <link rel="next" href="../Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter1 概率论复习 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter1 概率论复习
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Home/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Home/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学期望
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件概率和条件期望
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的分类和定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学期望
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件概率和条件期望
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Chapter1 概率论复习</h1>
+
+<h3 id="_1">数学期望<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h4 id="_2">期望与极限是否能交换顺序<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>下面我们将说明，<strong>期望和极限是不能随意交换顺序的</strong></p>
+<p>设<span class="arithmatex">\(\left\{x_n\right\}\)</span>是随机变量序列，则有以下定理：</p>
+<ol>
+<li>
+<p><strong>（单调收敛定理）</strong>如果<span class="arithmatex">\(X_n\)</span><strong>非负</strong>且<strong>递增收敛</strong>于<span class="arithmatex">\(X\)</span>，则有
+   $$
+   \lim_{n \to \infty}E(X_n)=E(X)
+   $$</p>
+</li>
+<li>
+<p><strong>（Fatou引理）</strong>（仅做了解即可）如果<span class="arithmatex">\(\left\{x_n\right\}\)</span>非负，则有
+   $$
+   E(\lim_{n\to \infty}\inf X_n)\leq \lim_{n \to\infty}\inf E(X_n)
+   $$</p>
+</li>
+<li>
+<p><strong>（Lebesgue控制收敛定理）</strong>如果<span class="arithmatex">\(\lim_{n\to\infty}X_n=X\)</span>，且存在非负随机变量<span class="arithmatex">\(\eta\)</span>使得<span class="arithmatex">\(E(\eta)&lt; \infty\)</span>，且对于所有的n，满足<span class="arithmatex">\(\big|X_n\big| \leq \eta\)</span>，则有
+   $$
+   \lim_{n \to \infty}E(X_n)=E(X)
+   $$</p>
+</li>
+</ol>
+<p>下面我们举一个例子说明，<strong>期望和极限是不能随意交换顺序的</strong>，期望与极限交换次序是有条件限制的</p>
+<p><strong>例：</strong> 设Ω = (0, 1)，F是由Ω中开集生成的σ-代数 $ P(A) = m(A) $（这里的 <span class="arithmatex">\(m(A)\)</span> 指的是Lebesgue测度） 令 $X_n(\omega) = (-1)^n n 1_{(0, 1/n)}(\omega) $ $$  X_n(\omega) =  \begin{cases}  (-1)^n n, &amp; \text{当 } \omega \in (0, 1/n) \text{时}, \ 0, &amp; \text{当 } \omega \in [1/n, 1) \text{时}, \end{cases} $$ 则对所有 <span class="arithmatex">\(\omega \in \Omega\)</span>, <span class="arithmatex">\(\lim_{n \to \infty} X_n(\omega) = X(\omega) = 0\)</span>, $ E(X) = 0, \text{但} E(X_n) = (-1)^n \text{极限不存在}$ 即 <span class="arithmatex">\(E(X_n)\)</span> 并不收敛于 <span class="arithmatex">\(E(X)\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>注意上述的<span class="arithmatex">\(1_{(0, 1/n)}(\omega)\)</span>是一个示性函数，其满足
+  $$
+  1_{(0, 1/n)}(\omega)=\begin{cases}
+  1 ,&amp;\omega \in(0,\frac{1}{n}) \
+  0 ,&amp;\omega \notin(0,\frac{1}{n})
+  \end{cases}
+  $$</p>
+</div>
+<h4 id="_3">期望和积分能否交换顺序<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>下面我们将说明，<strong>期望和积分也是不能随意交换顺序的</strong></p>
+<p><strong>Fubini定理：</strong>设对<span class="arithmatex">\(a \leq t \leq b\)</span>，<span class="arithmatex">\(X(t)\)</span>是随机变量，如果有<span class="arithmatex">\(\int_a^bE(\big|X(t)\big|)dt &lt; \infty\)</span>或对所有<span class="arithmatex">\(a \leq t \leq b\)</span>，<span class="arithmatex">\(X(t)\)</span>都非负，则有
+$$
+E[\int_a^bX(t)dt]=\int E(X(t))dt
+$$
+也就是说，在满足Fubini定理的情形下，期望和积分能够交换顺序，下面我们看几道例题：</p>
+<p><strong>例1</strong>：</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>需要注意的是，在下面这个例子中，<span class="arithmatex">\(\xi\)</span>是作为连续型随机变量的，而<span class="arithmatex">\(t\)</span>在这 里 是作为一个积分变量出现，所以数学期望E应当针对<span class="arithmatex">\(\xi\)</span>讨论，而积分则应当针对积分变量<span class="arithmatex">\(t\)</span>讨论</p>
+</div>
+<p>设<span class="arithmatex">\(\xi \sim U(0,1)\)</span>，令<span class="arithmatex">\(X(t)=X(t)=\frac{t^2-\xi^2}{(t^2+\xi^2)^2},t\in[0,1]\)</span>，则有
+$$
+\int_0^1X(t)dt=\int_0^1\frac{t^2-\xi^2}{(t^2+\xi^2)^2}dt=\left.-\frac{t}{t^2+\xi^2}\right|_0^1=-\frac{1}{1+\xi^2} 
+$$
+所以
+$$
+E\int_0^1X(t)dt=\int_0^1-\frac{1}{1+x^2}dx=-\frac{\pi}{4}
+$$
+又
+$$
+EX(t)=\int_0^1\frac{t^2-x^2}{(t^2+x^2)^2}dx=\left.\frac{x}{x^2+t^2}\right|_0^1=\frac{1}{1+t^2}\
+\int_0^1EX(t)dt=\int_0^1\frac{1}{1+t^2}dt=\frac{\pi}{4}
+$$
+所以可以得到
+$$
+E[\int_0^1X(t)dt]\neq\int_0^1E(X(t))dt
+$$</p>
+<p><strong>例2</strong>：设<span class="arithmatex">\(X\)</span>是一非负随机变量，<span class="arithmatex">\(\alpha\)</span>为一正数，证明
+$$
+E(X^{\alpha})=\int_0^{\infty}\alpha t^{\alpha-1}P(X&gt;t)dt
+$$
+<strong>证明</strong>：我们希望能够利用Fubini定理，此处已经出现了期望的形式，那么自然地，我们会想到去构造积分的形式，也就是将<span class="arithmatex">\(X^{\alpha}\)</span>变成积分的形式，容易想到</p>
+<div class="arithmatex">\[
+X^{\alpha}=\int_0^{X}\alpha t^{\alpha-1}dt \qquad E(X^{\alpha})=E(\int_0^{X}\alpha t^{\alpha-1}dt)
+\]</div>
+<p>但是我们需要注意的是，<strong>上述积分的上界为X，这是一个随机变量，为不确定值</strong>，所以我们不能贸然地直接将积分和期望交换顺序，我们通过使用示性函数将上述积分的上界变为无穷，使得这时积分和期望可以交换次序</p>
+<div class="arithmatex">\[
+E(X^{\alpha})=E(\int_0^{\infty} \alpha t ^{\alpha-1}1_\left\{{X&gt;t} \right\}dt)
+\]</div>
+<p>又由于<span class="arithmatex">\(\alpha t^{\alpha-1}1_\left\{{X&gt;t} \right\}\)</span>非负，由Fubini定理可得</p>
+<p>$
+E(X^{\alpha})=\int_0^{\infty}E(\alpha t ^{\alpha-1}1_\left{{X&gt;t} \right})dt=\int_0^{\infty}\alpha t^{\alpha-1}P(X&gt;t)dt
+$$</p>
+<h4 id="_4">数列情形<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>对于<strong>数列</strong>，也是有上述类似结论的。</p>
+<p>我们设<span class="arithmatex">\(\left\{a_{nk};k \geq 1\right\}\)</span>是一列数列，则有以下定理：</p>
+<ol>
+<li><strong>（单调收敛定理）</strong>如果<span class="arithmatex">\(a_{nk}\)</span>非负且递增收敛于<span class="arithmatex">\(a_k\)</span>，则有
+   $$
+   \lim_{n \to \infty}\sum_{k=1}^{\infty}a_{nk}=\sum_{k=1}^{\infty}a_k
+   $$</li>
+</ol>
+<blockquote>
+<p>其实这个定理描述的是这样一个事实</p>
+</blockquote>
+<p>$$
+   \left[\begin{array}{cccc}
+   a_{11} &amp; a_{12} &amp; a_{13} &amp; \cdots \
+   a_{21} &amp; a_{22} &amp; a_{23} &amp; \cdots \
+   a_{31} &amp; a_{32} &amp; a_{33} &amp; \cdots \
+   \vdots &amp; \vdots &amp; \vdots &amp; \ddots \
+   a_{n1} &amp; a_{n2} &amp; a_{n3} &amp; \cdots \
+   \hline
+   L_1 &amp; L_2 &amp; L_3 &amp; \cdots
+   \end{array}\right]
+   $$</p>
+<ol>
+<li><strong>（Fatou引理）</strong>如果<span class="arithmatex">\(a_{nk}\)</span>非负，那么有
+$$
+   \sum_{k=1}^{\infty}\lim_{n\to\infty}\inf a_{nk} \leq \lim_{n\to\infty}\inf\sum_{k=1}^{\infty}a_{nk}
+$$</li>
+<li><strong>（Lebesgue控制收敛定理）</strong>如果<span class="arithmatex">\(\lim_{n\to \infty}a_{nk}=a_k\)</span>，且存在非负数列<span class="arithmatex">\(\left\{b_k;k \geq 1\right\}\)</span>使得<span class="arithmatex">\(\sum_{k=1}^{\infty}b_k&lt;\infty\)</span>，且对所有n,k，有<span class="arithmatex">\(\big|a_{nk}\big| \leq b_k\)</span>，则有
+$$
+   \lim_{n \to \infty}\sum_{k=1}^{\infty}a_{nk}=\sum_{k=1}^{\infty}a_k
+$$</li>
+<li><strong>（Fubini定理）</strong>如果<span class="arithmatex">\(\sum_{n=1}^{\infty}\sum_{k=1}^{\infty}|a_{nk}|&lt;\infty\)</span>，或对所有n,k，有<span class="arithmatex">\(a_{nk}\geq0\)</span>，则有
+$$
+   \sum_{n=1}^{\infty}\sum_{k=1}^{\infty}a_{nk} = \sum_{k=1}^{\infty}\sum_{n=1}^{\infty}a_{nk}
+$$
+   也就是说，双重求和并不一定能交换次序，其交换次序是有条件限制的</li>
+</ol>
+<p>下面我们举一个具体的例子说明双重求和是不能贸然交换次序的</p>
+<p><strong>例</strong> </p>
+<h3 id="_5">条件概率和条件期望<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">条件概率<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>不多说了，复习一下概率论</p>
+<h4 id="_7">条件期望与全期望公式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>我们回顾一下条件期望的定义，若<span class="arithmatex">\(X\)</span>是<span class="arithmatex">\((\Omega,\mathcal{F},P)\)</span>上可积的随机变量，定义<span class="arithmatex">\(X\)</span>在<span class="arithmatex">\(A\)</span>发生时的条件期望为<span class="arithmatex">\(X\)</span>关于条件概率<span class="arithmatex">\(P(\cdot|A)\)</span>的期望，记为<span class="arithmatex">\(E(X|A)\)</span></p>
+<p>同时我们注意到<span class="arithmatex">\(E(X)=\int_{\Omega X(\omega)dP(\omega)}\)</span>是<span class="arithmatex">\(X\)</span>在<span class="arithmatex">\(\Omega\)</span>上的加权平均，而
+$$
+E(X|A)=\int_{\Omega}X(\omega)dP(\omega|A)=\frac{1}{P(A)}\int_A X(\omega)dP(\omega)
+$$
+是<span class="arithmatex">\(X\)</span>在<span class="arithmatex">\(A\)</span>上的加权平均。（其实上面的不用管，为了笔记完整性还是写上了，主要注意需要除<strong><span class="arithmatex">\(P(A)\)</span></strong>）</p>
+<p>条件期望有如下性质：</p>
+<ol>
+<li>
+<p>$$
+   E(X1_A)=E(X|A)P(A)
+$$
+   这个性质是好理解的，<span class="arithmatex">\(1_A\)</span>是示性函数，当A发生时取1，当A不发生时取0，</p>
+</li>
+<li>
+<p>若<span class="arithmatex">\(A_1,A_2,\cdot\cdot\cdot\)</span>是<span class="arithmatex">\(\Omega\)</span>的划分，且<span class="arithmatex">\(P(A_i)&gt;0\)</span>，则以下<strong>全期望公式</strong>成立：
+$$
+   E(X)=\sum_i E(X|A_i)P(A_i)
+$$
+下面我们来看一道例题</p>
+</li>
+</ol>
+<p><strong>例</strong> 独立重复地抛一枚硬币直至有k次相继出现正面，计算所抛次数的均值（设每次出现正面的概率为p）</p>
+<p>我们可以先看一下这个题目的简化版本，独立重复地抛一枚硬币直至有一次出现正面，计算所抛次数的均值。这很显然是一个几何分布，其均值为<span class="arithmatex">\(\frac{1}{p}\)</span>。方法有如下两种：</p>
+<p>第一种，利用数学期望的定义求解，计算级数。设所抛次数为<span class="arithmatex">\(\xi\)</span>，则<span class="arithmatex">\(P(\xi=k)=q^{k-1}p\)</span>，<span class="arithmatex">\(E\xi=\sum_{k=1}^\infty kP(\xi=k)\)</span>，也即
+$$
+E\xi=\sum_{k=1}^{\infty}pq^{k-1}k=\sum_{k=1}^{\infty}p(x^k)'\big|<em k="1">{x=q}=p(\sum</em>x^k)'\big|}^{\infty<em x="q">{x=q}=p(\frac{x}{1-x})'\big|</em>
+$$
+第二种，利用}\=\frac{p}{(1-q)^2}=\frac{1}{p<strong>全期望公式</strong>，我们设出现一次正面的所抛次数为<span class="arithmatex">\(N_1\)</span>，则第一次抛硬币只有可能出现两种情况，为正面，则<span class="arithmatex">\(N_1=1\)</span>；为反面，则又重新开始（无记忆性），我们不好考虑反面情况下的<span class="arithmatex">\(N_1\)</span>，其情况过于复杂，但是考虑期望的话，事情就变得简单了，我们会发现<span class="arithmatex">\(E(N_1)\)</span>满足：
+$$
+E(N_1)=E(N_1|第一次是正面)P(第一次是正面)+E(N_1|第一次是反面)P(第一次是反面)\=1<em>p+(1+E(N_1))</em>(1-p)
+$$
+注意，这里我们要想清楚<span class="arithmatex">\(E(N_1|第一次是反面)=1+E(N_1)\)</span>，这是由几何分布的无记忆性导致的。所以我们得到<span class="arithmatex">\(E(N_1)=\frac{1}{p}\)</span></p>
+<p>这里我们说明一下，题目中指的<strong>k次相继出现正面</strong>指的是连续k次出现正面。做这题也有两个思考角度：</p>
+<p>第一种：弄清楚递推关系，考虑<strong>全期望公式</strong>进行推导，我们记<span class="arithmatex">\(N_k\)</span>为所抛次数，<span class="arithmatex">\(T\)</span>为首次出现反面时抛的次数，则有
+$$
+E(N_k|T=i)=\begin{cases}
+k ,&amp;i&gt;k\
+i+E(N_k), &amp;i\leq k
+\end{cases}
+$$
+所以由全期望公式，我们可以得到
+$$
+E(N_k)=\sum_{i\geq 1}E(N_k|T=i)P(T=i)\=\sum_{i=1}^k[i+E(N_k)]p^{i-1}q+kp^k
+$$
+可以解得
+$$
+E(N_k)=\frac{1}{p}+\frac{1}{p^2}+\cdot\cdot\cdot+\frac{1}{p^k}
+$$
+这里的计算过程是这样的：
+$$
+E(N_k)=\sum_{i=1}^kip^{i-1}q+(\sum_{i=1}^kp^{i-1}q)E(N_k)+kp^k
+$$
+两个求和项分别计算出来如下，注意前面的<span class="arithmatex">\(\sum_{i=1}^kip^{i-1}\)</span>我们不能将求导和求和进行次序交换，也就是利用级数求和，因为这是有限项级数求和，不能交换次序，所以我们还是老老实用等差数列求和计算。</p>
+<p>我们记<span class="arithmatex">\(S=\sum_{i=1}^kip^{i-1}\)</span>
+$$
+S=1+2p+3p^2+\cdot\cdot\cdot+kp^{k-1}\
+pS=p+2p^2+3p^3+\cdot\cdot\cdot+kp^k
+$$
+作差可得：
+$$
+(1-p)S=p+p^2+\cdot\cdot\cdot+p^{k-1}+1-kp^k
+$$
+最终我们得到
+$$
+E(N_k)=\frac{\frac{1}{p^{k-1}}-1}{1-p}+\frac{1}{p^k}=\frac{\frac{1}{p^{k-1}}(1-p^{k-1})}{1-p}+\frac{1}{p^k}\=\frac{1}{p^{k-1}}+\frac{1}{p^{k-2}}+\cdot\cdot\cdot+\frac{1}{p}+\frac{1}{p^k}
+$$
+就得到了最终结果。</p>
+<p>第二种：<strong>递归方法</strong>。要求相继k次出现正面，必然需要相继k-1次出现正面，所以我们可以去考虑<span class="arithmatex">\(E(N_k|N_{k-1})\)</span>，容易想到在已有<span class="arithmatex">\(N_{k-1}\)</span>的情况下，下一次抛硬币有两种情形，第一种是正面，这时<span class="arithmatex">\(E(N_k|N_{k-1})=E(N_{k-1})+1\)</span>；但是如若下一次抛硬币是反面，则又只能重新开始，这时会有<span class="arithmatex">\(E(N_k|N_{k-1})=E(N_{k-1})+1+E(N_k)\)</span>，那么由全期望公式，就有
+$$
+E(N_k|N_{k-1})=(E(N_{k-1})+1)\cdot p+(1-p)[E(N_{k-1})+1+E(N_k)]\=1+E(N_{k-1})+(1-p)E(N_k)
+$$
+对于这个式子，我们再次使用全期望公式，也即
+$$
+E(N_k)=E[E(N_k|N_{k-1})]=1+E(N_{k-1})+(1-p)E(N_k)
+$$
+可得：
+$$
+pE(N_k)=1+E(N_{k-1}) \to E(N_k)=\frac{E(N_{k-1})}{p}+\frac{1}{p}
+$$
+又有<span class="arithmatex">\(E(N_1)=\frac{1}{p}\)</span>，所以我们递推就可以得到<span class="arithmatex">\(E(N_k)=\frac{1}{p}+\frac{1}{p^2}+\cdot\cdot\cdot+\frac{1}{p^k}\)</span></p>
+<p>设<span class="arithmatex">\(Y\)</span>是一取值为<span class="arithmatex">\(y_1,y_2,\cdot\cdot\cdot\)</span>的离散型随机变量，由于<span class="arithmatex">\(E(X|Y=y)\)</span>是y的函数，所以定义给定<span class="arithmatex">\(Y\)</span>的条件下<span class="arithmatex">\(X\)</span>的条件期望<span class="arithmatex">\(E(X|Y)\)</span>为<span class="arithmatex">\(Y\)</span>的一个函数，记为<span class="arithmatex">\(g(y)=E(X|Y=y)\)</span>，即
+$$
+E(X|Y)=\sum_{i}E(X|Y=y_i)1_{\left{Y=y_i\right}}
+$$
+此时全期望公式<span class="arithmatex">\(E(X)=\sum E(X|Y=y_i)P(Y=y_i)\)</span>也即
+$$
+E(X)=E[E(X|Y)]
+$$</p>
+<h4 id="_8">条件期望的性质<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>线性性：对常数a,b,c，有
+$$
+  E(aX+bY+c|Z)=aE(X|Z)+bE(Y|Z)+c
+$$</p>
+</li>
+<li>
+<p>单调性：如果<span class="arithmatex">\(X \leq Y\)</span>，那么<span class="arithmatex">\(E(X|Z) \leq E(Y|Z)\)</span></p>
+</li>
+<li>
+<p>如果<span class="arithmatex">\(Y=h(X)\)</span>是<span class="arithmatex">\(X\)</span>的可测函数，则<span class="arithmatex">\(E(Y|X)=Y\)</span>，这是因为Y本身是X的函数，X确定之时，Y也确定了为一个定值，所以其期望是其本身</p>
+</li>
+<li>
+<p>如果<span class="arithmatex">\(Y=h(X)\)</span>是<span class="arithmatex">\(X\)</span>的可测函数，则<span class="arithmatex">\(E(YZ|X)=YE(Z|X)\)</span>（提取已知量）</p>
+</li>
+<li>
+<p>如果<span class="arithmatex">\(X\)</span>与<span class="arithmatex">\(Y\)</span>相互独立，则<span class="arithmatex">\(E(Y|X)=E(Y)\)</span></p>
+</li>
+<li>
+<p><strong>全期望公式：</strong><span class="arithmatex">\(E[E(Y|X)]=E(Y)\)</span></p>
+</li>
+</ul>
+<p>下面我们再举几个例子：</p>
+<p><strong>例1</strong> 设<span class="arithmatex">\((X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)\)</span>，计算<span class="arithmatex">\(E(X|Y)\)</span></p>
+<p><strong>解</strong> 方法一： $ Y = y \text{时}, X \text{ 服从 } N(\mu_1 + \rho\sigma_1(y - \mu_2)/\sigma_2, \sigma_1^2(1 - \rho^2)), $ 所以 $ E(X|Y) = \mu_1 + \rho\sigma_1(Y - \mu_2)/\sigma_2. $ （这里其实是把y替换成Y，当我们不熟的时候可以这么写，熟悉之后直接Y都行）</p>
+<p>方法二：令 $ Z = X - aY <span class="arithmatex">\(，\)</span> a $ 为一个待定常数，使得 $ Z $ 与 $ Y $ 独立。 由正态分布性质知，$ Z $ 与 $ Y $ 独立当且仅当 $ Cov(Z, Y) = 0 $，即 $ a = \rho\sigma_1/\sigma_2 $。此时， $ E(X|Y) = E(Z + aY|Y) = E(Z) + aY $ $ = \mu_1 + \rho\sigma_1(Y - \mu_2)/\sigma_2. $</p>
+<p><strong>例2</strong> 设 $ Y_1, Y_2, \cdots $ 独立同分布，均值为 <span class="arithmatex">\(\mu\)</span>，方差为 <span class="arithmatex">\(\sigma^2\)</span>。设 $ N $ 是取非负整数值的随机变量，与 $ Y_1, Y_2, \cdots $ 独立，且 <span class="arithmatex">\(\mathbb{E}(N^2) &lt; \infty\)</span>。令 $ X = Y_1 + \cdots + Y_N $，计算 <span class="arithmatex">\(\mathbb{E}(X)\)</span> 和 <span class="arithmatex">\(\text{Var}(X)\)</span>。</p>
+<p><strong>解</strong> 这题需要注意的是，下标的最终项<span class="arithmatex">\(N\)</span>并非是一个确定的值，而是一个随机变量，所以我们可以考虑先给<span class="arithmatex">\(N\)</span>取一个固定的值，考虑在这个值下的<span class="arithmatex">\(X\)</span>的数学期望和方差。</p>
+<p>对于非负整数<span class="arithmatex">\(n\)</span>，由于<span class="arithmatex">\(N\)</span>与<span class="arithmatex">\(Y_1,Y_2,\cdot\cdot\cdot,Y_n\)</span>独立，所以有
+$$
+E(X|N=n)=E(Y_1+\cdot\cdot\cdot+Y_N|N=n)=E(Y_1+\cdot\cdot\cdot+Y_n|N=n)
+$$
+而因为<span class="arithmatex">\(N\)</span>与<span class="arithmatex">\(Y_1,\cdot\cdot\cdot,Y_n\)</span>独立，所以有
+$$
+E(Y_1+\cdot\cdot\cdot+Y_n|N=n)=E(Y_1+\cdot\cdot\cdot+Y_n)=n\mu
+$$
+所以有<span class="arithmatex">\(E(X|N)=N\mu\)</span>，我们再应用全期望公式即可以得到
+$$
+E(X)=E[E(X|N)]=E(N\mu)=\mu E(N)
+$$
+而我们知道<span class="arithmatex">\(Var(X)=E(X^2)-E(X)^2\)</span>，所以我们还需要计算<span class="arithmatex">\(E(X^2)\)</span>
+$$
+E(X^2|N=n)=E((Y_1+\cdot\cdot\cdot+Y_N)^2|N=n)=E((Y_1+\cdot\cdot\cdot+Y_n)^2|N=n)=E((Y_1+\cdot\cdot\cdot+Y_n)^2)
+$$
+对于等式最右边这项的计算，我们当然可以选择将平方项全部打开然后运用独立性拆成期望的和，我们也可以这么考虑：同样是这个等式<span class="arithmatex">\(Var(X)=E(X^2)-E(X)^2\)</span>，现在相当于，我们容易计算<span class="arithmatex">\(Var(Y_1+\cdot\cdot\cdot+Y_n)\)</span>，已经知道<span class="arithmatex">\(E(Y_1+\cdot\cdot\cdot+Y_n)\)</span>，直接利用平方和期望的这个关系式就可以得到，即有
+$$
+E((Y_1+\cdot\cdot\cdot+Y_n)^2)=Var(Y_1+\cdot\cdot\cdot+Y_n)+[E(Y_1+\cdot\cdot\cdot+Y_n)]^2=n\sigma^2+n^2\mu^2
+$$
+那么我们就能得到
+$$
+E(X^2|N)=N\sigma^2+N^2\mu^2
+$$
+运用全期望公式，可以得到
+$$
+E(X^2)=E[E(X^2|N)]=E(N\sigma^2+N^2\mu^2)=\sigma^2E(N)+\mu^2E(N^2)
+$$
+最终我们就可以得到
+$$
+Var(X)=E(X^2)-[E(X)]^2=\sigma^2E(N)+\mu^2Var(N)
+$$</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 07:37:02 UTC"><span class="timeago" datetime="2025-06-28T07:37:02+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 07:37:02 UTC">2025-06-28</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

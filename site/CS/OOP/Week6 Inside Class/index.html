@@ -1,0 +1,1506 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/CS/OOP/Week6%20Inside%20Class/">
+      
+      
+        <link rel="prev" href="../Week4%265%20Inside%20Object/">
+      
+      
+        <link rel="next" href="../Week7%20Composition/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Week6 Inside Class - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w6-inside-class" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week6 Inside Class
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Home/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Home/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#w6-inside-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      W6 Inside Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="W6 Inside Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overloaded-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数重载（overloaded functions）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      默认参数(Default arguments)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      内联函数(Inline Functions)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/随机过程/Chapter2 随机过程的分类和定义.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的分类和定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#w6-inside-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      W6 Inside Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="W6 Inside Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overloaded-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数重载（overloaded functions）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      默认参数(Default arguments)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      内联函数(Inline Functions)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Week6 Inside Class</h1>
+
+<h2 id="w6-inside-class">W6 Inside Class<a class="headerlink" href="#w6-inside-class" title="Permanent link">&para;</a></h2>
+<h3 id="overloaded-functions">函数重载（overloaded functions）<a class="headerlink" href="#overloaded-functions" title="Permanent link">&para;</a></h3>
+<p>函数重载是指在同一作用域内，多个函数共享相同的函数名，但是<strong>参数列表不相同</strong>（包括参数的数量、类型或顺序），C++编译器通过参数列表的差异来区分调用哪个函数。需要注意的是，<strong>返回值的类型并不作为重载的依据</strong>。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>析构函数不能重载，毕竟析构函数本来就没有参数列表</p>
+</div>
+<h4 id="_1">函数重载与自动类型转换<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>函数重载在调用的时候可能会涉及自动类型转换，也称为类型提升或类型强制转换，C++会根据参数的类型尝试找到最佳匹配的函数，如果没有完全匹配的函数，编译器可能进行类型转换以调用最接近的函数，如下面的例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">short</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">f</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// 调用 f(short)，因为字符 &#39;a&#39; 可以隐式转换为 short</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w">     </span><span class="c1">// 调用 f(short)，因为整数 2 可以隐式转换为 short</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">f</span><span class="p">(</span><span class="mf">2L</span><span class="p">);</span><span class="w">    </span><span class="c1">// 调用 f(double)，因为长整型 2L 更接近 double</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">f</span><span class="p">(</span><span class="mf">3.2</span><span class="p">);</span><span class="w">   </span><span class="c1">// 调用 f(double)，因为 3.2 是 double 类型</span>
+</code></pre></div>
+<p>需要注意的是，自动类型转换有可能导致<strong>二义性</strong>(<code>ambiguity</code>)，比如下面的例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// 二义性错误，5可以转换为int或float，编译器无法决定</span>
+</code></pre></div>
+<p>在上述情况下，编译器会报错，需要程序员显式指定类型</p>
+<h4 id="_2">常量与非常量函数重载<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>同一个函数名可以有<code>const</code>和非<code>const</code>版本，用于区分是否允许修改对象状态，如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">();</span>
+</code></pre></div>
+<p>这样在类中，<code>const</code>成员函数和非<code>const</code>成员函数可以根据调用对象的常量性自动选择</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>const和非const会影响函数重载</p>
+</div>
+<h4 id="delegating-constructorc11">代理构造(Delegating constructor)[C++11标准引入，应该不考]<a class="headerlink" href="#delegating-constructorc11" title="Permanent link">&para;</a></h4>
+<p>代理构造是指在一个构造函数的初始化列表中调用另一个构造函数（称为目标构造函数）来完成其初始化工作。目标构造函数先执行，然后再执行委托构造函数的其他初始化逻辑，能够有效地解决多个构造函数中存在重复初始化代码的问题。可以参考下面这个例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">class_c</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">middle</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">class_c</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">my_max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_max</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">my_max</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="n">class_c</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">my_max</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">my_min</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">class_c</span><span class="p">(</span><span class="n">my_max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_min</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">my_min</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">my_min</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="n">class_c</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">my_max</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">my_min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">my_middle</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">class_c</span><span class="p">(</span><span class="n">my_max</span><span class="p">,</span><span class="w"> </span><span class="n">my_min</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">middle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_middle</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">my_middle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">my_middle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">};</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="n">class_c</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 调用 class_c(int, int, int)</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>class_c(int my_max)</code>初始化 <code>max</code>，<code>class_c(int my_max, int my_min)</code> 委托给 <code>class_c(int my_max)</code> 初始化 <code>max</code>，然后初始化 <code>min</code>，<code>class_c(int my_max, int my_min, int my_middle)</code> 委托给 <code>class_c(int my_max, int my_min)</code> 初始化 <code>max</code> 和 <code>min</code>，然后初始化 <code>middle</code>。这种链式委托减少了代码重复，并保持了初始化逻辑的清晰性。</p>
+<p>代理构造也有一些规则和限制：</p>
+<ul>
+<li><strong>委托构造函数的初始化列表中只能调用目标构造函数，不能同时初始化其他成员</strong>，例如：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">class_c</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">my_max</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">my_min</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">calss_c</span><span class="p">(</span><span class="n">my_max</span><span class="p">),</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">my_min</span><span class="p">){</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>解决方法是将额外的初始化放在构造函数体中，或者通过私有构造函数处理</p>
+<ul>
+<li>
+<p>目标构造函数的执行优先于委托构造函数的构造函数体</p>
+</li>
+<li>
+<p>避免循环委托，委托关系是可以形成链的，比如<span class="arithmatex">\(A\to B\to C\)</span>，但是不能形成循环</p>
+</li>
+<li>
+<p>如果有多个构造函数需要共享复杂的初始化逻辑，可以定义一个私有的目标构造函数，比如</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Info</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">Info</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Info</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// 委托</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">Info</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Info</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// 委托</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">Info</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Info</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// 委托</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="n">Info</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">type</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">name</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// 目标构造函数</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">};</span>
+</code></pre></div>
+<p>私有构造函数<code>Info(int,char)</code>负责初始化<code>type</code>和<code>name</code>，所有公共构造函数委托给它，避免了重复代码</p>
+<h3 id="default-arguments">默认参数(Default arguments)<a class="headerlink" href="#default-arguments" title="Permanent link">&para;</a></h3>
+<p>默认参数是指在<strong>函数声明中</strong>为参数指定的默认值。当调用函数的时候，如果调用者没有提供该参数的值，编译器就会自动使用默认值。看下面的例子</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Stash</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">initQuantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">Stash</span><span class="w"> </span><span class="nf">s1</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// 等价于Stash(100,0)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">Stash</span><span class="w"> </span><span class="nf">s2</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span><span class="w"> </span><span class="c1">// 显式地指定initQuantity=50</span>
+</code></pre></div>
+<p>默认参数有以下几点规则：</p>
+<ul>
+<li><strong>必须从右到左</strong>指定默认值：如果某个参数有默认值，其右侧的所有参数都必须有默认值，例如</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"> </span><span class="c1">// 非法的，c应当有默认参数</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// 合法</span>
+</code></pre></div>
+<ul>
+<li>
+<p><strong>默认参数应当在函数原型中声明</strong>，通常在头文件中。<strong>函数定义中不允许重复指定默认值</strong></p>
+</li>
+<li>
+<p>调用函数的时候编译器会<strong>从左到右匹配参数</strong>，省略的参数会使用默认值（其实这点和默认值必须从右到左指定是匹配的）</p>
+</li>
+</ul>
+<h4 id="default-constructor">默认构造函数(default constructor)<a class="headerlink" href="#default-constructor" title="Permanent link">&para;</a></h4>
+<p>如果一个构造函数的所有参数都有默认值，则该构造函数可以作为默认构造函数，允许无参数构造对象，如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Stash</span><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">Stash</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">initQuantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">};</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">Stash</span><span class="w"> </span><span class="n">s1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 等价于Stash(10,0)，用的是默认构造函数</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">Stash</span><span class="w"> </span><span class="nf">s2</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// 等价于Stash(100,0)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">Stash</span><span class="w"> </span><span class="n">s3</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="inline-functions">内联函数(Inline Functions)<a class="headerlink" href="#inline-functions" title="Permanent link">&para;</a></h3>
+<p>内联函数是一种特殊的函数，<strong>编译器</strong>（在编译的时候将该函数的目标代码插入每个调用该函数的地方）直接在调用处展开其函数体（直接插入代码）而非调用（函数调用通常涉及参数压栈、返回地址保存、返回值处理等等步骤，这些步骤是会带来开销的），从而消除函数调用的开销，类似于C语言中的宏，但是具有类型检查和作用域等C++特性，下面举个例子说明：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="c1">// 正常函数调用</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">}</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="p">}</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="c1">// 展开为 b = a * 2;</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="_3">内联函数的声明与定义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>内联函数在声明和定义的时候都需要用<code>inline</code>关键字标记。</p>
+<p>需要注意的是，<strong>内联函数的函数体必须放在头文件中，而非放到对应的<code>.cpp</code>文件</strong>，并通过<code>#include</code>将头文件引入到需要使用的地方，这是因为编译器需要函数体的完整定义来执行内联展开，如果头文件中只有函数签名而没有函数体，编译器就无法对内联函数进行展开。我们也不需要担心多重定义的问题，因为内联函数的定义被视为“声明”，不会导致连接错误</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>在类中直接定义（函数体直接在类内）的成员函数会自动成为内联函数，如果将成员函数的定义放在类外，想要将其变为内联函数则需要显式使用<code>inline</code>关键字</p>
+</div>
+<h4 id="_4">内联函数的优缺点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>优点：</li>
+<li>性能提升：消除了函数调用的开销</li>
+<li>类型安全：与C语言的宏相比，内联函数支持类型检查</li>
+<li>缺点：</li>
+<li>代码体积增加：内联函数在每个调用处都展开函数体，可能导致生成的二级制代码变大</li>
+<li>适用性有限：并非所有函数都适合内联，有些时候编译器会忽略内联请求</li>
+</ul>
+<p>正因如此，内联函数的使用场景也是比较明确的，小型函数（函数体小，此时调用开销占比较高，内联效果显著）、频繁调用的函数比较适合内联；而大型函数（代码体积过大，得不偿失）、递归函数（<strong>内联函数不支持递归</strong>，因为递归需要函数调用栈，而内联会展开函数体）等不适合内联</p>
+<h4 id="c17">内联变量（C++17之后）<a class="headerlink" href="#c17" title="Permanent link">&para;</a></h4>
+<h4 id="weak">弱符号(Weak)<a class="headerlink" href="#weak" title="Permanent link">&para;</a></h4>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 05:50:11 UTC"><span class="timeago" datetime="2025-06-28T05:50:11+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 05:50:11 UTC">2025-06-28</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
