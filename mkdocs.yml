@@ -9,7 +9,7 @@ theme:
   name: material
   language: zh  
   logo: assets/logo.png
-  favion: assets/logo.ico
+  favicon: assets/logo.ico
   custom_dir: overrides              
   
   font:
@@ -112,7 +112,7 @@ nav:
   
     - '随机过程':
       - 'Chapter1 概率论复习': 'Math/随机过程/Chapter1 概率论复习.md'
-      - 'Chapter2 随机过程的分类和定义': 'Math/随机过程/Chapter2 随机过程的分类和定义.md'
+      - 'Chapter2 随机过程的定义和分类': 'Math/随机过程/Chapter2 随机过程的定义和分类.md'
       - 'Chapter3 泊松过程': 'Math/随机过程/Chapter3 泊松过程.md' 
       - 'Chapter4 Markov链': 'Math/随机过程/Chapter4 Markov链.md'
       - 'Chapter5 分支过程': 'Math/随机过程/Chapter5 分支过程.md'
