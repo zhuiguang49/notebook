@@ -142,7 +142,7 @@ void f(int x) {
 
 下面我们来详细介绍一下各类变量的作用域和生存期，以及何时被初始化：
 
-![image-20250421001225582](C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20250421001225582.png)
+![变量作用域和生存期](./images/变量作用域和生存期.png)
 
 如上图，需要说明一下的是，上面的`member variable`指的是`private`类型的成员变量。静态成员变量(`static member variable`)是我们下面要讲的东西，这里暂时不展开，本地变量、全局变量、静态局部变量我们也都能理解，唯一要区分一下的可能是**全局变量（global variable）**与**静态全局变量(static global variable)**：
 
