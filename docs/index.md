@@ -1,4 +1,4 @@
-# Welcome to Zhuiguang's notebook!
+# Welcome to zhuiguang's notebook!
 
 这里是追光的笔记本 📖 ~ 欢迎交流~
 

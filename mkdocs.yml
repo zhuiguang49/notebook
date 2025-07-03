@@ -10,6 +10,7 @@ theme:
   language: zh  
   logo: assets/logo.png
   favicon: assets/logo.ico
+  copyright: Copyright &copy; 2025 <a href="https://github.com/zhuiguang49" target="_blank">zhuiguang</a>. All Rights Reserved.
   custom_dir: overrides              
   
   font:
