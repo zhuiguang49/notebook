@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter-2" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -982,16 +982,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chapter-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chapter 2 随机过程的定义和分类
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Chapter 2 随机过程的定义和分类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       随机过程的定义和例子
@@ -999,8 +989,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       随机过程的有限维分布
@@ -1008,8 +998,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       均值函数和协方差函数
@@ -1017,18 +1007,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       一些随机过程的分类
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1186,16 +1171,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chapter-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chapter 2 随机过程的定义和分类
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Chapter 2 随机过程的定义和分类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       随机过程的定义和例子
@@ -1203,8 +1178,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       随机过程的有限维分布
@@ -1212,8 +1187,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       均值函数和协方差函数
@@ -1221,18 +1196,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       一些随机过程的分类
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1257,20 +1227,20 @@
 
   <h1>Chapter2 随机过程的定义和分类</h1>
 
-<h2 id="chapter-2">Chapter 2 随机过程的定义和分类<a class="headerlink" href="#chapter-2" title="Permanent link">&para;</a></h2>
-<h3 id="_1">随机过程的定义和例子<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h2 id="_1">随机过程的定义和例子<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>随机过程是一族随机变量的集合，用于描述随时间变化的随机现象，其严格定义如下：</p>
 <p>设 <span class="arithmatex">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> 是概率空间，<span class="arithmatex">\((E, \mathcal{E})\)</span> 是可测空间，<span class="arithmatex">\(T\)</span> 是指标集。如果对任何 <span class="arithmatex">\(t \in T\)</span>，<span class="arithmatex">\(X_t\)</span> 是 <span class="arithmatex">\((\Omega, \mathcal{F})\)</span> 到 <span class="arithmatex">\((E, \mathcal{E})\)</span> 上的可测映射，则称 <span class="arithmatex">\(X = \{X_t; t \in T\}\)</span> 是 <span class="arithmatex">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> 上的以 <span class="arithmatex">\((E, \mathcal{E})\)</span> 为状态空间的随机过程。</p>
-<blockquote>
-<p>其实随机过程我们可以理解为是一组随机变量的全体，对于一个固定的<span class="arithmatex">\(t\)</span>，<span class="arithmatex">\(X_t\)</span>是随机变量，即<span class="arithmatex">\(\omega\)</span>的函数，也就是说，随机过程<span class="arithmatex">\(X_t\)</span>可以看成是一个关于<span class="arithmatex">\(t\)</span>和<span class="arithmatex">\(\omega\)</span>二元函数</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>其实随机过程我们可以理解为是一组随机变量的全体，对于一个固定的 <span class="arithmatex">\(t\)</span>，<span class="arithmatex">\(X_t\)</span> 是随机变量，即 <span class="arithmatex">\(\omega\)</span> 的函数，也就是说，随机过程 <span class="arithmatex">\(X_t\)</span> 可以看成是一个关于 <span class="arithmatex">\(t\)</span> 和 <span class="arithmatex">\(\omega\)</span> 二元函数</p>
+</div>
 <p>用映射来表示:
 $$
 X_t(\omega): T \times \Omega \rightarrow E
 $$
 即 <span class="arithmatex">\(X_t(\cdot)\)</span> 是定义在 <span class="arithmatex">\(T \times \Omega\)</span> 上的二元单值函数。 固定 <span class="arithmatex">\(t\)</span>，<span class="arithmatex">\(X_t(\cdot)\)</span> 是随机变量； 固定 <span class="arithmatex">\(\omega\)</span>，<span class="arithmatex">\(X_t(\omega)\)</span> 是 <span class="arithmatex">\(T\)</span> 的函数，称为随机过程的<strong>样本函数</strong>或<strong>样本轨道</strong>，或<strong>样本曲线</strong>( 对过程的一次具体观察结果就是一条样本轨道)</p>
 <p><strong>随机过程的分类</strong>：</p>
-<p>如若参数集<span class="arithmatex">\(T\)</span>至多可列，我们称其为离散时间；如果<span class="arithmatex">\(T\)</span>是一个实数区间，则称为连续时间；如果<span class="arithmatex">\(E\)</span>至多可列，我们称之为离散状态；如果<span class="arithmatex">\(E\)</span>是一个区间，我们称之为连续状态。</p>
+<p>如若参数集 <span class="arithmatex">\(T\)</span> 至多可列，我们称其为离散时间；如果 <span class="arithmatex">\(T\)</span> 是一个实数区间，则称为连续时间；如果 <span class="arithmatex">\(E\)</span> 至多可列，我们称之为离散状态；如果 <span class="arithmatex">\(E\)</span> 是一个区间，我们称之为连续状态。</p>
 <p>照如上标准，随机过程可以分为以下几类：</p>
 <ul>
 <li>离散时间离散状态</li>
@@ -1278,29 +1248,34 @@ $$
 <li>连续时间离散状态</li>
 <li>连续时间连续状态</li>
 </ul>
-<h3 id="_2">随机过程的有限维分布<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>设随机过程<span class="arithmatex">\(\left\{X(t),t \in T\right\}\)</span>，对每一固定的<span class="arithmatex">\(t \in T\)</span>，随机变量<span class="arithmatex">\(X(t)\)</span>的分布函数与<span class="arithmatex">\(t\)</span>有关，记为<span class="arithmatex">\(F_t(x)=P\left\{X(t)\leq x\right\},x\in R\)</span>，称为<span class="arithmatex">\(\left\{X(t),t \in T\right\}\)</span>的一维分布函数，<span class="arithmatex">\(\left\{F_t(x),t \in T\right\}\)</span>称为一维分布函数族。</p>
-<p>对任意 $ n $ ($ n = 2, 3, \cdots <span class="arithmatex">\() 个时刻，\)</span> t_1, t_2, \cdots, t_n \in T $， $ n $ 维随机变量 <span class="arithmatex">\((X(t_1), X(t_2), \cdots, X(t_n))\)</span> 的分布函数记为： $ F_{t_1, t_2, \cdots, t_n}(x_1, x_2, \cdots, x_n) = P{X(t_1) \leq x_1, X(t_2) \leq x_2, \cdots, X(t_n) \leq x_n}, $ $ x_i \in R, i = 1, 2, \cdots, n $ 称为 <span class="arithmatex">\(\{X(t), t \in T\}\)</span> 的 $ n $ 维分布函数。 <span class="arithmatex">\(\left\{F_{t_1, t_2, \cdots, t_n}(x_1, x_2, \cdots, x_n); t_1, t_2, \cdots, t_n \in T\right\}\)</span> 称为 $ n $ 维分布函数族。</p>
-<p>$$ \left{ F_{t_1, t_2, \cdots, t_n}(x_1, x_2, \cdots, x_n), n = 1, 2, \cdots, t_i \in T \right} $$ 称为随机过程 <span class="arithmatex">\(\{X(t), t \in T\}\)</span> 的有限维分布函数族。 它完全确定了随机过程的统计特性。 有限维分布函数族满足： </p>
-<ol>
-<li>横向相容：对 <span class="arithmatex">\((1, 2, \ldots, n)\)</span> 的任何置换 <span class="arithmatex">\(\tau\)</span>， $$   F_{t_{\tau(1)}, \ldots, t_{\tau(n)}}(x_{\tau(1)}, \ldots, x_{\tau(n)}) = F_{t_1, \ldots, t_n}(x_1, \ldots, x_n)   $$ </li>
-<li>纵向相容：   $$   \lim_{x_{n+1} \to \infty} F_{t_1, \ldots, t_n, t_{n+1}}(x_1, \ldots, x_n, x_{n+1}) = F_{t_1, \ldots, t_n}(x_1, \ldots, x_n)   $$</li>
-</ol>
-<blockquote>
+<h2 id="_2">随机过程的有限维分布<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>设随机过程 <span class="arithmatex">\(\left\{X(t),t \in T\right\}\)</span>，对每一固定的 <span class="arithmatex">\(t \in T\)</span>，随机变量 <span class="arithmatex">\(X(t)\)</span> 的分布函数与 <span class="arithmatex">\(t\)</span> 有关，记为 <span class="arithmatex">\(F_t(x)=P\left\{X(t)\leq x\right\},x\in R\)</span>，称为 <span class="arithmatex">\(\left\{X(t),t \in T\right\}\)</span>的一维分布函数，<span class="arithmatex">\(\left\{F_t(x),t \in T\right\}\)</span> 称为一维分布函数族。</p>
+<p>对任意 <span class="arithmatex">\(n\)</span> (<span class="arithmatex">\(n = 2, 3, \cdots\)</span>) 个时刻，<span class="arithmatex">\(t_1, t_2, \cdots, t_n \in T\)</span>， <span class="arithmatex">\(n\)</span> 维随机变量 <span class="arithmatex">\((X(t_1), X(t_2), \cdots, X(t_n))\)</span> 的分布函数记为： </p>
+<div class="arithmatex">\[F_{t_1, t_2, \cdots, t_n}(x_1, x_2, \cdots, x_n) = P\{X(t_1) \leq x_1, X(t_2) \leq x_2, \cdots, X(t_n) \leq x_n\},\ x_i \in R, i = 1, 2, \cdots, n\]</div>
+<p>称为 <span class="arithmatex">\(\{X(t), t \in T\}\)</span> 的 <span class="arithmatex">\(n\)</span> 维分布函数。 </p>
+<div class="arithmatex">\[\left\{F_{t_1, t_2, \cdots, t_n}(x_1, x_2, \cdots, x_n); t_1, t_2, \cdots, t_n \in T\right\}\]</div>
+<p>称为 <span class="arithmatex">\(n\)</span> 维分布函数族。</p>
+<div class="arithmatex">\[ \left\{ F_{t_1, t_2, \cdots, t_n}(x_1, x_2, \cdots, x_n), n = 1, 2, \cdots, t_i \in T \right\} \]</div>
+<p>称为随机过程 <span class="arithmatex">\(\{X(t), t \in T\}\)</span> 的有限维分布函数族。 它完全确定了随机过程的统计特性。 有限维分布函数族满足： </p>
+<p><br>
+1. 横向相容：对 <span class="arithmatex">\((1, 2, \ldots, n)\)</span> 的任何置换 <span class="arithmatex">\(\tau\)</span>， $$   F_{t_{\tau(1)}, \ldots, t_{\tau(n)}}(x_{\tau(1)}, \ldots, x_{\tau(n)}) = F_{t_1, \ldots, t_n}(x_1, \ldots, x_n)   $$ 
+2. 纵向相容：   $$   \lim_{x_{n+1} \to \infty} F_{t_1, \ldots, t_n, t_{n+1}}(x_1, \ldots, x_n, x_{n+1}) = F_{t_1, \ldots, t_n}(x_1, \ldots, x_n)   $$</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
 <p>这里的横向相容的意思是对应重排后不变，这是很显然的，因为仍然是
 $$
 X_{t_{\tau(1)}}\leq x_{\tau(1)},\ X_{t_{\tau(2)}}\leq x_{\tau(2)},\cdot\cdot\cdot,X_{t_{\tau(n)}}\leq x_{\tau(n)}
 $$
 而纵向相容则反映了，交上一个必然事件概率仍为1，<span class="arithmatex">\(\lim _{x_{n+1}\to \infty}P(X_{t_n+1}\leq x_{n+1})=1\)</span></p>
-</blockquote>
+</div>
 <p>我们需要注意：<strong>随机过程在不同的时间点的随机变量不一定独立，它们的联合分布要根据具体过程的性质加以计算</strong>，而不能直接把它们当成独立处理，这点我们在后面会经常遇到。</p>
 <p>下面我们看一些例题：</p>
-<p><strong>例1</strong> 设A,B独立同分布，<span class="arithmatex">\(P(A = \pm 1)=0.5\)</span>，写出并画出随机过程<span class="arithmatex">\(X(t)=At+B,\ t \in(-\infty,\infty)\)</span>的所有样本函数，计算<span class="arithmatex">\((X_1,X_2)\)</span>的联合分布律和边缘分布律</p>
-<p><strong>解</strong> 这里我们知道，<span class="arithmatex">\(A,B\)</span>是随机变量，所以这个过程由<span class="arithmatex">\((A,B)\)</span>的取值完全决定，共有4条样本函数，分别是
+<p><strong>例1</strong> 设A,B独立同分布，<span class="arithmatex">\(P(A = \pm 1)=0.5\)</span>，写出并画出随机过程 <span class="arithmatex">\(X(t)=At+B,\ t \in(-\infty,\infty)\)</span> 的所有样本函数，计算 <span class="arithmatex">\((X_1,X_2)\)</span> 的联合分布律和边缘分布律</p>
+<p><strong>解</strong> 这里我们知道，<span class="arithmatex">\(A,B\)</span> 是随机变量，所以这个过程由 <span class="arithmatex">\((A,B)\)</span> 的取值完全决定，共有4条样本函数，分别是
 $$
 x(t)=t+1;\ x(t)=t-1;\ x(t)=-t+1;\ x(t)=-t-1
 $$
-下面我们计算<span class="arithmatex">\((X_1,X_2)\)</span>的联合分布律和边缘分布律，注意这里的<span class="arithmatex">\(X_1,X_2\)</span>代表<span class="arithmatex">\(t\)</span>分别为1和2，笔者第一次做这题的时候卡在这不知道<span class="arithmatex">\(X_1,X_2\)</span>是什么东西🤣，我们可以得到下表：</p>
+下面我们计算 <span class="arithmatex">\((X_1,X_2)\)</span> 的联合分布律和边缘分布律，注意这里的 <span class="arithmatex">\(X_1,X_2\)</span> 代表 <span class="arithmatex">\(t\)</span> 分别为 <span class="arithmatex">\(1\)</span> 和 <span class="arithmatex">\(2\)</span>，笔者第一次做这题的时候卡在这不知道 <span class="arithmatex">\(X_1,X_2\)</span> 是什么东西🤣，我们可以得到下表：</p>
 <table>
 <thead>
 <tr>
@@ -1332,67 +1307,68 @@ $$
 </tr>
 </tbody>
 </table>
-<p><strong>下面将是一个很大的坑</strong>：在计算<span class="arithmatex">\((X_1,X_2)\)</span>的联合分布律的时候，很多人可能会这样干
+<p><strong>下面将是一个很大的坑</strong>：在计算 <span class="arithmatex">\((X_1,X_2)\)</span> 的联合分布律的时候，很多人可能会这样干
 $$
 P(X_1=2,X_2=3)=P(X_1=2)P(X_2=3)=\frac{1}{4}\cdot\frac{1}{4}=\frac{1}{16}
 $$
-这样子做的根据是<strong><span class="arithmatex">\(X_1,X_2\)</span></strong>的独立性，但是试问，<strong><span class="arithmatex">\(X_1,X_2\)</span>的独立性真的成立吗？</strong>其实是不成立的，我们知道，这个过程的取值完全是由<span class="arithmatex">\((A,B)\)</span>这组参数决定，而一旦<span class="arithmatex">\(X(1)\)</span>确定了取值，比如<span class="arithmatex">\(X(1)=2\)</span>，此时<span class="arithmatex">\((A,B)\)</span>的取值就确定了，为<span class="arithmatex">\((1,1)\)</span>，那么<span class="arithmatex">\(X(2)\)</span>的取值也就确定了，所以其实<strong><span class="arithmatex">\(X(1),X(2)\)</span>并不是独立的</strong>，这点尤其需要注意。</p>
-<p>我们在计算<span class="arithmatex">\(X(1),X(2)\)</span>的时候可以将其转化为<span class="arithmatex">\((A,B)\)</span>取某个组合的概率，这是容易计算的，比如<span class="arithmatex">\(P(X(1)=2,X(2)=3)=P((A,B)=(1,1))=\frac{1}{4}\)</span>，所以我们计算得到<span class="arithmatex">\(X(1),X(2)\)</span>的联合分布律和边际分布律如下：
-$$
+这样子做的根据是 <strong><span class="arithmatex">\(X_1,X_2\)</span></strong> 的独立性，但是试问，<strong> <span class="arithmatex">\(X_1,X_2\)</span> 的独立性真的成立吗？</strong>其实是不成立的，我们知道，这个过程的取值完全是由 <span class="arithmatex">\((A,B)\)</span> 这组参数决定，而一旦 <span class="arithmatex">\(X(1)\)</span> 确定了取值，比如 <span class="arithmatex">\(X(1)=2\)</span>，此时 <span class="arithmatex">\((A,B)\)</span> 的取值就确定了，为 <span class="arithmatex">\((1,1)\)</span>，那么 <span class="arithmatex">\(X(2)\)</span> 的取值也就确定了，所以其实 <strong><span class="arithmatex">\(X(1),X(2)\)</span> 并不是独立的</strong>，这点尤其需要注意。</p>
+<p>我们在计算 <span class="arithmatex">\(X(1),X(2)\)</span> 的时候可以将其转化为 <span class="arithmatex">\((A,B)\)</span> 取某个组合的概率，这是容易计算的，比如 <span class="arithmatex">\(P(X(1)=2,X(2)=3)=P((A,B)=(1,1))=\frac{1}{4}\)</span>，所以我们计算得到 <span class="arithmatex">\(X(1),X(2)\)</span> 的联合分布律和边际分布律如下：</p>
+<div class="arithmatex">\[
 \begin{array}{|c|c|c|c|c|c|}
 \hline
 \begin{array}{c|c}
- &amp; X_2 \
+ &amp; X_2 \\
 \hline
 X_1 &amp; 
 \end{array} 
-&amp; 3 &amp; 1 &amp; -1 &amp; -3 &amp; P(X_1=i) \
+&amp; 3 &amp; 1 &amp; -1 &amp; -3 &amp; P(X_1=i) \\
 \hline
-2 &amp; 1/4 &amp; 0 &amp; 0 &amp; 0 &amp; 1/4 \
+2 &amp; 1/4 &amp; 0 &amp; 0 &amp; 0 &amp; 1/4 \\
 \hline
-0 &amp; 0 &amp; 1/4 &amp; 1/4 &amp; 0 &amp; 1/2 \
+0 &amp; 0 &amp; 1/4 &amp; 1/4 &amp; 0 &amp; 1/2 \\
 \hline
--2 &amp; 0 &amp; 0 &amp; 0 &amp; 1/4 &amp; 1/4 \
+-2 &amp; 0 &amp; 0 &amp; 0 &amp; 1/4 &amp; 1/4 \\
 \hline
-P(X_2=j) &amp; 1/4 &amp; 1/4 &amp; 1/4 &amp; 1/4 &amp; 1 \
+P(X_2=j) &amp; 1/4 &amp; 1/4 &amp; 1/4 &amp; 1/4 &amp; 1 \\
 \hline
 \end{array}
-$$
-<strong>例2</strong> 设随机过程<span class="arithmatex">\(X(t) = Vcost, t\in(-\infty,\infty)\)</span>，<span class="arithmatex">\(V\)</span>在<span class="arithmatex">\([0,1]\)</span>上均匀分布，求：</p>
-<p>（1）求在<span class="arithmatex">\(t=\frac{\pi}{4},\frac{2\pi}{3}\)</span>时<span class="arithmatex">\(X(t)\)</span>的概率密度函数</p>
-<p>（2）求<span class="arithmatex">\(P[X(0)&gt;0.5,X(\frac{\pi}{4})&lt;0.5]\)</span></p>
-<p><strong>解</strong> 首先我们明确，这个随机过程由<span class="arithmatex">\(V\)</span>的取值决定。</p>
+\]</div>
+<p><strong>例2</strong> 设随机过程 <span class="arithmatex">\(X(t) = Vcost, t\in(-\infty,\infty)\)</span>，<span class="arithmatex">\(V\)</span> 在 <span class="arithmatex">\([0,1]\)</span> 上均匀分布，求：</p>
+<p>（1）求在 <span class="arithmatex">\(t=\frac{\pi}{4},\frac{2\pi}{3}\)</span> 时 <span class="arithmatex">\(X(t)\)</span> 的概率密度函数</p>
+<p>（2）求 <span class="arithmatex">\(P[X(0)&gt;0.5,X(\frac{\pi}{4})&lt;0.5]\)</span></p>
+<p><strong>解</strong> 首先我们明确，这个随机过程由 <span class="arithmatex">\(V\)</span> 的取值决定。</p>
 <p>这里要用到一个随机变量函数的概率密度函数公式，可以复习一下概率论的笔记</p>
-<p>若<span class="arithmatex">\(cost \neq 0\)</span>，我们记<span class="arithmatex">\(a = cost\)</span>，则<span class="arithmatex">\(X(t)=aV\)</span>的密度函数为：
-$$
+<p>若 <span class="arithmatex">\(cost \neq 0\)</span>，我们记 <span class="arithmatex">\(a = cost\)</span>，则 <span class="arithmatex">\(X(t)=aV\)</span> 的密度函数为：</p>
+<div class="arithmatex">\[
 f_{X(t)}(x)=f_V(\frac{x}{a})\cdot\big|\frac{1}{a}\big|=\begin{cases}
 \big|\frac{1}{a}\big|,&amp;0&lt;\frac{x}{a}&lt;1
-\
+\\
 0,&amp;其他
 \end{cases}
-$$
-则可以得到，若<span class="arithmatex">\(cost&gt;0\)</span>，则有<span class="arithmatex">\(X(t) \sim U[0,cost]\)</span></p>
-<p>若<span class="arithmatex">\(cost&lt;0\)</span>，则<span class="arithmatex">\(X(t)\sim U[cost,0]\)</span></p>
-<p>若<span class="arithmatex">\(cost=0\)</span>，则<span class="arithmatex">\(P(X(t)=0)=1\)</span></p>
-<p>所以有
-$$
+\]</div>
+<p>则可以得到，若 <span class="arithmatex">\(cost&gt;0\)</span>，则有 <span class="arithmatex">\(X(t) \sim U[0,cost]\)</span></p>
+<p>若 <span class="arithmatex">\(cost&lt;0\)</span>，则 <span class="arithmatex">\(X(t)\sim U[cost,0]\)</span></p>
+<p>若 <span class="arithmatex">\(cost=0\)</span>，则 <span class="arithmatex">\(P(X(t)=0)=1\)</span></p>
+<p>所以有</p>
+<div class="arithmatex">\[
 f_{X(\frac{\pi}{4})}(x)=\begin{cases}
 \sqrt{2},&amp;0&lt;x&lt;\frac{\sqrt{2}}{2}
-\
-0,&amp;其他
-\end{cases}</p>
-<p>\qquad f_{X(\frac{2\pi}{3})}(x)=\begin{cases}
-2,&amp;-\frac{1}{2}&lt;x&lt;0
-\
+\\
 0,&amp;其他
 \end{cases}
-$$</p>
-<blockquote>
+\qquad f_{X(\frac{2\pi}{3})}(x)=\begin{cases}
+2,&amp;-\frac{1}{2}&lt;x&lt;0
+\\
+0,&amp;其他
+\end{cases}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
 <p>其实除开使用这个公式来计算之外，我们也可以从分布函数的角度来考虑，比如
 $$
 F_{X(t)}(x)=P(x(t)\leq x)=P(Vcost \leq x)
 $$
-当<span class="arithmatex">\(cost&gt;0\)</span>的时候，有
+当 <span class="arithmatex">\(cost&gt;0\)</span> 的时候，有
 $$
 F_{X(t)}(x)=P(Vcost \leq x)=P(V\leq\frac{x}{cost})=F_V(\frac{x}{cost})=\frac{x}{cost}
 $$
@@ -1400,238 +1376,243 @@ $$
 $$
 P_{X(t)}(x)=(\frac{x}{cost})'=\frac{1}{cost}
 $$</p>
-</blockquote>
-<p>对于第二问，我们要知道<span class="arithmatex">\(X(0)\)</span>与<span class="arithmatex">\(X(\frac{\pi}{4})\)</span>之间也并非独立的，它们都跟V的值有关，所以我们也将其转化为V的范围
+</div>
+<p>对于第二问，我们要知道 <span class="arithmatex">\(X(0)\)</span> 与 <span class="arithmatex">\(X(\frac{\pi}{4})\)</span> 之间也并非独立的，它们都跟 <span class="arithmatex">\(V\)</span> 的值有关，所以我们也将其转化为 <span class="arithmatex">\(V\)</span> 的范围
 $$
 P[X(0)&gt;0.5,X(\frac{\pi}{4})&lt;0.5]=P[V&gt;0.5,\frac{\sqrt{2}}{2}V&lt;0.5]=P[0.5&lt;V&lt;\frac{\sqrt{2}}{2}]=\frac{\sqrt2-1}{2}
-$$
-<strong>例3</strong> （<strong>简单随机游走，醉汉行走问题</strong>）甲乙两人游戏，第<span class="arithmatex">\(i\)</span>次甲赢的钱数为<span class="arithmatex">\(X_i\)</span>元，设<span class="arithmatex">\(X_1,\cdot\cdot\cdot,X_n,\cdot\cdot\cdot\)</span>独立同分布，<span class="arithmatex">\(P(X_i=1)=p,\ P(X_i=-1)=q=1-p\)</span>，设前n次甲赢的总钱数为<span class="arithmatex">\(S_n\)</span>，计算</p>
-<p>(1)<span class="arithmatex">\(S_n\)</span>的分布律</p>
+$$</p>
+<p><strong>例3</strong> （<strong>简单随机游走，醉汉行走问题</strong>）甲乙两人游戏，第 <span class="arithmatex">\(i\)</span> 次甲赢的钱数为 <span class="arithmatex">\(X_i\)</span> 元，设 <span class="arithmatex">\(X_1,\cdot\cdot\cdot,X_n,\cdot\cdot\cdot\)</span> 独立同分布，<span class="arithmatex">\(P(X_i=1)=p,\ P(X_i=-1)=q=1-p\)</span>，设前 <span class="arithmatex">\(n\)</span> 次甲赢的总钱数为 <span class="arithmatex">\(S_n\)</span>，计算</p>
+<p>(1)<span class="arithmatex">\(S_n\)</span> 的分布律</p>
 <p>(2)<span class="arithmatex">\(P\left\{S_1=1,S_3=1,S_8=4\right\}\)</span></p>
-<p>(3)若<span class="arithmatex">\(p=0.36\)</span>，游戏一直到甲恰好赢50次为止，问游戏需要进行100次以上的概率约为多少？</p>
-<p><strong>解</strong> (1)我们用<span class="arithmatex">\(V_n\)</span>表示前n次甲赢的总次数，则有<span class="arithmatex">\(V_n \sim B(n,p)\)</span>，我们可以通过<span class="arithmatex">\(V_n\)</span>算出<span class="arithmatex">\(S_n\)</span>，即有<span class="arithmatex">\(S_n= V_n-(n-V_n)=2V_n-n\)</span>，则有
-$$
+<p>(3)若 <span class="arithmatex">\(p=0.36\)</span>，游戏一直到甲恰好赢50次为止，问游戏需要进行100次以上的概率约为多少？</p>
+<p><strong>解</strong> (1)我们用 <span class="arithmatex">\(V_n\)</span> 表示前 <span class="arithmatex">\(n\)</span> 次甲赢的总次数，则有 <span class="arithmatex">\(V_n \sim B(n,p)\)</span>，我们可以通过 <span class="arithmatex">\(V_n\)</span> 算出 <span class="arithmatex">\(S_n\)</span>，即有 <span class="arithmatex">\(S_n= V_n-(n-V_n)=2V_n-n\)</span>，则有</p>
+<div class="arithmatex">\[
 P(S_n=k)=P(V_n=\frac{k+n}{2})=C_n^{\frac{k+n}{2}}p^{\frac{k+n}{2}}q^{\frac{n-k}{2}}
-$$
-并且我们需要注意的是<strong><span class="arithmatex">\(k\)</span>与<span class="arithmatex">\(n\)</span>奇偶性相同</strong>，否则<span class="arithmatex">\(V_n\)</span>不为整数，<span class="arithmatex">\(k\)</span>还需要满足<span class="arithmatex">\(-n \leq k \leq n\)</span></p>
-<p>(2)这题其实理解起来很好理解，就是第一次赢，第二三次中赢一次、输一次，第四五六七八次中赢四次、输一次，算是一个二项分布的问题。而从数学推理的角度，我们可以这么写
-$$
-P\left{S_1=1,S_3=1,S_8=4\right}=P\left{S_1=1,S_3-S_1=0,S_8-S_3=3\right}
-$$</p>
-<p>这时候我们会发现，这三个事件就是独立的了，所以我们可以将交事件的概率转化为概率的乘积，也即
-$$
-P\left{S_1=1\right}P\left{S_3-S_1=0\right}P\left{S_8-S_3=3\right}\=p(2pq)(C_5^4p^4q)=10p^6q
-$$
-(3)这题我们如果考虑甲赢了50次的时候，游戏进行的局数，那就会变得异常困难。我们不妨这样去考虑，甲赢50次需要的局数在100次以上（这题的意思是不包含100次），其实就等价于，当游戏进行了100局时，甲获胜的局数小于等于49，也即，如若我们用<span class="arithmatex">\(W_50\)</span>表示甲恰好赢50次时游戏进行的次数，则有
-$$
-\left{W_{50}&gt;100\right}=\left{V_{100}&lt;50\right}
-$$
-那么由中心极限定理，我们可以得到，<span class="arithmatex">\(V_{100}\)</span>近似服从<span class="arithmatex">\(N(100p,100pq)\)</span>，则有
-$$
+\]</div>
+<p>并且我们需要注意的是 <strong><span class="arithmatex">\(k\)</span> 与 <span class="arithmatex">\(n\)</span> 奇偶性相同</strong>，否则 <span class="arithmatex">\(V_n\)</span> 不为整数，<span class="arithmatex">\(k\)</span> 还需要满足 <span class="arithmatex">\(-n \leq k \leq n\)</span></p>
+<p>(2)这题其实理解起来很好理解，就是第一次赢，第二三次中赢一次、输一次，第四五六七八次中赢四次、输一次，算是一个二项分布的问题。而从数学推理的角度，我们可以这么写</p>
+<div class="arithmatex">\[
+P\left\{S_1=1,S_3=1,S_8=4\right\}=P\left\{S_1=1,S_3-S_1=0,S_8-S_3=3\right\}
+\]</div>
+<p>这时候我们会发现，这三个事件就是独立的了，所以我们可以将交事件的概率转化为概率的乘积，也即</p>
+<div class="arithmatex">\[
+P\left\{S_1=1\right\}P\left\{S_3-S_1=0\right\}P\left\{S_8-S_3=3\right\}\\=p(2pq)(C_5^4p^4q)=10p^6q
+\]</div>
+<p>(3)这题我们如果考虑甲赢了50次的时候，游戏进行的局数，那就会变得异常困难。我们不妨这样去考虑，甲赢50次需要的局数在100次以上（这题的意思是不包含100次），其实就等价于，当游戏进行了100局时，甲获胜的局数小于等于49，也即，如若我们用 <span class="arithmatex">\(W_50\)</span> 表示甲恰好赢50次时游戏进行的次数，则有</p>
+<div class="arithmatex">\[
+\left\{W_{50}&gt;100\right\}=\left\{V_{100}&lt;50\right\}
+\]</div>
+<p>那么由中心极限定理，我们可以得到，<span class="arithmatex">\(V_{100}\)</span> 近似服从 <span class="arithmatex">\(N(100p,100pq)\)</span>，则有</p>
+<div class="arithmatex">\[
 P(W_{50}&gt;100)=P(V_{100}&lt;50)=P(V_{100} \leq 49)\approx \Phi(\frac{49-100p}{10\sqrt{pq}})=\Phi(2.71)=0.9966
-$$</p>
-<p>这里用到了中心极限定理的近似<span class="arithmatex">\(B(n,p)\sim N(np,np(1-p))\)</span></p>
-<h3 id="_3">均值函数和协方差函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>给定随机过程<span class="arithmatex">\(\left\{X(t),t\in T\right\}\)</span>，我们记</p>
-<p><span class="arithmatex">\(\mu_x(t)=E[X(t)]\)</span>为<strong>均值函数</strong></p>
-<p><span class="arithmatex">\(\psi^2_x(t)=E[X^2(t)]\)</span>为<strong>均方值函数</strong></p>
-<p><span class="arithmatex">\(\sigma_x^2(t)=D_X(t)=D[X(t)]\)</span>为<strong>方差函数</strong></p>
-<p><span class="arithmatex">\(\sigma_X(t)=\sqrt{\sigma_x^2(t)}\)</span>为<strong>标准差函数</strong></p>
+\]</div>
+<p>这里用到了中心极限定理的近似 <span class="arithmatex">\(B(n,p)\sim N(np,np(1-p))\)</span></p>
+<h2 id="_3">均值函数和协方差函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>给定随机过程 <span class="arithmatex">\(\left\{X(t),t\in T\right\}\)</span>，我们记</p>
+<p><span class="arithmatex">\(\mu_x(t)=E[X(t)]\)</span> 为<strong>均值函数</strong></p>
+<p><span class="arithmatex">\(\psi^2_x(t)=E[X^2(t)]\)</span> 为<strong>均方值函数</strong></p>
+<p><span class="arithmatex">\(\sigma_x^2(t)=D_X(t)=D[X(t)]\)</span> 为<strong>方差函数</strong></p>
+<p><span class="arithmatex">\(\sigma_X(t)=\sqrt{\sigma_x^2(t)}\)</span> 为<strong>标准差函数</strong></p>
 <p>以上都是一维的，以下为二维</p>
-<p><span class="arithmatex">\(r_x(t_1,t_2)=E[X(t_1)X(t_2)]\)</span>为<strong>自相关函数</strong></p>
-<p><span class="arithmatex">\(C_x(t_1,t_2)=Cov[X(t_1),X(t_2)]=E\left\{[X(t_1)-\mu_x(t_1)][X(t_2)-\mu_x(t_2)]\right\}\)</span>为<strong>自协方差函数</strong></p>
+<p><span class="arithmatex">\(r_x(t_1,t_2)=E[X(t_1)X(t_2)]\)</span> 为<strong>自相关函数</strong></p>
+<p><span class="arithmatex">\(C_x(t_1,t_2)=Cov[X(t_1),X(t_2)]=E\left\{[X(t_1)-\mu_x(t_1)][X(t_2)-\mu_x(t_2)]\right\}\)</span> 为<strong>自协方差函数</strong></p>
 <p>各数字特征之间的关系如下：</p>
 <p><span class="arithmatex">\(\psi_X^2(t)=r_x(t,t)\)</span></p>
 <p><span class="arithmatex">\(C_X(t_1,t_2)=r_X(t_1,t_2)-\mu_X(t_1)\mu_X(t_2)\)</span></p>
 <p><span class="arithmatex">\(\sigma_x^2(t)=C_X(t,t)=r_X(t,t)-\mu_x^2(t)\)</span></p>
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
 <p>用均值函数和自相关函数就能够刻画出其他几个函数</p>
-</blockquote>
+</div>
 <p>那么我们就要问了，所有的随机过程都有均值函数和自相关函数吗？答案是否定的，<strong>二阶矩过程</strong>的均值函数和自相关函数总是存在的，下面我们给出二阶矩过程的定义：</p>
-<p>对于随机过程<span class="arithmatex">\(\left\{X(t),t \in T\right\}\)</span>，如果对每一个<span class="arithmatex">\(t \in T\)</span>，<span class="arithmatex">\(E[X^2(t)]\)</span>都存在，则称<span class="arithmatex">\(X(t)\)</span>是二阶矩过程。</p>
-<p>下面我们给出<strong>二阶矩过程的均值函数和自相关函数总是存在的</strong>的证明，这里要用到一个引理，即Cauchy-Schwarz定理，也即
+<p>对于随机过程 <span class="arithmatex">\(\left\{X(t),t \in T\right\}\)</span>，如果对每一个 <span class="arithmatex">\(t \in T\)</span>，<span class="arithmatex">\(E[X^2(t)]\)</span> 都存在，则称 <span class="arithmatex">\(X(t)\)</span> 是二阶矩过程。</p>
+<p>下面我们给出<strong>二阶矩过程的均值函数和自相关函数总是存在的</strong>的证明，这里要用到一个引理，即 Cauchy-Schwarz 定理，也即
 $$
 E|XY|\leq \sqrt{EX^2}\sqrt{EY^2}
 $$
-因为随机过程<span class="arithmatex">\(\left\{X(t),t \in T\right\}\)</span>是二阶矩过程，也即有<span class="arithmatex">\(\forall t,E|X_t^2|&lt;\infty\)</span>，则有
-$$
+因为随机过程 <span class="arithmatex">\(\left\{X(t),t \in T\right\}\)</span> 是二阶矩过程，也即有 <span class="arithmatex">\(\forall t,E|X_t^2|&lt;\infty\)</span>，则有</p>
+<div class="arithmatex">\[\begin{aligned}
 E|X_t|=E|X_t\cdot1|\leq \sqrt{EX_t^2}\sqrt{E1}=\sqrt{EX_t^2}&lt;\infty
-\
+\\
 E|X_{t_1}\cdot X_{t_2}|\leq \sqrt{EX_{t_1}^2}\sqrt{EX_{t_2}^2}&lt;\infty
-$$</p>
+\end{aligned}\]</div>
 <p>下面我们看一道例题</p>
-<p><strong>例1</strong> 求随机向位余弦波<span class="arithmatex">\(X(t)=a\cos(wt+\theta),-\infty&lt;t&lt;\infty,(\theta\sim U(0,2\pi))\)</span>的均值函数、方差函数和自相关函数</p>
-<blockquote>
+<p><strong>例1</strong> 求随机向位余弦波 <span class="arithmatex">\(X(t)=a\cos(wt+\theta),-\infty&lt;t&lt;\infty,(\theta\sim U(0,2\pi))\)</span> 的均值函数、方差函数和自相关函数</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
 <p>这题没啥难的，主要是要记得几个函数的定义和公式是什么</p>
-</blockquote>
-<p><strong>解</strong> <span class="arithmatex">\(\mu_X(t)=E[X(t)]=\int_0^{2\pi}a\cos(\omega t+\theta)\cdot\frac{1}{2\pi}d\theta=0\)</span></p>
-<p><span class="arithmatex">\(D[X(t)]=E[X(t)^2]-[EX(t)]^2=\frac{a^2}{2\pi}\int_0^{2\pi}\cos^2(\omega t+\theta)d\theta=\frac{a^2}{2}\)</span></p>
-<p><span class="arithmatex">\(r_X(t_1,t_2)=E(X(t_1)X(t_2))=E[a^2\cos(\omega t_1+\theta)cos(\omega t_2+\theta)]=a^2\int_0^{2\pi}\cos(\omega t_1+\theta)cos(\omega t_2+\theta)\cdot \frac{1}{2\pi}d\theta=\frac{a^2}{2}\cos \omega(t_2-t_1)\)</span></p>
-<p><strong>例2</strong> 设<span class="arithmatex">\(X(t)=\frac{1}{U^t},t\geq 0\)</span>，这里<span class="arithmatex">\(U\sim U(0,1)\)</span>，问<span class="arithmatex">\(\left\{X(t):t \geq 0\right\}\)</span>是否是二阶矩过程</p>
-<p><strong>解</strong> 验证某随机过程是否是二阶矩过程，其实就是验证<span class="arithmatex">\(E[X(t)^2]\)</span>是否存在
+</div>
+<p><strong>解</strong> </p>
+<div class="arithmatex">\[\mu_X(t)=E[X(t)]=\int_0^{2\pi}a\cos(\omega t+\theta)\cdot\frac{1}{2\pi}d\theta=0\]</div>
+<div class="arithmatex">\[D[X(t)]=E[X(t)^2]-[EX(t)]^2=\frac{a^2}{2\pi}\int_0^{2\pi}\cos^2(\omega t+\theta)d\theta=\frac{a^2}{2}\]</div>
+<div class="arithmatex">\[r_X(t_1,t_2)=E(X(t_1)X(t_2))=E[a^2\cos(\omega t_1+\theta)cos(\omega t_2+\theta)]=a^2\int_0^{2\pi}\cos(\omega t_1+\theta)cos(\omega t_2+\theta)\cdot \frac{1}{2\pi}d\theta=\frac{a^2}{2}\cos \omega(t_2-t_1)\]</div>
+<p><strong>例2</strong> 设 <span class="arithmatex">\(X(t)=\frac{1}{U^t},t\geq 0\)</span>，这里 <span class="arithmatex">\(U\sim U(0,1)\)</span>，问 <span class="arithmatex">\(\left\{X(t):t \geq 0\right\}\)</span> 是否是二阶矩过程</p>
+<p><strong>解</strong> 验证某随机过程是否是二阶矩过程，其实就是验证 <span class="arithmatex">\(E[X(t)^2]\)</span> 是否存在
 $$
 E[X(t)^2]=\int_0^1\frac{1}{u^{2t}}du
 $$
-这里其实也是一个很经典的结论，对于<span class="arithmatex">\(\frac{1}{x^p}\)</span>在<span class="arithmatex">\((0,1)\)</span>上的积分是否收敛与<span class="arithmatex">\(p\)</span>范围的关系。我们知道，当<span class="arithmatex">\(p \in(0,1)\)</span>时积分收敛，<span class="arithmatex">\(p\in(1,+\infty)\)</span>时积分发散，所以有
-$$
+这里其实也是一个很经典的结论，对于 <span class="arithmatex">\(\frac{1}{x^p}\)</span> 在 <span class="arithmatex">\((0,1)\)</span> 上的积分是否收敛与 <span class="arithmatex">\(p\)</span> 范围的关系。我们知道，当 <span class="arithmatex">\(p \in(0,1)\)</span> 时积分收敛，<span class="arithmatex">\(p\in(1,+\infty)\)</span> 时积分发散，所以有</p>
+<div class="arithmatex">\[
 E[X(t)^2]=\begin{cases}
 \frac{1}{1-2t}, &amp;t&lt;\frac{1}{2}
-\
-\infty,&amp;t \geq \frac{1}{2}</p>
-<p>\end{cases}
-$$
-所以<span class="arithmatex">\(\left\{X(t):t\geq 0\right\}\)</span>不是二阶矩过程，因为<span class="arithmatex">\(E[X(t)^2]\)</span>并不是一直存在的</p>
+\\
+\infty,&amp;t \geq \frac{1}{2}
+\end{cases}
+\]</div>
+<p>所以 <span class="arithmatex">\(\left\{X(t):t\geq 0\right\}\)</span> 不是二阶矩过程，因为 <span class="arithmatex">\(E[X(t)^2]\)</span> 并不是一直存在的</p>
 <p>上面部分我们看的都是统一随机过程不同时间参数的情况，下面我们来看看<strong>两个随机过程之间的关系</strong></p>
-<p>设<span class="arithmatex">\(\{X_t; t \in T_1\}\)</span> 和<span class="arithmatex">\(\{Y_s; s \in T_2\}\)</span>都是概率空间<span class="arithmatex">\((\Omega, \mathcal{F}, P)\)</span>上的随机过程。如果对任何<span class="arithmatex">\(m, n \geq 1, t_1, \cdots, t_m \in T_1\)</span>和<span class="arithmatex">\(s_1, \cdots, s_n \in T_2\)</span>有，<span class="arithmatex">\((X_{t_1}, \cdots, X_{t_m})\)</span>和<span class="arithmatex">\((Y_{s_1}, \cdots, Y_{s_n})\)</span>相互独立，则称<span class="arithmatex">\(\{X_t; t \in T_1\}\)</span> 和<span class="arithmatex">\(\{Y_s; s \in T_2\}\)</span> 相互独立.</p>
-<blockquote>
+<p>设 <span class="arithmatex">\(\{X_t; t \in T_1\}\)</span> 和<span class="arithmatex">\(\{Y_s; s \in T_2\}\)</span> 都是概率空间 <span class="arithmatex">\((\Omega, \mathcal{F}, P)\)</span> 上的随机过程。如果对任何 <span class="arithmatex">\(m, n \geq 1, t_1, \cdots, t_m \in T_1\)</span>和<span class="arithmatex">\(s_1, \cdots, s_n \in T_2\)</span>有，<span class="arithmatex">\((X_{t_1}, \cdots, X_{t_m})\)</span> 和 <span class="arithmatex">\((Y_{s_1}, \cdots, Y_{s_n})\)</span> 相互独立，则称 <span class="arithmatex">\(\{X_t; t \in T_1\}\)</span> 和 <span class="arithmatex">\(\{Y_s; s \in T_2\}\)</span> 相互独立.</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
 <p>从两个随机过程中任意取有限维都是相互独立的，则称这两个随机过程相互独立</p>
-</blockquote>
+</div>
 <p>我们知道，对于单个随机过程，不同时间参数的样本轨道有<strong>自相关函数，自协方差函数</strong>；而对于两个不同的随机过程，也有<strong>互相关函数、互协方差函数</strong>，下面我们给出互相关函数和互协方差函数的定义：</p>
 <p><span class="arithmatex">\(\left\{X(t),t\in T_1\right\}\)</span>与<span class="arithmatex">\(\left\{Y(s),s\in T_2\right\}\)</span>的互相关函数定义如下：
 $$
 r_{XY}(t,s)=E[X(t)Y(s)],\qquad t\in T_1,s\in T_2
 $$</p>
-<blockquote>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
 <p>注意，这里互相关函数的下标和时间参数是一一对应的，<span class="arithmatex">\(XY\)</span>对应<span class="arithmatex">\(t,s\)</span>，则<span class="arithmatex">\(t\)</span>是从<span class="arithmatex">\(T_1\)</span>中取得的，是<span class="arithmatex">\(X\)</span>的时间参数，<span class="arithmatex">\(s\)</span>是从<span class="arithmatex">\(T_2\)</span>中取得的，是<span class="arithmatex">\(Y\)</span>的时间参数</p>
-</blockquote>
+</div>
 <p>互协方差函数定义如下：
 $$
 C_{XY}(t,s)=Cov(X_t,Y_s)=r_{XY}(t,s)-\mu_X(t)\mu_{Y}(s),\qquad t\in T_1,s\in T_2
 $$</p>
-<blockquote>
-<p>这里其实和概率论中两个随机变量的协方差的定义是几乎一样的，在概率论中，我们有<span class="arithmatex">\(Cov(\xi,\eta)=E(\xi\eta)-E\xi-E\eta\)</span>，而在这里，<span class="arithmatex">\(Cov(X_t,X_s)=E(X_tX_s)-EX_tEX_s=r_{XY}(t,s)-\mu_X(t)\mu_{Y}(s)\)</span></p>
-</blockquote>
-<p>如果对任意的<span class="arithmatex">\(t\in T_1,s\in T_2\)</span>，恒有<span class="arithmatex">\(C_{XY}(t,s)=0\)</span>，则称随机过程<span class="arithmatex">\(\left\{X(t)\right\}\)</span>和<span class="arithmatex">\(\left\{Y(s)\right\}\)</span>是不相关的</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>这里其实和两个随机变量的协方差的定义是几乎一样的，在概率论中，我们有<span class="arithmatex">\(Cov(\xi,\eta)=E(\xi\eta)-E\xi-E\eta\)</span>，而在这里，<span class="arithmatex">\(Cov(X_t,X_s)=E(X_tX_s)-EX_tEX_s=r_{XY}(t,s)-\mu_X(t)\mu_{Y}(s)\)</span></p>
+</div>
+<p>如果对任意的 <span class="arithmatex">\(t\in T_1,s\in T_2\)</span>，恒有 <span class="arithmatex">\(C_{XY}(t,s)=0\)</span>，则称随机过程 <span class="arithmatex">\(\left\{X(t)\right\}\)</span> 和 <span class="arithmatex">\(\left\{Y(s)\right\}\)</span> 是不相关的</p>
 <p>下面我们来看一些例题</p>
-<p><strong>例3</strong> 某保险公司的收入由老人寿险收入和儿童平安保险收入组成。设到时刻t为止，老人寿险收入为<span class="arithmatex">\(X(t)\)</span>，儿童平安保险收入为<span class="arithmatex">\(Y(t)\)</span>，总收入为<span class="arithmatex">\(Z(t)\)</span>。已知<span class="arithmatex">\(\mu_X(t),\mu_{Y}(t),C_X(t_1,t_2),C_Y(t_1,t_2)\)</span>，并且知道过程<span class="arithmatex">\(\left\{X(t)\right\}\)</span>和<span class="arithmatex">\(\left\{Y(s)\right\}\)</span>是不相关的，求<span class="arithmatex">\(\mu_Z(t),C_Z(t_1,t_2)\)</span></p>
-<p><strong>解</strong> 显然，我们可以知道<span class="arithmatex">\(Z(t)=X(t)+Y(t)\)</span>，由期望的线性性可以得到
+<p><strong>例3</strong> 某保险公司的收入由老人寿险收入和儿童平安保险收入组成。设到时刻 <span class="arithmatex">\(t\)</span> 为止，老人寿险收入为 <span class="arithmatex">\(X(t)\)</span>，儿童平安保险收入为 <span class="arithmatex">\(Y(t)\)</span>，总收入为 <span class="arithmatex">\(Z(t)\)</span>。已知 <span class="arithmatex">\(\mu_X(t),\mu_{Y}(t),C_X(t_1,t_2),C_Y(t_1,t_2)\)</span>，并且知道过程 <span class="arithmatex">\(\left\{X(t)\right\}\)</span> 和 <span class="arithmatex">\(\left\{Y(s)\right\}\)</span> 是不相关的，求 <span class="arithmatex">\(\mu_Z(t),C_Z(t_1,t_2)\)</span></p>
+<p><strong>解</strong> 显然，我们可以知道 <span class="arithmatex">\(Z(t)=X(t)+Y(t)\)</span>，由期望的线性性可以得到
 $$
 \mu_Z(t)=\mu_X(t)+\mu_Y(t)
 $$
-我们可能不知道该怎么去算<span class="arithmatex">\(C_Z(t_1,t_2)\)</span>，这也很简单，不会做的时候就回到定义去就好了
+我们可能不知道该怎么去算 <span class="arithmatex">\(C_Z(t_1,t_2)\)</span>，这也很简单，不会做的时候就回到定义去就好了
 $$
 C_Z(t_1,t_2)=Cov(Z(t_1),Z(t_2))=Cov(X(t_1)+Y(t_1),X(t_2)+Y(t_2))
-$$
-接下来利用协方差的线性性就可以得到
-$$
-Cov(X(t_1)+Y(t_1),X(t_2)+Y(t_2))\=Cov(X(t_1),X(t_2))+Cov(X(t_1),Y(t_2))+Cov(Y(t_1),X(t_2))+Cov(Y(t_1),Y(t_2))
-$$
-而又由于过程<span class="arithmatex">\(\left\{X(t)\right\}\)</span>和<span class="arithmatex">\(\left\{Y(s)\right\}\)</span>是不相关的，所以有<span class="arithmatex">\(Cov(X(t_1),Y(t_2))=0，Cov(Y(t_1),X(t_2))=0\)</span>，所以
+$$</p>
+<p>接下来利用协方差的线性性就可以得到</p>
+<div class="arithmatex">\[\begin{aligned}
+Cov(X(t_1)+Y(t_1),X(t_2)+Y(t_2))&amp;=Cov(X(t_1),X(t_2))+Cov(X(t_1),Y(t_2))\\&amp;+Cov(Y(t_1),X(t_2))+Cov(Y(t_1),Y(t_2))
+\end{aligned}\]</div>
+<p>而又由于过程 <span class="arithmatex">\(\left\{X(t)\right\}\)</span> 和 <span class="arithmatex">\(\left\{Y(s)\right\}\)</span> 是不相关的，所以有 <span class="arithmatex">\(Cov(X(t_1),Y(t_2))=0,Cov(Y(t_1),X(t_2))=0\)</span>，所以
 $$
 Cov(Z(t_1),Z(t_2))=C_X(t_1,t_2)+C_Y(t_1,t_2)
 $$</p>
-<h3 id="_4">一些随机过程的分类<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h2 id="_4">一些随机过程的分类<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p><strong>白噪声</strong>：若随机过程<span class="arithmatex">\(X=\left\{X(t);t\in T\right\}\)</span>满足均值函数<span class="arithmatex">\(\mu_X(t)=0\)</span>，对<span class="arithmatex">\(\forall s \neq t,C_X(s,t)=0\)</span>，则称<span class="arithmatex">\(X\)</span>为<strong>白噪声</strong>（将随机过程称为白噪声）</p>
+<p><strong>白噪声</strong>：若随机过程 <span class="arithmatex">\(X=\left\{X(t);t\in T\right\}\)</span> 满足均值函数 <span class="arithmatex">\(\mu_X(t)=0\)</span>，对 <span class="arithmatex">\(\forall s \neq t,C_X(s,t)=0\)</span>，则称 <span class="arithmatex">\(X\)</span> 为<strong>白噪声</strong>（将随机过程称为白噪声）</p>
 </li>
 <li>
-<p><strong>正态过程</strong>：如果对任意<span class="arithmatex">\(n\)</span>，任意<span class="arithmatex">\(t_1,\cdot\cdot\cdot,t_n \in T\)</span>，<span class="arithmatex">\((X_{t_1},\cdot\cdot\cdot,X_{t_n})\)</span>服从正态分布，则称<span class="arithmatex">\(X\)</span>是<strong>正态过程</strong>（或<strong>高斯过程</strong>）</p>
+<p><strong>正态过程</strong>：如果对任意 <span class="arithmatex">\(n\)</span>，任意 <span class="arithmatex">\(t_1,\cdot\cdot\cdot,t_n \in T\)</span>，<span class="arithmatex">\((X_{t_1},\cdot\cdot\cdot,X_{t_n})\)</span> 服从正态分布，则称 <span class="arithmatex">\(X\)</span> 是<strong>正态过程</strong>（或<strong>高斯过程</strong>）</p>
 </li>
 </ul>
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
 <p><strong>正态过程</strong>是二阶矩过程，它的有限维分布完全由它的均值函数和自协方差函数确定，但是<strong>并不是所有的随机过程的有限维分布都能由其均值函数和自协方差函数确定</strong></p>
-</blockquote>
+</div>
 <p>对于正态过程，有如下的一个经典定理：</p>
-<p>随机过程<span class="arithmatex">\(X=\left\{X(t);t\in T\right\}\)</span>是正态过程当且仅当对任意的<span class="arithmatex">\(n\geq 1,t_1,\cdot\cdot\cdot,t_n \in T\)</span>，以及实数<span class="arithmatex">\(a_1,a_2,\cdot\cdot\cdot,a_n\)</span>，有<span class="arithmatex">\(\sum_{i=1}^na_iX(t_i)\)</span>服从正态分布</p>
-<blockquote>
+<p>随机过程 <span class="arithmatex">\(X=\left\{X(t);t\in T\right\}\)</span> 是正态过程当且仅当对任意的 <span class="arithmatex">\(n\geq 1,t_1,\cdot\cdot\cdot,t_n \in T\)</span>，以及实数 <span class="arithmatex">\(a_1,a_2,\cdot\cdot\cdot,a_n\)</span>，有 <span class="arithmatex">\(\sum_{i=1}^na_iX(t_i)\)</span> 服从正态分布</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
 <p>也即<strong>正态过程的任意有限维线性组合均服从正态分布</strong></p>
-</blockquote>
+</div>
 <p>下面我们看几道例题</p>
-<p><strong>例4</strong> 设<span class="arithmatex">\(\left\{X(t);t \geq 0\right\}\)</span>是正态过程，<span class="arithmatex">\(\mu_X(t)=t\)</span>，<span class="arithmatex">\(C_X(t,s)=ts+1\)</span>，求<span class="arithmatex">\(X(1),X(2),X(1)+X(2)\)</span>的分布</p>
-<p><strong>解</strong> <span class="arithmatex">\(D[X(t)]=C_X(t,t)=t^2+1\)</span>，所以可以得到<span class="arithmatex">\(X(t)\sim N(t,t^2+1)\)</span></p>
-<p>自然有<span class="arithmatex">\(X(1)\sim N(1,2),X(2)\sim N(2,5)\)</span>，而由“正态过程的任意有限维线性组合均服从正态分布”可得，<span class="arithmatex">\(X(1)+X(2)\)</span>服从正态分布，所以我们接下来要去计算<span class="arithmatex">\(X(1)+X(2)\)</span>的期望和方差
-$$
+<p><strong>例4</strong> 设 <span class="arithmatex">\(\left\{X(t);t \geq 0\right\}\)</span> 是正态过程，<span class="arithmatex">\(\mu_X(t)=t\)</span>，<span class="arithmatex">\(C_X(t,s)=ts+1\)</span>，求 <span class="arithmatex">\(X(1),X(2),X(1)+X(2)\)</span> 的分布</p>
+<p><strong>解</strong> <span class="arithmatex">\(D[X(t)]=C_X(t,t)=t^2+1\)</span>，所以可以得到 <span class="arithmatex">\(X(t)\sim N(t,t^2+1)\)</span></p>
+<p>自然有 <span class="arithmatex">\(X(1)\sim N(1,2),X(2)\sim N(2,5)\)</span>，而由“正态过程的任意有限维线性组合均服从正态分布”可得，<span class="arithmatex">\(X(1)+X(2)\)</span> 服从正态分布，所以我们接下来要去计算 <span class="arithmatex">\(X(1)+X(2)\)</span> 的期望和方差</p>
+<div class="arithmatex">\[\begin{aligned}
 E[X(1)+X(2)]=E[X(1)]+E[X(2)]=1+2=3
-\
+\\
+\\
 D[X(1)+X(2)]=D[X(1)]+D[X(2)]+2Cov[X(1),X(2)]=2+5+2\cdot (1\cdot2+1)=13
-$$
-所以有<span class="arithmatex">\(X(1)+X(2) \sim N(3,13)\)</span></p>
-<blockquote>
-<p>其实我们也要时刻记得，随机过程取定时间参数之后就变成了一组随机变量，接下来就发挥我们概率论的优势就好了</p>
-</blockquote>
+\end{aligned}\]</div>
+<p>所以有 <span class="arithmatex">\(X(1)+X(2) \sim N(3,13)\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>我们要时刻记得，随机过程取定时间参数之后就变成了一组随机变量</p>
+</div>
 <ul>
 <li><strong>宽平稳过程</strong>与<strong>严平稳过程</strong>：</li>
 </ul>
-<p>如果<span class="arithmatex">\(X\)</span>是<strong>二阶矩过程</strong>，且对任意<span class="arithmatex">\(t\in T\)</span>，<strong><span class="arithmatex">\(\mu_X(t)\)</span>为常数</strong>，一般记为<span class="arithmatex">\(\mu_X\)</span>，<strong><span class="arithmatex">\(C_X(t,s)\)</span>只是时间差<span class="arithmatex">\(s-t\)</span>的函数</strong>（其实<strong>等价于自相关函数<span class="arithmatex">\(r_X(t,s)\)</span>只是时间差<span class="arithmatex">\(s-t\)</span>的函数</strong>，因为<span class="arithmatex">\(C_X(t,s)=r_X(t,s)-\mu_X(t)\cdot \mu_X(s)\)</span>），则称<span class="arithmatex">\(X\)</span>是<strong>宽平稳过程</strong></p>
-<p>对任何<span class="arithmatex">\(n \geq 2\)</span>，任何<span class="arithmatex">\(t_1,\cdot\cdot\cdot,t_n \in T\)</span>，<strong><span class="arithmatex">\((X_{t_1},\cdot\cdot\cdot,X_{t_n})\)</span>的分布只与时间差<span class="arithmatex">\(t_2-t_1,\cdot\cdot\cdot,t_n-t_{n-1}\)</span>有关</strong>，而与时间的起点<span class="arithmatex">\(t_1\)</span>无关，则称<span class="arithmatex">\(X\)</span>是<strong>严平稳过程</strong></p>
-<blockquote>
-<p>严平稳过程是指有限维分布具有平移不变性，也就是任意<span class="arithmatex">\(n\geq 1\)</span>，任何<span class="arithmatex">\(t_1,\cdot\cdot\cdot,t_n \in T\)</span>，任意<span class="arithmatex">\(h\)</span>，<span class="arithmatex">\((X_{t_1},\cdot\cdot\cdot,X_{t_n})\)</span>与<span class="arithmatex">\((X_{t_1+h},\cdot\cdot\cdot,X_{t_n+h})\)</span>同分布；从一维角度上来看，就有所有的<span class="arithmatex">\(X_t\)</span>是同分布的</p>
-</blockquote>
-<div class="highlight"><pre><span></span><code>下面我们辨析一下严平稳过程和宽平稳过程的关系：严平稳过程不一定是宽平稳过程，但**二阶矩的严平稳过程**一定是宽平稳过程；宽平稳过程也不一定是严平稳过程，但是**宽平稳的正态过程**一定是严平稳过程
-
-下面我们说明二阶矩的严平稳过程一定是宽平稳过程（严平稳过程本身对数字特征没有要求，只对分布有要求，而二阶矩这一条件确保了严平稳过程的均值函数和自相关函数均存在）。
-$$
+<p>如果 <span class="arithmatex">\(X\)</span> 是<strong>二阶矩过程</strong>，且对任意 <span class="arithmatex">\(t\in T\)</span>，<strong> <span class="arithmatex">\(\mu_X(t)\)</span> 为常数</strong>，一般记为 <span class="arithmatex">\(\mu_X\)</span>，<strong> <span class="arithmatex">\(C_X(t,s)\)</span> 只是时间差 <span class="arithmatex">\(s-t\)</span> 的函数</strong>（其实<strong>等价于自相关函数 <span class="arithmatex">\(r_X(t,s)\)</span> 只是时间差 <span class="arithmatex">\(s-t\)</span> 的函数</strong>，因为 <span class="arithmatex">\(C_X(t,s)=r_X(t,s)-\mu_X(t)\cdot \mu_X(s)\)</span>），则称 <span class="arithmatex">\(X\)</span> 是<strong>宽平稳过程</strong></p>
+<p>对任何 <span class="arithmatex">\(n \geq 2\)</span>，任何 <span class="arithmatex">\(t_1,\cdot\cdot\cdot,t_n \in T\)</span>，<strong> <span class="arithmatex">\((X_{t_1},\cdot\cdot\cdot,X_{t_n})\)</span> 的分布只与时间差 <span class="arithmatex">\(t_2-t_1,\cdot\cdot\cdot,t_n-t_{n-1}\)</span> 有关</strong>，而与时间的起点 <span class="arithmatex">\(t_1\)</span> 无关，则称 <span class="arithmatex">\(X\)</span> 是<strong>严平稳过程</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>严平稳过程是指有限维分布具有平移不变性，也就是任意 <span class="arithmatex">\(n\geq 1\)</span>，任何 <span class="arithmatex">\(t_1,\cdot\cdot\cdot,t_n \in T\)</span>，任意 <span class="arithmatex">\(h\)</span>，<span class="arithmatex">\((X_{t_1},\cdot\cdot\cdot,X_{t_n})\)</span> 与 <span class="arithmatex">\((X_{t_1+h},\cdot\cdot\cdot,X_{t_n+h})\)</span> 同分布；从一维角度上来看，就有所有的 <span class="arithmatex">\(X_t\)</span> 是同分布的</p>
+</div>
+<p>下面我们辨析一下严平稳过程和宽平稳过程的关系：严平稳过程不一定是宽平稳过程，但<strong>二阶矩的严平稳过程</strong>一定是宽平稳过程；宽平稳过程也不一定是严平稳过程，但是<strong>宽平稳的正态过程</strong>一定是严平稳过程</p>
+<p>下面我们说明二阶矩的严平稳过程一定是宽平稳过程（严平稳过程本身对数字特征没有要求，只对分布有要求，而二阶矩这一条件确保了严平稳过程的均值函数和自相关函数均存在）。</p>
+<div class="arithmatex">\[\begin{aligned}
 X_t\text{与}X_s\text{同分布}\Rightarrow EX(t)=EX(s)\Rightarrow \mu_X(t)\text{是常值函数}\\
-
 (X_t,X_s)\text{与}(X_{t+h},X_{s+h})\text{同分布}\Rightarrow E(X_sX_t)=E(X_{s+h}X_{t+h})
-$$
-也即得到了其均值函数是常值函数，其自相关函数与时间起点没有关系，符合宽平稳过程的定义
-
-下面我们说明宽平稳的正态过程一定是严平稳过程，要说明是严平稳过程，就要说明其分布只与时间差有关，而与时间起点无关，也即说明$(X_{t_1},\cdot\cdot\cdot,X_{t_n})$与$(X_{t_1+h},\cdot\cdot\cdot,X_{t_n+h})$是同分布的，而我们又知道它们服从$n$维正态分布，要说明同分布，只需说明其均值向量和协方差矩阵是相同的即可。由于是宽平稳过程，均值函数为常数，所以均值向量均为$(\mu_X,\cdot\cdot\cdot,\mu_X)$，下面要说明协方差矩阵相同，不妨考虑其$ij$元，为$Cov(X_{t_i},X_{t_j})$和$Cov(X_{t_i+h},X_{t_j+h})$，由宽平稳过程的定义可知其相等，均为$C_X(t_i-t_j)$
-</code></pre></div>
+\end{aligned}\]</div>
+<p>也即得到了其均值函数是常值函数，其自相关函数与时间起点没有关系，符合宽平稳过程的定义</p>
+<p>下面我们说明宽平稳的正态过程一定是严平稳过程，要说明是严平稳过程，就要说明其分布只与时间差有关，而与时间起点无关，也即说明 <span class="arithmatex">\((X_{t_1},\cdot\cdot\cdot,X_{t_n})\)</span> 与 <span class="arithmatex">\((X_{t_1+h},\cdot\cdot\cdot,X_{t_n+h})\)</span> 是同分布的，而我们又知道它们服从 <span class="arithmatex">\(n\)</span> 维正态分布，要说明同分布，只需说明其均值向量和协方差矩阵是相同的即可。由于是宽平稳过程，均值函数为常数，所以均值向量均为 <span class="arithmatex">\((\mu_X,\cdot\cdot\cdot,\mu_X)\)</span>，下面要说明协方差矩阵相同，不妨考虑其 <span class="arithmatex">\(ij\)</span> 元，为 <span class="arithmatex">\(Cov(X_{t_i},X_{t_j})\)</span> 和 <span class="arithmatex">\(Cov(X_{t_i+h},X_{t_j+h})\)</span>，由宽平稳过程的定义可知其相等，均为 <span class="arithmatex">\(C_X(t_i-t_j)\)</span></p>
 <p>下面我们看一个例题</p>
-<p><strong>例5</strong> 设<span class="arithmatex">\(X(t)=A\cos t+B\sin t,t \in (-\infty,+\infty)\)</span>，<span class="arithmatex">\(A,B\)</span>独立，<span class="arithmatex">\(EA=EB=0,DA=DB=1\)</span></p>
+<p><strong>例5</strong> 设 <span class="arithmatex">\(X(t)=A\cos t+B\sin t,t \in (-\infty,+\infty)\)</span>，<span class="arithmatex">\(A,B\)</span> 独立，<span class="arithmatex">\(EA=EB=0,DA=DB=1\)</span></p>
 <p>（1）计算均值函数和自相关函数，是宽平稳过程吗？</p>
-<p>（2）如<span class="arithmatex">\(P(A = \pm1)=P(B=\pm1)=0.5\)</span>，求<span class="arithmatex">\(X(0),x(\frac{\pi}{4})\)</span>的分布律，是严平稳过程吗？</p>
-<p>（3）如<span class="arithmatex">\(A,B\)</span>都服从<span class="arithmatex">\(N(0,1)\)</span>，求<span class="arithmatex">\(X(0),X(\frac{\pi}{4}),X(0)+X(\frac{\pi}{4})\)</span>的分布，是严平稳过程吗？</p>
-<p><strong>解</strong> （1）因为<span class="arithmatex">\(AB\)</span>独立，所以有<span class="arithmatex">\(E(AB)=E(A)E(B)=0\)</span>
+<p>（2）如 <span class="arithmatex">\(P(A = \pm1)=P(B=\pm1)=0.5\)</span>，求 <span class="arithmatex">\(X(0),x(\frac{\pi}{4})\)</span> 的分布律，是严平稳过程吗？</p>
+<p>（3）如 <span class="arithmatex">\(A,B\)</span> 都服从 <span class="arithmatex">\(N(0,1)\)</span>，求 <span class="arithmatex">\(X(0),X(\frac{\pi}{4}),X(0)+X(\frac{\pi}{4})\)</span> 的分布，是严平稳过程吗？</p>
+<p><strong>解</strong> （1）因为 <span class="arithmatex">\(A,B\)</span> 独立，所以有 <span class="arithmatex">\(E(AB)=E(A)E(B)=0\)</span>
 $$
 E(A^2)=D(A)-[E(A)]^2=1,\qquad E(B^2)=D(B)-[E(B)]^2=1
 $$
-所以有<span class="arithmatex">\(\mu_X(t)=\cos tE(A)+\sin tE(B)=0\)</span>是是常数</p>
-<p><span class="arithmatex">\(r_X(t_1,t_2)=E[X(t_1)X(t_2)]=E[(A\cos t_1+B\sin t_1)(A\cos t_2+B \sin t_2)]=\cos t_1 \cos t_2+\sin t_1 \sin t_2\\=\cos(t_2-t_1)\)</span></p>
-<p>只与<span class="arithmatex">\(t_2-t_1\)</span>有关，所以<span class="arithmatex">\(\left\{X(t)\right\}\)</span>是宽平稳过程</p>
+所以有 <span class="arithmatex">\(\mu_X(t)=\cos tE(A)+\sin tE(B)=0\)</span> 是常数</p>
+<div class="arithmatex">\[
+r_X(t_1,t_2)=E[X(t_1)X(t_2)]=E[(A\cos t_1+B\sin t_1)(A\cos t_2+B \sin t_2)]=\cos t_1 \cos t_2+\sin t_1 \sin t_2=\cos(t_2-t_1)
+\]</div>
+<p>只与 <span class="arithmatex">\(t_2-t_1\)</span> 有关，所以 <span class="arithmatex">\(\left\{X(t)\right\}\)</span> 是宽平稳过程</p>
 <p>（2）<span class="arithmatex">\(X(0)=A,X(\frac{\pi}{4})=\frac{\sqrt{2}}{2}(A+B)\)</span></p>
-<p>所以有<span class="arithmatex">\(P(X(0)= \pm1)=0.5\)</span></p>
+<p>所以有 <span class="arithmatex">\(P(X(0)= \pm1)=0.5\)</span></p>
 <p><span class="arithmatex">\(P(X(\frac{\pi}{4})=\sqrt{2})=P(A=1,B=1)=\frac{1}{4}\)</span></p>
 <p><span class="arithmatex">\(P(X(\frac{\pi}{4})=-\sqrt{2})=P(A=-1,B=-1)=\frac{1}{4}\)</span></p>
 <p><span class="arithmatex">\(P(X(\frac{\pi}{4}))=0=P(A=1,B=-1)+P(A=-1,B=\frac{1}{2})\)</span></p>
 <p>很显然，他们不同分布，所以不是严平稳过程</p>
-<p>（3）因为<span class="arithmatex">\(X(0)\sim N(0,1),X(\frac{\pi}{4})\sim N(0,1),D(X(0)+X(\frac{\pi}{4}))=2+2\cos\frac{\pi}{4}=2+\sqrt{2}\)</span></p>
-<p>所以有<span class="arithmatex">\(X(0)+X(\frac{\pi}{4})\sim N(0,2+\sqrt{2})\)</span></p>
-<p>或者第三问也可以这么考虑，我们在考虑<span class="arithmatex">\(D(X(0)+X(\frac{\pi}{4}))\)</span>的时候，可以将其转化为关于<span class="arithmatex">\(A,B\)</span>的式子，这样利用<span class="arithmatex">\(A,B\)</span>的独立性可以很好地求解
+<p>（3）因为 <span class="arithmatex">\(X(0)\sim N(0,1),X(\frac{\pi}{4})\sim N(0,1),D(X(0)+X(\frac{\pi}{4}))=2+2\cos\frac{\pi}{4}=2+\sqrt{2}\)</span></p>
+<p>所以有 <span class="arithmatex">\(X(0)+X(\frac{\pi}{4})\sim N(0,2+\sqrt{2})\)</span></p>
+<p>或者第三问也可以这么考虑，我们在考虑 <span class="arithmatex">\(D(X(0)+X(\frac{\pi}{4}))\)</span> 的时候，可以将其转化为关于 <span class="arithmatex">\(A,B\)</span> 的式子，这样利用 <span class="arithmatex">\(A,B\)</span> 的独立性可以很好地求解
 $$
 D(X(0)+X(\frac{\pi}{4}))=D(A+\frac{\sqrt{2}}{2}(A+B))=D[(1+\frac{\sqrt{2}}{2})A+\frac{\sqrt{2}}{2}B]=(1+\frac{\sqrt{2}}{2})^2D(A)+\frac{1}{2}D(B)=2+\sqrt{2}
 $$</p>
 <ul>
-<li><strong>二项过程</strong>：设<span class="arithmatex">\(X_1,\cdot\cdot\cdot,X_n,\cdot\cdot\cdot\)</span>独立同分布，<span class="arithmatex">\(P(X_i=1)=p=1-P(X_i=0),0&lt;p&lt;1\)</span>，令<span class="arithmatex">\(S_n=X_1+\cdot\cdot\cdot+X_n\)</span>表示<span class="arithmatex">\(n\)</span>次伯努利试验后1出现的次数，则<span class="arithmatex">\(\left\{S_n;n=0,1,\cdot\cdot\cdot,\right\}\)</span>称为参数为<span class="arithmatex">\(p\)</span>的二项过程</li>
+<li><strong>二项过程</strong>：设 <span class="arithmatex">\(X_1,\cdot\cdot\cdot,X_n,\cdot\cdot\cdot\)</span> 独立同分布，<span class="arithmatex">\(P(X_i=1)=p=1-P(X_i=0),0&lt;p&lt;1\)</span>，令 <span class="arithmatex">\(S_n=X_1+\cdot\cdot\cdot+X_n\)</span> 表示 <span class="arithmatex">\(n\)</span> 次伯努利试验后 <span class="arithmatex">\(1\)</span> 出现的次数，则 <span class="arithmatex">\(\left\{S_n;n=0,1,\cdot\cdot\cdot,\right\}\)</span> 称为参数为 <span class="arithmatex">\(p\)</span> 的二项过程</li>
 </ul>
 <p>二项过程有以下几个特点：</p>
-<ol>
-<li>
-<p>平稳增量：对任何<span class="arithmatex">\(n&gt;m\geq0\)</span>，增量<span class="arithmatex">\(S_n-S_m \sim B(n-m,p)\)</span>，分布仅与时间差<span class="arithmatex">\(n-m\)</span>有关</p>
-</li>
-<li>
-<p>独立增量：对任何<span class="arithmatex">\(k \geq 3\)</span>，任何<span class="arithmatex">\(n_1&lt;n_2&lt;\cdot\cdot\cdot&lt;n_k\)</span>，有<span class="arithmatex">\(S_{n_2}-S_{n_1},S_{n_3}-S_{n_2},\cdot\cdot\cdot,S_{n_k}-S_{n_{k-1}}\)</span>相互独立</p>
-</li>
-<li>
-<p>Markov性：对任何<span class="arithmatex">\(n \geq 1\)</span>，任何状态<span class="arithmatex">\(i_1,i_2,\cdot\cdot\cdot,i_{n-1},i,j\)</span>有
-   $$
-   P(S_{n+1}=j|S_1=i_1,\cdot\cdot\cdot,S_{n-1}=i-1,S_n=i)=P(X_{n+1}=j-i|S_1=i_1,\cdot\cdot\cdot,S_{n-1}=i-1,S_n=i)\=P(X_{n+1}=j-i)=P(X_{n+1}=j-i|S_n=i)=P(S_{n+1}=j|S_n=i)
-   $$</p>
-</li>
-<li>
-<p><strong>独立增量过程</strong>与<strong>平稳增量过程</strong>：设<span class="arithmatex">\({X_t;t\in T}\)</span>是随机过程，<span class="arithmatex">\(T\)</span>为<span class="arithmatex">\(R\)</span>的子集，对<span class="arithmatex">\(t&gt;s\)</span>，称<span class="arithmatex">\(X_t-x_s\)</span>为此过程在时间区间<span class="arithmatex">\((s,t]\)</span>上的增量，则有</p>
-</li>
-</ol>
-<p>（1）对任何<span class="arithmatex">\(t&gt;s\)</span>，<span class="arithmatex">\(X_t-X_s\)</span>的分布仅与时间差<span class="arithmatex">\(t-s\)</span>有关，则称<span class="arithmatex">\(X\)</span>是平稳增量过程</p>
-<p>（2）如果对任何<span class="arithmatex">\(n \geq 3\)</span>，任何<span class="arithmatex">\(t_1&lt;t_2&lt;\cdot\cdot\cdot&lt;t_n\)</span>，<span class="arithmatex">\(X_{t_2}-X_{t_1},\cdot\cdot\cdot,X_{t_n}-X_{t_{n-1}}\)</span>相互独立，则称<span class="arithmatex">\(X\)</span>是独立增量过程</p>
-<p>（3）如果<span class="arithmatex">\(X\)</span>既是平稳增量过程，又是独立增量过程，则称<span class="arithmatex">\(X\)</span>是平稳独立增量过程</p>
+<p><br>
+1. 平稳增量：对任何 <span class="arithmatex">\(n&gt;m\geq0\)</span>，增量 <span class="arithmatex">\(S_n-S_m \sim B(n-m,p)\)</span>，分布仅与时间差 <span class="arithmatex">\(n-m\)</span> 有关</p>
+<p><br>
+2. 独立增量：对任何 <span class="arithmatex">\(k \geq 3\)</span>，任何 <span class="arithmatex">\(n_1&lt;n_2&lt;\cdot\cdot\cdot&lt;n_k\)</span>，有 <span class="arithmatex">\(S_{n_2}-S_{n_1},S_{n_3}-S_{n_2},\cdot\cdot\cdot,S_{n_k}-S_{n_{k-1}}\)</span> 相互独立</p>
+<p><br>
+3. Markov性：对任何 <span class="arithmatex">\(n \geq 1\)</span>，任何状态 <span class="arithmatex">\(i_1,i_2,\cdot\cdot\cdot,i_{n-1},i,j\)</span> 有</p>
+<div class="arithmatex">\[\begin{aligned}
+P(S_{n+1}=j|S_1=i_1,\cdot\cdot\cdot,S_{n-1}=i-1,S_n=i)=P(X_{n+1}=j-i|S_1=i_1,\cdot\cdot\cdot,S_{n-1}=i-1,S_n=i)
+\\=P(X_{n+1}=j-i)=P(X_{n+1}=j-i|S_n=i)=P(S_{n+1}=j|S_n=i)
+\end{aligned}\]</div>
+<ul>
+<li><strong>独立增量过程</strong>与<strong>平稳增量过程</strong>：设 <span class="arithmatex">\({X_t;t\in T}\)</span> 是随机过程，<span class="arithmatex">\(T\)</span> 为 <span class="arithmatex">\(R\)</span> 的子集，对 <span class="arithmatex">\(t&gt;s\)</span>，称 <span class="arithmatex">\(X_t-x_s\)</span> 为此过程在时间区间 <span class="arithmatex">\((s,t]\)</span> 上的增量，则有</li>
+</ul>
+<p>（1）对任何 <span class="arithmatex">\(t&gt;s\)</span>，<span class="arithmatex">\(X_t-X_s\)</span> 的分布仅与时间差 <span class="arithmatex">\(t-s\)</span> 有关，则称 <span class="arithmatex">\(X\)</span> 是平稳增量过程</p>
+<p>（2）如果对任何 <span class="arithmatex">\(n \geq 3\)</span>，任何 <span class="arithmatex">\(t_1&lt;t_2&lt;\cdot\cdot\cdot&lt;t_n\)</span>，<span class="arithmatex">\(X_{t_2}-X_{t_1},\cdot\cdot\cdot,X_{t_n}-X_{t_{n-1}}\)</span> 相互独立，则称 <span class="arithmatex">\(X\)</span> 是独立增量过程</p>
+<p>（3）如果 <span class="arithmatex">\(X\)</span> 既是平稳增量过程，又是独立增量过程，则称 <span class="arithmatex">\(X\)</span> 是平稳独立增量过程</p>
 <p><strong>独立增量过程的性质</strong>：</p>
-<p>设<span class="arithmatex">\(\left\{X(t);t\geq0\right\}\)</span>为独立增量过程，<span class="arithmatex">\(X(0)=0\)</span>，则有</p>
+<p>设 <span class="arithmatex">\(\left\{X(t);t\geq0\right\}\)</span> 为独立增量过程，<span class="arithmatex">\(X(0)=0\)</span>，则有</p>
 <ol>
-<li>有限维分布由增量<span class="arithmatex">\(X(t)-X(s)\)</span>的分布确定</li>
+<li>有限维分布由增量 <span class="arithmatex">\(X(t)-X(s)\)</span> 的分布确定</li>
 <li><span class="arithmatex">\(C_X(s,t)=D_X(\min(s,t))\)</span></li>
 </ol>
-<p>下面我们证明一下第二个性质：不妨设<span class="arithmatex">\(S\leq t\)</span>
-$$
-C_X(t,s)=Cov(X(t),X(s))=Cov(X(t),X(t)+(X(s)-X(t)))\=Cov(X(t),X(t))+Cov(X(t),X(s)-X(t))
-$$
-而因为<span class="arithmatex">\(X(t),X(s)-X(t)\)</span>是独立的，则有
-$$
+<p>下面我们证明一下第二个性质：不妨设 <span class="arithmatex">\(S\leq t\)</span></p>
+<div class="arithmatex">\[
+C_X(t,s)=Cov(X(t),X(s))=Cov(X(t),X(t)+(X(s)-X(t)))\\=Cov(X(t),X(t))+Cov(X(t),X(s)-X(t))
+\]</div>
+<p>而因为 <span class="arithmatex">\(X(t),X(s)-X(t)\)</span> 是独立的，则有</p>
+<div class="arithmatex">\[
 C_X(t,s)=Cov(X(t),X(t))=D_X(t)
-$$</p>
+\]</div>
 
 
 
@@ -1652,7 +1633,7 @@ $$</p>
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月29日 09:50:43 UTC"><span class="timeago" datetime="2025-06-29T09:50:43+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月29日 09:50:43 UTC">2025-06-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月30日 13:03:46 UTC"><span class="timeago" datetime="2025-06-30T13:03:46+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月30日 13:03:46 UTC">2025-06-30</span>
   </span>
 
     
@@ -1697,6 +1678,7 @@ $$</p>
         
       </main>
       
+  
         <footer class="md-footer">
   
   <div class="md-footer-meta md-typeset">
@@ -1714,7 +1696,27 @@ $$</p>
     </div>
   </div>
 </footer>
-      
+       
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <style>
+    .busuanzi-container {
+      text-align: center;
+      color: var(--md-meta-color);
+      font-size: 0.7rem;
+      padding-top: 1rem;
+    }
+  </style>
+  <div class="busuanzi-container">
+      <span id="busuanzi_container_site_pv" style="display:none">
+          本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+      </span>
+      &nbsp;&nbsp;
+      <span id="busuanzi_container_page_pv" style="display:none">
+          本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+  </div>
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
