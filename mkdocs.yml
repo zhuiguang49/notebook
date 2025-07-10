@@ -110,6 +110,7 @@ nav:
       - 'Chapter2 随机变量与分布函数': 'Math/概率论/概率论笔记（第二章）.md'
       - 'Chapter3 数字特征与特征函数': 'Math/概率论/概率论笔记（第三章）.md'
       - 'Chapter4 极限定理': 'Math/概率论/概率论笔记（第四章）.md'
+      - '极限定理': 'Math/概率论/极限定理.md'
   
     - '随机过程':
       - 'Chapter1 概率论复习': 'Math/随机过程/Chapter1 概率论复习.md'
@@ -119,4 +120,5 @@ nav:
       - 'Chapter5 分支过程': 'Math/随机过程/Chapter5 分支过程.md'
       - 'Chapter6 布朗运动': 'Math/随机过程/Chapter6 布朗运动.md'
       - 'Chapter7 平稳过程': 'Math/随机过程/Chapter7 平稳过程.md'
-
+    - 'Introdution to Optimization':
+      - 'Section1 Basics of Set-Constrained and Unconstrained Optimization': 'Math/Optimization/Introduction to optimization.md'

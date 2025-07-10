@@ -13,5 +13,5 @@
 ## About me
 
 - [My GitHub](https://github.com/zhuiguang49)
-- [My Gmail](mailto:zhuiguang49@foxmail.com) 
+- [My Foxmail](mailto:zhuiguang49@foxmail.com) 
 - [My ZJU Email](mailto:guangzhang@zju.edu.cn)
