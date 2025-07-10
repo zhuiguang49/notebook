@@ -10,13 +10,11 @@
         <meta name="author" content="追光">
       
       
-        <link rel="canonical" href="https://note.zhuiguang.tech/CS/OOP/Week10%20Copy%20and%20Move/">
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/Optimization/Introduction%20to%20optimization/">
       
       
-        <link rel="prev" href="../Week9%20Polymorphism/">
+        <link rel="prev" href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/">
       
-      
-        <link rel="next" href="../Week11%20Overloaded%20Operator/">
       
       
       <link rel="icon" href="../../../assets/logo.ico">
@@ -24,7 +22,7 @@
     
     
       
-        <title>Week10 Copy and Move - 追光的笔记本</title>
+        <title>Section1 Basics of Set-Constrained and Unconstrained Optimization - 追光的笔记本</title>
       
     
     
@@ -79,11 +77,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#copyingcopy-constructor" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -113,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Week10 Copy and Move
+              Section1 Basics of Set-Constrained and Unconstrained Optimization
             
           </span>
         </div>
@@ -237,21 +230,17 @@
         
   
   
-    
-  
   
     
     
       
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../Week1%20Using%20Object/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
           
   
   Computer Science
@@ -268,17 +257,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
           
   
   Math
@@ -360,28 +353,23 @@
       
   
   
-    
   
   
-  
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -392,7 +380,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Computer Science
@@ -403,8 +391,6 @@
                 
   
   
-    
-  
   
   
     
@@ -414,11 +400,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -432,7 +418,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             OOP
@@ -446,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week1%20Using%20Object/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -467,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week2%20Grouping%20Object/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -488,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week3%20Class/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -509,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week4%265%20Inside%20Object/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -530,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week6%20Inside%20Class/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -551,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week7%20Composition/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -572,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week8%20Inheritance/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -593,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week9%20Polymorphism/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -611,28 +597,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Week10 Copy and Move
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -641,93 +609,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#copyingcopy-constructor" class="md-nav__link">
-    <span class="md-ellipsis">
-      拷贝(Copying)与拷贝构造函数(Copy Constructor)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="拷贝(Copying)与拷贝构造函数(Copy Constructor)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      拷贝
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      拷贝构造函数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      拷贝构造函数何时被调用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructionassignment" class="md-nav__link">
-    <span class="md-ellipsis">
-      构造(Construction)和赋值(Assignment)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      函数参数和返回值
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      移动构造函数
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -740,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week11%20Overloaded%20Operator/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -761,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week12%20Template/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -782,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week13%20Exception/" class="md-nav__link">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -815,23 +696,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -842,7 +728,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Math
@@ -894,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -915,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -936,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -957,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -978,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1045,7 +931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1066,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1087,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1108,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1129,7 +1015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1150,7 +1036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1171,7 +1057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1197,6 +1083,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1206,11 +1094,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -1224,7 +1112,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Introdution to Optimization
@@ -1235,10 +1123,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../Math/Optimization/Introduction%20to%20optimization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1247,6 +1142,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1285,83 +1181,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#copyingcopy-constructor" class="md-nav__link">
-    <span class="md-ellipsis">
-      拷贝(Copying)与拷贝构造函数(Copy Constructor)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="拷贝(Copying)与拷贝构造函数(Copy Constructor)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      拷贝
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      拷贝构造函数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      拷贝构造函数何时被调用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructionassignment" class="md-nav__link">
-    <span class="md-ellipsis">
-      构造(Construction)和赋值(Assignment)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      函数参数和返回值
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      移动构造函数
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1379,94 +1198,9 @@
   
 
 
-  <h1>Week10 Copy and Move</h1>
+  <h1>Section1 Basics of Set-Constrained and Unconstrained Optimization</h1>
 
-<h2 id="copyingcopy-constructor">拷贝(Copying)与拷贝构造函数(Copy Constructor)<a class="headerlink" href="#copyingcopy-constructor" title="Permanent link">&para;</a></h2>
-<h3 id="_1">拷贝<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>拷贝指的是从现有对象创建新对象的副本，比如常见的值传递、初始化等等都是这么进行的，可以看下面这个例子：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">Currency</span><span class="w"> </span><span class="n">p</span><span class="p">){</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;X=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">dollars</span><span class="p">();</span><span class="w"> </span><span class="cm">/* 这里函数func接受一个Currency类型的参数p，以值传递的方式传递；</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">    而值传递就意味着参数p是调用者传入对象的一个副本，并非原始对象*/</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
-</code></pre></div>
-<p>由于是值传递，在调用<code>func</code>的时候，C++会为<code>p</code>创建一个新对象，通过<code>Currency</code>类的拷贝构造函数（如果没有定义的话，就会使用编译器生成的默认拷贝构造函数）从传入的对象拷贝数据，拷贝构造函数的典型签名是<code>Currency::Currency(const Currency&amp;)</code>，这里的<code>const Currency &amp;</code>是常量引用，避免不必要的拷贝且允许临时对象</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Currency</span><span class="w"> </span><span class="nf">bucks</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">func</span><span class="p">(</span><span class="n">bucks</span><span class="p">);</span>
-</code></pre></div>
-<p>创建了一个<code>Currency</code>对象<code>bucks</code>，<code>func(bucks)</code>调用<code>func</code>，将<code>bucks</code>作为参数传递，由于<code>func</code>使用值传递，C++会调用<code>Currency</code>的拷贝构造函数，基于<code>bucks</code>创建一个新对象<code>p</code>，<code>p</code>是<code>bucks</code>的副本，包含相同的数据，但是位于不同的内存地址。</p>
-<h3 id="_2">拷贝构造函数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>拷贝构造函数的典型签名是<code>T::T(const T&amp;)</code>，用于实现拷贝。需要注意的是，拷贝构造函数的<strong>第一个参数必须是同类对象的引用</strong>，并且<strong>无返回类型</strong>，像以下几个都是不对的：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">MyClass</span><span class="o">&amp;</span><span class="p">(</span><span class="n">MyClass</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">MyClass</span><span class="p">(</span><span class="n">Myclass</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">MyClass</span><span class="p">(</span><span class="n">Myclass</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">);</span>
-</code></pre></div>
-<p>第一个有返回类型，故错误；第二个参数按值传递，调用自身会导致无限递归，也错误；第三个参数是指针，而拷贝构造函数要求引用类型。</p>
-<p>如果我们没有显式定义拷贝构造函数的话，编译器会自动生成<strong>逐成员</strong>的拷贝构造函数（我们称之为<strong>默认拷贝构造函数</strong>），但是这样的拷贝构造函数是存在一定风险的，如果<strong>类包含指针，那么就可能导致浅拷贝（指针共享内存）</strong>，这会导致比较严重的内存问题。比如我们看下面这个例子：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">{</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">public</span><span class="o">:</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Person</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Person</span><span class="p">();</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">();</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">private</span><span class="o">:</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
-</code></pre></div>
-<p>对于这个例子来说，如果<code>Person</code>类没有定义拷贝构造函数的话，那么编译器生成的默认拷贝构造函数就会直接拷贝<code>name</code>指针的值，结果是两个<code>name</code>对象（原对象和副本）的<code>name</code>指针指向同一块内存（浅拷贝），那么就会导致当其中一个对象被销毁的时候，其析构函数已经释放了<code>name</code>指向的内存，此时另一个对象的<code>name</code>指针就会变成<strong>悬空指针（指向已释放的内存）</strong>，后续访问或释放会导致未定义行为。</p>
-<p>这里有必要先简单介绍一下拷贝的两种类型——<strong>浅拷贝</strong>和<strong>深拷贝</strong>，浅拷贝是在拷贝指针；而深拷贝是拷贝整个数据块。具体来说，浅拷贝仅仅拷贝了指针的值，新对象和原对象的指针指向的是同一块内存，这样会导致内存共享，析构时可能双重释放或产生悬空指针；深拷贝则是为新对象分配新内存，并复制指针指向的数据。</p>
-<h3 id="_3">拷贝构造函数何时被调用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>对象初始化</strong>：即使用现有对象初始化新对象的时候，如下面的例子：</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_a</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baby_a</span><span class="p">;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">Person</span><span class="w"> </span><span class="nf">baby_c</span><span class="p">(</span><span class="n">baby_a</span><span class="p">);</span>
-</code></pre></div>
-<p>无论是用<code>=</code>还是括号进行初始化，都会调用拷贝构造函数</p>
-<ol>
-<li><strong>值传递</strong>：函数参数按值传递的时候会调用拷贝构造函数，比如下面的例子：</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">roster</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">child</span><span class="p">){...}</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_a</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">roster</span><span class="p">(</span><span class="n">baby_a</span><span class="p">);</span><span class="w"> </span><span class="c1">// 拷贝构造函数调用</span>
-</code></pre></div>
-<ol>
-<li><strong>函数返回对象：</strong>函数返回对象（非引用）的时候，可能触发拷贝构造函数（尽管编译器可能做一些优化，如RVO），比如下面这个例子：</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Person</span><span class="w"> </span><span class="nf">copy_func</span><span class="p">(){</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="n">local</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">local</span><span class="p">;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="constructionassignment">构造(Construction)和赋值(Assignment)<a class="headerlink" href="#constructionassignment" title="Permanent link">&para;</a></h3>
-<ul>
-<li>每个对象只会被构造一次（通过构造函数或者拷贝构造函数等）</li>
-<li>每个对象只会被销毁一次（通过析构函数），如果没有正确调用<code>delete</code>，则可能导致内存泄漏；如果多次调用<code>delete</code>，则可能导致未定义行为</li>
-<li>一旦对象构造完成之后，就可以被多次赋值（通过赋值运算符<code>=</code>），这与构造是不同的过程</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Tip</p>
-<p>最后我们总结一下拷贝构造函数的几个小tips：</p>
-<ul>
-<li>如果类中没有指针成员，我们通常不需要显式地去定义拷贝构造函数，这是因为默认拷贝构造函数（逐成员的）就已经足够了</li>
-<li>通常情况下我们最好显式地定义拷贝构造函数，以确保行为是符合预期的</li>
-<li>不要依赖编译器生成的默认拷贝构造函数，最好自己编写拷贝构造函数，尤其是当类涉及到动态分配的资源（比如指针）的时候，以避免浅拷贝导致的问题</li>
-<li>如果类不需要拷贝构造函数，我们可以在类中声明一个私有的拷贝构造函数（不提供定义），这会阻止编译器生成默认拷贝构造函数，并且如果我们尝试按值传递对象的话，编译器会报错</li>
-</ul>
-</div>
-<h3 id="_4">函数参数和返回值<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>参数的传入方式有三种：</p>
-<ul>
-<li><code>void f(Student i)</code>，即按值传递，会调用拷贝构造函数创建新对象<code>i</code>，开销比较大</li>
-<li><code>void f(Student *p)</code>，即传递指针，允许操作指向的对象或动态分配的对象，但是需要手动管理内存</li>
-<li><code>void f(Student &amp;p)</code>，即按引用传递，直接操作传入的对象，避免拷贝带来的开销（如果不修改的话可以用<code>Const Student&amp; p</code>，这样既可以防止函数修改传入的对象，同时也能避免拷贝）</li>
-</ul>
-<p>返回值的方式也有对应的三种：</p>
-<ul>
-<li><code>Student f()</code>，返回一个新对象，会调用拷贝构造函数。适合返回独立的对象，但是可能有拷贝开销。</li>
-<li><code>Student* f()</code>，返回指向<code>Student</code>的指针，但是我们需要负责释放内存，很容易导致内存泄漏或者悬空指针。</li>
-<li><code>Student &amp;f()</code>，返回引用，通常引用函数内部的局部对象或传入的对象。<strong>返回局部对象的引用会导致未定义行为。</strong></li>
-</ul>
-<h2 id="_5">移动构造函数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+
 
 
 
@@ -1487,7 +1221,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 08:39:22 UTC"><span class="timeago" datetime="2025-06-28T08:39:22+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 08:39:22 UTC">2025-06-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年7月10日 06:18:32 UTC"><span class="timeago" datetime="2025-07-10T06:18:32+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月10日 06:18:32 UTC">2025-07-10</span>
   </span>
 
     
