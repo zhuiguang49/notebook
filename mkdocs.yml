@@ -101,8 +101,10 @@ nav:
       - 'Week11 Overloaded Operator': 'CS/OOP/Week11 Overloaded Operator.md'
       - 'Week12 Template': 'CS/OOP/Week12 Template.md'
       - 'Week13 Exception': 'CS/OOP/Week13 Exception.md'
-
-
+    - 'CS61B':
+      - 'Introduction': 'CS/CS61B/index.md'
+      - 'Chapter1 Java Basics': 'CS/CS61B/Chapter1 Java Basic.md'
+      - 'Chapter2 Lists': 'CS/CS61B/Chapter2 Lists.md'
 
   - 'Math': 
     - '概率论': 
@@ -119,6 +121,4 @@ nav:
       - 'Chapter4 Markov链': 'Math/随机过程/Chapter4 Markov链.md'
       - 'Chapter5 分支过程': 'Math/随机过程/Chapter5 分支过程.md'
       - 'Chapter6 布朗运动': 'Math/随机过程/Chapter6 布朗运动.md'
-      - 'Chapter7 平稳过程': 'Math/随机过程/Chapter7 平稳过程.md'
-    - 'Introdution to Optimization':
-      - 'Section1 Basics of Set-Constrained and Unconstrained Optimization': 'Math/Optimization/Introduction to optimization.md'
+      - 'Chapter7 平稳过程': 'Math/随机过程/Chapter7 平稳过程.md'   
