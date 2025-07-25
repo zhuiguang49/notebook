@@ -2,132 +2,147 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://note.zhuiguang.tech/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://note.zhuiguang.tech/CS/CS61B/</loc>
+         <lastmod>2025-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://note.zhuiguang.tech/CS/CS61B/Chapter1%20Java%20Basic/</loc>
+         <lastmod>2025-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://note.zhuiguang.tech/CS/CS61B/Chapter2%20Lists/</loc>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week1%20Using%20Object/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week10%20Copy%20and%20Move/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week11%20Overloaded%20Operator/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week12%20Template/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week13%20Exception/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week2%20Grouping%20Object/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week3%20Class/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week4%265%20Inside%20Object/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week6%20Inside%20Class/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week7%20Composition/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week8%20Inheritance/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/CS/OOP/Week9%20Polymorphism/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/Optimization/Introduction%20to%20optimization/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://note.zhuiguang.tech/Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/</loc>
-         <lastmod>2025-07-10</lastmod>
+         <lastmod>2025-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
