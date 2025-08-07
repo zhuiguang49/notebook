@@ -101,10 +101,11 @@ nav:
       - 'Week11 Overloaded Operator': 'CS/OOP/Week11 Overloaded Operator.md'
       - 'Week12 Template': 'CS/OOP/Week12 Template.md'
       - 'Week13 Exception': 'CS/OOP/Week13 Exception.md'
-    - 'CS61B':
+    - 'CS61B':  
       - 'Introduction': 'CS/CS61B/index.md'
       - 'Chapter1 Java Basics': 'CS/CS61B/Chapter1 Java Basic.md'
       - 'Chapter2 Lists': 'CS/CS61B/Chapter2 Lists.md'
+      - 'Chapter3 OOP in Java': 'CS/CS61B/Chapter3 OOP in Java.md'
 
   - 'Math': 
     - '概率论': 
