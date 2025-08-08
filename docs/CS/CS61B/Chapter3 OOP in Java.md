@@ -1107,3 +1107,261 @@ public class ArraySet<T> implements Iterable<T> {
 }
 ```
 
+### Object Methods
+
+All classes inherit from the overarching（首要的，支配一切的） Object class. The methods that are inherited are as follows:
+
+- `String toString()`
+- `boolean equals(Object obj)`
+- `Class<?> getClass()`
+- `int hashCode()`
+- `protected Objectclone()`
+- `protected void finalize()`
+- `void notify()`
+- `void notifyAll()`
+- `void wait()`
+- `void wait(long timeout)`
+- `void wait(long timeout, int nanos)`
+
+We are going to focus on the first two in this chapter. We will take advantages of inheritance to override these two methods in our classes to behave in the ways we want them to.
+
+#### toString()
+
+The `toString()` method provides a string representation of an object. The `System.out.println()` function implicitly calls this method on whatever object is passed to it and prints the string returned. In other words, when we run `System.out.println(dog)`, it is actually doing this:
+
+```java
+String s = dog.toString();
+System.out.println(s);
+```
+
+The default `object` class 's `toString()` methods returns the location of the object in memory in the form of a hexadecimal string. Classes like ArrayList and Java arrays have their own overriden versions of the `toString()` method. That is why, when we were working with and writing tests for ArrayList, errors would always return the list in a nice format like `(1,2,3,4)`, instead of returning the memory location.
+
+For classes that we've written by ourselves like `ArrayDeque`,`LinkedListDeque`, etc, we need to provide our own `toString()` method if we want to be able to see the objects printed in a readable format.
+
+Let's try to write this method for an `ArraySet` class. 
+
+```java
+import java.util.Iterator;
+
+public class ArraySet<T> implements Iterable<T> {
+    private T[] items;
+    private int size; // the next item to be added will be at position size
+
+    public ArraySet() {
+        items = (T[]) new Object[100];
+        size = 0;
+    }
+
+    /* Returns true if this map contains a mapping for the specified key.
+     */
+    public boolean contains(T x) {
+        for (int i = 0; i < size; i += 1) {
+            if (items[i].equals(x)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /* Associates the specified value with the specified key in this map.
+       Throws an IllegalArgumentException if the key is null. */
+    public void add(T x) {
+        if (x == null) {
+            throw new IllegalArgumentException("can't add null");
+        }
+        if (contains(x)) {
+            return;
+        }
+        items[size] = x;
+        size += 1;
+    }
+
+    /* Returns the number of key-value mappings in this map. */
+    public int size() {
+        return size;
+    }
+
+    /** returns an iterator (a.k.a. seer) into ME */
+    public Iterator<T> iterator() {
+        return new ArraySetIterator();
+    }
+
+    private class ArraySetIterator implements Iterator<T> {
+        private int wizPos;
+
+        public ArraySetIterator() {
+            wizPos = 0;
+        }
+
+        public boolean hasNext() {
+            return wizPos < size;
+        }
+
+        public T next() {
+            T returnItem = items[wizPos];
+            wizPos += 1;
+            return returnItem;
+        }
+    }
+
+    @Override
+    public String toString() {
+        /* hmmm */
+    }
+
+
+    @Override
+    public boolean equals(Object other) {
+        /* hmmm */
+    }
+
+    public static void main(String[] args) {
+        ArraySet<Integer> aset = new ArraySet<>();
+        aset.add(5);
+        aset.add(23);
+        aset.add(42);
+
+        //iteration
+        for (int i : aset) {
+            System.out.println(i);
+        }
+
+        //toString
+        System.out.println(aset);
+
+        //equals
+        ArraySet<Integer> aset2 = new ArraySet<>();
+        aset2.add(5);
+        aset2.add(23);
+        aset2.add(42);
+
+        System.out.println(aset.equals(aset2));
+        System.out.println(aset.equals(null));
+        System.out.println(aset.equals("fish"));
+        System.out.println(aset.equals(aset));
+}
+```
+
+Our mission is to write the `toString()` method so that when we print an ArraySet, it prints the elements separated by commas inside of curly braces. And remember the `toString()` method should return a string.
+
+```java
+public String toString() {
+    String returnString = "{";
+    for (int i = 0; i < size; i += 1) {
+        returnString += keys[i];
+        returnString += ", ";
+    }
+    returnString += "}";
+    return returnString;
+}
+```
+
+Although this solution seems simple and elegant, it is actually very naive. This is because when we use string concatenation in Java like so:`returnString += keys[i]`, **we are actually creating an entirely new string, which is incredibly inefficient because creating a new string object takes time too.** Specifically, linear in the length of the string.（创建字符串对象的时间与字符串的长度呈线性关系）
+
+To remedy this, Java has a special class called `StringBuilder`. It creates a string object that is mutable（可变的）, so we can continue appending to the same string object instead of creating a new one each time.
+
+```java
+public String tostring(){
+    StringBuilder returnSB = new StringBuilder("{");
+    for(int i = 0; i < size - 1; i += 1){
+        returnSB.append(items[i].toString());
+        returnSB.append(", ");
+    }
+    returnSB.append(items[size - 1]);
+    returnSB.append("}");
+    return returnSB.toString();
+}
+```
+
+Next we will override another important object method: `equals()`
+
+#### equals()
+
+**`equals()` and `==` have different behaviors in Java**. 
+
+`==` checks if two objects are actually the same object in memory, or in other words, checks if two boxes hold the same thing. More precisely, for primitive types, `==` compares their value, for objects or reference types, `==` compares their address.
+
+As for `equals(Object o)`, it is a method in the Object that, **by default, acts like `==`, checks if the memory of `this` is the same as `o`**. However, we can override it to define equality in whichever way we wish. For example, for two ArrayLists to be considered equal, they just need to have the same elements in the same order.
+
+So let's write an equals method for the ArraySet class.
+
+```java
+public boolean equals(Object other){
+    if(this == other){
+        return true;
+    }
+    if(other == null){
+        return false;
+    }
+    if(other.getClass() != this.getClass()){ // 必须是完全相同的类
+        return false;
+    }
+    ArraySet<T> o = (ArraySet<T>) other;
+    if(o.size() != this.size()){
+        return false;
+    }
+    
+    for(T item : this){
+        if(!o.contains(item)){
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+However, we can see that the method above is too verbose that we have to do lots of checks. So is there any solution that we can make the method more concise. The answer is `instanceof`!
+
+The instanceof keyword is very powerful in Java. Let's see a demo:
+
+```java
+@Override public boolean equals(Object o){
+    if(o instanceof Dog uddaDog){
+        return this.size == uddaDog.size;
+    }
+    return false;
+}
+```
+
+And the implementation using `instanceof` maybe
+
+```java
+@Override
+public boolean equals(Object other){
+    if(this == other){
+        return true;
+    }
+    if(other instanceof ArraySet otherSet){
+        if(this.size != otherSet.size){
+            return false;
+        }
+        for(T x : this){
+            if(!otherSet.contains(x)){
+                return false'
+            }
+        }
+        return true;
+    }
+    return false;
+}
+```
+
+`instanceof ` 是 Java 的运行时类型检查运算符，用于判断一个对象是否是某个类（或接口、父类）的实例，返回 boolean 值，其规则如下：
+
+```java
+object instanceof type
+```
+
+- 若 `object` 为 `null`，结果为 `false`
+- 若 `type` 是 `object` 的类、父类、接口，则返回 `true`，否则返回 `false`
+
+!!! note "Tip"
+
+    **Rules for Equals in Java**: When overriding a `.equals()` method, it may sometimes be trickier than it seems. A couple of rules to adhere to while implementing `.equals()` method are as follows:
+    
+    - `equals` must be an equivalence relation, in other words, reflexive, symmetric, transitive.
+    - It must take an Object argument, in order to override the original `.equals()` method.
+    - It must be consistent if `x.equals(y)`, then as long as `x` and `y` remain unchanged: `x` must continue to equal `y`
+    - It is never true for null, `x.equals(null)` must be false.
+
+
