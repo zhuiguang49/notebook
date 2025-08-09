@@ -25,6 +25,12 @@ In Java, in order to express this hierarchy, we need to do two things:
 - Define a type for the general list hypernym
 - Specify tat SLList and AList are hyponyms of that type 
 
+There are two kinds of hierarchies like this, Interface inheritance and Implementation inheritance. 
+
+### Interface inheritance
+
+Interface Inheritance refers to a relationship in which a subclass inherits all the methods/behaviors of the superclass. The interface includes all the method signatures, but not implementations. It's up to the subclass to actually provide those implementations.
+
 The new class List61B is what Java calls an **interface**. It is essentially a contract that specifies what a list must be able to do, but it doesn't provide any implementation for those behaviors. Here is our List61B interface. At this point, we have satisfied the first step in establishing the relationship hierarchy: creating a hypernym.
 
 ```java
@@ -52,7 +58,7 @@ public class AList<Item> implements List61B<Item>{...}
 
 `implements List61B<Item>` is essentially a promise. 
 
-### Overriding
+#### Overriding
 
 When implementing the required functions in the subclass, it's useful to include the `@Override` tag right on the top of the method signature. For instance,
 
@@ -65,30 +71,9 @@ public void addFirst(Item x){
 
 Even if we don't include this tag, we are still overriding the method. So technically, we don't have to include it. However, including the tag acts as a safeguard for us by alerting the compiler that we intend to override this method.
 
-### Interface inheritance
 
-Interface Inheritance refers to a relationship in which a subclass inherits all the methods/behaviors of the superclass. The interface includes all the method signatures, but not implementations. It's up to the subclass to actually provide those implementations.
 
-### GRoE
-
-Let's try to apply the Golden Rule of Equals we introduced in the first chapter to subclass and superclass.
-
-whenever we make an assignment `a=b`，we copy the bits from b into a, which requires that b is the same type as a, we can't assign `Dog b = 1` or `Dog b = new Cat()` because they are not the same type.
-
-What's more, the relationship between superclass and subclass is "is-a",so we can make assignment.
-
-Consider the code below, will it compile successfully?
-
-```java
-public static void main(String[] args){
-    List61B<String> someList = new SLList<String>();
-    SomeList.addFirst("elk");
-}
-```
-
-Actually, it will compile, though `someList` is declared as `List61B` type, but its dynamic type is `SLList`，so the statement `SomeList.addFirst("elk")` will actually call the method `addFirst` overridden in `SLList`.
-
-### Implementation Inheritance
+#### `default` keyword
 
 Previously, we had an interface List61B that only had method headers identifying **what** List61B's should to. But now, we will see that we can actually write methods in List61B that already have their implementations filled out. These methods identify how hypernyms of List61B should behave.
 
@@ -117,6 +102,40 @@ public void print(){
 ```
 
 Now, whenever we call `print()` on an SLList, it will call this method instead of the one in `List61B`.
+
+### Implementation Inheritance
+
+Implementation Inheritance(class inheritance) uses the `extends` keyword.
+
+```java
+public class Dog extends Animal{
+
+}
+```
+We will give detailed introduction later at `Extends` chapter.
+
+### GRoE
+
+Let's try to apply the Golden Rule of Equals we introduced in the first chapter to subclass and superclass.
+
+whenever we make an assignment `a=b`，we copy the bits from b into a, which requires that b is the same type as a, we can't assign `Dog b = 1` or `Dog b = new Cat()` because they are not the same type.
+
+What's more, the relationship between superclass and subclass is "is-a",so we can make assignment.
+
+Consider the code below, will it compile successfully?
+
+```java
+public static void main(String[] args){
+    List61B<String> someList = new SLList<String>();
+    SomeList.addFirst("elk");
+}
+```
+
+Actually, it will compile, though `someList` is declared as `List61B` type, but its dynamic type is `SLList`，so the statement `SomeList.addFirst("elk")` will actually call the method `addFirst` overridden in `SLList`.
+
+
+
+
 
 ### Static type and Dynamic type
 
@@ -158,45 +177,6 @@ When Java runs a method that is overridden, it searches for the appropriate meth
     The first call to `peek()` will use the second peek method that takes in an SLList. The second call to `peek()` will use the first peek method which takes in a List61B.
 
 
-    **Interface Inheritance（接口继承）**
-
-    接口继承是指子类继承父类（接口）的所有方法签名，但是不继承实现，子类需要自行提供方法的具体实现。
-
-    其具体方法如下：
-
-    1. 我们首先用 `interface` 关键字定义一个接口（如 `List61B` ）作为通用父类（超类），仅包含方法签名，不提供实现，这相当于一份“契约”，规定子类必须具备的行为
-
-    ```java
-    public interface List61B<Item>{
-        public void addFirst(Item x);
-        public void addLast(Item y);
-        public Item getFirst();
-        // 其他方法
-    }
-    ```
-
-    2. 子类通过 `implements` 关键字实现该接口，并承诺实现接口中的所有方法，例如`AList` 和 `SLList` 实现 `List61B`
-
-    ```java
-    public class AList<Item> implements List61B{...}
-    public class SLList<Item> implements List61B{...}
-    ```
-
-    需要注意的时，子类必须重写接口中的所有方法，否则会产生编译错误，我们也可以使用 `@Override` 注解标记重写的方法，帮助编译器检查错误（比如方法名拼写错误）。如果存在多层接口继承关系，子类会继承所有上层接口的方法签名，比如，若 `List61B` 继承自 `Collection61B`，则 `AList` 也会继承 `Collection61B` 的方法
-
-    **Implementation Inheritance（实现继承）**
-
-    实现继承是指不仅继承父类的方法签名，还继承方法的具体实现。父类提供默认实现，子类可以选择重写或直接使用。
-
-    其具体方法如下：我们需要在父类的接口中通过 `default` 关键字为方法提供默认实现，子类若不重写，则使用默认实现；若重写，则使用子类自己的实现。
-
-    需要注意的是，在调用重写的方法时，Java 编译器会根据对象的动态类型选择对应的实现，例如：
-
-    ```java
-    List61B<String> lst = new SLList<String>();
-    lst.print(); // 实际调用的是 SLList 的 print 方法，而非 List61B 的 print 方法
-    ```
-
 
 Finally, Implementation inheritance may sound nice and all but there are some drawbacks:
 
@@ -208,7 +188,7 @@ Finally, Implementation inheritance may sound nice and all but there are some dr
 
 ### Extends
 
-Now we've seen how we can use the `implements` keyword to define a hierarchical relationship with interfaces(`implements` 建立的是类与接口的层级关系). What if we wanted to define a hierarchical relationship between classes（我们希望在类与类之间定义层级关系）?
+Now we've seen how we can use the `implements` keyword to define a hierarchical relationship with interfaces(`implements` 建立的是类与接口的层级关系). What if we wanted to define a hierarchical relationship between classes（我们希望在类与类之间定义层级关系）? This is called Implementation Inheritance.
 
 Suppose we want to build a RotatingSLList that has the same functionality as the SLList like `addFirst`, `size` and so on, but with an additional rotateRight operation to bring the last item to the front of the list. One way we could do this would be to copy and paste all the methods from SLList and write `rotateRight` on top of it all - but then we would't be taking advantage of the power of inheritance! Remember that inheritance allows subclasses to reuse code from an already defined class. So we have the idea to define our RotatingSLList class to inherit from SLList.
 
