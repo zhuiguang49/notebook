@@ -106,6 +106,8 @@ nav:
       - 'Chapter1 Java Basics': 'CS/CS61B/Chapter1 Java Basic.md'
       - 'Chapter2 Lists': 'CS/CS61B/Chapter2 Lists.md'
       - 'Chapter3 OOP in Java': 'CS/CS61B/Chapter3 OOP in Java.md'
+      - 'Chapter4 数据结构和算法概述': 'CS/CS61B/Chapter4 数据结构和算法概述.md'
+      - 'Chapter5 并查集': 'CS/CS61B/Chapter5 并查集.md'
 
   - 'Math': 
     - '概率论': 
