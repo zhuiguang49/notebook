@@ -13,6 +13,7 @@
 6. Java variables must have a specific type
 7. Java variable types can never change
 8. In Java, types are verified before the code runs! If there are type issues, the code will not compile
+9. A `.java` file can contain multiple classes, but there can be at most one public class. Non-public classes can be placed in the same file, but they do not affect the file name.
 
 !!! note "Tip"
 
