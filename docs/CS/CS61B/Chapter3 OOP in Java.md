@@ -1345,3 +1345,273 @@ object instanceof type
     - It is never true for null, `x.equals(null)` must be false.
 
 
+??? Tip "补充"
+
+    这一部分的 `Comparable`、`Comparator`、`Iterable` 和 `Iterator` 有点抽象，下面再来详细总结总结其内容。
+
+    我们先看 `Comparable` 接口和 `Comparator` 接口
+
+    **`Comparable` 接口**：
+
+    其位于 `java.lang` 包中，定义对象的**自然排序(Natural Ordering)**，实现 `Comparable` 的类通过 `compareTo(T o)` 方法来指定对象之间的比较规则。其适用于类需要一个固定的、默认的排序方式的时候，比如 `String` 和 `Integer` 都实现了 `Comparable`，所以它们可以直接排序，我们在为其他类实现 `Comparable` 接口也可以利用 `String` 和 `Integer` 的排序来辅助。实现 `Comparable` 接口是需要修改类的代码来实现的。
+
+    **`Comparator` 接口**：
+
+    其位于 `java.util` 包中，主要包含一个方法 `int compare(T o1, T o2)`，用于定义**外部的、自定义的**排序规则。其通过 `compare(T o1,T o2)` 方法定义两个对象间的比较逻辑，而无需修改原始类的代码。
+
+    `Comparable` 和 `Comparator` 的核心作用是**定义比较规则**，其往往会和 `Collections.sort()` 和 `Arrays.sort()` 等配合使用，这两种 `sort()` 方法都依赖于对象的比较逻辑，也就是 `Comparable` 和 `Comparator` 提供的功能。`Collections.sort()` 位于 `java.util.Collections` 类中，用于对 `Lists` 集合进行排序，其有两种重载方法：
+
+    ```java
+    void sort(List<T> list); // 使用自然排序，需要元素实现 Comparable
+    void sort(List<T> list, Comparator<? superT> c); // 使用自定义的 Comparator，这个比较器表示可以接受 T 类型或 T 的父类类型的对象进行比较 
+    ```
+
+    而 `Arrays.sort()` 位于 `java.util.Arrays` 类中，用于对数组进行排序，其有多重重载方法，常见的有：
+
+    ```java
+    void sort(Object[] a); // 使用自然排序，需要元素实现 Comparable
+    void sort(T[] a, Comparator<? super T> c); // 使用自定义 Comparator
+    ```
+
+    下面我们来看 `Comparable` 接口和 `Comparator` 接口的示例：
+    假设现在我们有一个 `Employee` 类，我们需要按薪资 `salary` 升序排序
+
+    ```java
+    import java.util.*;
+
+    class Employee implements Comparable<Employee> {
+    private String name;
+    private double salary;
+
+    public Employee(String name, double salary) {
+    this.name = name;
+    this.salary = salary;
+    }
+
+    @Override
+    public int compareTo(Employee other) { // 这里我们需要修改 Employee 类的代码，提供 compareTo 方法的实现
+    // 使用 Double.compare 比较薪资，避免直接减法可能导致的精度问题
+    return Double.compare(this.salary, other.salary);
+    }
+
+    @Override
+    public String toString() {
+    return name + " ($" + salary + ")";
+    }
+
+    public static void main(String[] args) {
+    List<Employee> employees = new ArrayList<>();
+    employees.add(new Employee("Alice", 50000));
+    employees.add(new Employee("Bob", 75000));
+    employees.add(new Employee("Charlie", 45000));
+
+    // 使用 Collections.sort() 按自然排序（薪资）
+    Collections.sort(employees);
+    System.out.println("按薪资排序: " + employees);
+
+    // 数组排序
+    Employee[] empArray = new Employee[] {
+        new Employee("David", 60000),
+        new Employee("Eve", 80000),
+        new Employee("Frank", 55000)
+    };
+    Arrays.sort(empArray);
+    System.out.println("数组按薪资排序: " + Arrays.toString(empArray));
+    }
+    }
+    ```
+
+    下面我们再来看 `Comparator` 接口的示例，`Comparator` 接口用于定义外部自定义排序，无需修改类代码，适合多种排序规则，其使用方法主要是配合 `Collections.sort()` 方法和 `Arrays.sort()` 的另一种重载方法，创建一个 `Comparator` 提供给 `sort()` 方法，下面我们来看如何创建 `Comparator`：
+
+    我们以一个 `Person` 类为例，包含 `name` 和 `age` 字段，展示如何创建 `Comparator` 来按年龄升序、名字字母顺序等排序
+
+    ```java
+    class Person{
+        private String name;
+        private int age;
+
+        public Person(String name, int age){
+        this.name = name;
+        this.age = age;
+        }
+
+        public String getName(){
+        return this.name;
+        }
+
+        public int getAge(){
+        return this.age;
+        }
+
+        @Override
+        public String toString(){
+        return name + "(" + age + ")";
+        }
+    }
+    ```
+    <br>
+    1. 使用 Lambda 表达式，这适用于 Java 8+。其步骤是
+
+    - 使用 Lambda 表达式定义 `(o1, o2) -> {比较逻辑}`，这里的比较逻辑本质上就是对 `Comparator` 接口中 `compare` 方法的实现
+
+    - 在 `compare` 方法中，使用 `Integer.compare`、`Double.compare` 或其他对象的 `compareTo` 方法返回比较结果
+
+    - 直接将 Lambda 表达式赋值给 `Comparator<T>` 变量，或作为参数传递给排序方法。
+
+    下面我们来看一个具体的例子：
+
+    ```java
+    import java.util.*;
+
+    public class ComparatorExample {
+        public static void main(String[] args) {
+            List<Person> people = new ArrayList<>();
+            people.add(new Person("Alice", 25));
+            people.add(new Person("Bob", 20));
+            people.add(new Person("Charlie", 30));
+
+            // Comparator 1: 按年龄升序
+            Comparator<Person> ageComparator = (p1, p2) -> Integer.compare(p1.getAge(), p2.getAge());
+            Collections.sort(people, ageComparator);
+            System.out.println("按年龄升序: " + people);
+
+            // Comparator 2: 按名字字母顺序
+            Comparator<Person> nameComparator = (p1, p2) -> p1.getName().compareTo(p2.getName());
+            Collections.sort(people, nameComparator);
+            System.out.println("按名字排序: " + people);
+        }
+    }
+    ```
+    <br>
+    2. 使用独立的类实现，适用于我们需要复用 `Comparator` 或者比价逻辑复杂且需要在多个地方使用的时候，其步骤如下：
+
+    - 创建一个独立的类实现 `Comparator<T>` 接口
+    - 重写 `compare` 方法，定义比较逻辑
+    - 实例化该类并使用
+
+    ```java
+    import java.util.*;
+
+    class AgeComparator implements Comparator<Person> {
+        @Override
+        public int compare(Person p1, Person p2) {
+            return Integer.compare(p1.getAge(), p2.getAge()); // 升序
+        }
+    }
+
+    class NameLengthComparator implements Comparator<Person> {
+        @Override
+        public int compare(Person p1, Person p2) {
+            // 按名字长度升序，若长度相同则按名字字母顺序
+            int lengthCompare = Integer.compare(p1.getName().length(), p2.getName().length());
+            if (lengthCompare != 0) {
+                return lengthCompare;
+            }
+            return p1.getName().compareTo(p2.getName());
+        }
+    }
+
+    public class ComparatorExample {
+        public static void main(String[] args) {
+            List<Person> people = new ArrayList<>();
+            people.add(new Person("Alice", 25));
+            people.add(new Person("Bob", 20));
+            people.add(new Person("Charlie", 30));
+
+            // 使用 AgeComparator
+            Comparator<Person> ageComparator = new AgeComparator();
+            Collections.sort(people, ageComparator);
+            System.out.println("按年龄升序: " + people);
+
+            // 使用 NameLengthComparator
+            Comparator<Person> nameLengthComparator = new NameLengthComparator();
+            Collections.sort(people, nameLengthComparator);
+            System.out.println("按名字长度排序: " + people);
+        }
+    }
+    ```
+
+
+
+    接下来我们再看 `Iterable` 和 `Iterator` 接口
+
+    **`Iterable` 接口：**
+
+    `Iterable` 位于 `java.lang` 包中，表示一个对象**可以被迭代**，也即可以逐个访问其元素，实现 `Iterable` 接口的类可以被 `for-each` 循环所使用
+
+    `Iterable` 接口主要包含以下方法：
+
+    ```java
+    Iterator<T> iterator(); // 返回一个迭代器对象
+    default void forEach(Consumer<? super T> action); // Java 8+，对每个元素执行操作
+    default Spliterator<T> spliterator // Java 8+，支持并行处理
+    ```
+
+    其中 `iterator()` 方法返回一个 `Iterator` 对象，用于遍历元素，而 `forEach` 和 `spliterator` 是 Java8 引入的默认方法，较少直接实现。
+
+    当我们自定义的数据结构需要支持遍历（比如自定义链表、树）或者需要让对象支持 for-each 循环的时候，我们就可以去使用 `Iterable` 接口
+
+    **`Iterator` 接口：**
+
+    `Iterator` 是位于 `java.util` 包中的接口，用于具体执行迭代操作，它提供了一种显式遍历集合元素的方式，并支持在遍历过程中安全删除元素。
+
+    `Iterator` 接口主要包含以下方法：
+
+    ```java
+    boolean hasNext(); // 是否有下一个元素
+    T next(); // 返回下一个元素，若无则抛出 NoSuchElementException
+    default void remove(); // 删除当前元素
+    default void forEachRemaining(Consumer<? Super T> action);
+    ```
+
+    核心方法是 `hasNext()` 和 `next()`，用于控制遍历。
+
+    那么 `Iterable` 和 `Iterator` 之间是什么关系呢？我们可以将 `Iterable` 视作高层接口，定义对象可以被迭代，并通过 `iteator()` 方法返回一个 `Iterator` 对象；而 `Iterator` 则是底层实现，负责具体的迭代逻辑，控制如何访问和移动到下一个元素。
+
+    下面我们来看实现 `Iterable` 和使用 `Iterator` 的示例：
+
+    我们实现一个简单的字符串列表，支持 for-each 循环和 Iterator 遍历
+
+    ```java
+    import java.util.*;
+
+    class MyList implements Iterable<String> {
+        private List<String> items; // 内部使用 ArrayList 存储数据
+
+        public MyList() {
+            items = new ArrayList<>();
+        }
+
+        public void add(String item) {
+            items.add(item);
+        }
+
+        @Override
+        public Iterator<String> iterator() {
+            return items.iterator(); // 返回内部 List 的 Iterator
+        }
+
+        public static void main(String[] args) {
+            MyList myList = new MyList();
+            myList.add("Apple");
+            myList.add("Banana");
+            myList.add("Orange");
+
+            // 使用 for-each 循环（依赖 Iterable）
+            System.out.println("使用 for-each 循环:");
+            for (String item : myList) {
+                System.out.println(item);
+            }
+
+            // 使用 Iterator 显式遍历，提供与 for-each 循环相同的遍历效果
+            System.out.println("\n使用 Iterator 遍历:");
+            Iterator<String> iterator = myList.iterator();
+            while (iterator.hasNext()) {
+                String item = iterator.next();
+                System.out.println(item);
+            }
+        }
+    }
+    ```
+
+    通过实现 `Iterable` 接口或者直接使用 `Iterator` 都可以实现循环遍历集合的效果，for-each 循环本质上是对 `Iterator` 的封装。
