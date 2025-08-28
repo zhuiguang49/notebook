@@ -125,3 +125,5 @@ nav:
       - 'Chapter5 分支过程': 'Math/随机过程/Chapter5 分支过程.md'
       - 'Chapter6 布朗运动': 'Math/随机过程/Chapter6 布朗运动.md'
       - 'Chapter7 平稳过程': 'Math/随机过程/Chapter7 平稳过程.md'   
+    - '数学建模':
+      - '数学建模备赛': 'Math/数学建模/数学建模准备.md'
