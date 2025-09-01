@@ -1857,22 +1857,7 @@ P(S_{n+1}=j|S_1=i_1,\cdot\cdot\cdot,S_{n-1}=i-1,S_n=i)=P(X_{n+1}=j-i|S_1=i_1,\cd
 <li><strong>独立增量过程</strong>与<strong>平稳增量过程</strong>：设 <span class="arithmatex">\({X_t;t\in T}\)</span> 是随机过程，<span class="arithmatex">\(T\)</span> 为 <span class="arithmatex">\(R\)</span> 的子集，对 <span class="arithmatex">\(t&gt;s\)</span>，称 <span class="arithmatex">\(X_t-x_s\)</span> 为此过程在时间区间 <span class="arithmatex">\((s,t]\)</span> 上的增量，则有</li>
 </ul>
 <p>（1）对任何 <span class="arithmatex">\(t&gt;s\)</span>，<span class="arithmatex">\(X_t-X_s\)</span> 的分布仅与时间差 <span class="arithmatex">\(t-s\)</span> 有关，则称 <span class="arithmatex">\(X\)</span> 是平稳增量过程</p>
-<p>（2）如果对任何 <span class="arithmatex">\(n \geq 3\)</span>，任何 <span class="arithmatex">\(t_1&lt;t_2&lt;\cdot\cdot\cdot&lt;t_n\)</span>，<span class="arithmatex">\(X_{t_2}-X_{t_1},\cdot\cdot\cdot,X_{t_n}-X_{t_{n-1}}\)</span> 相互独立，则称 <span class="arithmatex">\(X\)</span> 是独立增量过程</p>
-<p>（3）如果 <span class="arithmatex">\(X\)</span> 既是平稳增量过程，又是独立增量过程，则称 <span class="arithmatex">\(X\)</span> 是平稳独立增量过程</p>
-<p><strong>独立增量过程的性质</strong>：</p>
-<p>设 <span class="arithmatex">\(\left\{X(t);t\geq0\right\}\)</span> 为独立增量过程，<span class="arithmatex">\(X(0)=0\)</span>，则有</p>
-<ol>
-<li>有限维分布由增量 <span class="arithmatex">\(X(t)-X(s)\)</span> 的分布确定</li>
-<li><span class="arithmatex">\(C_X(s,t)=D_X(\min(s,t))\)</span></li>
-</ol>
-<p>下面我们证明一下第二个性质：不妨设 <span class="arithmatex">\(S\leq t\)</span></p>
-<div class="arithmatex">\[
-C_X(t,s)=Cov(X(t),X(s))=Cov(X(t),X(t)+(X(s)-X(t)))\\=Cov(X(t),X(t))+Cov(X(t),X(s)-X(t))
-\]</div>
-<p>而因为 <span class="arithmatex">\(X(t),X(s)-X(t)\)</span> 是独立的，则有</p>
-<div class="arithmatex">\[
-C_X(t,s)=Cov(X(t),X(t))=D_X(t)
-\]</div>
+<p>（2）如果对任何 <span class="arithmatex">\(n \geq 3\)</span>，任何 $t_1</p>
 
 
 
