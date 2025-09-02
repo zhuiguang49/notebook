@@ -570,19 +570,16 @@ a:hover .text-button span {
 
 .md-typeset .quote > .admonition-title,
 .md-typeset .quote > summary {
-  
   background-color: rgba(44, 62, 80, 0.1);
-
-  
   color: var(--md-admonition-icon--quote-color);
   font-weight: 700;
-
+}
   
-  &::before {
-    background-color: var(--md-admonition-icon--quote-color);
-    -webkit-mask-image: var(--md-icon--crown);
-    mask-image: var(--md-icon--crown);
-  }
+.md-typeset .quote > .admonition-title::before,
+.md-typeset .quote > summary::before {
+  background-color: var(--md-admonition-icon--quote-color);
+  -webkit-mask-image: var(--md-icon--crown);
+  mask-image: var(--md-icon--crown);
 }
 
 
