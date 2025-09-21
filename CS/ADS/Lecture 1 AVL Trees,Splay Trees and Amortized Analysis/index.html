@@ -10,13 +10,13 @@
         <meta name="author" content="追光">
       
       
-        <link rel="canonical" href="https://note.zhuiguang.tech/CS/OOP/Week1%20Using%20Object/">
+        <link rel="canonical" href="https://note.zhuiguang.tech/CS/ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/">
       
       
-        <link rel="prev" href="../../..">
+        <link rel="prev" href="../../CS61B/Chapter5%20%E5%B9%B6%E6%9F%A5%E9%9B%86/">
       
       
-        <link rel="next" href="../Week2%20Grouping%20Object/">
+        <link rel="next" href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/">
       
       
       <link rel="icon" href="../../../assets/logo.ico">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Week1 Using Object - 追光的笔记本</title>
+        <title>Lecture1 AVL Trees,Splay Trees and Amortized Analysis - 追光的笔记本</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#format-output" class="md-skip">
+        <a href="#avl-trees" class="md-skip">
           跳转至
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Week1 Using Object
+              Lecture1 AVL Trees,Splay Trees and Amortized Analysis
             
           </span>
         </div>
@@ -251,7 +251,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../../OOP/Week1%20Using%20Object/" class="md-tabs__link">
           
   
   Computer Science
@@ -403,8 +403,6 @@
                 
   
   
-    
-  
   
   
     
@@ -414,11 +412,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -432,7 +430,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             OOP
@@ -443,28 +441,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Week1 Using Object
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../OOP/Week1%20Using%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -473,75 +453,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#format-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      Format output
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#string" class="md-nav__link">
-    <span class="md-ellipsis">
-      String类
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="String类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#input-and-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      Input and Output
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-a-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      create a string
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      一些字符串函数
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -554,7 +465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week2%20Grouping%20Object/" class="md-nav__link">
+      <a href="../../OOP/Week2%20Grouping%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week3%20Class/" class="md-nav__link">
+      <a href="../../OOP/Week3%20Class/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week4%265%20Inside%20Object/" class="md-nav__link">
+      <a href="../../OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week6%20Inside%20Class/" class="md-nav__link">
+      <a href="../../OOP/Week6%20Inside%20Class/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week7%20Composition/" class="md-nav__link">
+      <a href="../../OOP/Week7%20Composition/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week8%20Inheritance/" class="md-nav__link">
+      <a href="../../OOP/Week8%20Inheritance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week9%20Polymorphism/" class="md-nav__link">
+      <a href="../../OOP/Week9%20Polymorphism/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week10%20Copy%20and%20Move/" class="md-nav__link">
+      <a href="../../OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week11%20Overloaded%20Operator/" class="md-nav__link">
+      <a href="../../OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -743,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week12%20Template/" class="md-nav__link">
+      <a href="../../OOP/Week12%20Template/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,7 +675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Week13%20Exception/" class="md-nav__link">
+      <a href="../../OOP/Week13%20Exception/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -962,6 +873,8 @@
                 
   
   
+    
+  
   
   
     
@@ -971,11 +884,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -989,7 +902,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             ADS
@@ -1000,10 +913,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lecture1 AVL Trees,Splay Trees and Amortized Analysis
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1012,6 +943,141 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#avl-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AVL Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avl-trees-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL Trees Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avl-trees-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL Trees Rotation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avl-trees_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL Trees 高度分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#splay-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Splay Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Splay Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#splay-trees_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Splay Trees 的理念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splaying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Splaying（伸展操作）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splay-trees-deletions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Splay Trees Deletions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amortized-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amortized Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Amortized Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amortized-time-bound" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amortized Time Bound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      摊还分析的三种方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1513,37 +1579,103 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#format-output" class="md-nav__link">
+  <a href="#avl-trees" class="md-nav__link">
     <span class="md-ellipsis">
-      Format output
+      AVL Trees
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="AVL Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avl-trees-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL Trees Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avl-trees-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL Trees Rotation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avl-trees_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL Trees 高度分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#string" class="md-nav__link">
+  <a href="#splay-trees" class="md-nav__link">
     <span class="md-ellipsis">
-      String类
+      Splay Trees
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="String类">
+    <nav class="md-nav" aria-label="Splay Trees">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#input-and-output" class="md-nav__link">
+  <a href="#splay-trees_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Input and Output
+      Splay Trees 的理念
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-a-string" class="md-nav__link">
+  <a href="#splaying" class="md-nav__link">
     <span class="md-ellipsis">
-      create a string
+      Splaying（伸展操作）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splay-trees-deletions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Splay Trees Deletions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amortized-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amortized Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Amortized Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amortized-time-bound" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amortized Time Bound
     </span>
   </a>
   
@@ -1552,7 +1684,7 @@
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      一些字符串函数
+      摊还分析的三种方法
     </span>
   </a>
   
@@ -1582,92 +1714,265 @@
   
 
 
-  <h1>Week1 Using Object</h1>
+  <h1>Lecture1 AVL Trees,Splay Trees and Amortized Analysis</h1>
 
-<h2 id="format-output">Format output<a class="headerlink" href="#format-output" title="Permanent link">&para;</a></h2>
+<p>我们曾经学过 BST 这个数据结构，虽然其平均时间复杂度为 <span class="arithmatex">\(O(\log N)\)</span>，但在最坏情况下，BST 可能退化成线性的，此时树的高度为 <span class="arithmatex">\(O(N)\)</span>，我们希望有某种平衡机制将树的高度保持在 <span class="arithmatex">\(O(\log N)\)</span>，这一讲我们会提出两种高级的数据结构——AVL Trees 和 Splay Trees</p>
+<h2 id="avl-trees">AVL Trees<a class="headerlink" href="#avl-trees" title="Permanent link">&para;</a></h2>
+<h3 id="avl-trees-definition">AVL Trees Definition<a class="headerlink" href="#avl-trees-definition" title="Permanent link">&para;</a></h3>
+<p>我们给出 AVL Trees 的定义：</p>
+<p>首先我们规定空树的高度为 <span class="arithmatex">\(-1\)</span>，并且空二叉树是高度平衡的，对于一颗非空树 T（记其左子树为 TL，右子树为 TR），如果它满足以下几个条件：</p>
 <ul>
-<li>
-<p>首先需要使用<code>&lt;iomanip&gt;</code>库，即<code>#include&lt;iomanip&gt;</code></p>
+<li>TL 和 TR 均为高度平衡的</li>
+<li><span class="arithmatex">\(|h_L-h_R|\leq 1\)</span>，这里 <span class="arithmatex">\(h_L\)</span> 和 <span class="arithmatex">\(h_R\)</span> 分别为 <span class="arithmatex">\(T_L\)</span> 和 <span class="arithmatex">\(T_R\)</span> 的高度</li>
+</ul>
+<p>则称该树 <span class="arithmatex">\(T\)</span> 是高度平衡的。</p>
+<p>并且为了辅助树平衡的判断，我们定义<strong>平衡因子</strong> <span class="arithmatex">\(BF(node)=h_L-h_R\)</span>，对于 AVL Trees ，有 <span class="arithmatex">\(BF(node)\in \{-1,0,1\}\)</span></p>
+<h3 id="avl-trees-rotation">AVL Trees Rotation<a class="headerlink" href="#avl-trees-rotation" title="Permanent link">&para;</a></h3>
+<p>AVL Trees 的特点在于 rotation 操作，其能在保持二叉搜索树性质的同时，使得失衡节点（我们将平衡因子绝对值<span class="arithmatex">\(&gt;1\)</span>的节点称为失衡节点）重新恢复平衡，根据节点失衡情况的不同，旋转操作可以分为四种：RR rotation、LL rotation、LR rotation、RL rotation</p>
+<h4 id="rr-rotation">RR rotation<a class="headerlink" href="#rr-rotation" title="Permanent link">&para;</a></h4>
+<p>我们来看这样一种场景，插入十二月份的名字，按照字典序排序</p>
+<p><img alt="RRrotation" src="../images/RRrotation.png" /></p>
+<p>The trouble maker <code>Nov</code> is in the right subtree's right subtree of the trouble finder <code>Mar</code>. Hence it is called an <strong>RR rotation</strong>（新节点插在了失衡节点的右子树的右子树）</p>
+<p>RR rotation的旋转比较简单，我们只需要让 <code>Mar</code>（失衡节点）左旋一次即可。</p>
+<p>一般情况如下图：</p>
+<p><img alt="RRrotation" src="../images/RRrotationingeneral.png" /></p>
+<p>需要注意的是，当失衡节点的 <code>child</code> 节点有左子节点（不妨记其为 <code>grand_child</code>，在图中也即 <span class="arithmatex">\(B_L\)</span> 节点）的时候，我们需要将 <code>grand_child</code> 作为原失衡节点的右子节点。</p>
+<h4 id="ll-rotation">LL rotation<a class="headerlink" href="#ll-rotation" title="Permanent link">&para;</a></h4>
+<p>LL rotation 是 RR rotation 的镜像操作，这里就不赘述</p>
+<h4 id="lr-rotation">LR rotation<a class="headerlink" href="#lr-rotation" title="Permanent link">&para;</a></h4>
+<p>如下图所示，新插入的节点 <code>Jan</code> 在失衡节点 <code>May</code> 的左子树的右子树中，故称为 <strong>LR rotation</strong></p>
+<p><img alt="LRrotation" src="../images/LRrotation.png" /></p>
+<p>对于 <code>LR rotation</code> 来说，需要做两次旋转，首先是 <code>Aug</code> 左旋，其次是 <code>May</code> 右旋</p>
+<div class="admonition tip">
+<p class="admonition-title">说明</p>
+<p>这里对旋转的理解似乎有两种，比如对于 <code>Aug-Mar</code> 这条边，我们知道是左旋，一种理解是以 <code>Mar</code> 为中心，将 <code>Aug</code> 左旋下来；另一种理解是将 <code>Aug</code> 作为中心，将 <code>Mar</code> 左旋上去，实际上效果是一样的，但是我个人比较喜欢第一种说法。</p>
+</div>
+<p>一般情况如下图：</p>
+<p><img alt="LRrotation in general" src="../images/LRrotationingeneral.png" /></p>
+<p>需要注意的是，我们要把插入的 <code>C</code> 的左子节点/右子节点挪给 <code>B</code> 或 <code>A</code></p>
+<h4 id="rl-rotation">RL rotation<a class="headerlink" href="#rl-rotation" title="Permanent link">&para;</a></h4>
+<p>如下图所示，新插入的节点 <code>Feb</code> 在 失衡节点 <code>Aug</code> 的右子树的左子树中，故称为 <strong>RL rotation</strong></p>
+<p><img alt="RLrotation" src="../images/RLrotation.png" /></p>
+<p>对于 RL rotation 来说，也需要做两次旋转，首先是 <code>Jan</code> 右旋，其次是 <code>Aug</code> 左旋。</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>在上图中，我们能发现 <code>Aug</code> 和 <code>Mar</code> 都是失衡节点，我们应该对<strong>首个失衡节点</strong>进行旋转，这里的<strong>首个失衡节点</strong>意指从新插入的节点向上遍历父节点，最先找到的失衡节点，毕竟 AVL Trees 本就是递归定义的。</p>
+<p>由于实际的代码中我们往往通过计算节点的平衡因子，以判断选择哪种旋转，下面我们给出平衡因子与旋转方法的对应关系：</p>
+<table>
+<thead>
+<tr>
+<th>失衡节点的平衡因子</th>
+<th>子树较高一侧子节点的平衡因子</th>
+<th>应当采用的旋转方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(&gt; 1\)</span>，左偏树</td>
+<td><span class="arithmatex">\(\geq 0\)</span></td>
+<td>LL rotation，右旋</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(&gt;1\)</span>，左偏树</td>
+<td><span class="arithmatex">\(&lt;0\)</span></td>
+<td>LR rotation，先左旋后右旋</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(&lt;-1\)</span>，右偏树</td>
+<td><span class="arithmatex">\(\geq 0\)</span></td>
+<td>RL rotation，先右旋后左旋</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(&lt;-1\)</span>，右偏树</td>
+<td><span class="arithmatex">\(&lt;0\)</span></td>
+<td>RR rotation，左旋</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="avl-trees_1">AVL Trees 高度分析<a class="headerlink" href="#avl-trees_1" title="Permanent link">&para;</a></h3>
+<p>我们知道，平衡二叉树的操作时间复杂度取决于树的高度 <span class="arithmatex">\(h\)</span>，也即 <span class="arithmatex">\(T_p=O(h)\)</span>，对于 AVL Trees，我们当然希望 <span class="arithmatex">\(h\approx \log N\)</span>，以确保操作的高效性，但在最坏的情况下，<span class="arithmatex">\(h\)</span> 究竟有多大呢？下面我们进行分析。</p>
+<p>如果我们直接从 <span class="arithmatex">\(N\)</span> 出发求最大的 <span class="arithmatex">\(h\)</span>，就需要构造一个节点数正好为 <span class="arithmatex">\(N\)</span>，但高度尽可能大的 AVL Tree，这时候我们需要确保每层都尽可能的不平衡，且不违反 BF 规则。而因为 AVL Trees 的构造时递归的，边界条件和归纳并不容易处理，我们很容易陷入“鸡生蛋蛋生鸡”的循环，即我们需要知道子树的最大高度，才能推根的高度，但子树又依赖于整体的 <span class="arithmatex">\(N\)</span>。我们从逆向的角度出发就会容易很多，记 <span class="arithmatex">\(n_h\)</span> 表示高度为 <span class="arithmatex">\(h\)</span> 的平衡树的最小可能节点数。要达到高度 <span class="arithmatex">\(h\)</span>，AVL Trees 至少需要 <span class="arithmatex">\(n_h\)</span> 个节点；反过来，如果 AVL Trees 有 <span class="arithmatex">\(n_h\)</span> 个节点，则最高能达到高度 <span class="arithmatex">\(h\)</span>。</p>
+<p>分析 AVL Trees 的特征，我们可以得到这样的递推关系式
+$$
+n_h=n_{h-1}+n_{h-2}+1\
+n_{-1}=0,n_0=1
+$$
+这是因为为了最小化节点数/最大化高度，我们需要让树尽可能的“不平衡”同时仍然满足BF规则，所以一侧子树高度为 <span class="arithmatex">\(h-1\)</span>，另一侧子树高度为 <span class="arithmatex">\(h-2\)</span>，再加上根节点的 <span class="arithmatex">\(1\)</span>，就得到了上述递推式，观察此公式，我们应该能联想到著名的 Fibonacci 数列
+$$
+F_0=0,F_1=1,F_{i}=F_{i-1}+F_{i-2}\qquad \text{for} \ i&gt;1
+$$
+且 Fibonacci 数列的通项公式我们知道，即
+$$
+F_n=\frac{\sqrt{5}}{5}[(\frac{1+\sqrt{5}}{2})^n-(\frac{1-\sqrt{5}}{2})^n]\approx \frac{\sqrt{5}}{5}(\frac{1+\sqrt{5}}{2})^n
+$$
+所以我们希望找到 <span class="arithmatex">\(n_h\)</span> 和 <span class="arithmatex">\(F_k\)</span> 的等量关系，以找到 <span class="arithmatex">\(n_h\)</span> 与 <span class="arithmatex">\(h\)</span> 的关系。猜测 <span class="arithmatex">\(n_h=F_{h+m}-c\)</span>，代入得到
+$$
+F_{h+m}-c=(F_{h+m-1}-c)+(F_{h+m-2}-c)+1
+$$
+也即
+$$
+F_{h+m}-c=F_{h+m-1}+F_{h+m-2}-2c+1
+$$
+又因 <span class="arithmatex">\(F_{h+m}=F_{h+m-1}+F_{h+m-2}\)</span>，所以 <span class="arithmatex">\(-c=-2c+1\)</span>，可得 <span class="arithmatex">\(c=1\)</span></p>
+<p>考虑边界 <span class="arithmatex">\(n_{-1}=F_{m-1}-1=0\)</span>，得到 <span class="arithmatex">\(F_{m-1}=1\)</span>，<span class="arithmatex">\(n_0=F_{m}-1=1\)</span>，得到 <span class="arithmatex">\(F_{m}=2\)</span>，所以 <span class="arithmatex">\(m=3\)</span>，也即我们得到了 <span class="arithmatex">\(n_h=F_{h+3}-1\)</span>，并且可以由数学归纳法对该结论进行进一步的证明。于是我们得到
+$$
+n_h=\frac{\sqrt{5}}{5}(\frac{1+\sqrt{5}}{2})^{h+3}-1
+$$
+于是 <span class="arithmatex">\(h=O(\ln n)\)</span></p>
+<h2 id="splay-trees">Splay Trees<a class="headerlink" href="#splay-trees" title="Permanent link">&para;</a></h2>
+<h3 id="splay-trees_1">Splay Trees 的理念<a class="headerlink" href="#splay-trees_1" title="Permanent link">&para;</a></h3>
+<p>Splay Trees 的目标是确保从空树开始，任意的连续 <span class="arithmatex">\(M\)</span> 个操作的总时间复杂度为 <span class="arithmatex">\(O(M\log N)\)</span>，其中 <span class="arithmatex">\(N\)</span> 是当前树中的节点数，这是一种摊销分析(Amortized analysis)的策略。</p>
+<p>而与 AVL Trees 不同的是，Splay Trees 并不强制保持严格的平衡，而是在每次操作后将访问的节点提升到根(splay)来动态调整树结构(After a node is accessed, it is pushed to the root by a series of AVL tree rotations)，在长期内通过摊销保证平均 <span class="arithmatex">\(O(\log N)\)</span> 的性能，以解决单一操作可能退化为 <span class="arithmatex">\(O(N)\)</span> 的问题。</p>
+<p>Here are some insights of Splay Trees:</p>
+<ul>
+<li>Main idea: <span class="arithmatex">\(O(N)\)</span> access for a Binary Search Tree is not so bad if it happens infrequently. Splay Trees guarantee that repeated bad accesses don't occur.（对于二叉树， <span class="arithmatex">\(O(N)\)</span> 的访问在频率不高的情况下是可接受的，而 Splay Trees 能够保证 <span class="arithmatex">\(O(N)\)</span> 的访问不会重复发生）</li>
+<li>How it works: once we find a bad access, we move the bad node up the tree so it won't happen again.（一旦我们产生了一次 <span class="arithmatex">\(O(N)\)</span> 的访问，我们就将这个节点向上移动）</li>
+<li>What we do: take a bad node, and through a series of AVL like rotations, we move the offending node to the root of the tree. Then, future access to that node are efficient. The tree also gets better balanced as a side effect.（将该节点移动到树的根节点，未来对该节点的访问就会变得高效，并且作为副作用，树也会因此变得更加平衡）</li>
+<li>In real world, pratical situations, a node is often accessed more than once, making this strategy payoff.（在现实世界中，一个节点通常会被访问多次，这使得这种策略能够奏效）</li>
+<li>Splay Trees do not require maintaining height into for rebalancing as AVL trees do.（Splay Trees 不需要像 AVL Trees 那样维护高度来重新保持平衡）</li>
+</ul>
+<h3 id="splaying">Splaying（伸展操作）<a class="headerlink" href="#splaying" title="Permanent link">&para;</a></h3>
+<h4 id="naive-splaying">Naive Splaying<a class="headerlink" href="#naive-splaying" title="Permanent link">&para;</a></h4>
+<p>一个 Naive 的策略是，我们将被访问的节点连同其父节点进行类似 AVL Tree rotation 的操作，一直旋转到该节点称为根节点(take the node that was accessed and do single AVL-like rotations with its parent all the way up the tree until it is the root.)。事实上，这并不是一个好的策略，因为我们虽然将访问的节点推到了根节点，使其访问变得高效，但副作用是它也会将其他的节点推得更深，使得它们的访问变得非常耗时。可以参考下面的示例：</p>
+<p><img alt="NaiveSplaying1" src="../images/NaiveSplaying1.png" /></p>
+<p><img alt="NaiveSplaying2" src="../images/NaiveSplaying2.png" /></p>
+<p>node <span class="arithmatex">\(k_1\)</span> is pushed to the root but at the same time it drives another node <span class="arithmatex">\(k_3\)</span> down deeper into the tree and not really imporving the height of the tree for future accesses.</p>
+<p>并且我们甚至可以构造一个更加病态的案例，其 <span class="arithmatex">\(M\)</span> 次访问的复杂度为 <span class="arithmatex">\(O(M\times N)\)</span>，而不是我们所期望的 <span class="arithmatex">\(O(M\log N)\)</span>，如下面这个例子：</p>
+<p><img alt="badexample" src="../images/badexample.png" /></p>
+<p>我们按顺序插入 <span class="arithmatex">\(1,2,3\)</span> 后形成线性树，通过 <code>find</code> 操作访问节点时，采用的旋转策略未能有效地平衡树的结构，反而最终使得树回到了线性结构，总的时间复杂度退化到 <span class="arithmatex">\(O(N^2)\)</span>。</p>
+<p>这是因为单旋转的策略只关注访问节点，不涉及祖父节点等等更高层，没有考虑整个访问路径的整体平衡，所以尽管访问节点被优化了，但是路径上的其他节点反而可能被恶化。</p>
+<h4 id="improved-splaying">Improved Splaying<a class="headerlink" href="#improved-splaying" title="Permanent link">&para;</a></h4>
+<p>我们需要对 Splay 策略进行优化，设 <code>X</code> 是待访问的节点，改进的 Splay 策略如下：</p>
+<ul>
+<li>if X's parent is the root, just do a simple single rotation</li>
+<li>Otherwise, X has a parent <code>P</code> and a grandparent <code>G</code> along the access path.<ul>
+<li><strong>Case 1 Zig-Zag：</strong> X is a right child and P is a left child(or vice versa). Perform a double AVL rotation on the three nodes.（X 是右子节点，P 是左子节点，反之亦然，对着三个节点执行两次 AVL rotation）</li>
+<li><strong>Case 2 Zig-Zig：</strong>X and P are both left children(or right children in the symmetric case), perform a rotation to P-G, and then perform a rotation to X-P.（X 和 P都是左子节点，或者对称情况下都为右子节点，此时先旋转 P-G 边，再旋转 X-P 边，和传统的 AVL rotation 顺序不同）</li>
+</ul>
 </li>
-<li>
-<p><code>std::setw</code>用于设置输出字段的宽度，这只影响紧随其后的输出操作，例如</p>
-</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// &quot;        42&quot;(加上42总共宽度为10)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">//下一个输出不受影响</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="w">                            </span><span class="c1">// &quot;42&quot;</span>
-</code></pre></div>
+<p><img alt="Zig-Zag" src="../images/zig-zag.png" /></p>
+<p><img alt="Zig-Zig" src="../images/zig-zig.png" /></p>
+<p>这样的好处是，我们不止将访问节点 <code>X</code> 移动到了根，还实现了 roughly halving the depth of nodes along the access（沿路径节点深度大约减半），树逐渐趋向于平衡，避免出现重复的坏访问。</p>
+<p><img alt="goodSplayingExample" src="../images/goodSplayingExample.png" /></p>
+<p>更复杂的例子可以参考哥伦比亚大学讲义（似乎就是从后面那本书上取下来的图？）或者Data structures and algorithm in C   </p>
+<h3 id="splay-trees-deletions">Splay Trees Deletions<a class="headerlink" href="#splay-trees-deletions" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>std::setprecision</code>用于设置浮点数的精度，与<code>std::fixed</code>一起使用时用于指定小数点后的位数；单独使用时用于指定有效数字总数</li>
+<li>Find X</li>
+<li>Remove X，记得到的子树分别为 <span class="arithmatex">\(T_L\)</span> 和 <span class="arithmatex">\(T_R\)</span></li>
+<li>FindMax(<span class="arithmatex">\(T_L\)</span>)</li>
+<li>Make <span class="arithmatex">\(T_R\)</span> the right child of the root of <span class="arithmatex">\(T_L\)</span></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">123.456789</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">                     </span><span class="c1">// &quot;123.5&quot;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">fixed</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">vlaue</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="w"> </span><span class="c1">// &quot;123.46&quot;</span>
-</code></pre></div>
-<ul>
-<li><code>std::setfill</code>用于设置填充字符，与<code>std::setw</code>一起使用时特别有用：</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// 默认填充字符是空格</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w">                        </span><span class="c1">// &quot;        42&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setfill</span><span class="p">(</span><span class="sc">&#39;*&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="w"> </span><span class="c1">// &quot;********42&quot;</span>
-</code></pre></div>
-<h2 id="string">String类<a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
-<p>需要先包含string类的头文件：<code>#&lt;include string&gt;</code></p>
-<h3 id="input-and-output">Input and Output<a class="headerlink" href="#input-and-output" title="Permanent link">&para;</a></h3>
-<p>如果是想要读一个字符串。可以使用<code>cin/cout</code>即</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
-</code></pre></div>
-<p>如果想要读取一整行（包含空格），则需要<code>getline(cin,str)</code>或者<code>getline(cin,str, ',')</code>表示读取直到遇到','就停止</p>
-<p>我们通常还会清除之前可能留在缓冲区的换行符，用到<code>std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(),'\n')</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">// 清除之前可能留在缓冲区的换行符</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">.</span><span class="n">ignore</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">streamsize</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">//numeric_limits&lt;streamsize&gt;::max()：设置最大忽略字符数，&#39;\n&#39;：指定终止字符为换行符（\n）。当遇到换行符时，忽略操作会停止。</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">,</span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="c1">// 读取整行文本到string类型变量str中</span>
-</code></pre></div>
-<p>如果想要从文件中读取一行字符串，则需要先用<code>std::ifstream inputFile('example.txt')</code>打开文件，然后逐行读取<code>std::getline(inputFile,str</code>，下面举一个具体的例子：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w"> </span><span class="c1">// 打开文件</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">inputFile</span><span class="p">(</span><span class="s">&quot;example.txt&quot;</span><span class="p">);</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// 检查文件是否成功打开</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">inputFile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;无法打开文件!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">// 逐行读取</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">inputFile</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="c1">// 处理每一行</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;读取的行: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="c1">// 关闭文件</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">inputFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-</code></pre></div>
-<h3 id="create-a-string">create a string<a class="headerlink" href="#create-a-string" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s3</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
-</code></pre></div>
-<h3 id="_1">一些字符串函数<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>Sub-string</p>
-<ul>
-<li><code>substr(int pos,int len)</code></li>
-</ul>
-<p>Alter string</p>
-<ul>
-<li><code>insert(size_t pos,const string&amp;s);</code></li>
-<li><code>erase(size_t pos = 0, size_t len = npos);</code></li>
-<li><code>append(const string&amp; str);</code></li>
-<li><code>replace(size_t pos, size_t len, const string &amp;str);</code></li>
-</ul>
-<p>Search String</p>
-<ul>
-<li><code>size_t find(const string&amp; str, size_t pos = 0) const</code>，这里我们介绍一下，find函数的返回类型是<code>size_t</code>，所以如果没有找到，返回值是<code>string::npos</code>而非<code>-1</code>。两个参数分别表示要找的字符串，以及开始查找的位置，函数最后的<code>const</code>后缀表示这个方法不会修改调用它的字符串对象，举一个具体的使用例子</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">pos1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">)</span>
-</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>和 BST 的删除类似</p>
+</div>
+<h2 id="amortized-analysis">Amortized Analysis<a class="headerlink" href="#amortized-analysis" title="Permanent link">&para;</a></h2>
+<p>摊还分析用于评估数据结构中操作序列的平均性能，尤其适用于“偶尔昂贵但整体高效”的场景。</p>
+<h3 id="amortized-time-bound">Amortized Time Bound<a class="headerlink" href="#amortized-time-bound" title="Permanent link">&para;</a></h3>
+<p>摊还界限(amortized bound)介于最坏情况界限(worst-case bound)和平均情况界限(average-case bound)之间，也即 
+$$
+\text{worst-case bound} \geq \text{amortized bound}\geq \text{average-case bound}
+$$
+对三种界限的比较可以参考下面这个表格</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>worst-case bound</td>
+<td>单个操作的最坏时间</td>
+<td>过于悲观</td>
+</tr>
+<tr>
+<td>amortized bound</td>
+<td>序列 <span class="arithmatex">\(M\)</span> 操作的平均时间</td>
+<td>不涉及概率，比最坏情况小，但比平均情况大</td>
+</tr>
+<tr>
+<td>average-case bound</td>
+<td>基于输入分布的期望时间</td>
+<td>设计概率，假设随机输入</td>
+</tr>
+</tbody>
+</table>
+<p>并且与平均情况不同的是，摊还分析并不涉及概率，而是基于确定性的方法分析操作序列的总成本。</p>
+<h3 id="_1">摊还分析的三种方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>我们这里介绍三种等价的摊还分析的方法：<strong>聚合分析(Aggregate Analysis)、记账法(Accounting Method)、势能函数法(Potential Method)</strong>，它们都能够计算摊还成本(amortized cost)，并确保总实际成本 <span class="arithmatex">\(\leq\)</span> 总摊还成本。</p>
+<h4 id="aggregate-analysis">聚合分析(Aggregate Analysis)<a class="headerlink" href="#aggregate-analysis" title="Permanent link">&para;</a></h4>
+<p>聚合分析的核心思想是直接计算 <span class="arithmatex">\(n\)</span> 个操作序列的总最坏时间 <span class="arithmatex">\(T(n)\)</span>，摊还成本即为 <span class="arithmatex">\(\frac{T(n)}{n}\)</span>，但需要预先知道总成本的公式，不易处理复杂的结构</p>
+<p>例如我们考虑一个栈，其支持 <code>Push</code>、<code>Pop</code>、和 <code>MultiPop(k)</code>（即弹出 <span class="arithmatex">\(\min(k,栈大小)\)</span> 个元素），从空栈开始，<span class="arithmatex">\(n\)</span> 次操作(Push、Pop、MultiPop)的总时间复杂度看似是 <span class="arithmatex">\(O(n^2)\)</span>，但实际上总时间为 <span class="arithmatex">\(O(n)\)</span>，摊还时间是 <span class="arithmatex">\(O(1)\)</span> 的，因为每个元素最多被 Push 一次，被 Pop/MultiPop 弹出一次。我们通过全局计数（每个对象贡献固定的成本）避免局部的高成本影响整体复杂度。</p>
+<div class="admonition tip">
+<p class="admonition-title">原文</p>
+<p>由于担心考试考原话，这里把原文贴出来</p>
+<p>Show that for all <span class="arithmatex">\(n\)</span>, a sequence of <span class="arithmatex">\(n\)</span> operations takes <strong>worst-case</strong> time <span class="arithmatex">\(T(n)\)</span> in total. In the worst case, the average cost, or <strong>amortized cost</strong>, per operation is therefore <span class="arithmatex">\(\frac{T(n)}{n}\)</span></p>
+</div>
+<h4 id="accounting-method">记账法(Accounting Method)<a class="headerlink" href="#accounting-method" title="Permanent link">&para;</a></h4>
+<p>记账法的核心思想是为每个操作分配摊还成本(amortized cost)，并将高于实际成本的部分作为“信用”(credit)，用于支付未来的高成本操作。需要注意的是 <span class="arithmatex">\(\text{credit}\geq 0\)</span>，因为我们需要摊还成本 $\geq $ 总实际成本。如果我们记每个操作的摊还成本为 <span class="arithmatex">\(\hat{c_i}\)</span>，实际成本为 <span class="arithmatex">\(c_i\)</span>，则有摊还时间 <span class="arithmatex">\(T_{\text{amortized}}\)</span> 满足下列公式
+$$
+T_{amortized} = \frac{\sum_{i=1}^n \hat{c_i}}{n}\geq \frac{\sum_{i=1}^n c_i}{n}
+$$
+仍然以空栈为例，我们可以这样设计每个操作的摊还成本</p>
+<table>
+<thead>
+<tr>
+<th>Operations</th>
+<th>Actual Cost</th>
+<th>Amortized Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Pop</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>MultiPop</td>
+<td><span class="arithmatex">\(\min(栈大小,k)\)</span></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>则产生的 credits 为，Push操作：1，Pop操作：-1，MultiPop：每弹出1个元素消耗该元素对应的1个 credit，也即每个元素-1</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>我们需要证明，栈的 credits 始终没有透支，也即栈的 credits 始终 <span class="arithmatex">\(\geq 0\)</span>：</p>
+<p>栈中的每个元素仅在被 Push 时产生一个 credit，且仅在被 Pop 时消耗一个 credit，栈的大小始终 <span class="arithmatex">\(\geq 0\)</span>，这是因为我们不可能弹出不存在的元素，因此 已产生的总 credits <span class="arithmatex">\(=\)</span> 栈中当前的元素总数 $\geq $ 0</p>
+</div>
+<p>则对于任意 <span class="arithmatex">\(n\)</span> 个 Push、Pop、MultiPop 操作组成的序列有
+$$
+\text{总摊还成本}= (\text{每个 Push 的摊还成本}\times \text{Push 次数})+(\text{每个 Pop 的摊还成本}\times \text{Pop 次数})\+(\text{每个 MultiPop 的摊还成本}\times \text{MultiPop 次数} )
+$$
+而根据我们设计的摊还成本，总摊还成本仅由 Push 决定，可以得到总摊还成本 <span class="arithmatex">\(\leq 2n\)</span>，属于 <span class="arithmatex">\(O(n)\)</span>，则有
+$$
+T_{amortized} = \frac{O(n)}{n}
+$$</p>
+<div class="admonition tip">
+<p class="admonition-title">原文</p>
+<p>When an operations' <strong>amortized cost</strong> <span class="arithmatex">\(\hat{c_i}\)</span> exceeds its <strong>actual cost</strong> <span class="arithmatex">\(c_i\)</span>, we assign the difference to specific objects in the data structure as <strong>credit</strong>. Credit can help <strong>pay</strong> for later operations whose amortized cost is less than their actual cost.</p>
+</div>
+<h4 id="potential-method">势能函数法(Potential Method)<a class="headerlink" href="#potential-method" title="Permanent link">&para;</a></h4>
+<p>势能函数法的思想是定义势能函数 <span class="arithmatex">\(\Phi(D_i)\)</span>，<span class="arithmatex">\(D_i\)</span> 为第 <span class="arithmatex">\(i\)</span> 次操作后的数据结构状态，初始有 <span class="arithmatex">\(\Phi(D_0)=0\)</span>，非负，摊还成本 <span class="arithmatex">\(\hat{c_i}=c_i+\Phi(D_i)-\Phi(D_{i-1})\)</span>，这里 <span class="arithmatex">\(c_i\)</span> 为实际成本，则可以得到
+$$
+\text{总摊还成本}=\sum\hat{c_i}=\sum c_i+\Phi(D_n)-\Phi(D_0)
+$$
+通常来说，一个好的势能函数应该在序列开始的时候取得最小值。</p>
+<div class="admonition tip">
+<p class="admonition-title">原文</p>
+<p>In general, a good potential function should always assume its minimum at the start of the sequence.</p>
+</div>
 
 
 
@@ -1688,7 +1993,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月28日 08:39:22 UTC"><span class="timeago" datetime="2025-06-28T08:39:22+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月28日 08:39:22 UTC">2025-06-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年9月21日 06:05:45 UTC"><span class="timeago" datetime="2025-09-21T06:05:45+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月21日 06:05:45 UTC">2025-09-21</span>
   </span>
 
     
