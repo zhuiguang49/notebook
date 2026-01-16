@@ -1,0 +1,34 @@
+name: Discussion Notification
+
+on:
+  discussion_comment:
+    types: [created]
+  discussion:
+    types: [created]
+
+jobs:
+  send-email-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{secrets.MAIL_SERVER}}
+          server_port: ${{secrets.MAIL_PORT}}
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          
+          subject: 你的笔记网站收到了新评论 (Giscus)
+          
+          body: |
+            你的 Giscus 评论区有了新动态！
+            
+            评论人: ${{ github.event.comment.user.login || github.event.discussion.user.login }}
+            
+            内容: 
+            ${{ github.event.comment.body || github.event.discussion.body }}
+            
+            查看链接: ${{ github.event.comment.html_url || github.event.discussion.html_url }}
+          
+          to: ${{secrets.MAIL_TO}}
+          from: Giscus Notification <${{secrets.MAIL_FROM}}>
