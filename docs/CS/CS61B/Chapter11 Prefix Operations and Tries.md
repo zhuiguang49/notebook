@@ -151,7 +151,7 @@ private static class Node{
 
 我们可以使用 `TreeMap<Character, Node>` 或自定义平衡树，如下图所示：
 
-![BST-based Trie](./images/BST-based trie.png)
+![BST-based Trie](./images/BST-based Trie.png)
 
 ```java
 import java.util.TreeMap;
