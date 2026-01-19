@@ -1,0 +1,2506 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/CS/CS61B/Chapter12%20Sorting/">
+      
+      
+        <link rel="prev" href="../Chapter11%20Prefix%20Operations%20and%20Tries/">
+      
+      
+        <link rel="next" href="../../ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/">
+      
+      
+      <link rel="icon" href="../../../assets/logo.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter12 Sorting - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sorting-definition" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter12 Sorting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS61B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS61B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1%20Java%20Basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 Java Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2%20Lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 Lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3%20OOP%20in%20Java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 OOP in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 数据结构和算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 并查集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6%20Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7%20Hash%20Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 Hash Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8%20Heaps%20and%20Priority%20Queues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter8 Heaps and Priority Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9%20Graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter9 Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10%20Graph%20Problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter10 Graph Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11%20Prefix%20Operations%20and%20Tries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter11 Prefix Operations and Tries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter12 Sorting
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter12 Sorting
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sorting-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting Definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sorting Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting evaluation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selection-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selection Sort（选择排序）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heapsort" class="md-nav__link">
+    <span class="md-ellipsis">
+      HeapSort（堆排序）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HeapSort（堆排序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naive-heapsort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naive HeapSort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-place-heapsort" class="md-nav__link">
+    <span class="md-ellipsis">
+      In-place HeapSort
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mergesort" class="md-nav__link">
+    <span class="md-ellipsis">
+      MergeSort（归并排序）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MergeSort（归并排序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insertion-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertion Sort（插入排序）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quicksort" class="md-nav__link">
+    <span class="md-ellipsis">
+      QuickSort（快速排序）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-based-algorithmic-bounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison-based Algorithmic Bounds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison-based Algorithmic Bounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#math-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math Problems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theoretical-bounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theoretical Bounds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counting-sorts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counting Sorts（计数排序）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Counting Sorts（计数排序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefix-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefix Sum（前缀和）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radix-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radix Sort
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture1 AVL Trees,Splay Trees and Amortized Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的定义和分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学建模
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学建模
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%87%86%E5%A4%87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学建模备赛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化实用算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            优化实用算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%88%E8%BF%90%E7%AD%B9%E5%AD%A6%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无约束优化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            无约束优化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/Chapter1%20%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无约束优化算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sorting-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting Definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sorting Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting evaluation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selection-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selection Sort（选择排序）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heapsort" class="md-nav__link">
+    <span class="md-ellipsis">
+      HeapSort（堆排序）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HeapSort（堆排序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naive-heapsort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naive HeapSort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-place-heapsort" class="md-nav__link">
+    <span class="md-ellipsis">
+      In-place HeapSort
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mergesort" class="md-nav__link">
+    <span class="md-ellipsis">
+      MergeSort（归并排序）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MergeSort（归并排序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insertion-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertion Sort（插入排序）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quicksort" class="md-nav__link">
+    <span class="md-ellipsis">
+      QuickSort（快速排序）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-based-algorithmic-bounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison-based Algorithmic Bounds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison-based Algorithmic Bounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#math-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math Problems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theoretical-bounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theoretical Bounds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counting-sorts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counting Sorts（计数排序）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Counting Sorts（计数排序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefix-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefix Sum（前缀和）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radix-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radix Sort
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Chapter12 Sorting</h1>
+
+<h2 id="sorting-definition">Sorting Definition<a class="headerlink" href="#sorting-definition" title="Permanent link">&para;</a></h2>
+<p>An ordering relation &lt; for keys a, b and c has the following properties:</p>
+<ul>
+<li>Law of Trichotomy（三歧律）: Exactly one of <code>a&lt;b</code>, <code>a=b</code>, <code>b&lt;a</code> is true.（对于任意键 a,b，a&lt;b 或 a=b 或 b&lt;a 中恰有一个为真）</li>
+<li>Law of Transitivity（传递律）: If a&lt;b, and b&lt;c, then a&lt;c.</li>
+</ul>
+<h3 id="sorting-evaluation">Sorting evaluation<a class="headerlink" href="#sorting-evaluation" title="Permanent link">&para;</a></h3>
+<p>排序算法的评价维度有以下几点（来源于 Hello-algo）：</p>
+<ul>
+<li><strong>运行效率：</strong>排序算法的时间复杂度应尽可能低</li>
+<li><strong>就地性(in-place)：</strong>原地排序通过在原有的数组上直接操作实现排序，无需借助额外的辅助数组，节省内存。</li>
+<li><strong>稳定性：</strong>稳定排序在完成排序后，相等元素的相对顺序不发生改变</li>
+<li><strong>自适应性：</strong>自适应排序能够利用输入数据的已有顺序信息来减少计算量，达到更优的时间效率，其最佳时间复杂度往往优于平均时间复杂度</li>
+<li><strong>是否基于比较：</strong>基于比较的排序依赖于比较运算符，其理论最优时间复杂度为 <span class="arithmatex">\(O(n\log n)\)</span>；而非比较排序不使用比较运算符，其时间复杂度可以达到 <span class="arithmatex">\(O(n)\)</span>，但通用性相对较差。</li>
+</ul>
+<h2 id="selection-sort">Selection Sort（选择排序）<a class="headerlink" href="#selection-sort" title="Permanent link">&para;</a></h2>
+<p>算法流程如下：</p>
+<ul>
+<li>找到未排序部分的最小项</li>
+<li>将其交换到未排序部分的前端并固定</li>
+<li>对剩余未固定（未排序）项重复上述操作，直至全部排序</li>
+</ul>
+<p>其时间复杂度为 <span class="arithmatex">\(\Theta(N^2)\)</span>，比较低效，因为每次查找最小值都需要遍历整个剩余数组，空间复杂度为 <span class="arithmatex">\(\Theta(1)\)</span>，原地排序</p>
+<h2 id="heapsort">HeapSort（堆排序）<a class="headerlink" href="#heapsort" title="Permanent link">&para;</a></h2>
+<h3 id="naive-heapsort">Naive HeapSort<a class="headerlink" href="#naive-heapsort" title="Permanent link">&para;</a></h3>
+<p>堆排序的思想是利用<strong>最大堆快速获取最大值</strong>，注意我们这里并没有使用最小堆获取最小值，后面我们会展开详细的阐述。其算法流程如下：</p>
+<ul>
+<li>将所有项插入最大堆，创建输出数组</li>
+<li>从堆删除最大项，并置于输出数组未使用部分的末尾</li>
+</ul>
+<p>下面我们分析堆排序的时间复杂度，堆插入的时间复杂度是 <span class="arithmatex">\(O(N\log N)\)</span>，选择最大值的时间复杂度为 <span class="arithmatex">\(\Theta(1)\)</span>，每次删除最大值的时间复杂度为 <span class="arithmatex">\(\Theta(\log N)\)</span>，删除总计的时间复杂度为 <span class="arithmatex">\(O(N\log N)\)</span>，整体的时间复杂度为 <span class="arithmatex">\(O(N\log N)\)</span>；空间复杂度为 <span class="arithmatex">\(\Theta(N)\)</span></p>
+<h3 id="in-place-heapsort">In-place HeapSort<a class="headerlink" href="#in-place-heapsort" title="Permanent link">&para;</a></h3>
+<p>Naive HeapSort 需要单独创建一个输出数组，耗费额外的空间，我们可以就在输入数组进行原地的堆排序，避免额外的空间消耗。</p>
+<p>假设数组的长度为 <span class="arithmatex">\(n\)</span>，则堆排序的流程如下：</p>
+<ul>
+<li>
+<p>输入数组并建立最大堆，完成后，最大元素位于堆顶（这里建立大顶堆应该采用遍历堆化的建堆方法，用层序遍历的倒序遍历堆，依次对每个非叶结点执行“从顶至底堆化”，可以参考<a href="https://www.hello-algo.com/chapter_heap/build_heap/">8.2  建堆操作 - Hello 算法</a>）</p>
+</li>
+<li>
+<p>将堆顶元素（数组的第一个元素）与堆底元素（数组的最后一个元素）交换，完成交换后，堆的长度减1，已排序元素的数量增加1</p>
+</li>
+<li>从堆顶元素开始，从顶至底执行堆化操作(sift down)。完成堆化操作后，即修复堆的性质</li>
+<li>循环执行第二步和第三步，循环 <span class="arithmatex">\(n-1\)</span> 轮后，即可完成数组排序</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>这里需要注意的是，由于堆的长度会随着提取最大元素而减小，我们需要给 <code>sift_down()</code> 这个向下堆化的函数添加一个长度参数 <span class="arithmatex">\(n\)</span>，用于指定堆的当前有效长度</p>
+</div>
+<p>In-place HeapSort 的总时间复杂度为 <span class="arithmatex">\(O(N\log N)\)</span>，空间复杂度为 <span class="arithmatex">\(\Theta(1)\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>下面我们说明一下 In-place HeapSort 为什么要使用最大堆，而未选择最小堆。</p>
+<p>使用最大堆的时候，有序部分是从数组末尾增长的，未排序的堆的剩余部分留在前面，有序部分在后面，不会相互干扰结构；而如果我们使用最小堆，有序部分是从开头开始增长的，我们需要更改堆顶的索引，虽然我感觉其实也差不多。利用最小堆的堆排序仍然是 <span class="arithmatex">\(O(N\log N)\)</span> 的</p>
+</div>
+<h2 id="mergesort">MergeSort（归并排序）<a class="headerlink" href="#mergesort" title="Permanent link">&para;</a></h2>
+<p>归并排序是一张基于分治策略的排序算法，其包含<strong>划分</strong>和<strong>合并</strong>两个阶段：</p>
+<ul>
+<li><strong>划分阶段：</strong>通过递归不断地将数组从中点处分开，将长数组的排序问题转化为短数组的排序问题</li>
+<li><strong>合并阶段：</strong>当子数组长度为 <span class="arithmatex">\(1\)</span> 时终止划分，开始合并，持续地将左右两个较短的有序数组合并为一个较长的有序数组</li>
+</ul>
+<p>算法示意图如下（来自 Hello-algo）：</p>
+<p><img alt="MergeSort Example" src="../images/MergeSort%20Example.png" /></p>
+<p>详细的算法流程如下：</p>
+<p>划分阶段我们从顶至底递归地将数组从中点划分为两个子数组：</p>
+<ul>
+<li>计算数组中点 <code>mid</code>，递归划分左子数组（区间 <code>[left, mid]</code>）和右子数组（区间 <code>[mid+1, right]</code>）</li>
+<li>递归执行上述步骤，直至子数组区间长度为 <code>1</code> 时终止</li>
+</ul>
+<p>合并阶段我们从底至顶地将左子数组和右子数组合并为一个有序数组。</p>
+<p>需要说明的是，归并排序操作的顺序是，先递归左子数组，再递归右子数组，最后处理合并。下面我们提供 C 语言版本的代码实现，需要说明的是在代码中， <code>nums</code> 的待合并区间为 <code>[left, right]</code>，而 <code>tmp</code> 的对应区间为 <code>[0, right-left]</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">nums</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="p">){</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">// 左子数组区间为 [left, mid]，右子数组区间为 [mid+1,right]</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">tmpSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="c1">// 临时数组 tmp，用于存放合并后的结果</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">tmpSize</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// 初始化左子数组和右子数组的起始索引</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="c1">// 当待合并的两个子数组都不空时，进行比较并将较小的元素复制到临时数组中</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">right</span><span class="p">){</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]){</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="n">tmp</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="n">tmp</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="c1">// 将左子数组或右子数组的剩余元素复制到临时数组中</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">mid</span><span class="p">){</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="n">tmp</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">right</span><span class="p">){</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="n">tmp</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="c1">// 将临时数组 tmp 中的元素复制回原数组 nums 的对应区间</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tmpSize</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">k</span><span class="p">){</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="c1">// 释放原数组</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">}</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="kt">void</span><span class="w"> </span><span class="nf">mergeSort</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">nums</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="p">){</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="c1">// 当子数组长度为1时终止递归</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">right</span><span class="p">){</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">right</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">left</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="c1">// 递归划分左子数组</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="n">mergeSort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">mid</span><span class="p">);</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="c1">// 递归划分右子数组</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="n">mergeSort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">right</span><span class="p">);</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="c1">// 合并</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">    </span><span class="n">merge</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">mid</span><span class="p">,</span><span class="n">right</span><span class="p">);</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="insertion-sort">Insertion Sort（插入排序）<a class="headerlink" href="#insertion-sort" title="Permanent link">&para;</a></h3>
+<p>插入排序的原理是在未排序区间选择一个基准元素，将该元素与其左侧已排序区间的元素逐一比较大小，并将该元素插入到正确的位置，其算法流程如下：</p>
+<ul>
+<li>初始状态下，我们认为数组的第 <span class="arithmatex">\(1\)</span> 个元素已经完成排序</li>
+<li>选取数组的第 <span class="arithmatex">\(2\)</span> 个元素作为 <code>base</code>，将其插入到正确位置，此时数组的前 <span class="arithmatex">\(2\)</span> 个元素已经排序</li>
+<li>选取第 <span class="arithmatex">\(3\)</span> 个元素作为 <code>base</code>，将其插入到正确位置，此时数组的前 <span class="arithmatex">\(3\)</span> 个元素已经排序</li>
+<li>依此类推，在最后一轮中，选取最后一个元素作为 <code>base</code>，将其插入到正确位置后，所有元素均已排序</li>
+</ul>
+<p>流程可以结合下图进行理解：</p>
+<p><img alt="Insertion Sort" src="../images/Insertion%20Sort.png" /></p>
+<p>插入排序的时间复杂度为 <span class="arithmatex">\(O(n^2)\)</span>，这是最坏情况；当输入的数组完全有序的时候，插入排序就会达到最佳时间复杂度 <span class="arithmatex">\(O(n)\)</span></p>
+<p>可供参考的 C 语言版本的 Insertion Sort 代码如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">insertionSort</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nums</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">){</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="c1">// 外循环，已排序区间为 [0, i-1]</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">base</span><span class="o">=</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="c1">// 内循环：将 base 插入到已排序区间 [0,i-1] 中的正确位置</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&gt;=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">base</span><span class="p">){</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="c1">// 将插入位置右侧的元素向右移动，给新元素腾位置</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="n">j</span><span class="o">--</span><span class="p">;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">base</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>需要说明的是，在几乎已经排序的数组上，插入排序的工作量是很小的；并且对于小规模的数组，插入排序通常也是比较快的，尽管其时间复杂度为 <span class="arithmatex">\(O(N^2)\)</span>，分治的 MergeSort 时间复杂度为 <span class="arithmatex">\(O(N\log N)\)</span>，但其在划分阶段的开销比较大</p>
+</div>
+<p>总结一下这四种排序算法的时间复杂度：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Best Case Runtime</th>
+<th>Worst Case Runtime</th>
+<th>Space</th>
+<th>Demo</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Selection Sort</td>
+<td><span class="arithmatex">\(\Theta(N^2)\)</span></td>
+<td><span class="arithmatex">\(\Theta(N^2)\)</span></td>
+<td><span class="arithmatex">\(\Theta(1)\)</span></td>
+<td><a href="https://docs.google.com/presentation/d/1p6g3r9BpwTARjUylA0V0yspP2temzHNJEJjCG41I4r0/edit?usp=sharing">demo</a></td>
+<td></td>
+</tr>
+<tr>
+<td>HeapSort(in-place)</td>
+<td><span class="arithmatex">\(\Theta(N)\)</span></td>
+<td><span class="arithmatex">\(\Theta(N\log N)\)</span></td>
+<td><span class="arithmatex">\(\Theta(1)\)</span></td>
+<td><a href="https://docs.google.com/presentation/d/1SzcQC48OB9agStD0dFRgccU-tyjD6m3esrSC-GLxmNc/edit">demo</a></td>
+<td>Bad cache(in CS61C) performance</td>
+</tr>
+<tr>
+<td>MergeSort</td>
+<td><span class="arithmatex">\(\Theta(N\log N)\)</span></td>
+<td><span class="arithmatex">\(\Theta(N\log N)\)</span></td>
+<td><span class="arithmatex">\(\Theta(N)\)</span></td>
+<td><a href="https://docs.google.com/presentation/d/1h-gS13kKWSKd_5gt2FPXLYigFY4jf5rBkNFl3qZzRRw/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.g463de7561_042">demo</a></td>
+<td>Fastest of all these</td>
+</tr>
+<tr>
+<td>Insertion Sort</td>
+<td><span class="arithmatex">\(\Theta(N)\)</span></td>
+<td><span class="arithmatex">\(\Theta(N^2)\)</span></td>
+<td><span class="arithmatex">\(\Theta(1)\)</span></td>
+<td><a href="https://docs.google.com/presentation/d/10b9aRqpGJu8pUk8OpfqUIEEm8ou-zmmC7b_BE5wgNg0/pub?start=false&amp;loop=false&amp;delayms=3000">demo</a></td>
+<td>Best for small N or almost sorted</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quicksort">QuickSort（快速排序）<a class="headerlink" href="#quicksort" title="Permanent link">&para;</a></h3>
+<h4 id="partitioning">Partitioning（分区）<a class="headerlink" href="#partitioning" title="Permanent link">&para;</a></h4>
+<p>Partitioning 是快速排序的基础操作，其能够确保主元置于正确位置，并将数组分为两部分，其定义如下：</p>
+<p>对于数组 <code>a[]</code>，选取主元（也可以称为基准数） <code>x=a[i]</code>（我们称之为 pivot），重排数组，使得：</p>
+<ul>
+<li><code>x</code> 移动到新位置 <code>j</code>，这里 <code>j</code> 有可能等于 <code>i</code>，也即位置没有改动</li>
+<li><code>j</code> 左侧的所有元素 <span class="arithmatex">\(\leq x\)</span></li>
+<li><code>j</code> 右侧的所有元素 <span class="arithmatex">\(\geq x\)</span></li>
+</ul>
+<p>需要说明的是，左侧和右侧的内部无需有序，等于 <code>x</code> 的元素可以分布在左侧或右侧，相对顺序不需要严格保持（这也说明快速排序是不稳定排序）</p>
+<p>这里我们给出 partioning 操作的具体流程：</p>
+<ul>
+<li>选取数组最左端的元素作为基准数，初始化两个指针 <code>i</code> 和 <code>j</code> 分别指向数组的两端</li>
+<li>设置循环，在每轮中使用 <code>i</code> 和 <code>j</code> 分别寻找第一个比基准数大（其实是大于等于）或小（其实是小于等于）的元素，交换这两个元素</li>
+<li>循环执行上述步骤，直至 <code>i</code> 和 <code>j</code> 相遇时停止，并将基准数交换至两个子数组的分界线</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>上面我们使用的是 <code>&gt;=</code> 和 <code>&lt;=</code>，这是因为在有大量重复元素的情况下，我们使用大于等于或小于等于可以更均匀地将相等元素分布到两侧，避免一边过长。</p>
+</div>
+<p>具体示例可以参考<a href="https://www.hello-algo.com/chapter_sorting/quick_sort/#__tabbed_1_1">11.5  快速排序 - Hello 算法</a></p>
+<p>分区完成后，原数组就被划分成了三个部分：左子数组、基准数、右子数组，并且满足 “左子数组任意元素 <span class="arithmatex">\(\leq\)</span> 基准数 <span class="arithmatex">\(\leq\)</span> 右子数组任意元素”，这实际上是分治策略的体现，接下来我们只需要对这两个子数组进行排序即可。</p>
+<h4 id="quicksort_1">QuickSort<a class="headerlink" href="#quicksort_1" title="Permanent link">&para;</a></h4>
+<p>快速排序算法基于分区操作，通过递归实现，算法流程如下：</p>
+<ul>
+<li>首先对原数组执行一次 partition，得到未排序的左子数组和右子数组</li>
+<li>然后对左子数组和右子数组分别递归执行 partition</li>
+<li>持续递归，直至子数组的长度为 1 时终止，从而完成整个数组的排序。</li>
+</ul>
+<p>流程可以参考下图</p>
+<p><img alt="QuickSort" src="../images/QuickSort.png" /></p>
+<p>下面我们分析一下快速排序的性能，在最佳情况下，pivot 始终在中点，分治高度 <span class="arithmatex">\(H=\Theta(\log N)\)</span>，每层的时间复杂度为 <span class="arithmatex">\(\Theta(N)\)</span>，总时间复杂度为 <span class="arithmatex">\(\Theta(\log N)\)</span>；在最坏情况下，pivot 始终在端点（例如已排序的数组），此时高度 <span class="arithmatex">\(H=\Theta(N)\)</span>，总时间为 <span class="arithmatex">\(\Theta(N^2)\)</span>；在平均情况（比如随机数组）下，时间复杂度为 <span class="arithmatex">\(\Theta(N\log N)\)</span>。</p>
+<p>在输入的数组完全逆序的情况下，快速排序达到了最差的递归深度 <span class="arithmatex">\(n\)</span>，使用 <span class="arithmatex">\(O(n)\)</span> 的栈桢空间，并且快速排序操作是在原数组上进行的，没有借助额外的数组。</p>
+<h4 id="quicksort-with-optimzed-pivot">QuickSort with Optimzed Pivot<a class="headerlink" href="#quicksort-with-optimzed-pivot" title="Permanent link">&para;</a></h4>
+<p>前面我们提到，对于已排序或者几乎排序的数组，快速排序的时间复杂度很有可能退化到 <span class="arithmatex">\(O(N^2)\)</span>，那么我们可以采取什么策略避免这些坏情况的发生呢？这里有四种想法：</p>
+<ul>
+<li><strong>随机性：</strong>我们随机选取 <code>pivot</code> 或预先对数组进行 shuffle</li>
+<li><strong>更加智能的 <code>pivot</code> 选择</strong>：如果我们使用确定性且常数时间选择的 pivot，攻击者可以轻易地构造出一类危险输入，让快速排序的性能退化到最坏情况，可以参考 Mcllroy 的 <a href="https://www.cs.dartmouth.edu/~doug/mdmspe.pdf">A Killer Adversary for QuickSort</a>]；而如果我们线性时间确定 pivot 计算实际的中位数，其开销过大。</li>
+<li><strong>Introspection：</strong>监控递归深度，为递归深度设定一个阈值，一旦超过这个阈值我们就切换到 MergeSort</li>
+<li><strong>预处理数组：</strong>我们可以尝试分析数组是否适合快速排序，但是这本身就很麻烦，仅仅检查是否已经排序并不足够。</li>
+</ul>
+<p>下面我们介绍一下精确中位数方案，该方案基于 BFRPT 算法，该算法在 <span class="arithmatex">\(\Theta(N)\)</span> 时间内找到第 <span class="arithmatex">\(k\)</span> 小元素（中位数为第 <span class="arithmatex">\([N/2]\)</span> 小），从而提供一个平衡的主元，确保每次分区至少排除一定比例的元素。</p>
+<p>感觉有点复杂，暂时先不介绍了（）</p>
+<p>这里介绍一下<a href="https://www.hello-algo.com/chapter_sorting/quick_sort/#1153">Hello-algo</a>提到的基准数优化的策略：</p>
+<p>我们可以在数组中选取三个候选元素（通常为数组的首、尾、中点元素），并将这三个候选元素的中位数作为基准数，这杨一来，基准数“既不太大也不太小”的概率将大幅提升，采用这种方法后，时间复杂度劣化至 <span class="arithmatex">\(O(n^2)\)</span> 的概率大大降低。</p>
+<h2 id="comparison-based-algorithmic-bounds">Comparison-based Algorithmic Bounds<a class="headerlink" href="#comparison-based-algorithmic-bounds" title="Permanent link">&para;</a></h2>
+<h3 id="math-problems">Math Problems<a class="headerlink" href="#math-problems" title="Permanent link">&para;</a></h3>
+<p>我们首先建立阶乘与对数函数之间的关系，为后续提出算法的理论界限奠定基础。</p>
+<h4 id="problem-1">Problem 1<a class="headerlink" href="#problem-1" title="Permanent link">&para;</a></h4>
+<p>首先我们需要说明的是 <span class="arithmatex">\(N\mathrm{!}\in \Omega((\frac{N}{2})^{\frac{N}{2}})\)</span>，也即证明，存在常数 <span class="arithmatex">\(c&gt;0\)</span> 和整数 <span class="arithmatex">\(N_0\geq 1\)</span>，使得对于所有 <span class="arithmatex">\(N\geq N_0\)</span>，有 
+$$
+N!\geq c\cdot(\frac{N}{2})^{\frac{N}{2}}
+$$
+我们首先讨论 <span class="arithmatex">\(N\)</span> 为偶数的情形，记 <span class="arithmatex">\(N=2m\)</span>，其中 <span class="arithmatex">\(m\)</span> 是正整数，则有
+$$
+N!=\prod_{k=1}^N k =(\prod_{k=1}^mk)\cdot(\prod_{k=m+1}^{2m}k)\geq \prod_{k=m+1}^{2m}k&gt;\prod_{k=m+1}^{2m}m=m^m
+$$
+又 <span class="arithmatex">\(m=\frac{N}{2}\)</span>，所以有
+$$
+N!&gt;(\frac{N}{2})^{\frac{N}{2}}
+$$
+下面我们考虑 <span class="arithmatex">\(N\)</span> 为奇数的情形，令 <span class="arithmatex">\(N=2m+1\)</span>，其中 <span class="arithmatex">\(m=[\frac{N}{2}]\)</span>，则有
+$$
+N!=\prod_{k=1}^{2m+1}k\geq \prod_{k=m+1}^{2m+1}k&gt;m^{m+1}=m\cdot m^m=\frac{N-1}{2}(\frac{N-1}{2})^{\frac{N-1}{2}}
+$$
+利用 <span class="arithmatex">\(\frac{N-1}{2}=\frac{N}{2}\cdot \frac{N-1}{N}\)</span>，所以有
+$$
+N!&gt;\frac{N}{2}\cdot\frac{N-1}{N}(\frac{N}{2}\cdot\frac{N-1}{N})^{\frac{N-1}{2}}=(\frac{N}{2})^{\frac{N+1}{2}}\cdot (\frac{N-1}{N})^{\frac{N+1}{2}}
+$$
+只需让
+$$
+N!&gt;(\frac{N}{2})^{\frac{N+1}{2}}\cdot (\frac{N-1}{N})^{\frac{N+1}{2}}&gt;(\frac{N}{2})^{\frac{N}{2}}
+$$
+解得 <span class="arithmatex">\(N_0\)</span> 即可，这样的 <span class="arithmatex">\(N_0\)</span> 显然是存在的。</p>
+<h4 id="problem-2">Problem 2<a class="headerlink" href="#problem-2" title="Permanent link">&para;</a></h4>
+<p>下面我们要说明的是 <span class="arithmatex">\(\log(N!)\in\Omega(N\log N)\)</span></p>
+<p>只需要在 Problem 1 所得的不等式两边取对数即可，得到 <span class="arithmatex">\(\log(N!)&gt;\log((\frac{N}{2})^{\frac{N}{2}})=\frac{N}{2}\log(\frac{N}{2})\)</span>，所以得到 <span class="arithmatex">\(\log (N!)\in \Omega(N\log N)\)</span></p>
+<h4 id="problem-3">Problem 3<a class="headerlink" href="#problem-3" title="Permanent link">&para;</a></h4>
+<p>下面我们要说明的是 <span class="arithmatex">\(N\log N \in \Omega(\log (N!))\)</span>，这是比较 trivial 的
+$$
+N\log N = \sum_{k=1}^N \log N &gt;\sum_{k=1}^N \log k=\log N!
+$$
+而结合 Problem 1 2 3 我们可以得到 <span class="arithmatex">\(\log(N!)\in \Theta(N\log N)\)</span></p>
+<h3 id="theoretical-bounds">Theoretical Bounds<a class="headerlink" href="#theoretical-bounds" title="Permanent link">&para;</a></h3>
+<h4 id="the-ultimate-comparison-sorttucs">The Ultimate Comparison Sort（TUCS）<a class="headerlink" href="#the-ultimate-comparison-sorttucs" title="Permanent link">&para;</a></h4>
+<p>我们假设存在一个渐进最快的基于比较的排序算法，这种算法可能尚未被发现，将其最坏情况运行时记为 <span class="arithmatex">\(R(N)\)</span>，基于已知算法，比如归并排序的 <span class="arithmatex">\(\Theta(N\log N)\)</span>，我们可以得出 <span class="arithmatex">\(R(N)\)</span> 有上界 <span class="arithmatex">\(N\log N\)</span>，也即 <span class="arithmatex">\(R(N)\in O(N\log N)\)</span>；同时，<span class="arithmatex">\(R(N)\)</span> 的下界至少为 <span class="arithmatex">\(\Omega(N)\)</span>，这是因为我们必须检查每个元素。实际上 <span class="arithmatex">\(R(N)\)</span> 精确的下界是 <span class="arithmatex">\(\Omega(N\log N)\)</span>，为了得到这个更强的下界，我们需要引入决策树模型。</p>
+<h4 id="decision-tree">Decision Tree<a class="headerlink" href="#decision-tree" title="Permanent link">&para;</a></h4>
+<p>决策树模型是证明下界的核心，用决策树模型证明下界的逻辑是这样的：</p>
+<p>首先我们考虑对于 <span class="arithmatex">\(N\)</span> 个不同的元素，输入数组的可能排列显然有 <span class="arithmatex">\(n!\)</span> 种，算法必须为每种排列都输出正确的排序结果，如果两种不同的排列导致了相同的输出，算法就无法区分，所以决策树必须至少有 <span class="arithmatex">\(N!\)</span> 个不同的叶子，每个叶子对应一种唯一排列。</p>
+<p>而决策树本身是二叉树，我们知道，一个高度为 <span class="arithmatex">\(h\)</span> 的二叉树最多有 <span class="arithmatex">\(2^h\)</span> 个叶节点，那么反过来要容纳 <span class="arithmatex">\(N!\)</span> 个叶节点，输的高度 <span class="arithmatex">\(h\)</span> 需满足：
+$$
+2^h \geq N! \Rightarrow h\geq \log_2(N!)
+$$
+所以 <span class="arithmatex">\(h\in\Omega(\log(N!))\)</span>，而前面我们已经得到 <span class="arithmatex">\(\log(N!)\in \Theta(N\log N)\)</span>，所以有 <span class="arithmatex">\(h\in \Omega(\log(N!))\)</span></p>
+<p>于是我们得到，TUCS is <span class="arithmatex">\(\Omega(N\log N)\)</span>，最终我们可以得出结论: Any comparison based sort requires at least order <span class="arithmatex">\(N\log N\)</span> comparisons in its worst case.（基于比较的排序算法的时间复杂度无法超越 <span class="arithmatex">\(O(n\log n)\)</span>）</p>
+<h2 id="counting-sorts">Counting Sorts（计数排序）<a class="headerlink" href="#counting-sorts" title="Permanent link">&para;</a></h2>
+<p>前面我们已经讲过，基于比较的排序的时间复杂度无法超越 <span class="arithmatex">\(O(N\log N)\)</span>，那自然就会有这样一个问题，如果我们根本就不比较呢？有没有可能得到更好的运行时？</p>
+<p>课程提出了一个有些趣味但并不实用的例子，Sleep Sort ，用于排序整数数组 <code>A</code> 中的每个元素，其为每个 <code>x</code> 启动一个进程，睡眠 <code>x</code> 秒后打印 <code>x</code>，并且所有进程是同时启动的。Sleep Sort 的运行时为 <span class="arithmatex">\(\Theta(N+\max(A))\)</span>，但在实际的机器中，由于操作系统的调度需求，该方法隐含了需要按睡眠时间排序的进程列表，其实并不高效。下面我们介绍计数排序</p>
+<p>计数排序是一种非比较算法，其通过牺牲空间来换取时间效率，它的核心思想是<strong>创建一个计数数组(counting arrays)来统计每个键值的出现次数</strong>，然后使用这些计数直接将元素放置到排序数组的正确位置，从而避免逐对进行比较。</p>
+<p>我们首先考虑计数排序最基础的形式，对于一个给定长度为 <span class="arithmatex">\(n\)</span> 的数组 <code>nums</code>，其中的元素都是非负整数：</p>
+<ul>
+<li><strong>统计范围与频率：</strong>首先遍历数组找出最大键值 <span class="arithmatex">\(m\)</span>，创建计数数组 <code>counter</code>，大小 <span class="arithmatex">\(R=m+1\)</span>，并遍历 <code>nums</code> 数组，对于当前的 <code>num</code> 元素，每轮将 <code>counter[num]</code> 自增1即可</li>
+</ul>
+<p>此时由于 <code>counter</code> 的各个索引是天然有序的，相当于所有的数字都已经排好了，我们只需遍历 <code>counter</code> 数组，根据各数字出现次数的从小到大的顺序填入 <code>nums</code> 即可，如下图所示（来源于 Hello-algo）</p>
+<p><img alt="counting_sort_example" src="../images/counting_sort_example.png" /></p>
+<h3 id="prefix-sum">Prefix Sum（前缀和）<a class="headerlink" href="#prefix-sum" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">To be done</p>
+<p>参考 Hello-algo 吧</p>
+</div>
+<h2 id="radix-sort">Radix Sort<a class="headerlink" href="#radix-sort" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">To be done</p>
+<p>有时间了再来补笔记</p>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年1月19日 08:33:09 UTC"><span class="timeago" datetime="2026-01-19T08:33:09+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月19日 08:33:09 UTC">2026-01-19</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

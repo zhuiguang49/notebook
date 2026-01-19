@@ -1,0 +1,2689 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/CS/CS61B/Chapter10%20Graph%20Problems/">
+      
+      
+        <link rel="prev" href="../Chapter9%20Graph/">
+      
+      
+        <link rel="next" href="../Chapter11%20Prefix%20Operations%20and%20Tries/">
+      
+      
+      <link rel="icon" href="../../../assets/logo.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter10 Graph Problems - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#shortest-paths" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter10 Graph Problems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS61B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS61B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1%20Java%20Basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 Java Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2%20Lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 Lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3%20OOP%20in%20Java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 OOP in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 数据结构和算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 并查集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6%20Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7%20Hash%20Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 Hash Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8%20Heaps%20and%20Priority%20Queues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter8 Heaps and Priority Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9%20Graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter9 Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter10 Graph Problems
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter10 Graph Problems
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shortest-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shortest Paths（最短路径问题）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shortest Paths（最短路径问题）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dijkstras-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dijkstra's Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dijkstras-correctness-and-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dijkstra's Correctness and Runtime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#astar" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(A^{\star}\) 算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summarization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summarization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minnimum-spanning-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minnimum Spanning Trees（最小生成树）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minnimum Spanning Trees（最小生成树）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warmup-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warmup Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spanning-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spanning Trees（生成树）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-useful-tool-cut-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Useful Tool: Cut Property
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-mst-finding-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generic MST Finding Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prims-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prim's Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kruskals-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kruskal's Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topological-sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topological Sorting（拓扑排序）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Topological Sorting（拓扑排序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dfs-based-topological-sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      DFS-based Topological Sorting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dags-shortest-path-and-longest-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAG‘s shortest path and longest path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DAG‘s shortest path and longest path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortest-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      shortest path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#longest-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      longest path
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11%20Prefix%20Operations%20and%20Tries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter11 Prefix Operations and Tries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter12%20Sorting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter12 Sorting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture1 AVL Trees,Splay Trees and Amortized Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的定义和分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学建模
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学建模
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%87%86%E5%A4%87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学建模备赛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化实用算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            优化实用算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%88%E8%BF%90%E7%AD%B9%E5%AD%A6%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无约束优化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            无约束优化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/Chapter1%20%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无约束优化算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shortest-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shortest Paths（最短路径问题）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shortest Paths（最短路径问题）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dijkstras-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dijkstra's Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dijkstras-correctness-and-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dijkstra's Correctness and Runtime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#astar" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(A^{\star}\) 算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summarization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summarization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minnimum-spanning-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minnimum Spanning Trees（最小生成树）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minnimum Spanning Trees（最小生成树）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warmup-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warmup Problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spanning-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spanning Trees（生成树）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-useful-tool-cut-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Useful Tool: Cut Property
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-mst-finding-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generic MST Finding Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prims-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prim's Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kruskals-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kruskal's Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topological-sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topological Sorting（拓扑排序）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Topological Sorting（拓扑排序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dfs-based-topological-sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      DFS-based Topological Sorting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dags-shortest-path-and-longest-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAG‘s shortest path and longest path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DAG‘s shortest path and longest path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortest-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      shortest path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#longest-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      longest path
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Chapter10 Graph Problems</h1>
+
+<h2 id="shortest-paths">Shortest Paths（最短路径问题）<a class="headerlink" href="#shortest-paths" title="Permanent link">&para;</a></h2>
+<p>首先回顾一下 BFS 和 DFS 在 Path Finding 上的表现：</p>
+<ul>
+<li><strong>Correctness：</strong>Do both work for all graphs? Yes!</li>
+<li><strong>Output Quality：</strong>Does one give better results?</li>
+<li>BFS is a 2-for-1 deal, not only do we get paths, but our paths are also guaranteed to be shortest</li>
+<li><strong>Time Efficiency：</strong>Is one more efficient than the other?</li>
+<li>Should be very similar. Both consider all edges twice. Experiments or very careful analysis needed.</li>
+<li><strong>Space Efficiency：</strong>Is one more efficient than the other?</li>
+<li>DFS is worse for spindly graphs（细长图）<ul>
+<li>Its call stack gets very deep</li>
+<li>Computer needs <span class="arithmatex">\(\Theta(V)\)</span> memory to remember recursive calls</li>
+</ul>
+</li>
+<li>BFS is worse for absurdly "bushy" graphs<ul>
+<li>Queue gets very large. In worst case, queue will require <span class="arithmatex">\(\Theta(V)\)</span> memory</li>
+<li>Example: 1,000,000 vertices that are all connected. 999,999 will be enqueued at once.</li>
+</ul>
+</li>
+<li>Note: In our implementations, we have to spend <span class="arithmatex">\(\Theta(V)\)</span> memory anyway to track distTo and edgeTo arrays.(It can be optimized by storing distTo and edgeTo in a map instead of an array.)</li>
+</ul>
+<p>总的来说，BFS 在无权图的最短路径问题表现更好，但是对于有权图，最短路径应当能够最小化权重总和，而不仅仅是边数，这时候 BFS 算法就不足以解决此问题。</p>
+<h3 id="dijkstras-algorithm">Dijkstra's Algorithm<a class="headerlink" href="#dijkstras-algorithm" title="Permanent link">&para;</a></h3>
+<p>在引入 Dijkstra 算法之前，我们首先讨论一下 Single Source Shortest Paths 问题，考虑从起点 <span class="arithmatex">\(s\)</span> 到每个其他顶点的最短路径：</p>
+<p><img alt="Single Source Single Target Shortest Paths" src="../images/Single%20Source%20Single%20Target%20Shortest%20Paths.png" /></p>
+<p>这里我们直接给出一个关键的 observation：<strong>我们的 solution 似乎总是一棵树</strong>（没有负权边的情况），我们称之为 <strong>Shortest Paths Tree</strong>（SPT）。并且还会有这样一个结论，如果 <span class="arithmatex">\(G\)</span> 是一个连通的带权图，其有着 <span class="arithmatex">\(V\)</span> 个顶点和 <span class="arithmatex">\(E\)</span> 条边，则它对应的Shortest Paths Tree有多少条边？</p>
+<p>答案是 <span class="arithmatex">\(V-1\)</span>，这是由树结构的性质保证的，即<strong>树的边的数量总是比顶点的数量少1</strong>（如果忘了可以回忆一下离散数学的内容）。</p>
+<p>那接下来我们就尝试设计一种算法去找到最小路径，我们可以从一个不良的算法开始，然后逐渐地取改进它。</p>
+<p>我们的算法从如图所示的状态开始，所有的节点都尚未被标记，所有的距离都仍然为无穷，并且 SPT 也没有添加边</p>
+<p><img alt="Algorithm begin state" src="../images/Algorithm%20begin%20state.png" /></p>
+<p><strong>Bad algorithm#1：</strong>Perform a <strong>depth first search</strong>. When you visit v:</p>
+<ul>
+<li>For each edge from v to w, if w is not already part of SPT, add the edge.</li>
+</ul>
+<p><img alt="Bad algorithm1" src="../images/Bad%20algorithm1.png" /></p>
+<p>从上图容易看出，这样生成的 SPT 是不正确的，原因在于我们使用了 DFS 遍历，没有更新已添加的更好边，我们尝试改进，如果找到了更好的边，我们就使用更好的边(Use better edges if found)</p>
+<p><strong>Bad algorithm#2：</strong>DFS + add edge to SPT <strong>only if that edge yields better distance</strong>(We call this process "edge relaxation").</p>
+<p><img alt="Bad algorithm1" src="../images/Bad%20algorithm2.png" /></p>
+<p>可以看到，这样形成的 SPT 仍然是错误的，我们得到 <span class="arithmatex">\(D\)</span> 的最小路径长度为6，而实际应为4，错误在于 DFS 顺序错误，在 C 后访问 B 时我们未能重新遍历 B-D。</p>
+<p>为了解决这个问题，我们还需要引入<strong>最佳优先遍历</strong>(Traverse "best first")，即优先处理 <code>distTo</code> 最小的顶点</p>
+<p><strong>Dijkstra's Algorithm：</strong>Perform a best first search(closest first). When you visit v:</p>
+<ul>
+<li>For each from v to w, relax that edge</li>
+</ul>
+<p><img alt="迪杰斯特拉算法" src="../images/Dijkstra%27s%20Algorithm.png" /></p>
+<p>这样我们可以看出，生成的 SPT 就是正确的了，执行 Dijkstra's Algorithm 的流程如下：</p>
+<p>Insert all vertices into fringe PQ, storing vertices in order of distance from source. Repeat:</p>
+<p>Remove (closet)vertex v from Priority Queue, and relax all edges pointing from v.</p>
+<p>可以参考这个<a href="https://docs.google.com/presentation/d/1_bw2z1ggUkquPdhl7gwdVBoTaoJmaZdpkV6MoAgxlJc/pub?start=false&amp;loop=false&amp;delayms=3000">demo</a></p>
+<h3 id="dijkstras-correctness-and-runtime">Dijkstra's Correctness and Runtime<a class="headerlink" href="#dijkstras-correctness-and-runtime" title="Permanent link">&para;</a></h3>
+<h4 id="dijkstras-algorithm-pseudocode">Dijkstra's Algorithm Pseudocode<a class="headerlink" href="#dijkstras-algorithm-pseudocode" title="Permanent link">&para;</a></h4>
+<p>Dijkstra's:</p>
+<ul>
+<li>PQ.add(source,0)</li>
+<li>For other vertices v, PQ.add(v,infinity)</li>
+<li>While PQ is not empty:</li>
+<li>p = PQ.removeSmallest()</li>
+<li>Relax all edges from p</li>
+</ul>
+<p>Relaxing an edge p -&gt; q with weight w means:</p>
+<ul>
+<li>If distTo[p]+w&lt;distTo[q]:</li>
+<li>distTo[q] = distTo[p]+w</li>
+<li>edgeTo[q] = p</li>
+<li>PQ.changePriority(q, distTo[q])</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p><code>PQ.changePriority(q, distTo[q])</code> 可能有点费解</p>
+<p>在 Dijkstra 算法中，我们使用 Priority Queue 来保证始终选择当前已知距离源最近的未访问定点 <code>removeSmallest()</code>。在松弛的过程中，当处理一个顶点 <code>p</code> 并松弛出其边 <code>p-&gt;q</code> 时，如果 <code>distTo[p] + w &lt; distTo[q]</code>，说明 <code>p</code> 到达 <code>q</code> 的路径更短，这时候需要更新 <code>q</code> 的已知距离 <code>disTo[q]</code>，并相应地调整 <code>q</code> 在优先队列的优先级。而 <code>PQ.changePriority(q,distTo[q])</code> 则是将 <code>q</code> 的优先级更新为新的 <code>distTo[q]</code> 值。</p>
+</div>
+<p>Dijkstra's key invariants:</p>
+<ul>
+<li>edgeTo[v] is the best known predecessor of v（<code>edgeTo[v]</code> 是 v 的最佳已知前驱节点）</li>
+<li>distTo[v] is the best known total distance from source to v（<code>distTo[v]</code> 是从源到 <code>v</code> 的最佳已知总距离）</li>
+<li>PQ contains all unvisited vertices in order of distTo（我们在操作的时候总是选取优先队列中 distTo 最小的出队）</li>
+</ul>
+<p>Important properties:</p>
+<ul>
+<li>Always visits vertices in order of total distance from source.（<strong>总是按到源的总距离顺序来访问节点</strong>）</li>
+<li>Relaxation always fails on edges to visited (white) vertices.（对于已访问的节点的松弛总是失败的）</li>
+</ul>
+<h4 id="guaranteed-optimality">Guaranteed Optimality（最优性保证）<a class="headerlink" href="#guaranteed-optimality" title="Permanent link">&para;</a></h4>
+<p>如果所有边都是非负的，Dijkstra 保证返回正确结果，下面我们给出一个简化的使用数学归纳法的证明，假设所有边的权重非负。</p>
+<p>The proof relies on the property that relaxation always fails on edges to visited vertices.（对于已访问的顶点的 relaxation 总是失败的）</p>
+<p>Proof sketch:</p>
+<ul>
+<li>At start, distTo[source] = 0, which is optimal</li>
+<li>After relaxing all edges from source, assuming vertex v1 is the vertex with minimum weight, i.e. which is closet to the source. We claim that distTo[v1] is optimal, and thus future relaxations will fail.（这是因为对于其他的所有顶点 <code>p</code>，有 <code>distTo[p] ≥ distTo[v1]</code>，因此有 <code>distTo[p] + w ≥ distTo[v1]</code>，后续的松弛也就都会失败）</li>
+<li>We use induction to prove that this holds for all vertices after dequeuing.</li>
+</ul>
+<h4 id="dijkstra-runtime">Dijkstra' Runtime<a class="headerlink" href="#dijkstra-runtime" title="Permanent link">&para;</a></h4>
+<p>假设我们使用的是二叉堆(binary heap)来实现优先队列(Priority Queue)：</p>
+<ul>
+<li>PQ <code>add</code>：<span class="arithmatex">\(V\)</span> 次，每次为 <span class="arithmatex">\(O(\log V)\)</span></li>
+<li>PQ <code>removeSmallest</code>：<span class="arithmatex">\(V\)</span> 次，每次为 <span class="arithmatex">\(O(\log V)\)</span>，因为有堆化</li>
+<li>PQ <code>changePriority</code>：<span class="arithmatex">\(E\)</span> 次，每次为 <span class="arithmatex">\(O(\log V)\)</span>，因为有堆化</li>
+</ul>
+<p>所以总的运行时为 <span class="arithmatex">\(O(V\log V+V\log V+E\log V)=O((E+V)\log V)\)</span>，假设图是连通的，此时有 <span class="arithmatex">\(E&gt;V\)</span>，则运行时可以简化为 <span class="arithmatex">\(O(E\log V)\)</span> </p>
+<h4 id="negative-edges">Negative Edges<a class="headerlink" href="#negative-edges" title="Permanent link">&para;</a></h4>
+<p>如果图有负权重的边，我们按最佳距离顺序访问并松弛的策略就可能会失效，这是因为对已访问节点的 relaxation 是有可能成功的。</p>
+<h3 id="astar"><span class="arithmatex">\(A^{\star}\)</span> 算法<a class="headerlink" href="#astar" title="Permanent link">&para;</a></h3>
+<h4 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h4>
+<p>Dijkstra's algorithm 虽然能够找到最短路径树，但是对于<strong>单源单目标场景</strong>其实是有些低效的，因为 Dijkstra 事实上是以类似“同心圆”的方式探索的，其从源出发，按距离递增的顺序访问节点，我们可以看一个具体的例子：</p>
+<p><img alt="Dijkstra's awkwardness" src="../images/Dijkstra%27s%20awkwardness.png" /></p>
+<p>假设源在 Denver，目标为 New York。Dijkstar 算法会先访问 Denver 附近的城市（比如1单位距离内所有节点），然后扩展到2单位、3单位，最终可能先探索了西部例如 Las Vegas, Los Angeles等等，后面才触及 New York（这是因为没有利用上 New York 在东方这个地理信息），这是相当浪费计算资源的。即使是短路，Dijkstra 仍然需要探索无关区域，直至“圆圈”大到足以包含目标。</p>
+<p>这时候我们就会有一个 motivation，如果我们能够利用先验知识（比如目标方向），算法可以“引导”搜索优先东方节点，提高效率，所以我们考虑添加启发式算法来实现此优化。</p>
+<h4 id="astar-introduction"><span class="arithmatex">\(A^{\star}\)</span> Introduction<a class="headerlink" href="#astar-introduction" title="Permanent link">&para;</a></h4>
+<p><span class="arithmatex">\(A^{\star}\)</span> 是一种搜索算法，它是 Dijkstra 的变体，专门为单目标最短路径而设计，并引入已知距离和估计距离两个概念。仍然以上面的例子进行说明：</p>
+<p>Simple idea:</p>
+<ul>
+<li>Visit vertices in order of d(Denver, v) + h(v,goal), where h(v,goal) is an estimate of the distance from v to our goal NYC.</li>
+<li>In other words, look at some location v if:</li>
+<li>We know already know the fatest way to reach v.</li>
+<li>And we suspect that v is also the fatest way to NYC taking into account the time to get v.</li>
+</ul>
+<p>也即 Dijkstra 算法使用“真实”距离（从源到当前节点 <code>v</code> 的最佳已知距离，并且将 <code>bestKnownDistToV</code> 作为 PQ 的优先级）；而 <span class="arithmatex">\(A^{\star}\)</span> 添加从 <span class="arithmatex">\(v\)</span> 到目标的粗略估计（<code>estimateFromVToGoal</code>或<code>h(v,goal)</code>），优先级就变为了 <code>bestKnownDistToV + h(v,goal)</code>，这给出了从源到目标的“整体估计”</p>
+<p><strong>算法步骤如下（与 Dijkstra 类似，但优先级不同）</strong>：</p>
+<ul>
+<li>初始化 Priority Queue：源节点<code>s</code> 的优先级为 <code>0+h(s,goal)</code>，其他节点的优先级为 <code>∞ + h(v, goal)</code></li>
+<li>当 PQ 非空时：</li>
+<li>优先级最小的节点 <code>p</code> 出队（当前从源到目标的“最佳估计”节点）</li>
+<li>relax <code>p</code> 的所有出边，更新邻居的 <code>q</code> 的 <code>distTo[q]</code> 和 <code>edgeTo[q]</code>，如果更好，则修改其在优先队列中的优先级，<code>PQ.changePriority(q,distTo[q]+h(q,goal))</code></li>
+<li>短路：一旦目标 <code>t</code> 出队，即停止，并返回路径</li>
+</ul>
+<p><strong>参考伪代码</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>def a_star(source, target):
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    PQ.add(source,0+h(source,target))
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    for other vertices v:
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        PQ.add(v,infinity + h(v,target))
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    While PQ 非空:
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        p = PQ.removeSmallest();
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        if p == target:
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            return reconstructPath(edgeTo,target)
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        relax(p的所有出边)
+</code></pre></div>
+<p>可以参考这个<a href="https://docs.google.com/presentation/d/177bRUTdCa60fjExdr9eO04NHm0MRfPtCzvEup1iMccM/edit?slide=id.g771336078_0_180#slide=id.g771336078_0_180">demo</a></p>
+<p>这时候就会有人问，我们要用到 <code>h(v,target)</code>，这怎么计算呢？事实上我们的 <code>h(v,target)</code> 是近似，而不是精确的计算。</p>
+<h4 id="heuristics">启发式函数(Heuristics)<a class="headerlink" href="#heuristics" title="Permanent link">&para;</a></h4>
+<p>启发式函数是 <span class="arithmatex">\(A^{\star}\)</span> 的核心，决定效率和正确性，良好的启发式函数需要满足以下几个要求：</p>
+<ul>
+<li><strong>Admissibility（可采纳性）：</strong><code>h(v,goal) ≤ trueDistance(v,goal)</code>，不高估真实距离，否则可能错过更好的路径</li>
+<li><strong>Consistency（一致性）：</strong>对于每条边<code>(v,w)</code>有<code>h(v,goal)≤weight(v,w)+h(w,goal)</code></li>
+</ul>
+<p>比如说对于 Denver 到 New York，我们可以使用 GPS 的直线距离作为启发。</p>
+<p>而坏的启发式函数会有什么后果呢？考虑这样的情况，假设最短路径经过城市 <code>C</code>，但 <code>h(C,goal)=∞</code>，这样对于 <span class="arithmatex">\(A^{\star}\)</span> 算法，其优先级为 <code>disTo[C]+∞=∞</code>，永不访问 <code>C</code>，导致忽略了最优路径，最终返回错误结果。</p>
+<h4 id="comparison-to-dijkstra">Comparison to Dijkstra<a class="headerlink" href="#comparison-to-dijkstra" title="Permanent link">&para;</a></h4>
+<p>两者都用 PQ 和 relaxation，确保非负权重下是正确的，但 Dijkstra 优先级为 <code>distTo[v]</code>，即距离起始点的真实距离，更适合多目标 SPT；而 <span class="arithmatex">\(A^{\star}\)</span> 的优先级为 <code>distTo[v]+h(v,goal)</code>，即真实距离+估计距离，适合单目标，减少无关探索。效率上 <span class="arithmatex">\(A^{\star}\)</span> 在良好启发下访问更少节点，实际更快；最坏情况同 Dijkstra</p>
+<p>两种算法的可视化<a href="http://qiao.github.io/PathFinding.js/visual/">demo</a></p>
+<h3 id="summarization">Summarization<a class="headerlink" href="#summarization" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Problem Description</th>
+<th>Solution</th>
+<th>Efficiency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paths</td>
+<td>Find a path from s to every reachable vertex</td>
+<td>DFS</td>
+<td><span class="arithmatex">\(O(V+E)\)</span> time           <span class="arithmatex">\(\Theta(V)\)</span> space</td>
+</tr>
+<tr>
+<td>shortest paths</td>
+<td>Find the shortest path from s to every reachable vertex</td>
+<td>BFS</td>
+<td><span class="arithmatex">\(O(V+E)\)</span> time                                  <span class="arithmatex">\(\Theta(V)\)</span> space</td>
+</tr>
+<tr>
+<td>shortest weighted paths</td>
+<td>Find the shortest path, considering weights, from s to every reachable vertex</td>
+<td>Dijkstra's algorithm</td>
+<td><span class="arithmatex">\(O(E\log V)\)</span> time            <span class="arithmatex">\(\Theta(V)\)</span> space</td>
+</tr>
+<tr>
+<td>shortest weighted path</td>
+<td>Find the shortest path, considering weights, from s to some target vertex</td>
+<td><span class="arithmatex">\(A^{\star}\)</span></td>
+<td>Time depends on heuristic              <span class="arithmatex">\(\Theta(V)\)</span> space</td>
+</tr>
+</tbody>
+</table>
+<h2 id="minnimum-spanning-trees">Minnimum Spanning Trees（最小生成树）<a class="headerlink" href="#minnimum-spanning-trees" title="Permanent link">&para;</a></h2>
+<h3 id="warmup-problem">Warmup Problem<a class="headerlink" href="#warmup-problem" title="Permanent link">&para;</a></h3>
+<p>给定一个无向图，如何判断其是否包含任何环？例如下面这个图：</p>
+<p><img alt="Warmup Problem" src="../images/Warmup%20Problem.png" /></p>
+<p>这里介绍两种可能的思路：</p>
+<ul>
+<li><strong>深度优先搜索（DSF）：</strong>我们从任意顶点（例如0）开始进行DFS，并继续遍历直至遇到已标记的节点，并且我们需要忽略已经走过的节点。最坏时间复杂度为 <span class="arithmatex">\(O(V+E)\)</span></li>
+<li><strong>加权快速并查集(WQU)：</strong>我们对于每条边，都检查任意两个顶点是否连接，如果未连接，就进行 union 操作；如果已连接，则存在环。如果我们启用路径压缩，最坏时间复杂度为 <span class="arithmatex">\(O(V+E\alpha(V))\)</span>，其中 <span class="arithmatex">\(\alpha(V)\)</span> 为逆 Ackermann 函数，增长极为缓慢</li>
+</ul>
+<h3 id="spanning-trees">Spanning Trees（生成树）<a class="headerlink" href="#spanning-trees" title="Permanent link">&para;</a></h3>
+<p>生成树的定义是这样的：给定一个无向图 <span class="arithmatex">\(G\)</span>，如果 <span class="arithmatex">\(G\)</span> 的一个子图 <span class="arithmatex">\(T\)</span> 满足以下几点性质：</p>
+<ul>
+<li>连通</li>
+<li>无环（这是树的要求）</li>
+<li>包含 <span class="arithmatex">\(G\)</span> 的所有顶点</li>
+</ul>
+<p>我们就称 <span class="arithmatex">\(T\)</span> 是 <span class="arithmatex">\(G\)</span> 的生成树。</p>
+<p>而最小生成树(MST)，顾名思义，就是使得（有权图）总权重最小的生成树。</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>需要说明的是，MST 没有源顶点（也即从哪个顶点出发），仅仅是最小化总的权重，而 SPT（在本讲上方） 则是从特定源计算到所有顶点的最短路径，MST 有时候和特定源的 SPT 是相同的，但大部分时候，MST 和 SPT 不是同一棵树。</p>
+</div>
+<h3 id="a-useful-tool-cut-property">A Useful Tool: Cut Property<a class="headerlink" href="#a-useful-tool-cut-property" title="Permanent link">&para;</a></h3>
+<p>我们先介绍 MST 的 Cut Property（切割属性），Cut 是指我们将图的顶点分为两个非空集合，Crossing Edge（跨越边）指的是连接两个集合的边。而 MST 的切割属性是说<strong>在任何切割中，权重最小的 Crossing Edge 一定在 MST 中(Given any cut, minimum weight crossing edge is in the MST)</strong>。我们可以使用反证法完成证明，如下图所示：</p>
+<p><img alt="MST's cut property" src="../images/MST%27s%20cut%20property.png" /></p>
+<p>这里我们假设权重最小的 crossing edge 是边 <code>e</code>，如若它不在 MST 中，则我们添加边 <code>e</code> 形成环，此时环中的另一跨越边 <code>f</code> 的权重反而更高，我们删去 <code>f</code> 就得到了权重更小的 Spanning Trees，产生矛盾。</p>
+<h3 id="generic-mst-finding-algorithm">Generic MST Finding Algorithm<a class="headerlink" href="#generic-mst-finding-algorithm" title="Permanent link">&para;</a></h3>
+<p>根据 MST 的 Cut Property，我们可以得到一个通用的 MST 算法，从空的 MST 开始：</p>
+<ul>
+<li>找到一个切割，是的当前 MST 中没有任何边跨越这个切割</li>
+<li>添加最小跨越边</li>
+<li>重复添加至 <span class="arithmatex">\(V-1\)</span> 条边（这是因为 MST 作为一棵树，有 <span class="arithmatex">\(V\)</span> 个顶点，由树的性质知其有 <span class="arithmatex">\(V-1\)</span> 条边）</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>实际上我们要找很多次切割，对于每个切割，我们都只加了最小权重的 crossing edges。这种通用的 MST 算法当然是 work 的，但是问题在于，我们需要某些方法去高效地找到这样的切割，显然不能随机乱找。</p>
+</div>
+<p>那么接下来我们介绍两种特化的高效算法：Prim 算法和 Kruskal 算法</p>
+<h3 id="prims-algorithm">Prim's Algorithm<a class="headerlink" href="#prims-algorithm" title="Permanent link">&para;</a></h3>
+<p>Prim 算法从任意起始顶点（意味着我们可以任意选取起始顶点）开始生长 MST，我们<strong>反复添加连接 MST 内顶点到 MST 外顶点的最短边</strong>，直至 MST 中有 <span class="arithmatex">\(V-1\)</span> 条边。</p>
+<p>具体示例可以参考这个<a href="https://docs.google.com/presentation/d/1NFLbVeCuhhaZAM1z3s9zIYGGnhT4M4PWwAc-TLmCJjc/edit#slide=id.g9a60b2f52_0_0">链接</a>，其算法实现如下：</p>
+<ul>
+<li><strong>初始化：</strong></li>
+<li>首先任意选取一个起始顶点，不妨记为 <code>A</code>，将其加入已选顶点集合 <code>S</code></li>
+<li>初始化一个优先队列（比如用最小堆实现），用于存储所有连接 <code>S</code> 和 <code>V-S</code> 的边，并按边的权重排序</li>
+<li>将起始顶点 <code>A</code> 的所有邻接边加入优先队列</li>
+<li><strong>循环执行：</strong></li>
+<li>从优先队列中取出权重最小的边 <code>(u,v)</code></li>
+<li>检查这条边是否连接了 <code>S</code> 和 <code>V-S</code>（也即一端在 <code>S</code> 中，另一端不在 <code>S</code> 中）<ul>
+<li>如果 <code>V</code> 不在 <code>S</code> 中，则将 <code>V</code> 加入 <code>S</code> ，并将边 <code>(u,v)</code> 加入 MST</li>
+<li>如果 <code>V</code> 已经在 <code>S</code> 中，就跳过这条边，避免形成环</li>
+</ul>
+</li>
+<li>将新加入的顶点 <code>V</code> 的所有另一端不在 <code>S</code> 中的邻接边（也即从 MST 连向外侧的所有边）加入优先队列</li>
+<li>重复此过程，直至 <code>S</code> 包含了图中所有顶点</li>
+<li><strong>结束：</strong>当所有的顶点被加入 <code>S</code> 时，算法结束，此时收集的边就构成了最小生成树。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>Prim 算法和 dijkstra 算法是比较类似的，但是 dijkstra 算法考虑的是到起始点的距离，而 Prim 算法考虑的是 MST 向外的最小距离，我们下面说明一下二者在 visit order 和 relaxation 上的不同：</p>
+<p>Visit order:</p>
+<ul>
+<li>Djikstra's algorithm visits vertices in order of distance from the source.</li>
+<li>Prim's algorithm visits vertices in order of distance from the MST under construction.</li>
+</ul>
+<p>Relaxation:</p>
+<ul>
+<li>Relaxation in dijkstra's considers an edge better based on distance to source.</li>
+<li>Relaxation in Prim's considers an edge better based on distance to tree.</li>
+</ul>
+</div>
+<h4 id="prims-complexity">Prim's Complexity<a class="headerlink" href="#prims-complexity" title="Permanent link">&para;</a></h4>
+<p>Priority Queue operation count, assuming binary heap based PQ:</p>
+<ul>
+<li>Insertion: <span class="arithmatex">\(V\)</span>，each costing <span class="arithmatex">\(O(\log V)\)</span> time</li>
+<li>DeleteMin: <span class="arithmatex">\(V\)</span>, each costing <span class="arithmatex">\(O(\log V)\)</span> time</li>
+<li>Decrease Priority: <span class="arithmatex">\(O(E)\)</span>, each costing <span class="arithmatex">\(O(\log V)\)</span> time</li>
+</ul>
+<p>so the overall runtime is <span class="arithmatex">\(O(V\log V+V\log V+E \log V)\)</span>. If we assume that <span class="arithmatex">\(E&gt; V\)</span>, then the overall runtime is <span class="arithmatex">\(O(E\log V)\)</span>. We can get a table as follows:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Operations</th>
+<th>Cost per operation</th>
+<th>Total cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PQ add</td>
+<td><span class="arithmatex">\(V\)</span></td>
+<td><span class="arithmatex">\(O(\log V)\)</span></td>
+<td><span class="arithmatex">\(O(V\log V)\)</span></td>
+</tr>
+<tr>
+<td>PQ deleteMin</td>
+<td><span class="arithmatex">\(V\)</span></td>
+<td><span class="arithmatex">\(O(\log V)\)</span></td>
+<td><span class="arithmatex">\(O(V\log V)\)</span></td>
+</tr>
+<tr>
+<td>PQ decreasePriority</td>
+<td><span class="arithmatex">\(O(E)\)</span></td>
+<td><span class="arithmatex">\(O(\log V)\)</span></td>
+<td><span class="arithmatex">\(O(E\log V)\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>这里 <code>Decrease priority</code> 我已经有些遗忘了，在基于二叉堆实现的优先队列中，<code>Decrease priority</code> <strong>是值将某个元素的优先级减小，并让堆重新调整以保持堆的性质</strong>。在 Prim 算法中，当我们找到一条比之前记录的更短的边时，我们需要更新这个顶点的优先级，也即 Decrease priority. 其实就是堆化以保持堆的结构。这里我个人觉得 Decrease Priority 的 per operation cost 应该是 <span class="arithmatex">\(O(\log E)\)</span>，不过好像因为 <span class="arithmatex">\(V-1 \leq E\leq \frac{V(V-1)}{2}\)</span>，所以有<span class="arithmatex">\(\log E = \Theta(\log V)\)</span>，无伤大雅？</p>
+</div>
+<h3 id="kruskals-algorithm">Kruskal's Algorithm<a class="headerlink" href="#kruskals-algorithm" title="Permanent link">&para;</a></h3>
+<p>与 Prim 算法不同的是，Kruskal 算法按照权重来排序边，并依次尝试加入边，只要不形成环就保留，也即：</p>
+<p>Initially mark all edges gray:</p>
+<ul>
+<li>Consider edges in increasing order of weight.</li>
+<li>Add edge to MST(mark black) unless doing so creates a cycle.</li>
+<li>Repeat until V-1 edges.</li>
+</ul>
+<p>具体的例子可以参考这两个demo：<a href="https://docs.google.com/presentation/d/1RhRSYs9Jbc335P24p7vR-6PLXZUl-1EmeDtqieL9ad8/edit">demo1</a>、<a href="https://docs.google.com/presentation/d/1KpNiR7aLIEG9sm7HgX29nvf3yLD8_vdQEPa0ktQfuYc/edit">demo2</a></p>
+<p>其详细的算法步骤如下：</p>
+<ul>
+<li><strong>初始化：</strong></li>
+<li>将图中的所有边按权重从小到大排序，并初始化一个空集合 <code>MST</code> 用于存放最小生成树所在的边</li>
+<li>初始化一个并查集，用于判断两个顶点是否在同一个连通分量中</li>
+<li><strong>遍历每条边：</strong></li>
+<li>按照排序后的顺序依次取出当前权重最小的边 <code>(u,v)</code></li>
+<li>使用并查集查询 <code>u</code> 和 <code>v</code> 是否属于同一个连通分量：<ul>
+<li>如果不在同一个分量，加入这条边到 <code>MST</code>，并用 <code>union(u,v)</code> 合并这两个分量</li>
+<li>如果在同一个分量，就跳过这条边，避免形成环</li>
+</ul>
+</li>
+<li><strong>结束条件：</strong></li>
+<li>当 <code>MST</code> 中包含 <code>V-1</code> 条边时，算法结束</li>
+</ul>
+<h4 id="kruskals-complexity">Kruskal's Complexity<a class="headerlink" href="#kruskals-complexity" title="Permanent link">&para;</a></h4>
+<p>Kruskal 算法的时间复杂度如下表：</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Number of Times1</th>
+<th>Time per Operation</th>
+<th>Total Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insert</td>
+<td><span class="arithmatex">\(E\)</span></td>
+<td><span class="arithmatex">\(O(\log E)\)</span></td>
+<td><span class="arithmatex">\(O(E\log E)\)</span></td>
+</tr>
+<tr>
+<td>Delete minimum</td>
+<td><span class="arithmatex">\(O(E)\)</span></td>
+<td><span class="arithmatex">\(O(\log E)\)</span></td>
+<td><span class="arithmatex">\(O(E\log E)\)</span></td>
+</tr>
+<tr>
+<td>union</td>
+<td><span class="arithmatex">\(O(V)\)</span></td>
+<td><span class="arithmatex">\(O(\log ^{\star} V)\)</span></td>
+<td><span class="arithmatex">\(O(V\log ^{\star} V)\)</span></td>
+</tr>
+<tr>
+<td>isConnected</td>
+<td><span class="arithmatex">\(O(E)\)</span></td>
+<td><span class="arithmatex">\(O(\log^{\star} V)\)</span></td>
+<td><span class="arithmatex">\(O(E\log ^{\star} V)\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>这里如果我们使用的是预先排好序的边列表，而非优先队列的话，我们就不需要 insert 和 Delete minimum 操作，直接遍历即可。</p>
+</div>
+<p>Insert 和 Delete minimum 是堆排序的代价，总共为 <span class="arithmatex">\(O(E\log E)\)</span>，Union 最多只会执行 <code>V-1</code> 次，因为每次合并两个连通的分量，isConnected 则是将每条边都检查一次，共 <span class="arithmatex">\(E\)</span> 次，所以总的时间复杂度为
+$$
+O(E\log E)+O(V\log^{\star} V)+O(E\log^{\star} V)
+$$
+这里 <span class="arithmatex">\(O(E\log E)\)</span> 是主导项，也即总的时间复杂度为 <span class="arithmatex">\(O(E\log E)\)</span>，如果使用的是排好序的边的话，总时间复杂度变为
+$$
+O(E\log ^{\star} V)+O(V\log^{\star} V) = O(E\log^{\star} V)
+$$</p>
+<h2 id="topological-sorting">Topological Sorting（拓扑排序）<a class="headerlink" href="#topological-sorting" title="Permanent link">&para;</a></h2>
+<p>首先需要说明的是，拓扑排序是一种对<strong>有向无环图</strong>（Directed Acyclic Graph，简称 DAG）的顶点进行线性排序的算法，其核心思想是，对于图中的每一条有向边 <code>(u,v)</code>，在最终的排序结果中，起点 <code>u</code> 必须排在终点 <code>v</code> 之前。</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>这里我们解释一下为什么叫“拓扑”，这是因为在排序后的序列中，如果我们将顶点从左到右排列，所有的边都会指向右侧，类似一个拓扑结构，如下图所示：</p>
+<p><img alt="Topology structure" src="../images/Topology%20structure.png" /></p>
+<p>并且需要说明的是，一个 DAG 可能有多个有效的拓扑序，拓扑排序并不是唯一的。</p>
+<p>并且根据定义，其实我们能得到拓扑排序有意义的一个条件：</p>
+<ul>
+<li><strong>DAG：</strong>如果图中有环，就不存在拓扑排序，因为环意味着相互依赖，我们无法决定先后顺序是怎样的</li>
+</ul>
+</div>
+<p>拓扑排序通常出现在具有依赖关系的调度问题中，比如课程之间有先修要求，例如学完 CS61A 再学 CS61B 再学 CS61C 等等，可以看下面这个具体的图的例子：</p>
+<p><img alt="Topological sort example" src="../images/Topological%20sort%20example.png" /></p>
+<p>合法的拓扑排序是 <code>[0,2,1,3,5,4,7,6]</code> 和 <code>[2,0,3,5,1,4,6,7]</code> 等等，但我们怎么设计一种策略去找到拓扑排序的结果呢？这里我们介绍基于 DFS 的拓扑排序</p>
+<h3 id="dfs-based-topological-sorting">DFS-based Topological Sorting<a class="headerlink" href="#dfs-based-topological-sorting" title="Permanent link">&para;</a></h3>
+<p>基于 DFS 的拓扑排序的核心思想如下：选取每一个入度为 0 的顶点作为起点，分别通过 DFS 后序遍历整个图，记录后序遍历访问节点的顺序（可以通过栈来实现，访问一个顶点的所有邻接顶点后，我们就将这个订单压入栈中），<strong>反转该顺序即得到拓扑序</strong>。</p>
+<p>在讲思想的时候，我们提到“将每一个入度为 0 的顶点作为起点，并实施 DFS”，但这实际上引入了额外的开销，我们需要预先找到所有入度为 0 的顶点，我们可以初始化一个数组 <code>indegree[V]</code>，将元素初始化为 0，然后遍历图的每条边，对于每条边 <code>u -&gt; v</code>，执行 <code>indegree[v]++</code>，最后遍历所有顶点收集 <code>indegree[i] == 0</code> 的顶点，时间复杂度是 <span class="arithmatex">\(O(V+E)\)</span>，这个复杂度并不高，但其实这个计算也不是必需的。</p>
+<p>实际上，在基于 DFS 的拓扑排序中，我们并不需要去预先计算入度，也不需要显式地从入度为0的顶点开始。相反，我们可以从任意顶点开始 DFS，并通过 restarts 来覆盖整个图，restart 的逻辑是，在主循环中我们检查所有顶点，如果某个顶点未被标记，就从它开始一个新的 DFS。<strong>由于 DAG 的无环性，无论从哪里开始，DFS 都会遵守依赖的顺序，正确性是有保障的</strong></p>
+<p>其算法步骤如下：</p>
+<ul>
+<li>初始化标记数组 <code>visited[V] = false</code>，并初始化 <code>postorder</code> 列表或以栈替代，用于记录后序遍历的顺序</li>
+<li>对于所有的顶点 <code>V</code>，如果 <code>!visited[V]</code>，就从 <code>V</code> 开始 DFS</li>
+<li>在 DFS 中</li>
+<li>标记 <code>v</code> 为 <code>visited</code></li>
+<li>递归访问所有未访问的邻居</li>
+<li>递归返回后，将 <code>V</code> 添加到 postorder 中</li>
+<li>返回 postorder 即可得到拓扑序</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>如果 <code>postorder.size() != V</code>，则有环</p>
+</div>
+<p>这种版本算法的时间复杂度为 <span class="arithmatex">\(O(V+E)\)</span>，入度 <span class="arithmatex">\(0\)</span> 的版本则是预先计算的 <span class="arithmatex">\(O(V+E)\)</span> + DFS的 <span class="arithmatex">\(O(V+E)\)</span>，总的时间复杂度仍然为 <span class="arithmatex">\(O(V+E)\)</span>，也即两种方法的时间复杂度是相同的。</p>
+<p>总结一下，拓扑排序的时间复杂度是 <span class="arithmatex">\(O(V+E)\)</span>，空间复杂度是 <span class="arithmatex">\(\Theta(V)\)</span>，因为我们需要记录 <code>visited</code> 和 <code>postorder</code></p>
+<h2 id="dags-shortest-path-and-longest-path">DAG‘s shortest path and longest path<a class="headerlink" href="#dags-shortest-path-and-longest-path" title="Permanent link">&para;</a></h2>
+<h3 id="shortest-path">shortest path<a class="headerlink" href="#shortest-path" title="Permanent link">&para;</a></h3>
+<p>对于非负权重的最短路径问题，我们曾经学习过 Dijkstra 算法，其时间复杂度为 <span class="arithmatex">\(O(E\log V)\)</span>，但当出现负权重的时候就会失效，我们是否有从源点 <code>s</code> 出发找到到其他最短路径，并且能够处理负权重的方法呢？这里我们就要介绍支持负权重的 DAG SPT 算法。</p>
+<p>这种算法的核心思想是<strong>利用拓扑顺序访问顶点</strong>，并按照此顺序 relax 所有的出边。在拓扑许访问节点 <code>v</code> 的时候，我们能够保证所有通往 <code>v</code> 的路径已处理，前驱已经无法再 relax，所以负权重不会产生影响。并且与 Djikstra 算法不同的是，Dijkstra 算法用 PQ 动态旋转最小的 dist，这里我们使用固定的拓扑序，时间是线性的。</p>
+<p>算法详细步骤如下：</p>
+<ul>
+<li>首先计算拓扑序，时间复杂度为 <span class="arithmatex">\(O(V+E)\)</span></li>
+<li>其次我们初始化 <code>distTo[s] = 0</code>，其他的 <code>distTo</code> 初始化为 <span class="arithmatex">\(\infty\)</span>，并利用 <code>edgeTo[]</code> 来记录父边</li>
+<li>按拓扑序遍历每个顶点 <code>v</code>，并 relax v 的所有出边</li>
+</ul>
+<p>其时间复杂度为第一步的 <span class="arithmatex">\(O(V+E)\)</span> + 第三步的 <span class="arithmatex">\(O(V+E)\)</span>，总的时间复杂度为 <span class="arithmatex">\(O(V+E)\)</span></p>
+<p>具体的例子可以参考 <a href="https://www.geeksforgeeks.org/dsa/shortest-path-for-directed-acyclic-graphs/">geeksforgeeks</a></p>
+<h3 id="longest-path">longest path<a class="headerlink" href="#longest-path" title="Permanent link">&para;</a></h3>
+<p>Consider the problem of finding the longest path tree from s to every other vertex. And the path must be simple(with no cycles), there is some surprising facts:</p>
+<ul>
+<li>Best known algorithm is exponential(extremely bad)</li>
+<li>Perhaps the most important unsolved problem in mathematics</li>
+</ul>
+<p>一般图的最长路径问题其实是非常困难的，我们这里只涉及 DAG 有向无环图的最长路径问题，并且我们希望有一个时间复杂度为 <span class="arithmatex">\(O(V+E)\)</span> 的算法，这是比较容易的，我们<strong>只需要将该图的边翻转为原来的相反数，求新图的最短路径即可</strong>，然后再将 distTo 翻转回来即可。</p>
+<p>具体的例子可以参考 <a href="https://www.geeksforgeeks.org/dsa/find-longest-path-directed-acyclic-graph/">Longest Path in a Directed Acyclic Graph - GeeksforGeeks</a></p>
+<p>总结一下我们可以得到如下表格</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Problem Description</th>
+<th>Solution</th>
+<th>Efficiency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>topological sort</td>
+<td>Find an ordering of vertices that respects edges of our DAG</td>
+<td></td>
+<td><span class="arithmatex">\(O(V+E)\)</span> time <span class="arithmatex">\(\Theta(V)\)</span> space</td>
+</tr>
+<tr>
+<td>DAG shortest paths</td>
+<td>Find a shortest paths tree on a DAG</td>
+<td></td>
+<td><span class="arithmatex">\(O(V+E)\)</span> time <span class="arithmatex">\(\Theta(V)\)</span> space</td>
+</tr>
+<tr>
+<td>longest paths</td>
+<td>Find a longest paths tree on a graph</td>
+<td>No known efficient solution</td>
+<td></td>
+</tr>
+<tr>
+<td>DAG longest paths</td>
+<td>Find a longest paths tree on a DAG</td>
+<td>Flip signs, run DAG SPT, flip signs again</td>
+<td><span class="arithmatex">\(O(V+E)\)</span> time <span class="arithmatex">\(\Theta(V)\)</span> space</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年1月19日 08:33:09 UTC"><span class="timeago" datetime="2026-01-19T08:33:09+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月19日 08:33:09 UTC">2026-01-19</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
