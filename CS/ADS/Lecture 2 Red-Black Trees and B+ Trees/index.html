@@ -1,0 +1,2657 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/CS/ADS/Lecture%202%20Red-Black%20Trees%20and%20B%2B%20Trees/">
+      
+      
+        <link rel="prev" href="../Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/">
+      
+      
+        <link rel="next" href="../Lecture%203%20Inverted%20File%20Index/">
+      
+      
+      <link rel="icon" href="../../../assets/logo.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Lecture2 Red-Black Trees and B+ Trees - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#red-black-trees" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture2 Red-Black Trees and B+ Trees
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS61B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS61B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter1%20Java%20Basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 Java Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter2%20Lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 Lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter3%20OOP%20in%20Java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 OOP in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter4%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 数据结构和算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter5%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 并查集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter6%20Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter7%20Hash%20Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 Hash Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter8%20Heaps%20and%20Priority%20Queues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter8 Heaps and Priority Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter9%20Graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter9 Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter10%20Graph%20Problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter10 Graph Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter11%20Prefix%20Operations%20and%20Tries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter11 Prefix Operations and Tries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61B/Chapter12%20Sorting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter12 Sorting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture1 AVL Trees,Splay Trees and Amortized Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lecture2 Red-Black Trees and B+ Trees
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lecture2 Red-Black Trees and B+ Trees
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#red-black-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red-Black Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Red-Black Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-black-tree-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red-Black Tree definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-black-tree-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red-Black Tree Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertion-of-red-black-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertion of Red-Black Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletion-of-red-black-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletion of Red-Black Trees
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="B+ Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b-trees-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Trees Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      典型的 B+ 树
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-trees-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Trees Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexity Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture%203%20Inverted%20File%20Index/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture3 Inverted File Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture%204%20Leftist%20Heaps%20and%20Skew%20Heaps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture4 Leftist Heaps and Skew Heaps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5%20Binomial%20Queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture5 Binomial Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的定义和分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学建模
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学建模
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%87%86%E5%A4%87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学建模备赛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化实用算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            优化实用算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%88%E8%BF%90%E7%AD%B9%E5%AD%A6%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无约束优化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            无约束优化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/Chapter1%20%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无约束优化算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#red-black-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red-Black Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Red-Black Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#red-black-tree-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red-Black Tree definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-black-tree-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red-Black Tree Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertion-of-red-black-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertion of Red-Black Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletion-of-red-black-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletion of Red-Black Trees
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="B+ Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b-trees-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Trees Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      典型的 B+ 树
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-trees-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+ Trees Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexity Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+  <h1>Lecture2 Red-Black Trees and B+ Trees</h1>
+
+<h2 id="red-black-trees">Red-Black Trees<a class="headerlink" href="#red-black-trees" title="Permanent link">&para;</a></h2>
+<h3 id="red-black-tree-definition">Red-Black Tree definition<a class="headerlink" href="#red-black-tree-definition" title="Permanent link">&para;</a></h3>
+<p>红黑树也是一种二叉搜索树，其目标也是保持树的平衡，红黑树的高度为 <span class="arithmatex">\(O(\log N)\)</span>。每个节点包含键值（key）、颜色（红/黑）、左子结点、右子节点和父节点。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>需要澄清的是，在红黑树中，<strong>叶子节点是指 NIL 节点，也被称为外部节点(External Node)，这些节点是特殊的空节点（NULL），不包含任何键值</strong>，仅仅作为树的终止点。相应的，实际存在的节点被称为内部节点(internal node)</p>
+</div>
+<p>红黑树必须满足以下五个特性：</p>
+<ul>
+<li>每个节点的颜色是红色或者黑色</li>
+<li>根节点为黑色</li>
+<li>每个叶子节点（NIL）是黑色</li>
+<li>如果一个节点是红色，则其两个子节点必须是黑色（也即不允许出现连续的红色节点）</li>
+<li>对于每个节点，从该节点到起所有后代叶子节点的简单路径上，包含相同数量的黑色节点</li>
+</ul>
+<p>下图是一个红黑树的示例</p>
+<p><img alt="Red-Black Tree example" src="../images/Red-Black%20Tree%20example.png" /></p>
+<h3 id="red-black-tree-height">Red-Black Tree Height<a class="headerlink" href="#red-black-tree-height" title="Permanent link">&para;</a></h3>
+<p>在讨论红黑树的高度之前，我们首先给出<strong>黑高度(Black-Height)</strong>的定义，我们定义函数 <span class="arithmatex">\(bh(x)\)</span> 表示从节点 <code>x</code>（不包括 <code>x</code> 自身）到叶子节点（指的也是 NIL 节点）的任意简单路径上的黑色节点数量，树的黑高度 <span class="arithmatex">\(bh(Tree)\)</span> 定义为 <span class="arithmatex">\(bh(root)\)</span>。</p>
+<p>下面我们给出一个引理：<strong>具有 <span class="arithmatex">\(n\)</span> 个内部节点的红黑树的高度最高为 <span class="arithmatex">\(2\log(n+1)\)</span></strong></p>
+<p><strong>证明</strong> 我们首先用数学归纳法证明，对于任意的节点 <code>x</code>，其子树的大小（内部节点数）<code>sizeof(x)</code> 满足不等式 <span class="arithmatex">\(sizeof(x)\geq 2^{bh(x)}-1\)</span></p>
+<ul>
+<li>
+<p>若 <span class="arithmatex">\(bh(x)=0\)</span>，则 <span class="arithmatex">\(x\)</span> 为叶子结点 NIL，<span class="arithmatex">\(x\)</span> 的子树的内部节点数为0，<span class="arithmatex">\(sizeof(x)=0\geq 2^{0}-1\)</span> 成立</p>
+</li>
+<li>
+<p>归纳假设：<span class="arithmatex">\(sizeof(x)\geq 2^{bh(x)}-1\)</span> 对于 <span class="arithmatex">\(bh(x)\leq k\)</span> 的所有 <span class="arithmatex">\(x\)</span> 成立</p>
+</li>
+<li>
+<p>当 <span class="arithmatex">\(bh(x)=k+1\)</span> 时，其子节点的两个 <code>child</code> 的 <span class="arithmatex">\(bh(child)\)</span> 都满足 <span class="arithmatex">\(bh(child)\geq bh(x)-1\)</span>，且有
+  $$
+  sizeof(child)\geq 2^{bh(child)}-1\geq2^{bh(x)-1}-1
+  $$
+  所以有
+  $$
+  sizeof(x)=1+sizeof(child_1)+sizeof(child_2)\geq 1+2sizeof(child)\
+  \geq1+2\cdot [2^{bh(x)-1}-1]=2^{bh(x)}-1
+  $$</p>
+</li>
+<li>所以我们得到了 <span class="arithmatex">\(bh(x)\leq \log[sizeof(x)+1]\)</span></li>
+</ul>
+<p>接着我们证明 <span class="arithmatex">\(bh(Tree)\geq \frac{h(Tree)}{2}\)</span></p>
+<p>这需要用的红黑树的性质，对于一个红色节点，其子节点一定均为黑色节点，所以我们不妨取出红黑树中最高的那条路径，记 <span class="arithmatex">\(n_1\)</span> 为红色节点数，<span class="arithmatex">\(n_2\)</span> 为黑色节点数，则有 <span class="arithmatex">\(n_2\geq n_1\)</span>，且
+$$
+h(Tree)=n_2-1+n_1\leq 2n_2-1
+$$
+即得 <span class="arithmatex">\(n_2\geq \frac{h(Tree)+1}{2}\)</span></p>
+<p>所以 <span class="arithmatex">\(bh(Tree)\geq \frac{h(Tree)}{2}\)</span> 得证，所以我们可以得到
+$$
+h(Tree)\leq 2\ bh(Tree)\leq 2\log(n+1)
+$$</p>
+<h3 id="insertion-of-red-black-tree">Insertion of Red-Black Tree<a class="headerlink" href="#insertion-of-red-black-tree" title="Permanent link">&para;</a></h3>
+<p>与 AVL 树类似的，我们希望插入节点后能尽量维持 Red-Black Tree 的平衡，也即尽可能地不改变 Red-Black Tree 的 Black-Height，所以我们<strong>新插入的节点应当是红色的</strong>。</p>
+<p>但插入红色节点可能会违反 Red-Black Tree 的属性，如果插入节点的父节点是黑色节点，那么我们可以直接插入；但如果插入节点的父节点是红色节点，那么就会出现连续的两个红色节点，违反了 Red-Black Tree 的性质，需要我们进行相应的调整。</p>
+<div class="admonition tip">
+<p class="admonition-title">致谢</p>
+<p>以下内容参考了<a href="https://note.noughtq.top/algorithms/ads">NoughtQ前辈的笔记</a>、98下载的一位前辈的笔记(忘记是哪位前辈了，手上只有pdf，没有署名)</p>
+</div>
+<h4 id="case-1">Case 1<a class="headerlink" href="#case-1" title="Permanent link">&para;</a></h4>
+<p>新插入节点的父节点，以及父节点的兄弟节点都是红色（此时祖父节点一定是黑色），如下图所示</p>
+<p><img alt="RBTInsertion case1" src="../images/RBTInsertion%20case1.png" /></p>
+<p>这种情况需要<strong>将父节点及其兄弟节点染成黑色，祖父节点染成红色</strong>。但不幸的是，我们<strong>只是调整了局部使得其不违反红黑树的性质，祖父节点向上的部分仍然有可能违反红黑树性质</strong>（因为祖父节点由黑变红了），所以我们需要递归地向上处理，可以参考 NoughtQ 前辈绘制的这个图：</p>
+<p><img alt="case1 recursion" src="../images/case1%20recursion.png" /></p>
+<h4 id="case-2">Case 2<a class="headerlink" href="#case-2" title="Permanent link">&para;</a></h4>
+<p>新插入的节点是其祖父节点的 LR 或 RL 节点，父节点为红色，父节点的兄弟节点为黑色，如下图所示</p>
+<p><img alt="RBTInsertion case2" src="../images/RBTInsertion%20case2.png" /></p>
+<p>这种情况需要<strong>将 7-2 这组边左旋一次，使得变为 LL 或 RR 情形</strong>，变为 Case3，或者说，节点7 要从叔叔节点 14 的近侄子变为远侄子。参考 NoughtQ 前辈画的操作图：</p>
+<p><img alt="Case2 rotation" src="../images/Case2%20rotation.png" /></p>
+<h4 id="case-3">Case 3<a class="headerlink" href="#case-3" title="Permanent link">&para;</a></h4>
+<p>新插入的节点是其祖父节点（黑色）的 LL 子节点或 RR 子节点，父节点为红色，父节点的兄弟节点为黑色，如下图所示：</p>
+<p><img alt="RBTInsertion case3" src="../images/RBTInsertion%20case3.png" /></p>
+<p>这种情况需要对 7-11 边进行一次旋转，并对 7-11 进行一次换色。</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>值得一提的是，这里换色的顺序和旋转的顺序是不影响的，先旋转后换色与先换色后旋转能达到相同的效果，可以参考 NoughtQ 前辈画的这个图：</p>
+<p><img alt="Case3 rotation and coloring" src="../images/Case3%20rotation%20and%20coloring.png" /></p>
+<p>可以发现，Case 2 和 Case 3 都只进行了常数次的旋转和染色操作，只有 Case 1 在完成 rotation 之后可能需要向上递归，所以我们可以得到时间复杂度满足
+$$
+T=O(h)=O(\log N)
+$$</p>
+<p>其实除开上述的三种比较复杂的 case，还有一些比较 Naive 的 case：</p>
+<ul>
+<li>case4: The tree is empty, then insert the first node and dye it black.</li>
+<li>case5: The newnode's parent is root and black, then just insert the newnode</li>
+</ul>
+</div>
+<h3 id="deletion-of-red-black-trees">Deletion of Red-Black Trees<a class="headerlink" href="#deletion-of-red-black-trees" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">致谢</p>
+<p>以下内容大部分参考于<a href="https://note.noughtq.top/algorithms/ads/2">NoughtQ前辈的笔记</a>，感谢 NoughtQ 前辈完善的笔记🫡</p>
+</div>
+<ul>
+<li>删除树中的唯一节点，直接删除即可</li>
+<li>被删除节点有两个子节点，我们可以用<strong>左子树的最大节点或右子树的最小节点</strong>去替代被删除节点（可以复制值），但要<strong>保持颜色不变</strong>，然后将用于替代的节点从原来位置删除（用于替代的节点至多只有一个子节点，可以转化为后面两种情况）</li>
+<li>被删除节点没有子节点，直接用叶节点 NIL 替代该节点即可</li>
+<li>被删除节点有一个子节点：</li>
+<li>如果子节点为红色，则被删除节点一定为黑色，用子节点替代该节点并将其染黑即可</li>
+<li>若子节点为黑色，则被删除节点可能为黑色也可能为红色：<ul>
+<li>若该节点为红色，直接用子节点替代即可</li>
+<li>若该节点为黑色，删除后会打破红黑树的黑高相等的性质，需要继续进行下面的维护操作</li>
+</ul>
+</li>
+</ul>
+<p>下面我们来看最为复杂的红黑树黑高平衡维护，我们首先引入<strong>双黑节点(Double Black Node)</strong>的概念，双黑节点并不是指节点有两种黑色，而是标记该节点所在的路径”需要多算一个黑色节点“，以弥补删除黑色节点后丢失的黑色计数。</p>
+<p>而红黑树失衡引入双黑节点的本质原因是路径黑色计数的缺口，我们的目标也就是消除这个缺口，让所有路径的黑色节点数恢复一致，消除双黑节点的核心思路是“转移缺口”或“填补缺口”。</p>
+<p>下面我们讨论双黑节点可能出现的两种典型场景：</p>
+<ul>
+<li>删除黑色叶节点：删除一个黑色叶子节点，用 NIL 替代它，此时 NIL 所在的路径少了一个黑色节点，我们就将这个 NIL 标记为双黑</li>
+<li>删除只有一个黑色子节点的黑色节点：父节点是黑色，只有一个黑色子节点 X，当我们删除父节点之后，X 接替它的位置，标记为双黑，以维持其所在路径的黑色树不变，但其他路径少了一个黑色，这时候需要进行黑高维护。</li>
+</ul>
+<p>在引入删除操作之前，我们约定 X 为当前双黑节点（也即需要修复的节点），P 为 X 的父节点，S 为 X 的兄弟节点（P 的另一个子节点），下面我们只考虑 X 是左子结点的情形，对称情况逻辑类似，仅旋转方向相反。</p>
+<h4 id="case-1_1">Case 1<a class="headerlink" href="#case-1_1" title="Permanent link">&para;</a></h4>
+<p>S 是红色节点，此时有 S 的两个孩子，以及父节点 P 必然为黑色。如下图所示：</p>
+<p><img alt="Deletion case1 initial" src="../images/Deletion%20case1%20initial.png" /></p>
+<p>此时问题在于 S 是红色节点，我们无法通过直接染色转移缺口，需要先通过旋转将 S 变为黑色，缩小调整范围。具体处理逻辑如下：</p>
+<ul>
+<li><strong>旋转：</strong>若 X 是左子结点，对 P-S 边左旋，让 S 成为新的父节点，P 成为 S 的左子结点，得到结果如下：</li>
+</ul>
+<p><img alt="Deletion case1 rotation" src="../images/Deletion%20case1%20rotation.png" /></p>
+<ul>
+<li><strong>染色：</strong>将 S 染为黑色，这是为了接替 P 原来的黑色位置，恢复路径的黑色计数，将 P 染为红色，保持黑高平衡。得到结果如下：</li>
+</ul>
+<p><img alt="Deletion case1 coloring" src="../images/Deletion%20case1%20coloring.png" /></p>
+<p>此时双黑节点 X 的兄弟节点变为 S 原来的左孩子（黑色），但仍然未能消除双黑节点，未达到平衡黑高的目的（以 P 为根节点的子树的黑高还是不平衡的，我们接着调整这棵子树），而是将 case1 转化为其他的 case</p>
+<h4 id="case-2_1">Case 2<a class="headerlink" href="#case-2_1" title="Permanent link">&para;</a></h4>
+<p>X 的兄弟节点及其兄弟的两个子节点都为黑色，并且父节点的颜色可黑可红，如下图所示：</p>
+<p><img alt="Deletion case2 initial" src="../images/Deletion%20case2%20initial.png" /></p>
+<p>此时我们将 S 染为红色，染红后 S 所在的路径减少一个黑色节点，与 X 所在路径的双黑缺口抵销，但这两条路径相比于其他路径黑高小1，所以我们要考虑父节点 P 的情况：</p>
+<ul>
+<li>若 P 原本是红色节点，则将 P 染为黑色节点，双黑节点 X 恢复为普通黑色即可</li>
+<li>若 P 原本是黑色节点，则 P 需要继承黑色缺口，我们将双黑节点 X 恢复为普通节点，将父节点 P 标记为双黑节点继续向上调整，直至 P 是根节点的情况（根节点是双黑节点时，直接将其恢复为黑色节点即可，因为根节点的黑色计数辐射全局，不会影响黑高平衡）</li>
+</ul>
+<p><img alt="Deletion case2 coloring" src="../images/Deletion%20case2%20coloring.png" /></p>
+<h4 id="case-3_1">Case 3<a class="headerlink" href="#case-3_1" title="Permanent link">&para;</a></h4>
+<p>S 是黑色节点，S 的内侧子节点（靠近 X 的子节点）是红色，外侧子节点是黑色，并且父节点的颜色可黑可红，如下图所示：</p>
+<p><img alt="Deletion case3 initial" src="../images/Deletion%20case3%20initial.png" /></p>
+<p>这里的处理逻辑是：</p>
+<ul>
+<li><strong>旋转：</strong>将 S-L 边右旋，S 的内侧红色孩子成为新的 S ，原来的 S 成为其右子节点：</li>
+</ul>
+<p><img alt="Deletion case3 rotation" src="../images/Deletion%20case3%20rotation.png" /></p>
+<ul>
+<li><strong>染色：</strong>将 S 染为红色，L 染为黑色，这是为了保持路径黑高不变，仅调整结构</li>
+</ul>
+<p><img alt="Deletion case3 coloring" src="../images/Deletion%20case3%20coloring.png" /></p>
+<p>此时我们转化为 Case 4</p>
+<h4 id="case-4">Case 4<a class="headerlink" href="#case-4" title="Permanent link">&para;</a></h4>
+<p>兄弟节点 S 是黑色，兄弟节点的内侧子节点可红可黑，兄弟节点的外侧子节点是红色，父节点 P 可红可黑，如下图所示：</p>
+<p><img alt="Deletion case4 initial" src="../images/Deletion%20case4%20initial.png" /></p>
+<p>其操作流程如下：</p>
+<ul>
+<li><strong>旋转：</strong>对 P-S 边左旋，让 S 成为新的父节点，P 成为 S 的左子结点，如下图所示：</li>
+</ul>
+<p><img alt="Deletion case4 rotation" src="../images/Deletion%20case4%20rotation.png" /></p>
+<ul>
+<li>
+<p><strong>染色：</strong></p>
+</li>
+<li>
+<p>交换 P 和 S 的颜色</p>
+</li>
+<li>将 S 的外侧红色子节点染为黑色，以弥补 X 的双黑缺口</li>
+</ul>
+<p><img alt="Deletion case4 coloring" src="../images/Deletion%20case4%20coloring.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>这里的四种 case 我们可以这么去记忆：</p>
+<ul>
+<li>X 的兄弟节点是红色（此时必然有父节点是黑色，兄弟节点的子节点是黑色）</li>
+<li>X 的兄弟节点是黑色，兄弟节点的子节点还全是黑色</li>
+<li>X 的兄弟节点是黑色，兄弟节点中的子节点中，内侧子节点是红色，<strong>另一个是黑色</strong></li>
+<li>X 的兄弟节点是黑色，兄弟节点的外侧子节点是红色，内侧子节点可以黑可以红     </li>
+</ul>
+</div>
+<p>Number of rotations</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AVL</th>
+<th>Red-Black Tree</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insertion</td>
+<td><span class="arithmatex">\(\leq 2\)</span></td>
+<td><span class="arithmatex">\(\leq 2\)</span></td>
+</tr>
+<tr>
+<td>Deletion</td>
+<td><span class="arithmatex">\(O(\log N)\)</span></td>
+<td><span class="arithmatex">\(\leq 3\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>AVL 树的最差高度略低于红黑树</li>
+<li>但红黑树的单次删除所需旋转次数是 <span class="arithmatex">\(O(1)\)</span>的，而 AVL Trees 的删除是 <span class="arithmatex">\(O(\log n)\)</span>的</li>
+</ul>
+<h2 id="b-trees">B+ Trees<a class="headerlink" href="#b-trees" title="Permanent link">&para;</a></h2>
+<p>在引入 B+ Trees 之前，我们不妨先讨论讨论它的 motivation，红黑树其实是为了内存中的数据访问优化的平衡二叉树，而 B+ Trees 则是为磁盘/外存中的数据访问二优化的多路平衡树，为了解决“ 磁盘I/O 效率低下”的痛点。</p>
+<p>需要明确的是，<strong>磁盘的访问成本远高于内存，并且访问方式是“按块读取的”</strong>，红黑树的设计完全适配内存，但是在磁盘场景下就会暴露致命的缺陷，其每个节点仅存 1 个 key，2 个孩子指针，1个父指针和1个颜色位，其单个节点极小，而一个磁盘块只能存少数几个节点，这导致树高很高，I/O 次数也非常多；而 B+ 树的内部节点仅存 key 和孩子指针，不存储实际数据，一个磁盘块能存数百甚至数千个 key，节点存储密度高，树高大幅度降低，I/O 次数少。</p>
+<p>除此之外，在数据库、文件系统等等场景中，<strong>范围查询</strong>是非常高频的操作，而红黑树在这种场景下的效率很低，B+ 树的实际数据都存在叶子节点中，且叶子节点之间通过“指针”来组成有序链表，范围查询效率高。</p>
+<h3 id="b-trees-definition">B+ Trees Definition<a class="headerlink" href="#b-trees-definition" title="Permanent link">&para;</a></h3>
+<p>A B+ tree of order M is a tree with the following structural properties:</p>
+<ul>
+<li>
+<p>The root is either a leaf or has <strong>between 2 and M children</strong>（根节点要么是叶子节点，<strong>要么有 <span class="arithmatex">\([2,M]\)</span> 个子节点</strong>）</p>
+</li>
+<li>
+<p>All <strong>nonleaf nodes</strong>(except the root) have <strong>between <span class="arithmatex">\(\lceil\frac{M}{2}\rceil\)</span> and <span class="arithmatex">\(M\)</span> children</strong>（所有非叶子节点，除了根节点，<strong>都有 <span class="arithmatex">\([\lceil\frac{M}{2}\rceil,M]\)</span> 个子节点</strong>）</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>需要说明的是，这里的 <span class="arithmatex">\(\lceil\frac{M}{2}\rceil\)</span> 是向上取整</p>
+</div>
+<ul>
+<li>All leaves are at the same depth（所有的叶子的深度相同）</li>
+<li>所有实际数据仅存储在叶子节点中，非叶节点不存储真实数据，仅存储“索引键”，用于引导查找方向</li>
+<li>内部节点（非叶节点）满足以下几点：</li>
+<li>包含 <span class="arithmatex">\(M\)</span> 个指向孩子的指针</li>
+<li>包含 <span class="arithmatex">\(M-1\)</span> 个“索引键”，这些键是除了第一个子树之外，其余子树中的“最小键值”</li>
+</ul>
+<h3 id="b">典型的 B+ 树<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
+<p>阶为4和阶为3的B+树最为典型</p>
+<h4 id="4b2-3-4">阶为4的B+树（2-3-4树）<a class="headerlink" href="#4b2-3-4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>根节点（非叶节点）的子节点数为2-4</li>
+<li>非根非叶节点的子节点数为2-4</li>
+<li>叶子节点的数据项有2-4个</li>
+</ul>
+<p><img alt="2-3-4 Tree" src="../images/2-3-4%20Tree.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>在上图中，黑色方框是空指针，标红的数字是每个块对应的子树的最小值，会被存储到父节点中</p>
+</div>
+<h4 id="3b2-3">阶为3的B+树（2-3树）<a class="headerlink" href="#3b2-3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>根节点（非叶节点）的子节点数为2-3</li>
+<li>非根非叶节点的子节点数为2-3</li>
+<li>叶子结点的数据项有2-3个</li>
+</ul>
+<p><img alt="2-3-4 Tree" src="../images/2-3%20Tree.png" /></p>
+<h3 id="b-trees-operations">B+ Trees Operations<a class="headerlink" href="#b-trees-operations" title="Permanent link">&para;</a></h3>
+<h4 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h4>
+<p>查找操作我们需要再次明确 B+ Trees 的一些逻辑：</p>
+<ul>
+<li>所有查找最终终止于叶子结点（真实数据仅仅存储于叶子节点中，内部节点仅存储“索引键”，用于引导路径）</li>
+<li>内部节点的索引键是“子树最小键”，用于判断查找方向（小于索引键则引进左子树，大于等于则引进右子树）</li>
+</ul>
+<p>以下图为例，这样的一个 2-3 树</p>
+<p><img alt="2-3 Tree example" src="../images/2-3%20Tree%20example.png" /></p>
+<p><strong>Search 52:</strong></p>
+<p><img alt="Search 52" src="../images/Search%2052.png" /></p>
+<h4 id="insertion">Insertion<a class="headerlink" href="#insertion" title="Permanent link">&para;</a></h4>
+<p>插入的<strong>核心逻辑是“先插入叶子节点，再处理溢出”</strong>，当叶子节点的数据项数 <span class="arithmatex">\(&gt;M\)</span> 时，我们需要对叶子节点进行分裂；当非叶节点（内部节点）插入索引键后，键数 <span class="arithmatex">\(&gt;M-1\)</span> 时，我们需要对非叶结点进行分裂，下面看几个例子：</p>
+<p><strong>Insert 18：</strong>插入18时并不需要进行分裂</p>
+<p><img alt="Insert 18" src="../images/Insert%2018.png" /></p>
+<p><strong>Insert 1：</strong>插入1的位置本应当是在8左侧，但是这个数据块已经满了，所以我们需要将数据块 <code>1,8,11,12</code> 一分为二成 <code>1,8</code> 和 <code>11,12</code>，并将父节点的索引键改为 <code>11,16</code>，如下图所示：</p>
+<p><img alt="Insert 1" src="../images/Insert%201.png" /></p>
+<p><strong>Insert 19：</strong>在上图的基础上继续插入19，应当插在18的右侧，但是该数据块变为 <code>16,17,18,19</code> 已经满了，并且其父节点的键索引 <code>11,16</code> 也已经满了，所以我们需要向祖父节点寻找空位，多分一个叔叔节点，将一分为二的数据放在叔叔节点身上，如下图所示：</p>
+<p><img alt="Insert 19" src="../images/Insert%2019.png" /></p>
+<p><strong>Insert 28：</strong>在上图的基础上插入28，我们能找到插入28的位置在23与31之间，但是由于 <code>22,23,31</code> 数据块已满，父节点 <code>41,58</code> 的键索引已满，祖父节点 <code>16,22</code> 的键索引仍然已满，所以我们只能再产生一个新的根节点，如下图所示：</p>
+<p><img alt="Insert 28" src="../images/Insert%2028.png" /></p>
+<p>插入操作的伪代码如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Btree Insert(ElementType X, Btree T) {
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Search from root to leaves for X and find the the proper leaf node;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    Insert X;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    while (this node has M+1 keys) {
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        split it into 2 nodes with RoundUp((M+1) / 2) and RoundDown((M+1) / 2) keys respectively;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        if (this node is the root)
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            create a new root with two children;
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        check its parent;
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    } 
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>}
+</code></pre></div>
+<h4 id="deletion">Deletion<a class="headerlink" href="#deletion" title="Permanent link">&para;</a></h4>
+<p>删除操作比插入操作更为复杂，其核心在于<strong>“先删除叶子节点，再处理下溢”</strong>，下溢也即节点键数 <span class="arithmatex">\(&lt;\lceil\frac{M}{2}\rceil-1\)</span> 时，此时我们优先向兄弟节点借数据，如果借不到则与兄弟节点合并，此时可能触发父节点的连锁下溢，具体逻辑如下：</p>
+<ul>
+<li>所有数据仅从叶子节点删除，非叶结点仅删除索引键</li>
+<li>删除 后若叶子节点元素数小于 <span class="arithmatex">\([\frac{M}{2}]\)</span>，非叶节点键数低于下限(<span class="arithmatex">\([\frac{M}{2}]-1\)</span>)，则触发下溢处理：</li>
+<li>优先向“相邻兄弟节点”借数据，这样效率更高，避免合并</li>
+<li>当兄弟节点的键数/元素数也达到下限时，则与兄弟节点合并，合并后需要删除父节点的对应索引键，再检查父节点是否下溢。</li>
+</ul>
+<p>下面我们来看几个删除的例子：</p>
+<p><strong>场景1：删除后叶子结点未发生下溢</strong>，在下图中删除24</p>
+<pre class="mermaid"><code>graph TD
+    subgraph S1_Before ["B+ Tree (M=3)"]
+        direction TB
+            Root("[13, 17]")
+            L1("[5, 8]")
+            L2("[13, 16]")
+            L3("[17, 20, 24]")
+
+        style L3 fill:#f9f,stroke:#333,stroke-width:2px
+
+        Root -- "x &lt; 13" --&gt; L1
+        Root -- "13 &lt;= x &lt; 17" --&gt; L2
+        Root -- "x &gt;= 17" --&gt; L3
+    end</code></pre>
+<p>删除后：</p>
+<pre class="mermaid"><code>graph TD
+    subgraph S1_After ["B+ Tree (M=3)"]
+        direction TB
+        Root("[13, 17]")
+        L1("[5, 8]")
+        L2("[13, 16]")
+        L3("[17, 20]")
+
+        style L3 fill:#ccf,stroke:#333,stroke-width:2px
+
+        Root -- "x &lt; 13" --&gt; L1
+        Root -- "13 &lt;= x &lt; 17" --&gt; L2
+        Root -- "x &gt;= 17" --&gt; L3
+    end</code></pre>
+<p><strong>场景2：删除后叶子节点发生下溢，向兄弟节点借用，</strong>在下图中删除16</p>
+<pre class="mermaid"><code>graph TD
+    subgraph S2_Before ["B+ Tree (M=3)"]
+        direction TB
+        Root("[13, 17]")
+        L1("[5, 8]")
+        L2("[13, 16]")
+        L3("[17, 20, 24]")
+
+        style L2 fill:#f9f,stroke:#333,stroke-width:2px
+
+        Root -- "x &lt; 13" --&gt; L1
+        Root -- "13 &lt;= x &lt; 17" --&gt; L2
+        Root -- "x &gt;= 17" --&gt; L3
+    end</code></pre>
+<p>删除后：</p>
+<pre class="mermaid"><code>graph TD
+    subgraph S2_After ["B+ Tree (M=3)"]
+        direction TB
+        Root("[13, 20]")
+        L1("[5, 8]")
+        L2("[13, 17]")
+        L3("[20, 24]")
+
+        style Root fill:#f9f,stroke:#333,stroke-width:2px
+        style L2 fill:#ccf,stroke:#333,stroke-width:2px
+        style L3 fill:#ccf,stroke:#333,stroke-width:2px
+
+        Root -- "x &lt; 13" --&gt; L1
+        Root -- "13 &lt;= x &lt; 20" --&gt; L2
+        Root -- "x &gt;= 20" --&gt; L3
+    end</code></pre>
+<p>记得要更新父节点的索引键</p>
+<p><strong>场景3：删除后叶子节点发生下溢，需要和兄弟节点合并</strong>，在下图中删除8</p>
+<pre class="mermaid"><code>graph TD
+    subgraph S3_Before ["B+ Tree (M=3)"]
+        direction TB
+        Root("[13, 20]")
+        L1("[5, 8]")
+        L2("[13, 17]")
+        L3("[20, 24]")
+
+        style L1 fill:#f9f,stroke:#333,stroke-width:2px
+
+        Root -- "x &lt; 13" --&gt; L1
+        Root -- "13 &lt;= x &lt; 20" --&gt; L2
+        Root -- "x &gt;= 20" --&gt; L3
+    end</code></pre>
+<pre class="mermaid"><code>graph TD
+    subgraph S3_After ["B+ Tree (M=3)"]
+        direction TB
+        Root("[20]")
+        NewL1("[5, 13, 17]")
+        L3("[20, 24]")
+
+        style Root fill:#f9f,stroke:#333,stroke-width:2px
+        style NewL1 fill:#ccf,stroke:#333,stroke-width:2px
+
+        Root -- "x &lt; 20" --&gt; NewL1
+        Root -- "x &gt;= 20" --&gt; L3
+    end</code></pre>
+<p>删除8后，节点变为5，数据项数量为1，触发下溢，而其兄弟节点也只有2个数据项，无法借数据，此时必须执行合并操作，<code>5</code> 与 <code>13,17</code> 合并成一个新节点 <code>5,13,17</code>，并将父节点索引键中的 <code>13</code> 删除，根节点从 <code>13,20</code> 变为 <code>20</code></p>
+<p><strong>场景4：删除后递归下溢，</strong>在下图中我们删除22</p>
+<pre class="mermaid"><code>graph TD
+    subgraph S4_Before ["Recursive Underflow Example (M=4)"]
+        Root("[20, 31]")
+
+        subgraph Internal_Layer
+            direction LR
+            I1("[13]")
+            I2("[24]")
+            I3("[40]")
+        end
+
+        subgraph Leaf_Layer
+            direction TB
+            L1("[5, 10]")
+            L2("[13, 17]")
+            L3("[20, 22]")
+            L4("[24, 25]")
+            L5("[31, 35]")
+            L6("[40, 50]")
+        end
+
+        style L3 fill:#f9f,stroke:#333,stroke-width:2px
+
+        Root --&gt; I1
+        Root --&gt; I2
+        Root --&gt; I3
+
+        I1 --&gt; L1
+        I1 --&gt; L2
+        I2 --&gt; L3
+        I2 --&gt; L4
+        I3 --&gt; L5
+        I3 --&gt; L6
+    end</code></pre>
+<p>删除22后，叶子节点变为 <code>20</code>，触发下溢，其兄弟节点 <code>24,25</code> 只有2个数据项，无法借出，只能执行合并，我们将 <code>20</code> 和 <code>24,25</code> 合并后得到下图：</p>
+<pre class="mermaid"><code>graph TD
+    subgraph S4_Intermediate [Phase 1 Result: Leaf Merge &amp; Parent Underflow]
+        Root("[20, 31]")
+
+        subgraph Internal_Layer
+            direction TB
+            I1("[13]")
+            I2_underflow("[]")
+            I3("[40]")
+        end
+
+        subgraph Leaf_Layer
+            direction TB
+            L1("[5, 10]")
+            L2("[13, 17]")
+            New_L34("[20, 24, 25]")
+            L5("[31, 35]")
+            L6("[40, 50]")
+        end
+
+        style I2_underflow fill:#ffc,stroke:#e00,stroke-width:2px,stroke-dasharray: 5 5
+        style New_L34 fill:#ccf,stroke:#333,stroke-width:2px
+
+        Root --&gt; I1
+        Root --&gt; I2_underflow
+        Root --&gt; I3
+
+        I1 --&gt; L1
+        I1 --&gt; L2
+        I2_underflow --&gt; New_L34
+        I3 --&gt; L5
+        I3 --&gt; L6
+    end</code></pre>
+<p>此时父节点失去了子节点指针24，需要移除，移除后父节点变为空，触发父节点下溢，而其左兄弟和右兄弟也都只有1个键，处于最低下限，无法出借，也只能合并，我们将其与左兄弟 <code>13</code> 合并，得到：</p>
+<pre class="mermaid"><code>graph TD
+    subgraph S4_After ["Recursive Underflow Result (M=4)"]
+        Root("[31]")
+
+        subgraph Internal_Layer
+            direction TB
+            New_I12("[13, 20]")
+            I3("[40]")
+        end
+
+        subgraph Leaf_Layer
+            direction TB
+            L1("[5, 10]")
+            L2("[13, 17]")
+            New_L34("[20, 24, 25]")
+            L5("[31, 35]")
+            L6("[40, 50]")
+        end
+
+        style Root fill:#ccf,stroke:#333,stroke-width:2px
+        style New_I12 fill:#f9f,stroke:#333,stroke-width:2px
+        style New_L34 fill:#ccf,stroke:#333,stroke-width:2px
+
+        Root --&gt; New_I12
+        Root --&gt; I3
+
+        New_I12 --&gt; L1
+        New_I12 --&gt; L2
+        New_I12 --&gt; New_L34
+
+        I3 --&gt; L5
+        I3 --&gt; L6
+    end</code></pre>
+<h3 id="complexity-analysis">Complexity Analysis<a class="headerlink" href="#complexity-analysis" title="Permanent link">&para;</a></h3>
+<p>对于一颗有 <span class="arithmatex">\(N\)</span> 个数据的 <span class="arithmatex">\(M\)</span> 阶 B+ 树：</p>
+<ul>
+<li>
+<p>深度 <span class="arithmatex">\(Depth(M,N)=O([\log_{[\frac{M}{2}]}N])\)</span></p>
+</li>
+<li>
+<p>插入时间 <span class="arithmatex">\(T(M,N)=O(\frac{M\cdot \log N}{\log M})=O(M\log_M N)\)</span></p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>所以阶数 <span class="arithmatex">\(M\)</span> 不是越大越好，最合适的取值为 3 或 4</p>
+</div>
+<ul>
+<li>查找时间 <span class="arithmatex">\(T_{Find}(M,N)=O(\log _M N)\leq O(\log N)\)</span></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年3月5日 05:16:46 UTC"><span class="timeago" datetime="2026-03-05T05:16:46+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月5日 05:16:46 UTC">2026-03-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

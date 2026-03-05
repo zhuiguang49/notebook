@@ -1,0 +1,2207 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/%E7%89%9B%E9%A1%BF%E7%B1%BB%E7%AE%97%E6%B3%95/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/logo.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>牛顿类算法 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              牛顿类算法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS61B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS61B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter1%20Java%20Basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 Java Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter2%20Lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 Lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter3%20OOP%20in%20Java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 OOP in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter4%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 数据结构和算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter5%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 并查集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter6%20Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter7%20Hash%20Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 Hash Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter8%20Heaps%20and%20Priority%20Queues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter8 Heaps and Priority Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter9%20Graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter9 Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter10%20Graph%20Problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter10 Graph Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter11%20Prefix%20Operations%20and%20Tries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter11 Prefix Operations and Tries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter12%20Sorting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter12 Sorting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture1 AVL Trees,Splay Trees and Amortized Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%202%20Red-Black%20Trees%20and%20B%2B%20Trees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture2 Red-Black Trees and B+ Trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%203%20Inverted%20File%20Index/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture3 Inverted File Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%204%20Leftist%20Heaps%20and%20Skew%20Heaps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture4 Leftist Heaps and Skew Heaps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture5%20Binomial%20Queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture5 Binomial Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的定义和分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学建模
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学建模
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%87%86%E5%A4%87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学建模备赛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化实用算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            优化实用算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%88%E8%BF%90%E7%AD%B9%E5%AD%A6%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无约束优化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            无约束优化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1%20%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无约束优化算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      经典牛顿法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      收敛性分析
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      修正牛顿法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      拟牛顿法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拟牛顿法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      割线方程（拟牛顿条件）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      曲率条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sr1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SR1 公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dfp" class="md-nav__link">
+    <span class="md-ellipsis">
+      DFP 公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      BFGS 公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">牛顿类算法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>梯度类算法仅仅依赖函数值和梯度的信息（也即一阶信息），如果函数 <span class="arithmatex">\(f(x)\)</span> 充分光滑，我们就可以<strong>利用二阶导数信息构造下降方向 <span class="arithmatex">\(d_k\)</span></strong>，牛顿类算法就是利用二阶导数信息来构造迭代格式的算法。由于其利用的信息更多，牛顿法的实际表现可以远好于梯度法，但是它对函数 <span class="arithmatex">\(f(x)\)</span> 的要求也相应变高。</p>
+<h2 id="_2">经典牛顿法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>设 <span class="arithmatex">\(f(x)\)</span> 是二次可微实函数，我们在 <span class="arithmatex">\(x_k\)</span> 附近作二阶 Taylor 展开近似可得
+$$
+f(x_k+d_k)=f(x_k)+\nabla f(x_k)^Td_k+\frac{1}{2}d_k^T\nabla^2f(x_k)d_k+o(||d_k||^2)
+$$
+忽略上式的高阶项，将等式右边视作关于 <span class="arithmatex">\(d_k\)</span> 的函数求其一阶导零点，可以得到
+$$
+\nabla^2f(x_k)d_k=-\nabla f(x_k)
+$$
+上式我们称为<strong>牛顿方程</strong>，容易得出当 <span class="arithmatex">\(\nabla^2f(x_k)\)</span> 非奇异时，更新方向满足
+$$
+d_k=-[\nabla^2f(x_k)]^{-1}\nabla f(x_k)
+$$
+一般称满足牛顿方程的 <span class="arithmatex">\(d_k\)</span> 为牛顿方向，经典牛顿法的更新格式为
+$$
+x_{k+1}=x_k-\nabla^2f(x_k)^{-1}\nabla f(x_k)
+$$
+在上式中，步长 <span class="arithmatex">\(\alpha_k\equiv1\)</span>，即可以不额外考虑步长的选取，我们也称步长为 <span class="arithmatex">\(1\)</span> 的牛顿法为经典牛顿法。</p>
+<p>我们看一个例子，在目标函数是正定二次函数
+$$
+f(x)=\frac{1}{2}x^TGx-c^Tx
+$$
+的情况下（<span class="arithmatex">\(G\)</span> 为正定阵），对任意的 <span class="arithmatex">\(x\)</span> 有 <span class="arithmatex">\(\nabla^2f(x)=G\)</span>，第一次迭代我们令 <span class="arithmatex">\(H_0=G^{-1}\)</span>，则有
+$$
+d_0=-H_0\nabla f(x_0)=-G^{-1}(Gx_0-c)=-(x_0-x^{*})
+$$
+这里 <span class="arithmatex">\(x^{*}=G^{-1}c\)</span> 是问题的最优解（这是因为 <span class="arithmatex">\(x^{*}=G^{-1}c\)</span> 是函数的极值点，也即 <span class="arithmatex">\(f'(x)=Gx-c\)</span>）。若 <span class="arithmatex">\(x_0\neq x^{*}\)</span>，我们取步长 <span class="arithmatex">\(\alpha_0=1\)</span>，就可以得到 <span class="arithmatex">\(x_1=x_0+\alpha_0d_0=x^{*}\)</span>，由此我们可以知道，不管初始点 <span class="arithmatex">\(x_{0}\)</span> 如何选取，在一次迭代后即可达到最优解 <span class="arithmatex">\(x^{*}\)</span></p>
+<p>而<strong>选取步长 <span class="arithmatex">\(\alpha_k\equiv 1\)</span> 的迭代公式为</strong>
+$$
+x_{k+1}=x_k+d_k=x_k-[\nabla^2f(x_k)]^{-1}\nabla f(x_k)
+$$
+这就是经典的牛顿迭代法。</p>
+<h2 id="_3">收敛性分析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>经典牛顿法 <span class="arithmatex">\(x_{k+1}=x_k-[\nabla^2 f(x_k)]^{-1}\nabla f(x_k)\)</span> 具有很好的局部收敛性质，我们有如下定理：</p>
+<p><strong>（经典牛顿法的收敛性）</strong> 假设目标函数 <span class="arithmatex">\(f\)</span> 是连续二阶可微的函数，且 Hessian 矩阵在最优值点 <span class="arithmatex">\(x^{*}\)</span> 的一个邻域 <span class="arithmatex">\(N_{\delta}(x^{*})\)</span> 内是利普希茨连续的，即存在常数 <span class="arithmatex">\(L&gt;0\)</span> 使得
+$$
+||\nabla^2f(x)-\nabla^2f(y)||\leq L||x-y||,\forall x,y\in N_{\delta}(x^{*})
+$$
+如果函数 <span class="arithmatex">\(f(x)\)</span> 在点 <span class="arithmatex">\(x^{*}\)</span> 处满足 <span class="arithmatex">\(\nabla f(x^{*})=0,\nabla^{2}f(x^{*})\succ 0\)</span>（意指 <span class="arithmatex">\(\nabla^2f(x^{*})\)</span> 正定），则对于牛顿法有如下结论：</p>
+<ul>
+<li>如果初始点离 <span class="arithmatex">\(x^*\)</span> 足够近，则牛顿法产生的迭代点列 <span class="arithmatex">\(\{x_k\}\)</span> 收敛到 <span class="arithmatex">\(x^*\)</span></li>
+<li><span class="arithmatex">\(\{x_k\}\)</span> 收敛到 <span class="arithmatex">\(x^*\)</span> 的速度是 <span class="arithmatex">\(Q-\)</span> 二次的</li>
+<li><span class="arithmatex">\(\{||\nabla f(x_k)||\}\)</span> <span class="arithmatex">\(Q-\)</span> 二次收敛到 <span class="arithmatex">\(0\)</span></li>
+</ul>
+<blockquote>
+<p>证明可以参考文再文老师的书</p>
+</blockquote>
+<p>上述定理表明经典牛顿法是收敛速度很快的算法，但是它的收敛是有条件的：</p>
+<ul>
+<li>其一，初始点 <span class="arithmatex">\(x_0\)</span> 必须距离问题的解充分近，即<strong>牛顿法只有局部收敛性</strong>，当 <span class="arithmatex">\(x_0\)</span> 距离问题的解较远时，牛顿算法在多数情况下会失效</li>
+<li>第二，<strong>Hessian 矩阵 <span class="arithmatex">\(\nabla^2f(x^{*})\)</span> 需要为正定矩阵</strong>，如果 <span class="arithmatex">\(\nabla^2f(x^*)\)</span> 是奇异的半正定矩阵，牛顿算法的收敛速度可能仅达到 <span class="arithmatex">\(Q-\)</span> 线性</li>
+</ul>
+<p>并且从证明还可以看出，问题的条件数并不会在很大程度上影响牛顿法的收敛速度，利普希茨常熟 <span class="arithmatex">\(L\)</span> 在迭代后期通常会被 <span class="arithmatex">\(||x_k-x^*||\)</span> 抵消，但对于病态问题，牛顿法的收敛于可能会变小，这对初值的选取有了更高的要求。</p>
+<blockquote>
+<p>牛顿法适用于优化问题的高精度求解，但是其并没有全局收敛性质。因此在实际应用中，人们通常会先使用梯度类算法先求得较低精度的解，然后调用牛顿法来获得高精度的解。</p>
+</blockquote>
+<h2 id="_4">修正牛顿法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>经典牛顿法有以下几点缺陷：</p>
+<ul>
+<li>每一步迭代都需要解一个 <span class="arithmatex">\(n\)</span> 维线性方程组，导致在高维问题中计算量很大，Hessian 矩阵 <span class="arithmatex">\(\nabla^2f(x_k)\)</span> 不容易计算也不容易储存</li>
+<li>当 <span class="arithmatex">\(\nabla^2f(x_k)\)</span> 不正定时，由牛顿方程给出的解 <span class="arithmatex">\(d_k\)</span> 性质通常比较差，甚至不一定为下降方向</li>
+<li>当迭代点距离最优值较远的时候，直接选取步长 <span class="arithmatex">\(\alpha_k=1\)</span> 会使得迭代不稳定，有些情况下迭代点列会发散。</li>
+</ul>
+<p>为了克服这些缺陷，我们必须对经典牛顿法做某些修正或变形。</p>
+<h2 id="_5">拟牛顿法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>牛顿法的突出优点是局部收敛很快（具有二阶收敛速率），但是运用牛顿法需要计算二阶导数，并且目标函数的 Hessian 矩阵 <span class="arithmatex">\(\nabla^2f(x_k)\)</span> 可能非正定，甚至奇异。为了克服这些缺点，人们就提出了拟牛顿法，其基本思想是：<strong>用不含二阶导数的矩阵 <span class="arithmatex">\(H_k\)</span> 近似牛顿法中的 Hessian 矩阵的逆 <span class="arithmatex">\([\nabla^2f(x_k)]^{-1}\)</span></strong>。</p>
+<p>而由构造近似矩阵的方法不同，也会导出不同的拟牛顿法</p>
+<h3 id="_6">割线方程（拟牛顿条件）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>前面我们提到，拟牛顿法的思想是构造一个近似矩阵来替代真实的二阶导数，下面我们推导一下这个近似矩阵需要满足什么条件。</p>
+<p>设第 <span class="arithmatex">\(k\)</span> 此迭代后得到了 <span class="arithmatex">\(x_{k+1}\)</span>，并将目标函数 <span class="arithmatex">\(f(x)\)</span> 在 <span class="arithmatex">\(x_{k+1}\)</span> 处作二阶 Taylor 展开，有：
+$$
+f(x)\approx f(x_{k+1})+\nabla f(x_{k+1})^T(x-x_{k+1})+\frac{1}{2}(x-x_{k+1})^T\nabla^2f(x_{k+1})(x-x_{k+1})
+$$
+则进一步有
+$$
+\nabla f(x)\approx \nabla f(x_{k+1})+\nabla^2f(x_{k+1})(x-x_{k+1})
+$$
+我们令 <span class="arithmatex">\(x=x_k\)</span> 可以得到
+$$
+\nabla f(x_k)\approx \nabla f(x_{k+1})+\nabla^2f(x_{k+1})(x_k-x_{k+1})
+$$
+我们记位移向量 <span class="arithmatex">\(s_k=x_{k+1}-x_k\)</span>，梯度差向量 <span class="arithmatex">\(y_k=\nabla f(x_{k+1})-\nabla f(x_k)\)</span>，则有
+$$
+\nabla^2f(x_{k+1})s_k\approx y_k\qquad or \qquad [\nabla^2f(x_{k+1})]^{-1}y_k\approx s_k
+$$
+由此，我们可以估计在 <span class="arithmatex">\(x_{k+1}\)</span> 处的 Hessian 矩阵或者 Hessian 矩阵的逆阵，我们要求在迭代中构造出 Hessian 矩阵的近似 <span class="arithmatex">\(B_{k+1}\)</span>，满足
+$$
+B_{k+1}s_k=y_k
+$$
+或者 Hessian 矩阵逆阵的近似 <span class="arithmatex">\(H_{k+1}\)</span>，使得其满足
+$$
+H_{k+1}y_k=s_k
+$$
+我们把上面两个式子称作<strong>割线方程</strong>，也叫做<strong>拟牛顿条件</strong></p>
+<blockquote>
+<p>一维情况下，导数的割线近似是
+$$
+\frac{f'(x_{k+1}) - f'(x_k)}{x_{k+1} - x_k} \approx f''(x_{k+1})
+$$
+需要指出的是，我们是在”制定规则“，而不是发明新的算法。</p>
+</blockquote>
+<h3 id="_7">曲率条件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>就像经典牛顿法要求 Hessian 矩阵是正定的一样，拟牛顿法也要求近似矩阵 <span class="arithmatex">\(B_{k+1}\)</span> 必须是正定矩阵，这样才能保证产生的搜索方向是下降方向，从而保证算法收敛，也即有必要条件：
+$$
+s_k^TB_{k+1}s_k&gt;0 \Rightarrow s_k^Ty_k&gt;0
+$$
+所以我们就得到了曲率条件，要求在每次迭代中满足
+$$
+s_k^Ty_k&gt;0
+$$
+其中 <span class="arithmatex">\(s_k\)</span> 是位移，<span class="arithmatex">\(y_k\)</span> 是梯度差。</p>
+<p>假设我们在实际计算中采用的是线搜索，如何满足这个条件呢？我们假设线搜索使用的是 Powell-Wolfe 准则：
+$$
+\nabla f(x_k+\alpha d_k)d_k\geq c_2\nabla f(x_k)^Td_k&gt;0
+$$
+其中 <span class="arithmatex">\(c_2\in (0,1)\)</span>，上式即 <span class="arithmatex">\(\nabla f(x_{k+1})^Ts_k\geq c_2\nabla f(x_k)^Ts_k\)</span>，在不等式两边同时减去 <span class="arithmatex">\(\nabla f(x_k)^Ts_k\)</span>，由于 <span class="arithmatex">\(c_2-1&lt;0\)</span>，且 <span class="arithmatex">\(s_k\)</span> 是下降方向，则有
+$$
+y_k^Ts_k\geq (c_2-1)\nabla f(x_k)^Ts_k&gt;0
+$$</p>
+<blockquote>
+<p>换句话说，只要我们使用标准的 Wolfe 线搜索来确定步长，曲率条件就会自动满足</p>
+</blockquote>
+<p>拟牛顿法的迭代格式如下：</p>
+<p><img alt="image-20251128191752701" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20251128191752701.png" /></p>
+<p>下面我们讨论怎样构造以及确定满足拟牛顿条件的矩阵逆阵的近似 <span class="arithmatex">\(H_{k+1}\)</span></p>
+<h3 id="sr1">SR1 公式<a class="headerlink" href="#sr1" title="Permanent link">&para;</a></h3>
+<p>设 <span class="arithmatex">\(H_k\)</span> 是第 <span class="arithmatex">\(k\)</span> 次迭代的 Hessian 矩阵逆阵的近似，我们希望用 <span class="arithmatex">\(H_k\)</span> 来产生 <span class="arithmatex">\(H_{k+1}\)</span>，也即 <span class="arithmatex">\(H_{k+1}=H_k+E_k\)</span>，其中 <span class="arithmatex">\(E_k\)</span> 是一个低秩矩阵</p>
+<p>这里我们可以考虑采用对称秩一修正
+$$
+H_{k+1}=H_k+auu^T
+$$
+则由拟牛顿条件有
+$$
+H_{k+1}y_k=H_ky_k+au(u^Ty_k)=H_ky_k+a(u^Ty_k)u=s_k
+$$
+所以 <span class="arithmatex">\(u\)</span> 必然与 <span class="arithmatex">\(s_k-H_ky_k\)</span> 共线，我们假定 <span class="arithmatex">\(s_k-H_ky_k\neq 0\)</span>，不妨取 <span class="arithmatex">\(u=s_k-H_ky_k\)</span>，此时有 <span class="arithmatex">\(a=\frac{1}{u^Ty_k}\)</span>，从而有
+$$
+H_{k+1}=H_k+\frac{(s_k-H_ky_k)(s_k-H_ky_k)^T}{(s_k-H_ky_k)^Ty_k}
+$$
+上式称为对称秩一校正。</p>
+<p>同理，由 <span class="arithmatex">\(B_{k+1}s_k=y_k\)</span> 可以得到（完全对称的逻辑）
+$$
+B_{k+1}=B_k+\frac{uu^T}{u^Ts_k}, u =y_k-B_ks_k
+$$</p>
+<h4 id="sr1_1">SR1 的缺陷<a class="headerlink" href="#sr1_1" title="Permanent link">&para;</a></h4>
+<p>对称秩一校正的缺点在于，我们无法保证迭代矩阵 <span class="arithmatex">\(H_{k+1}\)</span> 的正定性，下面我们给出一个结论：</p>
+<p>仅当 <span class="arithmatex">\(H_k\)</span> 正定以及 <span class="arithmatex">\((s^k-H_ky_k)^Ty_k&gt;0\)</span> 时，对称秩一修正才能保持正定性</p>
+<p><strong>证明</strong> 设 <span class="arithmatex">\(0\neq \omega \in R^n\)</span>，则有
+$$
+\omega^TH_{k+1}\omega = \omega^TH_k\omega +\frac{(u^T\omega)^2}{u^Ty_k}&gt;0
+$$
+但这个条件很难保证，即使 <span class="arithmatex">\((s_k-H_ky_k)^Ty_k&gt;0\)</span> 是满足的，其也可能很小从而导致数值上出问题。这些都使得对称秩一校正的拟牛顿法的应用有比较大的局限性</p>
+<h3 id="dfp">DFP 公式<a class="headerlink" href="#dfp" title="Permanent link">&para;</a></h3>
+<p>我们采用对称秩二（SR2）修正
+$$
+H_{k+1}=H_k+auu^T+bvv^T
+$$
+并由拟牛顿条件，有
+$$
+H_{k+1}y_k=H_ky_k+a(u^Ty_k)u+b(v^Ty_k)v=s_k
+$$
+这里的 <span class="arithmatex">\(u,v\)</span> 显然不是唯一确定的，但是我们能很容易地看出一种选择
+$$
+\begin{cases}
+u=s_k,\qquad au^Ty_k=1\
+v=H_ky_k,\qquad bv^Ty_k=-1
+\end{cases}
+$$
+所以有
+$$
+H_{k+1}=H_k+\frac{s_k{s_k}^T}{{s_k}^Ty_k}-\frac{H_ky_ky_k^TH_k}{y_k^TH_ky_k}
+$$
+上式称为 DFP （Davidon-Fletcher-Powell）校正公式</p>
+<h3 id="bfgs">BFGS 公式<a class="headerlink" href="#bfgs" title="Permanent link">&para;</a></h3>
+<p>BFGS 是由 Broyden, Fletcher, Goldfarb, Shanno 4人从不同角度提供了一种新的拟牛顿公式</p>
+<p>根据割线方程，我们将秩二更新的待定参量式代入，有
+$$
+B_{k+1}s_k = (B_k+auu^T+bvv^T)s_k=y_k
+$$
+整理有
+$$
+a(u^Ts_k)u+b(v^Ts_k)v=y_k-B_ks_k
+$$
+一个简单的取法是，我们让 <span class="arithmatex">\(a(u^Ts_k)u\)</span> 对应 <span class="arithmatex">\(y_k\)</span>，让 <span class="arithmatex">\(b(v^Ts_k)v=-B_ks_k\)</span>，也即有
+$$
+au^Ts_k=1, \ u=y_k,\ n=bv^Ts_k=-1,\ v=B_ks_k
+$$
+将上述参量代入割线方程则有 BFGS 更新公式
+$$
+B_{k+1}=B_k+\frac{uu^T}{s_k^Tu}-\frac{vv^T}{s_k^Tv}
+$$
+利用 SMW 公式，以及 <span class="arithmatex">\(H_k=(B_k)^{-1}\)</span>，我们可以推出关于 <span class="arithmatex">\(H_k\)</span> 的 BFGS 公式</p>
+<blockquote>
+<p><strong>SMW</strong> 公式：通过已知矩阵 <span class="arithmatex">\(A\)</span> 的逆矩阵 <span class="arithmatex">\(A^{-1}\)</span>，可以快速求出经过低秩修正后的新矩阵 <span class="arithmatex">\(A+UV^T\)</span> 的逆矩阵</p>
+<p><strong>秩一修正情形：</strong>当矩阵 <span class="arithmatex">\(A\)</span> 加上一个秩为 <span class="arithmatex">\(1\)</span> 的矩阵 <span class="arithmatex">\(vv^T\)</span> 时，设 <span class="arithmatex">\(A\in R^{n\times n}\)</span> 是非奇异阵，若 <span class="arithmatex">\(1+v^TA^{-1}u\neq 0\)</span>，则 <span class="arithmatex">\(A\)</span> 的秩一修正 <span class="arithmatex">\(A+uv^T\)</span> 非异，其逆可以表示为
+$$
+(A+uv^T)^{-1}=A^{-1}-\frac{A^{-1}uv^TA^{-1}}{1+v^TA^{-1}u}
+$$
+<strong>秩 <span class="arithmatex">\(k\)</span> 修正情形：</strong>设矩阵 <span class="arithmatex">\(A\in R^{n\times n}\)</span> 非奇异，<span class="arithmatex">\(U\in R^{n\times k},V\in R^{n\times k}\)</span>，若 <span class="arithmatex">\(I_k+V^TA^{-1}U\)</span> 可逆，则 <span class="arithmatex">\(A+UV^T\)</span> 非奇异，其逆可以表示为
+$$
+(A+UV^T)^{-1}=A^{-1}-A^{-1}U(I_k+V^TA^{-1}U)^{-1}V^TA^{-1}
+$$</p>
+</blockquote>
+<p>于是我们得到 BGFS 公式。</p>
+<p>在拟牛顿类算法中，基于 <span class="arithmatex">\(B_k\)</span> 的 BFGS 公式为
+$$
+B_{k+1}=B_k+\frac{y_ky_k^T}{s_k^Ty_k}-\frac{B_ks_k(B_ks_k)^T}{s_k^TB_ks_k}
+$$
+基于 <span class="arithmatex">\(H_k\)</span> 的 BFGS 公式为
+$$
+H_{k+1}=(I-\frac{y_ks_k^T}{s_k^Ty_k})^TH_k(I-\frac{y_ks_k^T}{s_k^Ty_k})+\frac{s_ks_k^T}{s_k^Ty_k}
+$$</p>
+<blockquote>
+<p>推导可以参考中科大运筹学讲义</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年3月5日 05:17:07 UTC"><span class="timeago" datetime="2026-03-05T05:17:07+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月5日 05:17:07 UTC">2026-03-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2130 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/%E7%BD%9A%E5%87%BD%E6%95%B0%E6%B3%95/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/logo.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>罚函数法 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              罚函数法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS61B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS61B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter1%20Java%20Basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 Java Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter2%20Lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 Lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter3%20OOP%20in%20Java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 OOP in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter4%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 数据结构和算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter5%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 并查集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter6%20Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter7%20Hash%20Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 Hash Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter8%20Heaps%20and%20Priority%20Queues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter8 Heaps and Priority Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter9%20Graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter9 Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter10%20Graph%20Problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter10 Graph Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter11%20Prefix%20Operations%20and%20Tries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter11 Prefix Operations and Tries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter12%20Sorting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter12 Sorting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture1 AVL Trees,Splay Trees and Amortized Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%202%20Red-Black%20Trees%20and%20B%2B%20Trees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture2 Red-Black Trees and B+ Trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%203%20Inverted%20File%20Index/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture3 Inverted File Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%204%20Leftist%20Heaps%20and%20Skew%20Heaps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture4 Leftist Heaps and Skew Heaps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture5%20Binomial%20Queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture5 Binomial Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的定义和分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学建模
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学建模
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%87%86%E5%A4%87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学建模备赛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化实用算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            优化实用算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%88%E8%BF%90%E7%AD%B9%E5%AD%A6%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无约束优化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            无约束优化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1%20%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无约束优化算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      等式约束的二次罚函数法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="等式约束的二次罚函数法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      等式约束的二次罚函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      等式约束的二次罚函数法伪代码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      等式约束的二次罚函数法收敛性分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      一般约束问题的二次罚函数法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      内点罚函数法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      精确罚函数法
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">罚函数法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>本章我们将介绍罚函数法，<strong>罚函数法的思想</strong>是将约束优化问题转化为无约束优化问题进行求解，为了保证解的逼近质量，无约束优化问题的目标函数为原有约束优化问题的目标函数加上与约束函数有关的惩罚项。<strong>对于可行域外的点，惩罚项为正，也即对该点进行惩罚；对于可行域内的点，惩罚项为 <span class="arithmatex">\(0\)</span>，也即不做任何惩罚</strong>。所以惩罚项会促使无约束优化问题的解落在可行域内。</p>
+<h2 id="_2">等式约束的二次罚函数法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">等式约束的二次罚函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>约束优化问题的基本形式如下：
+$$
+\min_{x\in R^n}f(x)\
+\text{s.t.}\ \ c_i(x)=0,\ i=1,\cdots,m_e;\
+c_i(x)\geq 0, i=m_e+1,\cdots,m
+$$
+我们先考虑一种简单的情况，假设问题约束中仅含有等式约束，即考虑问题
+$$
+\min_{x} f(x),\
+\text{s.t.}\ \ c_i(x)=0,\qquad i\in E
+$$
+其中变量 <span class="arithmatex">\(x\in R^n\)</span>，<span class="arithmatex">\(E\)</span> 为等式约束的指标集，<span class="arithmatex">\(c_i(x)\)</span> 为连续函数。在某些特殊场合下，我们可以通过求解非线性方程组 <span class="arithmatex">\(c_i(x)=0\)</span> 消去部分变量，将其转化为无约束问题。但是对于一般的函数 <span class="arithmatex">\(c_i(x)\)</span> 来说，变量消去这一操作是不可实现的，我们必须采用其他方法来处理这种问题</p>
+<p>对于等式约束问题，惩罚项的选取方式有很多，结构最简单的是二次函数，这里我们给出<strong>二次罚函数</strong>的定义</p>
+<p><strong>等式约束的二次罚函数</strong> 对于等式约束最优化问题，定义二次罚函数
+$$
+P_E(x,\sigma)=f(x)+\frac{1}{2}\sigma\sum_{i\in E}c_i^2(x)
+$$
+其中等式右端的第二项称为惩罚项，<span class="arithmatex">\(\sigma&gt;0\)</span> 称为惩罚因子</p>
+<p>由于这种罚函数对不满足约束的点进行惩罚，在迭代过程中点列一般处于可行域之外，因此它也被称为<strong>外点罚函数</strong>。</p>
+<p>二次罚函数的特点如下：对于非可行点而言，当 <span class="arithmatex">\(\sigma\)</span> 变大时，惩罚项在罚函数中的权重加大，对罚函数求极小（对 <span class="arithmatex">\(x\)</span> 求极小，<span class="arithmatex">\(\sigma\)</span> 在每次求解子问题时是一个固定的数值）相当于迫使其极小点向可行域靠近；在可行域中，<span class="arithmatex">\(P_E(x,\sigma)\)</span> 的全局极小点与约束优化问题的最优解相同</p>
+<p>下面我们看一个例子，考虑优化问题
+$$
+\min x+\sqrt{3}y\
+\text{s.t.}\ \  x^2+y^2=1
+$$
+容易求出这个问题的最优解为 <span class="arithmatex">\((-\frac{1}{2},-\frac{\sqrt{3}}{2})^T\)</span>，考虑二次罚函数
+$$
+P_E(x,y,\sigma)=x+\sqrt{3}y+\frac{\sigma}{2}(x^2+y^2-1)^2
+$$
+并有 <span class="arithmatex">\(\sigma=1\)</span> 和 <span class="arithmatex">\(\sigma=1\)</span> 对应的罚函数的等高线如下：</p>
+<p><img alt="罚函数等高线图" src="..\images\罚函数等高线图.png" /></p>
+<p>随着 <span class="arithmatex">\(\sigma\)</span> 增大，二次罚函数 <span class="arithmatex">\(P_E(x,y,\sigma)\)</span> 的最小值和原问题的最小值越来越接近，但是最优点附近的等高线越来越趋近于扁平，使得求解无约束优化问题的难度变大。并且当 <span class="arithmatex">\(\sigma=10\)</span> 时函数出现了一个极大值，罚函数图形在 <span class="arithmatex">\((-\frac{1}{2},-\frac{\sqrt{3}}{2})^T\)</span> 附近出现了一个鞍点</p>
+<p>给定惩罚因子 <span class="arithmatex">\(\sigma\)</span> ，我们可以通过求解 <span class="arithmatex">\(P_E(x,\sigma)\)</span> 的最小值点作为原问题的近似解，但是 <span class="arithmatex">\(\sigma\)</span> 选取得过小时罚函数可能无下界，比如我们考虑这样一个例子
+$$
+\min -x^2+2y^2\
+\text{s.t.}\ \ x=1
+$$
+容易知道最优解为 <span class="arithmatex">\((1,0)^T\)</span>，但是我们考虑罚函数
+$$
+P_E(x,y,\sigma)=-x^2+2y^2+\frac{\sigma}{2}(x-1)^2
+$$
+对任意的 <span class="arithmatex">\(\sigma\leq 2\)</span>，该罚函数是无界的。出现这样的现象是因为当惩罚因子过小的时候，不可行点处的函数下降抵消了罚函数对约束违反的惩罚，实际上所有外点罚函数法都存在这样的问题，所以 <span class="arithmatex">\(\sigma\)</span> 的初值不应当选取得太小。</p>
+<h3 id="_4">等式约束的二次罚函数法伪代码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="二次罚函数伪代码" src="..\images\二次罚函数伪代码.png" /></p>
+<p>其算法流程如下：先选取一系列指数增长的惩罚因子 <span class="arithmatex">\(\sigma_k\)</span>，然后针对每个惩罚因子求解二次罚函数 <span class="arithmatex">\(P_E(x,\sigma_k)\)</span> 的最小值点（或局部极小值点），然后迭代惩罚因子 <span class="arithmatex">\(\sigma_k\)</span> 继续求解</p>
+<p><span class="arithmatex">\(x_{k+1}={\arg \min}_{x} P_E(x,\sigma_k)\)</span> 的含义是如下情况之一：</p>
+<ul>
+<li><span class="arithmatex">\(x_{k+1}\)</span> 是罚函数 <span class="arithmatex">\(P_E(x,\sigma_k)\)</span> 的全局极小解</li>
+<li><span class="arithmatex">\(x_{k+1}\)</span> 是罚函数 <span class="arithmatex">\(P_E(x,\sigma_k)\)</span> 的局部极小解</li>
+<li><span class="arithmatex">\(x_{k+1}\)</span> 不是罚函数 <span class="arithmatex">\(P_E(x,\sigma_k)\)</span> 的严格的极小解，但近似满足一阶最优性条件 <span class="arithmatex">\(\nabla_xP_E(x^{k+1},\sigma_k)\approx 0\)</span></li>
+</ul>
+<p>在算法中需要注意如下三点：</p>
+<ul>
+<li>对参数 <span class="arithmatex">\(\sigma_k\)</span> 的选取要小心，若 <span class="arithmatex">\(\sigma_k\)</span> 增长太快，子问题不易求解；若增长太慢，则算法循环次数增多。一个比较合理的取法是根据当前 <span class="arithmatex">\(P_E(x,\sigma_k)\)</span> 的求解难度来确定 <span class="arithmatex">\(\sigma_k\)</span> 的增幅。如果当前子问题收敛得很快，可以在下一步选取较大的 <span class="arithmatex">\(\sigma_{k+1}\)</span>，否则就不宜过分增大 <span class="arithmatex">\(\sigma_k\)</span></li>
+<li><span class="arithmatex">\(P_E(x,\sigma)\)</span> 在 <span class="arithmatex">\(\sigma\)</span> 较小时可能无界，迭代会发散。在我们求解子问题的时候如果检测到迭代点发散应当立即终止迭代并且增大惩罚因子</li>
+<li>子问题求解的精度必须足够精确，为了保证收敛，子问题的求解误差需要趋近于 <span class="arithmatex">\(0\)</span></li>
+</ul>
+<h3 id="_5">等式约束的二次罚函数法收敛性分析<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>为了讨论方便，我们假设对每个 <span class="arithmatex">\(\sigma_k\)</span>，<span class="arithmatex">\(P_E(x,\sigma_k)\)</span> 的最小值点都是存在的（这个假设对某些优化问题是不对的，因为二次罚函数的惩罚力度不够，对这类问题我们不会用二次罚函数法进行求解）</p>
+<p><strong>二次罚函数法的收敛性1</strong> 设 <span class="arithmatex">\(x_{k+1}\)</span> 是 <span class="arithmatex">\(P_E(x,\sigma_k)\)</span> 的全局极小解，<span class="arithmatex">\(\sigma_k\)</span> 单调上升趋于无穷，则 <span class="arithmatex">\(\{x_k\}\)</span> 的每个极限点（聚点） <span class="arithmatex">\(x^*\)</span> 都是原问题的全局极小解</p>
+<blockquote>
+<p>证明可以参考文再文老师《最优化：建模、算法与理论》一书</p>
+<p>上述定理表明，若可以找到子问题的全局极小解，则它们的极限点为原问题的最小值点。但在实际应用中，求 <span class="arithmatex">\(P_E(x,\sigma_k)\)</span> 的全局极小解是难以做到的，我们只能将子问题求解到一定精度，所以上述定理的应用场合十分有限</p>
+</blockquote>
+<p><strong>二次罚函数的收敛性2</strong> 设 <span class="arithmatex">\(f(x)\)</span> 与 <span class="arithmatex">\(c_i(x),i\in E\)</span> 连续可微，正数序列 <span class="arithmatex">\(\varepsilon_k\to 0,\sigma_k\to +\infty\)</span>，若子问题的解 <span class="arithmatex">\(x_{k+1}\)</span> 满足 <span class="arithmatex">\(||\nabla_x P_E(x_{k+1},\sigma_k)||\leq \varepsilon_k\)</span>，而对 <span class="arithmatex">\(\{x_k\}\)</span> 的任何极限点 <span class="arithmatex">\(x^*\)</span>，都有 <span class="arithmatex">\(\{\nabla c_i(x^*),i\in E\}\)</span> 线性无关，则 <span class="arithmatex">\(x^*\)</span> 是等式约束最优化问题的 KKT 点，且
+$$
+\lim_{k\to \infty}(-\sigma_kc_i(x_{k+1}))=\lambda_i^*,\qquad \forall i\in E
+$$
+其中 <span class="arithmatex">\(\lambda_i^*\)</span> 是约束 <span class="arithmatex">\(c_i(x^*)=0\)</span> 对应的 Lagrange 乘子</p>
+<h2 id="_6">一般约束问题的二次罚函数法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>前面我们考虑的是等式约束的优化问题，下面我们考虑不等式约束的二次罚函数问题，考虑如下形式的不等式约束优化问题：
+$$
+\min f(x)\
+\text{s.t.}  \ \ c_i(x)\geq 0,\ i\in I
+$$
+它和等式约束优化问题最大的不同就是允许 <span class="arithmatex">\(c_i(x)&gt;0\)</span> 发生，如果我们采用原来的方式定义罚函数为 <span class="arithmatex">\(||c(x)||^2\)</span>，其也会惩罚 <span class="arithmatex">\(c_i(x)&gt;0\)</span> 的可行点，这显然不是我们需要的，所以我们要对原有的二次罚函数进行改造，它应该只惩罚 <span class="arithmatex">\(c_i(x)&lt;0\)</span> 的那些点，而对可行点不作惩罚。</p>
+<blockquote>
+<p>注意我这里使用的不等式约束的体系（<span class="arithmatex">\(c_i(x)\geq 0\)</span>）和文再文老师的《最优化：建模、算法与理论》一书（<span class="arithmatex">\(c_i(x)\leq 0\)</span>）不同，相应的定义和结论可能发生变化</p>
+</blockquote>
+<p><strong>不等式约束的二次罚函数</strong> 对不等式约束最优化问题，定义二次罚函数
+$$
+P_I(x,\sigma)=f(x)+\frac{1}{2}\sigma\sum_{i\in I}\tilde{c_i}^2(x)
+$$
+其中等式右端第二项称为惩罚项，<span class="arithmatex">\(\tilde{c_i}(x)\)</span> 的定义为
+$$
+\tilde{c_i}(x)=\max{-c_i(x),0}
+$$
+常数 <span class="arithmatex">\(\sigma&gt;0\)</span> 称为罚因子</p>
+<p>函数 <span class="arithmatex">\(h(t)=(\max\{-t,0\})^2\)</span> 关于 <span class="arithmatex">\(t\)</span> 是可导的，因此 <span class="arithmatex">\(P_I(x,\sigma)\)</span> 的梯度也存在，可以使用梯度类算法来求解子问题，但是一般来说 <span class="arithmatex">\(P_I(x,\sigma)\)</span> 不是二阶可导的，我们不能直接利用二阶算法（如牛顿法）来求解子问题，这也是不等式约束问题二次罚函数的不足之处。求解不等式约束问题的罚函数法的算法和等式约束完全相同。</p>
+<p>一般的约束优化问题可能既含有等式约束又含有不等式约束，其形式为
+$$
+\min f(x)\
+\text{s.t.} \ \ c_i(x)=0,\ i\in E\
+c_i(x)\geq 0,\ i\in I
+$$
+针对这个问题，我们只需要将两种约束的罚函数相加就能得到一般约束优化问题的二次罚函数</p>
+<p><strong>一般约束的二次罚函数</strong> 对于一般约束最优化问题，我们定义二次罚函数如下
+$$
+P(x,\sigma)=f(x)+\frac{1}{2}\sigma[\sum_{i\in E}c_i^2(x)+\sum_{i\in I}\tilde{c_i}^2(x)]
+$$
+其中等式右端第二项称为惩罚项，<span class="arithmatex">\(\tilde{c_i}(x)\)</span> 的定义同上，常数 <span class="arithmatex">\(\sigma&gt;0\)</span> 称为惩罚因子</p>
+<h2 id="_7">内点罚函数法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>前面为我们介绍的二次罚函数均属于<strong>外点罚函数</strong>，也即在求解过程中允许自变量 <span class="arithmatex">\(x\)</span> 位于原问题的可行域之外，当惩罚因子趋于无穷的时候，子问题的最有序列从可行域外部逼近最优解。</p>
+<p>自然地，如果我们想要子问题最优解序列从可行域内部逼近最优解，则需要构造<strong>内点罚函数</strong>。顾名思义，内点罚函数法在迭代时始终要求自变量 <span class="arithmatex">\(x\)</span> 不能违反约束，因此它主要用于不等式约束优化问题</p>
+<p>考虑含有不等式约束的优化问题
+$$
+\min f(x)\
+\text{s.t.}  \ \ c_i(x)\geq 0,\ i\in I
+$$
+为了使得迭代点始终在可行域内，当迭代点趋于可行域边界的时候，我们需要罚函数趋于正无穷，常用的罚函数是<strong>对数罚函数</strong></p>
+<p><strong>对数罚函数</strong> 对于不等式约束最优化问题
+$$
+\min f(x)\
+\text{s.t.}  \ \ c_i(x)\geq 0,\ i\in I
+$$
+定义<strong>对数罚函数</strong>如下
+$$
+P_I(x,\sigma)=f(x)-\sigma\sum_{i\in I}\ln(c_i(x))
+$$
+其中等式右端第二项称为惩罚项，<span class="arithmatex">\(\sigma&gt;0\)</span> 称为惩罚因子</p>
+<p>显然 <span class="arithmatex">\(P_I(x,\sigma)\)</span> 的定义域为 <span class="arithmatex">\(\{x|c_i(x)&gt;0\}\)</span>，因此在迭代过程中自变量 <span class="arithmatex">\(x\)</span> 严格位于可行域内部。当 <span class="arithmatex">\(x\)</span> 趋近于可行域边界时，由对数罚函数的特点，<span class="arithmatex">\(P_I(x,\sigma)\)</span> 会趋于正无穷，说明对数罚函数的极小值严格位于可行域内部。但是原问题的最优解其实通常是在可行域边界上的，也即 <span class="arithmatex">\(c_i(x)\geq 0\)</span> 至少有一个取得等号，此时我们需要调整罚函数因子 <span class="arithmatex">\(\sigma\)</span> 使其趋于 <span class="arithmatex">\(0\)</span>，这会减弱对数罚函数在边界附近的惩罚效果</p>
+<p>下面我们看一个例子，考虑优化问题
+$$
+\min x^2+2xy+y^2+2x-2y\
+\text{s.t.}\ \  x\geq 0,y\geq 0
+$$
+容易求出该问题的最优解为 <span class="arithmatex">\(x=0,y=1\)</span>，我们考虑对数罚函数
+$$
+P_I(x,y,\sigma)=x^2+2xy+y^2+2x-2y-\sigma (\ln x+\ln y)
+$$
+绘制 <span class="arithmatex">\(\sigma=1\)</span> 和 <span class="arithmatex">\(\sigma=0.4\)</span> 对应的等高线如下：</p>
+<p><img alt="内点罚函数法等高线" src="..\images\内点罚函数法等高线.png" /></p>
+<p>可以看出，随着 <span class="arithmatex">\(\sigma\)</span> 减小，对数罚函数 <span class="arithmatex">\(P_I(x,y,\sigma)\)</span> 的最小值点和原问题最小值越来越接近，但是当 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 趋于可行域边界时，对数罚函数趋于正无穷</p>
+<p>下面我们给出基于对数罚函数的内点罚函数法算法伪代码</p>
+<p><img alt="对数罚函数法算法伪代码" src="..\images\对数罚函数法算法伪代码.png" /></p>
+<p>和二次罚函数法不同，对数罚函数法要求 <span class="arithmatex">\(x_0\)</span> 是一个可行解，常用的收敛准则可以包含
+$$
+\big|\sigma_k\sum_{i\in I}\ln(c_i(x_{k+1}))\big|\leq \varepsilon
+$$
+其中 <span class="arithmatex">\(\varepsilon&gt;0\)</span> 为给定的精度</p>
+<h2 id="_8">精确罚函数法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>二次罚函数法和对数罚函数法的一个共同特点就是在求解的时候必须令惩罚因子趋于正无穷或零，这会带来一定的数值困难，而对于有些罚函数，在问题求解的时候我们不需要令惩罚因子趋于正无穷或零，这种罚函数称为<strong>精确罚函数</strong>。换句话说，如果惩罚因子选取适当，对罚函数极小化得到的解恰好就是原问题的精确解</p>
+<p>常用的精确罚函数是 <span class="arithmatex">\(l_1\)</span> 罚函数，下面我们给出其定义</p>
+<p><strong><span class="arithmatex">\(l_1\)</span> 罚函数</strong> 对一般的约束最优化问题，定义 <span class="arithmatex">\(l_1\)</span> 罚函数如下
+$$
+P(x,\sigma)=f(x)+\sigma[\sum_{i\in E}|c_i(x)|+\sum_{i\in I}\tilde{c_i(x)}]
+$$
+其中等式右端的第二项称为惩罚项，<span class="arithmatex">\(\tilde{c_i(x)}\)</span> 的定义和之前相同，常数 <span class="arithmatex">\(\sigma&gt;0\)</span> 称为惩罚因子</p>
+<p>这里我们用绝对值替代平方来构造惩罚项，实际上是对约束的 <span class="arithmatex">\(l_1\)</span> 范数进行惩罚，需要说明的是，<span class="arithmatex">\(l_1\)</span> 罚函数不是可微函数。</p>
+<p><strong><span class="arithmatex">\(l_1\)</span> 罚函数的精确性</strong> 设 <span class="arithmatex">\(x^*\)</span> 是一般约束优化问题的一个严格局部极小解，且满足 KKT 条件，其对应的 Lagrange 乘子为 <span class="arithmatex">\(\lambda_i^*,i\in E\cup I\)</span>，则当惩罚因子 <span class="arithmatex">\(\sigma&gt;\sigma^*\)</span> 时，<span class="arithmatex">\(x^*\)</span> 也为 <span class="arithmatex">\(P(x,\sigma)\)</span> 的一个局部极小解，其中 <span class="arithmatex">\(\sigma^*\)</span> 的定义为
+$$
+\sigma^<em>=||\lambda^</em>||_{\infty}=\max_i|\lambda_i^*|
+$$
+上述定理说明对于精确罚函数，当惩罚因子充分大（不需要是正无穷）时，原问题的极小值点就是 <span class="arithmatex">\(l_1\)</span> 罚函数的极小值点</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年3月5日 05:17:07 UTC"><span class="timeago" datetime="2026-03-05T05:17:07+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月5日 05:17:07 UTC">2026-03-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
