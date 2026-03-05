@@ -1,0 +1,2381 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E6%9C%80%E4%BC%98%E6%80%A7%E6%9D%A1%E4%BB%B6/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/logo.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>约束优化最优性条件 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              约束优化最优性条件
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS61B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS61B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter1%20Java%20Basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 Java Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter2%20Lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 Lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter3%20OOP%20in%20Java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 OOP in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter4%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 数据结构和算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter5%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 并查集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter6%20Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter7%20Hash%20Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 Hash Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter8%20Heaps%20and%20Priority%20Queues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter8 Heaps and Priority Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter9%20Graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter9 Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter10%20Graph%20Problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter10 Graph Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter11%20Prefix%20Operations%20and%20Tries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter11 Prefix Operations and Tries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter12%20Sorting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter12 Sorting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture1 AVL Trees,Splay Trees and Amortized Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%202%20Red-Black%20Trees%20and%20B%2B%20Trees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture2 Red-Black Trees and B+ Trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%203%20Inverted%20File%20Index/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture3 Inverted File Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%204%20Leftist%20Heaps%20and%20Skew%20Heaps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture4 Leftist Heaps and Skew Heaps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture5%20Binomial%20Queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture5 Binomial Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的定义和分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学建模
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学建模
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%87%86%E5%A4%87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学建模备赛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化实用算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            优化实用算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%88%E8%BF%90%E7%AD%B9%E5%AD%A6%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无约束优化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            无约束优化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1%20%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无约束优化算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      约束优化问题定义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      例子和motivation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="例子和motivation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      等式约束
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      不等式约束
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      两个不等式约束
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      对偶理论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="对偶理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      拉格朗日函数和对偶问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wolfe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wolfe 对偶
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      约束优化问题的最优性理论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="约束优化问题的最优性理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      一阶最优性条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      二阶最优性条件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">约束优化最优性条件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">约束优化问题定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>约束非线性优化问题的形式如下：
+$$
+\min_{x\in R^n}f(x)\
+\text{s.t.}\ \ c_i(x)=0,\ i=1,\cdots,m_e;\
+c_i(x)\geq 0, i=m_e+1,\cdots,m
+$$
+其中 <span class="arithmatex">\(f(x)\)</span> 以及 <span class="arithmatex">\(c_i(x)(i=1,\cdots,m)\)</span> 都是定义在 <span class="arithmatex">\(R^n\)</span> 上的实值连续函数，并且至少有一个是非线性的。<span class="arithmatex">\(m\)</span> 正整数，<span class="arithmatex">\(m_e\)</span> 是介于 <span class="arithmatex">\(0\)</span> 和 <span class="arithmatex">\(m\)</span> 之间的整数。我们称 <span class="arithmatex">\(f(x)\)</span> 为目标函数，<span class="arithmatex">\(c_i(x)(i=1,\cdots,m)\)</span> 被称为约束函数 。如果 <span class="arithmatex">\(m_e=m\)</span>，我们就将上述问题称为等式约束优化问题；如果 <span class="arithmatex">\(c_i(x)(i=1,\cdots,m)\)</span> 都是线性函数，我们就称上述问题为线性约束优化问题。对于一个线性约束优化问题，如果目标函数 <span class="arithmatex">\(f(x)\)</span> 是二次函数，我们就将其称为二次规划问题。</p>
+<p>下面我们给出<strong>可行点</strong>和<strong>可行域</strong>的定义，<span class="arithmatex">\(x\in R^n\)</span> 被称为上述问题的可行点当且仅当等式约束和不等式约束都成立，所有可行点组成的集合被称为可行域。并且上面的等式约束和不等式约束统称为约束条件。容易知道，可行点就是所有满足所有约束条件的点，我们记可行域为 <span class="arithmatex">\(X\)</span>:
+$$
+X={x|c_i(x)=0,\ i=1,\cdots,m_e;\ c_i(x)\geq 0, i =m_e+1,\cdots,m}
+$$
+故求解约束优化问题，<strong>就是在可行域 <span class="arithmatex">\(X\)</span> 上寻找一个点 <span class="arithmatex">\(x\)</span> 使得目标函数 <span class="arithmatex">\(f(x)\)</span> 达到最小</strong>，我们给出解的精确定义如下：</p>
+<p>设 <span class="arithmatex">\(x^{*}\in X\)</span>，如果 
+$$
+f(x)\geq f(x^{<em>}),\forall x\in X
+$$
+我们就称 <span class="arithmatex">\(x^{*}\)</span> 是问题的全局极小点，如果对一切 <span class="arithmatex">\(x\in X\)</span> 且 <span class="arithmatex">\(x\neq x^{*}\)</span> 有
+$$
+f(x)&gt;f(x^{</em>})
+$$
+我们就称 <span class="arithmatex">\(x^{*}\)</span> 是全局严格极小点，相应地也会有局部极小点的定义:</p>
+<p>设 <span class="arithmatex">\(x^{*}\in X\)</span>，如果对某一 <span class="arithmatex">\(\delta&gt;0\)</span> 有
+$$
+f(x)\geq f(x^{<em>}),\ \forall x\in X\cap B(x^{</em>},\delta)
+$$
+就称 <span class="arithmatex">\(x^{*}\)</span> 是问题的局部极小点，这里 <span class="arithmatex">\(B(x^{*},\delta)\)</span> 是以 <span class="arithmatex">\(x^{*}\)</span> 为中心，以 <span class="arithmatex">\(\delta\)</span> 为半径的广义球，也即
+$$
+B(x^{<em>},\delta)={x|||x-x^{</em>}||_2\leq \delta}
+$$
+如果对一切 <span class="arithmatex">\(x\in X\cap B(x^{*},\delta)\)</span> 且 <span class="arithmatex">\(x\neq x^{*}\)</span> 有 <span class="arithmatex">\(f(x)&gt;f(x^{*})\)</span> 成立，则称 <span class="arithmatex">\(x^{*}\)</span> 是局部严格极小点。</p>
+<p>下面我们给出<strong>积极约束</strong>和<strong>非积极约束</strong>的定义，假定 <span class="arithmatex">\(x^{*}\)</span> 是问题的一个局部极小点，如果有 <span class="arithmatex">\(i_0\in [m_e+1,m]\)</span>（不等式约束）使得
+$$
+c_{i_0}(x^{*})&gt;0
+$$
+则我们可以将第 <span class="arithmatex">\(i_0\)</span> 个约束条件去掉，且 <span class="arithmatex">\(x^{*}\)</span> 仍然是去掉第 <span class="arithmatex">\(i_0\)</span> 个约束条件所得到的问题的局部极小点，所以我们称第 <span class="arithmatex">\(i_0\)</span> 个约束在 <span class="arithmatex">\(x^{*}\)</span> 处是非积极的。</p>
+<p>引入记号 <span class="arithmatex">\(E=\{1,2,\cdots, m_e\},I=\{m_e+1,\cdots,m\},I(x)=\{i|c_i(x)\leq 0,i\in I\}\)</span>，则对任意 <span class="arithmatex">\(x\in R^n\)</span>，我们称集合
+$$
+\mathcal{A}(x)=E\cup I(x)
+$$
+是在 <span class="arithmatex">\(x\)</span> 点的积极集合（满足等式约束和不等式约束取到等的点），<span class="arithmatex">\(c_i(x),i\in \mathcal{A}(x)\)</span> 是在 <span class="arithmatex">\(x\)</span> 点的积极约束（有效约束），<span class="arithmatex">\(c_i(x),i\notin \mathcal{A}(x)\)</span> 是在 <span class="arithmatex">\(x\)</span> 点的非积极约束（非有效约束）。</p>
+<p>假设我们已经知道上述问题在解处的积极约束 <span class="arithmatex">\(\mathcal{A}(x^{*})\)</span>，我们就只需要求解如下的等式约束优化问题
+$$
+\min_{x\in R^n}f(x)\
+\text{s.t.}\ \ c_i(x)=0,\ i\in \mathcal{A}(x^{*})
+$$
+我们就将其转化为了等式约束问题，一般来说，等式约束优化问题更容易求解。</p>
+<h2 id="motivation">例子和motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<h3 id="_3">等式约束<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>问题</strong>：$ \min x_1 + x_2 <span class="arithmatex">\(，**约束**：\)</span> x_1^2 + x_2^2 - 2 = 0 $</p>
+<p><img alt="image-20251209104502598" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20251209104502598.png" /></p>
+<p>如上图所示，这个例子的全局最优解为 <span class="arithmatex">\((-1,1)^T\)</span>，<span class="arithmatex">\(x^{*}\)</span> 的一个性质是 <span class="arithmatex">\(\nabla f\)</span> 和 <span class="arithmatex">\(\nabla c_1\)</span> 平行，但是方向相反。我们在 <span class="arithmatex">\(c_1\)</span> 上取任何非 <span class="arithmatex">\(x^*\)</span> 的点，则让 <span class="arithmatex">\(x\)</span> 保持在可行域内部的方向有两个，一个是顺时针，一个是逆时针，并且这两个方向中总有一个是和 <span class="arithmatex">\(-\nabla f\)</span> 成锐角的，也就是下降方向，直到 <span class="arithmatex">\(x^{*}\)</span> 点，<span class="arithmatex">\(\nabla c_1\)</span> 和 <span class="arithmatex">\(\nabla f\)</span> 平行，这时候沿 <span class="arithmatex">\(c_1\)</span> 的任何方向都和 <span class="arithmatex">\(\nabla f\)</span> 成直角，也即 <span class="arithmatex">\(f\)</span> 不会下降。换句话说，直观来讲，<span class="arithmatex">\(x^{*}\)</span> 满足的条件是
+$$
+{\ x^<em>\ 的可行方向}\cap{\ f在\ x^</em>\ 的下降方向\ }=\emptyset
+$$
+ 下面我们做一些严格的分析，<span class="arithmatex">\(\forall x\in \Omega\)</span>，保持 <span class="arithmatex">\(x\)</span> 停留在 <span class="arithmatex">\(\Omega\)</span> 内部的可行方向 <span class="arithmatex">\(d\)</span> 需要满足 <span class="arithmatex">\(c_1(x+d)=0\)</span>，则由 Taylor 展开可以得到
+$$
+0=c_1(x+d)\approx c_1(x)+\nabla c_1(x)^Td=\nabla c_1(x)^Td
+$$
+并且如果<span class="arithmatex">\(x\)</span> 不是 <span class="arithmatex">\(f\)</span> 的局部极小值点，那么从 <span class="arithmatex">\(x\)</span> 出发，在可行域内部必然有 <span class="arithmatex">\(f\)</span> 的下降方向，同样在 Taylor 展开，则有
+$$
+0&gt;f(x+d)-f(x)\approx \nabla f(x)^Td
+$$
+从而有 <span class="arithmatex">\(\nabla f(x)^Td&lt;0\)</span></p>
+<p>所以如果以上两个条件同时成立，就意味着我们可以找到一个从 <span class="arithmatex">\(x\)</span> 出发的方向 <span class="arithmatex">\(d\)</span>，使得 <span class="arithmatex">\(x+d\)</span> 停留在 <span class="arithmatex">\(\Omega\)</span> 内部，并且 <span class="arithmatex">\(f(x)\)</span> 继续下降。所以<strong>如果 <span class="arithmatex">\(x\)</span> 是问题的解，那么上述两点一定不能成立</strong>，这样我们就得到了<strong>一阶必要性条件：</strong>唯有 <span class="arithmatex">\(\nabla c_1\)</span> 和 <span class="arithmatex">\(\nabla f\)</span> 平行，才不会出现既可行又下降的方向，也即
+$$
+\nabla f(x)=\lambda \nabla c_1(x),\lambda \in R
+$$</p>
+<blockquote>
+<p>这里我们对梯度的要求是平行</p>
+</blockquote>
+<p>我们引入 Lagrange 乘子函数
+$$
+L(x,\lambda_1)=f(x)-\lambda_1c_1(x)
+$$
+则平行条件等价于
+$$
+\nabla_xL(x,\lambda_1)=\nabla f(x)-\lambda_1\nabla c_1(x)=0
+$$
+所以约束优化问题解的必要条件可以表示为，<strong>存在<span class="arithmatex">\(\lambda_1^*\in R\)</span>，使得 <span class="arithmatex">\(\nabla_xL(x^*,\lambda_1^*)=0\)</span></strong>，这里的 <span class="arithmatex">\(\lambda_1\)</span> 我们称为约束条件 <span class="arithmatex">\(c_1(x)=0\)</span> 对应的 Lagrange 乘子，显然这个条件不是充分的，比如该例子中还有一个可行点 <span class="arithmatex">\((1,1)^T\)</span> 也满足这个条件，但它是极大指点</p>
+<h3 id="_4">不等式约束<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><strong>问题</strong>：$ \min x_1 + x_2 <span class="arithmatex">\(，**约束**：\)</span> 2 - x_1^2 - x_2^2 \ge 0 $ </p>
+<p><img alt="image-20251209111549571" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20251209111549571.png" /></p>
+<p>此时可行域变为圆的内部和边界，最优解仍然是 <span class="arithmatex">\((-1,-1)^T\)</span>，并且 <span class="arithmatex">\(\forall x\in \Omega\)</span>，为了确保 <span class="arithmatex">\(x+d\)</span> 停留在 <span class="arithmatex">\(\Omega\)</span> 内，则有
+$$
+c_1(x+d)\approx c_1(x)+\nabla c_1(x)^Td\geq 0
+$$
+并且使得 <span class="arithmatex">\(f\)</span> 下降的方向仍然是
+$$
+\nabla f(x)^Td&lt;0
+$$
+下面我们分两种情况考虑：</p>
+<p><strong><span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\(\Omega\)</span> 内部：</strong>也即 <span class="arithmatex">\(c_1(x)&gt;0\)</span>，此时任何 <span class="arithmatex">\(d\)</span> 都是可行方向，如果从 <span class="arithmatex">\(x^*\)</span> 出发的方向都不能同时满足两个条件（也即交集是空集），那么只剩下唯一的可能：
+$$
+\nabla f(x^*)=0
+$$
+这是无约束问题下对应的必要条件</p>
+<p><strong><span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\(\Omega\)</span> 边界：</strong>也即 <span class="arithmatex">\(c_1(x)=0\)</span>，此时又回到第一个例子的情形，如果 <span class="arithmatex">\(x\)</span> 出发还存在优化的可能方向，则必须满足
+$$
+\nabla f(x)^Td&lt;0,\ \nabla c_1(x)^Td\geq 0
+$$
+这时第一个不等式限定了半个平面，第二个不等式限定了另外半个平面，而我们希望没有优化的可能方向，也即 <span class="arithmatex">\(x\)</span> 是局部最优解了，所以我们就希望两个半平面相交是空集，此时只有可能是 <span class="arithmatex">\(\nabla f\)</span> 和 <span class="arithmatex">\(\nabla c_1(x)\)</span> 是同向的，也即
+$$
+\nabla f(x)=\lambda_1 \nabla c_1(x),\lambda_1\geq 0
+$$</p>
+<blockquote>
+<p>这里我们对梯度的要求更严格，需要同向</p>
+</blockquote>
+<p>总结一下上面两种情况，可以统一为</p>
+<p><span class="arithmatex">\(x^{*}\)</span> 没有可行的下降方向（<span class="arithmatex">\(x^*\)</span> 是局部极小值点） <span class="arithmatex">\(\iff\)</span> 存在 <span class="arithmatex">\(\lambda_1^*\)</span>，使得
+$$
+\nabla _x L(x^<em>,\lambda_1^</em>)=0,\ \lambda_1^<em>\geq 0
+$$
+并且
+$$
+\lambda_1^</em>c_1(x^*)=0
+$$</p>
+<blockquote>
+<p>即在最优点处，要么约束是紧的，要么乘子为 <span class="arithmatex">\(0\)</span>，我们将这个条件称为<strong>互补性条件</strong></p>
+</blockquote>
+<h3 id="_5">两个不等式约束<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>问题</strong>：$ \min x_1 + x_2 <span class="arithmatex">\(，**约束**：\)</span> 2 - x_1^2 - x_2^2 \ge 0 ,x_2\geq 0$</p>
+<table>
+<thead>
+<tr>
+<th><img alt="image-20251209121104797" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20251209121104797.png" /></th>
+<th><img alt="image-20251209121117742" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20251209121117742.png" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>此时最优解为 <span class="arithmatex">\(x^*=(-\sqrt{2},0)^T\)</span>，并且两个约束都是活跃的。</p>
+<p>如果某个 <span class="arithmatex">\(x\)</span> 不是一个最优值点，也就意味着从它出发还有进一步可以下降的方向，那么必然有方向 <span class="arithmatex">\(d\)</span> 满足
+$$
+c_i(x+d)\approx c_i(x)+\nabla c_i(x)^Td=\nabla c_i(x)^Td\geq 0\
+\nabla f(x)^Td&lt;0
+$$
+第一个条件由于 <span class="arithmatex">\(c_i(x)\)</span> 是活跃的，有 <span class="arithmatex">\(c_i(x)=0\)</span>；第二个条件代表 <span class="arithmatex">\(d\)</span> 是下降方向，显然最优解 <span class="arithmatex">\(x^*=(-\sqrt{2},0)^T\)</span> 不存在这个方向</p>
+<p>同样我们可以定义 Lagrange 乘子函数
+$$
+L(x,\lambda)=f(x)-\lambda_1c_1(x)-\lambda_2c_2(x)
+$$
+这里 <span class="arithmatex">\(\lambda=[\lambda_1,\lambda_2]^T\)</span> 是 Lagrange 乘子，则 <span class="arithmatex">\(\nabla f(x)\)</span> 和 <span class="arithmatex">\(c_i(x)\)</span> 的关系可以表示为：存在 <span class="arithmatex">\(\lambda^*\geq 0\)</span>，使得
+$$
+\nabla_xL(x^<em>,\lambda^</em>)=0
+$$
+且满足互补性条件 <span class="arithmatex">\(\lambda_1^*c_1(x^*)=0,\lambda_2^*c_2(x^*)=0\)</span></p>
+<blockquote>
+<p>互补性条件实际上是在说，一个约束要么是活跃的 <span class="arithmatex">\(c_i(x)=0\)</span>，它就会在 <span class="arithmatex">\(\nabla_xL(x,\lambda)=0\)</span> 中参与，要么是不活跃的，也即 <span class="arithmatex">\(\lambda_i=0\)</span>，则此时它在 <span class="arithmatex">\(\nabla_xL(x,\lambda)=0\)</span> 中实际上是不存在的</p>
+</blockquote>
+<h2 id="_6">对偶理论<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>由于参考的书籍有袁亚湘老师的《最优化理论与方法》、文再文老师的《最优化：建模、算法与理论》以及课上的PPT，记号可能不太一样，但各部分会在前面提一下这部分的记号使用。</p>
+<p>袁老师和课上PPT给出的不等式约束都是 <span class="arithmatex">\(c_i(x)\geq 0\)</span>，此时 <span class="arithmatex">\(\nabla c_i\)</span> 指向可行域的内部；而文再文老师的书中不等式约束写的是 <span class="arithmatex">\(c_i(x)\leq 0\)</span>，此时 <span class="arithmatex">\(\nabla c_i\)</span> 指向可行域的外部。这两种符号本质上没有区别，但是需要注意其最终的 Lagrange 函数的形式，以及 KKT 公式的形式会有一些区别，需要注意一下。</p>
+</blockquote>
+<h3 id="_7">拉格朗日函数和对偶问题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>从上面的例子我们可以看出，研究约束优化问题的一个重要工具是拉格朗日函数，它的基本思想是<strong>给该问题中的每一个约束指定一个拉格朗日乘子，以乘子为加权系数将约束增加到目标函数中。</strong>这里我们记 <span class="arithmatex">\(\lambda_i\)</span> 为对应于第 <span class="arithmatex">\(i\)</span> 个不等式约束的 Lagrange 乘子，<span class="arithmatex">\(\nu_i\)</span> 为对应于第 <span class="arithmatex">\(i\)</span> 个等式约束的 Lagrange 乘子。为了构造合适的对偶问题，我们的基本原则是对 Lagrange 乘子添加合适的约束条件，使得 <span class="arithmatex">\(f(x)\)</span> 在任意可行点 <span class="arithmatex">\(x\)</span> 处的函数值大于或等于相应 Lagrange 函数的值，根据这个原则，我们要求 <span class="arithmatex">\(\lambda\geq 0\)</span>。记 <span class="arithmatex">\(m=|I|,p = |E|\)</span>，则 Lagrange 函数的具体形式是 <span class="arithmatex">\(L:R^n\times R_{+}^m\times R^p\to R\)</span> 定义为
+$$
+L(x,\lambda,\nu)=f(x)-\sum_{i\in I}\lambda_ic_i(x)-\sum_{i\in E}\nu_ic_i(x)
+$$</p>
+<blockquote>
+<p>文再文老师的树中用的是 <span class="arithmatex">\(c_i(x)\leq 0\)</span>，此时 Lagrange 函数中的减号应当是加号，也即
+$$
+L(x,\lambda,\nu)=f(x)+\sum_{i\in I}\lambda_ic_i(x)+\sum_{i\in E}\nu_ic_i(x)
+$$</p>
+</blockquote>
+<p>对 Lagrange 函数 <span class="arithmatex">\(L(x,\lambda,\nu)\)</span> 中的 <span class="arithmatex">\(x\)</span> 取下确界可以定义<strong>Lagrange 对偶函数</strong></p>
+<p><strong>Lagrange 对偶函数</strong> <span class="arithmatex">\(g\)</span>： <span class="arithmatex">\(R_{+}^m\times R^p\to[-\infty,+\infty)\)</span> 是 Lagrange 函数 <span class="arithmatex">\(L(x,\lambda,\nu)\)</span> 对于 <span class="arithmatex">\(\lambda\in R_+^m,\nu\in R^p\)</span> 关于 <span class="arithmatex">\(x\)</span> 取的下确界，即
+$$
+g(\lambda,\nu)=\inf_{x\in R^n} L(x,\lambda,\nu)
+$$</p>
+<p>固定 <span class="arithmatex">\((\lambda,\nu)\)</span>，如果 Lagrange 函数关于 <span class="arithmatex">\(x\)</span> 无界，那么对偶函数在 <span class="arithmatex">\((\lambda,\nu)\)</span> 处的取值为 <span class="arithmatex">\(-\infty\)</span>。因为 Lagrange 对偶函数是逐点定义的一族关于 <span class="arithmatex">\((\lambda,\nu)\)</span> 的仿射函数的下确界，其为凹函数，这个性质能够帮助我们推导出许多拥有良好性质的算法。</p>
+<p>对每一对满足 <span class="arithmatex">\(\lambda\geq 0\)</span> 的乘子对 <span class="arithmatex">\((\lambda,\nu)\)</span>，Lagrange 对偶函数 <span class="arithmatex">\(g(\lambda,\nu)\)</span> 给约束优化问题的最优值 <span class="arithmatex">\(p^*\)</span> 提供了下界，并且这个下界依赖于参数 <span class="arithmatex">\(\lambda\)</span> 和 <span class="arithmatex">\(\nu\)</span> 的选取。</p>
+<p><strong>弱对偶原理</strong> 对于任意的 <span class="arithmatex">\(\lambda \geq0\)</span> 和 <span class="arithmatex">\(\nu\)</span>，Lagrange 对偶函数给出了优化问题最优值的一个下界，即
+$$
+g(\lambda,\nu)\leq p^<em>,\ \lambda \geq 0
+$$
+那么一个自然的问题是，从 Lagrange 对偶函数获得的下界中，哪个是最优的呢？为了求解这个最优的下界，就会有如下的 Lagrange 对偶问题
+$$
+\max_{\lambda\geq 0,\nu}g(\lambda,\nu)=\max_{\lambda\geq 0,\nu} \inf_{x\in R^n} L(x,\lambda,\nu)
+$$
+向量 <span class="arithmatex">\(\lambda\)</span> 和 <span class="arithmatex">\(\nu\)</span> 我们也称为约束优化问题的对偶变量或者 Lagrange 乘子向量，由于 <span class="arithmatex">\(g(\lambda,\nu)\)</span> 是凹函数以及约束集合的凸性，Lagrange 对偶问题是一个凸优化问题。当 <span class="arithmatex">\(g(\lambda,\nu)=-\infty\)</span> 时，对偶函数提供的 <span class="arithmatex">\(p^*\)</span> 的下界变得没有实际意义；只有当 <span class="arithmatex">\(g(\lambda,\nu)&gt;-\infty\)</span> 时，对偶函数生成的关于原始问题的最优解 <span class="arithmatex">\(p^*\)</span> 的下界才是非平凡的，因此我们规定 Lagrange 对偶函数的定义域
+$$
+\mathbf{dom} \ g={(\lambda,\nu)|\lambda \ge0,g(\lambda,\nu)&gt;-\infty}
+$$
+当 <span class="arithmatex">\((\lambda,\nu)\in \mathbf{dom} \ g\)</span> 时，称其为</em><em>对偶可行解</em><em>，记对偶问题的最优值为 <span class="arithmatex">\(q^*\)</span>，称 <span class="arithmatex">\(p^*-q^*(\geq 0)\)</span> 为对偶间隙。如果对偶间隙为 <span class="arithmatex">\(0\)</span>，也即 <span class="arithmatex">\(p^*=q^*\)</span>，称</em><em>强对偶原理</em><em>成立。假设 <span class="arithmatex">\((\lambda^*,\nu^*)\)</span> 是使得对偶问题取得最优值的解，称其为</em><em>对偶最优解</em>*或者最优 Lagrange 乘子</p>
+<blockquote>
+<p>推导 Lagrange 对偶问题最重要的是能把 Lagrange 对偶函数的具体形式方便地写出来，并且 Lagrange 对偶问题的写法并不唯一</p>
+</blockquote>
+<h3 id="wolfe">Wolfe 对偶<a class="headerlink" href="#wolfe" title="Permanent link">&para;</a></h3>
+<p>为了计算简便，对偶问题有一个更简洁的形式，Wolfe 对偶。Wolfe 对偶并没有像标准 Lagrange 对偶那样先求 <span class="arithmatex">\(\inf_{x}L(x,\lambda)\)</span>，而是直接把一阶驻点条件加入到了约束中
+$$
+\max_{x,\lambda}\ L(x,\lambda)\
+\text{s.t.}\nabla_x\ L(x,\lambda)=0,\lambda\geq 0
+$$
+换句话说，Wolfe 对偶找的是 Lagrange 函数 <span class="arithmatex">\(L(x,\lambda)\)</span> 的驻点处的最大值</p>
+<p>并且有这样一个定理保证 Wolfe 对偶的有效性</p>
+<p>如果目标函数 <span class="arithmatex">\(f\)</span> 和约束函数 <span class="arithmatex">\(-c_i\)</span> 都是凸可微的，<span class="arithmatex">\((\overline{x},\overline{\lambda})\)</span> 是主问题的一组解，并且满足 LICQ，那么 <span class="arithmatex">\((\overline{x},\overline{\lambda})\)</span> 也是 Wolfe 对偶问题的一组解。</p>
+<blockquote>
+<p>具体例题可以参考 PPT</p>
+</blockquote>
+<h2 id="_8">约束优化问题的最优性理论<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>在前面的分析中，考虑是否存在可行的下降方向时，我们是用一阶 Taylor 展开进行分析的，这是建立在一阶线性展开能够捕捉可行域的几何性质的基础上；而如果在 <span class="arithmatex">\(x\)</span> 附近，一阶 Taylor 展开和可行域相差巨大，一阶线性逼近就不能很好地近似原问题。所以我们需要对活跃的约束条件 <span class="arithmatex">\(c_i\)</span> 在 <span class="arithmatex">\(x\)</span> 处的性质加以限制，以保证一阶 Taylor 展开能够很好地近似真实的可行域。</p>
+<h3 id="_9">一阶最优性条件<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>在给出最优性条件之前，我们先介绍一些必要的概念</p>
+<h4 id="_10">切锥和约束品性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h5 id="_11">切锥和线性化可行方向锥<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<p><strong>切锥</strong> 给定可行域 <span class="arithmatex">\(\Omega\)</span> 以及其内的一点 <span class="arithmatex">\(x\)</span>，若存在可行序列 <span class="arithmatex">\(\{z_k\}_{k=1}^{\infty}\in \Omega\)</span> 逼近 <span class="arithmatex">\(x\)</span>（即 <span class="arithmatex">\(\lim_{k\to\infty}z_k=x\)</span>）以及正标量序列 <span class="arithmatex">\(\{t_k\}_{k=1}^{\infty},t_k\to0\)</span> 满足
+$$
+\lim_{k\to \infty}\frac{z_k-x}{t_k}=d
+$$
+则称向量 <span class="arithmatex">\(d\)</span> 为 <span class="arithmatex">\(\Omega\)</span> 在点 <span class="arithmatex">\(x\)</span> 处的一个切向量，点 <span class="arithmatex">\(x\)</span> 处的所有切向量构成的集合称为<strong>切锥</strong>，我们用 <span class="arithmatex">\(T_{\Omega}(x)\)</span> 表示</p>
+<p>我们可以看一个直观的例子</p>
+<p><img alt="image-20251209145259611" src="C:\Users\25213\AppData\Roaming\Typora\typora-user-images\image-20251209145259611.png" /></p>
+<p>左图中，深色部分 <span class="arithmatex">\(\chi\)</span> 表示两个不等式约束限定的区域，点 <span class="arithmatex">\(x\)</span> 处的切锥 <span class="arithmatex">\(T_{\chi}(x)\)</span> 为图中的浅色区域；右图则是考虑等式约束，此时可行域 <span class="arithmatex">\(\chi\)</span> 对应左图可行域的边界，此时切锥 <span class="arithmatex">\(T_{\chi}(x)\)</span> 是点 <span class="arithmatex">\(x\)</span> 处与 <span class="arithmatex">\(\chi\)</span> 相切的两条射线。</p>
+<p>一般情况下，我们不能直接利用局部极小点的定义去判断 <span class="arithmatex">\(x^{*}\)</span> 是否为局部解，因为 <span class="arithmatex">\(X\cap B(x^{*},\delta)\)</span> 通常有无穷多个点，我们无法进行验证。因此我们有必要给出只依赖在 <span class="arithmatex">\(x^{*}\)</span> 点处目标函数和约束函数信息的，且与定义等价的条件，我们称之为<strong>最优性条件</strong>。</p>
+<p>此时我们可以从几何上刻画约束优化问题的最优性条件，我们同样要求切锥（可行方向集合）不包含使得目标函数值下降的方向，则有下面的一阶必要条件（几何最优性条件）</p>
+<p><strong>几何最优性条件</strong> 假设 <span class="arithmatex">\(x^*\)</span> 是约束优化问题的一个局部极小值点，如果 <span class="arithmatex">\(f(x),c_i(x),i\in I\cup E\)</span> 在点 <span class="arithmatex">\(x^*\)</span> 处是可微的，那么
+$$
+d^T\nabla f(x^<em>)\geq 0\qquad \forall d\in T_{\Omega}(x^</em>)
+$$
+等价于 <span class="arithmatex">\(T_{\Omega}(x^*)\cap\{\nabla f(x^*)^Td&lt;0\}=\emptyset\)</span></p>
+<p>但切锥是根据可行域的几何性质来定义的，其计算并不容易，所以我们希望能够找到一个代数方法来计算可行方向，进而更容易地判断最优性条件，所以我们给出一个更容易计算的可行方向集合的定义——<strong>线性化可行方向锥</strong></p>
+<p><strong>线性化可行方向锥</strong> 对于可行点 <span class="arithmatex">\(x\in \Omega\)</span>，点 <span class="arithmatex">\(x\)</span> 处的线性化可行方向锥定义为
+$$
+\mathcal{F}(x) = \left{ d \;\middle|\;
+\begin{array}{l}
+d^T\nabla c_i(x) = 0,\ \forall\ i \in E, \
+d^T\nabla c_i(x) \geq 0,\ \forall\ i \in \mathcal{A}(x) \cap I
+\end{array}
+\right}
+$$</p>
+<blockquote>
+<p>注意这里我们用的是 <span class="arithmatex">\(c_i(x)\geq0\)</span> 类的记号，如果采用的是 <span class="arithmatex">\(c_i(x)\leq 0\)</span>，第二条应该改成 <span class="arithmatex">\(d^T\nabla c_i(x)\leq0\)</span>，因为我们实际上是希望积极的不等式约束在方向 <span class="arithmatex">\(d\)</span> 上仍然满足，如果用 <span class="arithmatex">\(c_i(x)\geq 0\)</span>，方向 <span class="arithmatex">\(d\)</span> 就应当使得 <span class="arithmatex">\(c_i(x)\)</span> 是不减的，也就是 <span class="arithmatex">\(d^T\nabla c_i(x)\geq 0\)</span>，采用另一种类似可得。</p>
+<p>直观来讲，线性化可行方向锥中的向量<strong>应该保证和等式约束中函数的梯度垂直，这样才能够尽量保证 <span class="arithmatex">\(c_i(x),i\in E\)</span> 的值不变；而对积极集 <span class="arithmatex">\(\mathcal{A}(x)\cap I\)</span> 中的指标 <span class="arithmatex">\(i\)</span>，沿着该向量 <span class="arithmatex">\(c_i(x)\)</span> 的值不能减小，因此线性化可行方向对 <span class="arithmatex">\(c_i(x),i\in \mathcal{A}(x)\cap I\)</span> 可以是一个上升方向（如果用的是 <span class="arithmatex">\(c_i(x)\leq 0\)</span> 就应该是下降方向；而对非积极集中的约束，则无需提出任何对线性化可行方向的要求）</strong></p>
+</blockquote>
+<p>线性化可行方向锥一般比切锥更大，实际上有如下定理</p>
+<p>设 <span class="arithmatex">\(c_i(x),i\in E\cup I\)</span> 一阶连续可微，则对任意可行点 <span class="arithmatex">\(x\)</span> 有
+$$
+T_{\Omega}(x)\subset \mathcal{F}(x)
+$$</p>
+<blockquote>
+<p>实际上，线性化可行方向锥 <span class="arithmatex">\(\mathcal{F}(x)\)</span> 不仅受问题可行域 <span class="arithmatex">\(\Omega\)</span> 的影响，还会受到 <span class="arithmatex">\(\Omega\)</span> 的代数表示方式的影响，在不改变 <span class="arithmatex">\(\Omega\)</span> 的条件下改变定义 <span class="arithmatex">\(\Omega\)</span> 的等式/不等式的数学形式会影响 <span class="arithmatex">\(\mathcal{F}(x)\)</span> 包含的元素；而切锥 <span class="arithmatex">\(T_{\Omega}(x)\)</span> 的定义则直接依赖于可行域 <span class="arithmatex">\(\Omega\)</span>，不受到 <span class="arithmatex">\(\Omega\)</span> 代数表示方式的影响。</p>
+</blockquote>
+<p>从上述讨论中我们知道，线性化可行方向锥容易计算和使用，但是会被问题形式所影响；而切锥更直接地体现了可行域 <span class="arithmatex">\(\Omega\)</span> 的性质，却很难计算。所以为了刻画线性化可行方向锥 <span class="arithmatex">\(\mathcal{F}(x)\)</span> 和切锥 <span class="arithmatex">\(T_{\Omega}(x)\)</span> 之间的关系，我们引入<strong>约束品性</strong>的概念，大部分的约束品性是为了保证在最优点 <span class="arithmatex">\(x^*\)</span> 处有 <span class="arithmatex">\(\mathcal{F}(x^*)=T_{\Omega}(x^*)\)</span>，使得我们能够使用 <span class="arithmatex">\(\mathcal{F}(x)\)</span> 代替 <span class="arithmatex">\(T_{\Omega}(x)\)</span>，进而更方便地研究约束最优化问题的最优性条件。</p>
+<h5 id="_12">约束品性<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
+<p><strong>线性无关约束品性</strong> 给定可行点 <span class="arithmatex">\(x\)</span> 以及相应的积极集 <span class="arithmatex">\(\mathcal{A}(x)\)</span>，如果积极集对应的约束函数的梯度，即 <span class="arithmatex">\(\nabla c_i(x),i\in\mathcal{A}(x)\)</span> 是线性无关的，则称<strong>线性无关约束品性(LICQ)在点 <span class="arithmatex">\(x\)</span> 处成立</strong></p>
+<p>当 LICQ 成立时，切锥和线性化可行方向锥是相同的，也即如下定理</p>
+<p><strong>给定任意可行点 <span class="arithmatex">\(x\in \Omega\)</span>，如果在该点处 LICQ 成立，则有 <span class="arithmatex">\(T_{\Omega}(x)=\mathcal{F}(x)\)</span></strong></p>
+<p>关于 LICQ 的一个常用推广是 Mangasarian-Fromovitz 约束品性，简称 MFCQ</p>
+<p><strong>MFCQ</strong> 给定可行点 <span class="arithmatex">\(x\)</span> 以及相应的积极集 <span class="arithmatex">\(\mathcal{A}(x)\)</span>，如果存在一个向量 <span class="arithmatex">\(\omega\in R^n\)</span>，使得
+$$
+\nabla c_i(x)^T\omega&gt;0,\forall i\in \mathcal{A}(x)\cap I\
+\nabla c_i(x)^T\omega = 0,\forall i\in E
+$$
+并且等式约束对应的梯度集 <span class="arithmatex">\(\{\nabla c_i(x),i\in E\}\)</span> 是线性无关的，则称 MFCQ 在点 <span class="arithmatex">\(x\)</span> 处成立。</p>
+<blockquote>
+<p>需要注意的是，MFCQ 中的向量 <span class="arithmatex">\(\omega\)</span> 本质上就是一个严格可行方向，所以如果我们使用的是 <span class="arithmatex">\(c_i(x)\geq 0\)</span>，MFCQ 的第一条应当是 <span class="arithmatex">\(\nabla c_i(x)^T\omega &gt;0\)</span>；如果我们使用的是 <span class="arithmatex">\(c_i(x)\leq 0\)</span>，则 MFCQ 的第一条应当是 <span class="arithmatex">\(\nabla c_i(x)^T\omega&lt;0\)</span></p>
+<p>MFCQ 其实是 LICQ 的一个弱化版本</p>
+</blockquote>
+<p>另一个用来保证 <span class="arithmatex">\(T_{\Omega}(x)=\mathcal{F}(x)\)</span> 的约束品性是线性约束品性</p>
+<p><strong>线性约束品性</strong> 如果所有的约束函数 <span class="arithmatex">\(c_i(x),i\in I\cup E\)</span> 都是线性的，则称线性约束品性成立。</p>
+<p>当线性约束品性成立时，也有 <span class="arithmatex">\(T_{\Omega}(x)=\mathcal{F}(x)\)</span>，因此对只含线性约束的优化问题，例如线性规划、二次规划，很自然地有 <span class="arithmatex">\(T_{\Omega}(x)=\mathcal{F}(x),\forall x\)</span>，我们也不再需要考虑约束函数的梯度是否线性相关。并且一般来说，线性约束品性和 LICQ 之间没有互相包含的关系。</p>
+<h4 id="karush-kuhn-tuckerkkt">Karush-Kuhn-Tucker（KKT）条件<a class="headerlink" href="#karush-kuhn-tuckerkkt" title="Permanent link">&para;</a></h4>
+<p>由上一节的讨论中，我们知道，如果在局部最优解 <span class="arithmatex">\(x^*\)</span> 处有
+$$
+T_{\Omega}(x^<em>)=\mathcal{F}(x^</em>)
+$$
+成立（比如如果 LICQ 在点 <span class="arithmatex">\(x^*\)</span> 处成立），那么集合
+$$
+\left{ d \;\middle|\;
+\begin{array}{l}
+d^T\nabla f(x^*)&lt;0
+\
+d^T\nabla c_i(x) = 0,\ \forall\ i \in E, \
+d^T\nabla c_i(x) \geq 0,\ \forall\ i \in \mathcal{A}(x) \cap I
+\end{array}
+\right}
+$$
+是空集，但上式的验证仍然是非常麻烦的，我们试图将其转化为一个更简洁的形式。下面我们先介绍 Farkas 引理</p>
+<p><strong>Farkas 引理</strong> 设 <span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(q\)</span> 为两个非负整数，给定向量组 <span class="arithmatex">\(\{a_i\in R^n,i=1,2,\cdots,p\},\{b_i\in R^n,i=1,2,\cdots,q\}\)</span> 和 <span class="arithmatex">\(c\in R^n\)</span>，满足以下条件：
+$$
+d^Ta_i=0,\ i=1,2,\cdots,p\
+d^Tb_i\geq 0,i=1,2,\cdots,q,\
+d^Tc&lt;0
+$$
+的 <span class="arithmatex">\(d\)</span> 不存在当前仅当存在 <span class="arithmatex">\(\lambda_i,i=1,2,\cdots,p\)</span> 和 <span class="arithmatex">\(\mu_i\geq 0,i=1,2,\cdots,q\)</span> 使得
+$$
+c=\sum_{i=1}^p\lambda_ia_i+\sum_{i=1}^q \mu_ib_i
+$$
+我们在上式中取 <span class="arithmatex">\(a_i=\nabla c_i(x^*),i\in E,b_i=\nabla c_i(x^*),i\in \mathcal{A}(x^*)\cap I\)</span> 以及 <span class="arithmatex">\(c=\nabla f(x^*)\)</span>，所以本节最开始讲的集合成立就等价于下式成立
+$$
+\nabla f(x^<em>)=\sum_{i\in E}\lambda_i^</em>\nabla c_i(x^<em>)+\sum_{i\in\mathcal{A}(x^</em>)\cap I}\lambda_i^<em>\nabla c_i(x^</em>)
+$$
+其中 <span class="arithmatex">\(\lambda_i^*\in R,i\in E;\lambda_i^*\geq 0,i\in \mathcal{A}(x^*)\cap I\)</span>，如果我们补充定义 <span class="arithmatex">\(\lambda_i^*=0,i\in I\backslash\mathcal{A}(x^*)\)</span>，则有
+$$
+\nabla f(x^<em>)=\sum_{i\in I\cup E}\lambda_i^</em>\nabla c_i(x^<em>)
+$$
+这正对应于 Lagrange 函数关于 <span class="arithmatex">\(x\)</span> 的一阶最优性条件，并且对于 <span class="arithmatex">\(i\in I\)</span>，我们注意到
+$$
+\lambda_i^</em> c_i(x^<em>)=0
+$$
+上式称为</em><em>互补松弛条件</em>*，这个条件表明对不等式约束，以下两种情况至少出现一种：</p>
+<ul>
+<li>乘子 <span class="arithmatex">\(\lambda_i^*=0\)</span></li>
+<li><span class="arithmatex">\(c_i(x^*)=0\)</span>，即 <span class="arithmatex">\(i\in \mathcal{A}(x^*)\cap I\)</span></li>
+</ul>
+<p>以上两种情况恰好只有一种满足时，我们称此时<strong>严格互补松弛条件</strong>成立。一般来说，具有严格互补松弛条件的最优值点有比较好的性质，算法收敛得很快。</p>
+<p>综上所述，我们有如下一阶必要条件，也称作 KKT 条件，并将满足 KKT 条件的变量对 <span class="arithmatex">\((x^*,\lambda^*)\)</span> 为 KKT 对</p>
+<p><strong>KKT 条件</strong> 假设 <span class="arithmatex">\(x^*\)</span> 是约束优化问题的一个局部最优点，如果
+$$
+T_{\Omega}(x^<em>)=\mathcal{F}(x^</em>)
+$$
+成立，那么存在 Lagrange 乘子 <span class="arithmatex">\(\lambda_i^*\)</span> 使得如下条件成立
+$$
+\text{稳定性条件} \qquad \nabla_xL(x^<em>,\lambda^</em>)=\nabla f(x^<em>)-\sum_{i\in I\cup E}\lambda_i^</em>\nabla c_i(x^<em>)=0\
+\text{原始可行性条件}\qquad c_i(x^</em>)=0,\forall i\in E\
+\text{原始可行性条件}\qquad c_i(x^<em>)\geq 0,\forall i\in I\
+\text{对偶可行性条件}\qquad \lambda_i^</em>\geq0,\forall i\in I\
+\text{互补松弛条件}\qquad \lambda_ic_i(x^*)=0,\forall i\in I
+$$</p>
+<blockquote>
+<p>注意采用的 <span class="arithmatex">\(c_i(x)\geq0\)</span> 还是 <span class="arithmatex">\(c_i(x)\leq 0\)</span>，记号体系的不同会影响部分定理的形式</p>
+</blockquote>
+<p>我们称满足上式的点 <span class="arithmatex">\(x^*\)</span> 为 KKT 点，但需要注意的是，KKT 条件实际上只给出了切锥和线性化可行方向锥相同时的最优性条件，换句话说，如果在局部最优点 <span class="arithmatex">\(x^*\)</span> 处 <span class="arithmatex">\(T_{\Omega}(x^*)\neq \mathcal{F}(x^*)\)</span>，那么 <span class="arithmatex">\(x^*\)</span> 不一定是 KKT 点。同样地，因为 KKT 条件是必要条件，KKT 点不一定是局部最优点。</p>
+<h3 id="_13">二阶最优性条件<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>对于约束优化问题，我们知道，如果存在一个点 <span class="arithmatex">\(x^*\)</span> 满足 KKT 条件，那么沿着任意线性化可行方向目标函数的一阶近似是不会下降的，此时一阶条件无法判断 <span class="arithmatex">\(x^*\)</span> 是否是最优值点，我们就需要用二阶信息来进一步判断在其可行邻域内的目标函数值。</p>
+<p>我们假设 <span class="arithmatex">\(T_{\Omega}(x^*)=\mathcal{F}(x^*)\)</span>，需要判断满足 <span class="arithmatex">\(d^T\nabla f(x^*)=0\)</span> 的线性化可行方向 <span class="arithmatex">\(d\)</span> 是否为 <span class="arithmatex">\(f(x^*)\)</span> 的下降方向，我们以 Lagrange 函数在这些方向上的曲率信息为桥梁来判断点 <span class="arithmatex">\(x^*\)</span> 处的最优性，下面我们先给出临界锥的定义</p>
+<p><strong>临界锥</strong> 设 <span class="arithmatex">\((x^*,\lambda^*)\)</span> 满足 KKT 条件，定义临界锥为
+$$
+C(x^<em>,\lambda^</em>)={d\in \mathcal{F}(x^<em>)|\nabla c_i(x^</em>)^Td=0,\forall i\in \mathcal{A}(x^<em>)\cap I \text{且} \lambda_i^</em>&gt;0}
+$$
+其中 <span class="arithmatex">\(\mathcal{F}(x^*)\)</span> 为点 <span class="arithmatex">\(x^*\)</span> 处的线性化可行方向锥</p>
+<p>容易知道，临界锥是线性化可行方向锥 <span class="arithmatex">\(\mathcal{F}(x^*)\)</span> 的子集，沿着临界锥中的方向进行优化，所有等式约束和 <span class="arithmatex">\(\lambda_i^*&gt;0\)</span> 对应的不等式约束（积极约束）都会尽量保持不变，对于一般地 <span class="arithmatex">\(d\in \mathcal{F}(x^*)\)</span> 我们仅仅能保证 <span class="arithmatex">\(d^T\nabla c_i(x^*)\geq 0\)</span></p>
+<p>利用上述定义，我们可以得到
+$$
+d\in C(x^<em>,\lambda^</em>)\Rightarrow\lambda_i^<em>\nabla c_i(x^</em>)^Td=0,\forall i\in E\cup I\
+$$
+更进一步地
+$$
+d\in C(x^<em>,\lambda^</em>)\Rightarrow d^T\nabla f(x^<em>)=\sum_{i\in E\cup I}\lambda_i^</em>d^T\nabla c_i(x^*)=0
+$$
+也就是说，临界锥定义的线性化可行方向是我们无法只利用一阶导数就判断出下降还是上升的方向，此时我们必须引入高阶导数信息加以判断，这里我们给出如下的二阶最优性条件。</p>
+<p><strong>二阶必要条件</strong> 假设 <span class="arithmatex">\(x^*\)</span> 是约束优化问题的一个局部最优解，并且 <span class="arithmatex">\(T_{\Omega}(x^*)=\mathcal{F}(x^*)\)</span> 成立，我们令 <span class="arithmatex">\(\lambda^*\)</span> 为相应的 Lagrange 乘子，也即 <span class="arithmatex">\((x^*,\lambda^*)\)</span> 满足 KKT 条件，那么
+$$
+d^T\nabla_{xx}^2L(x^<em>,\lambda^</em>)d\geq 0,\ \forall d\in C(x^<em>,\lambda^</em>)
+$$
+<strong>二阶充分条件</strong> 假设在可行点 <span class="arithmatex">\(x^*\)</span> 处，存在一个 Lagrange 乘子 <span class="arithmatex">\(\lambda^*\)</span>，使得 <span class="arithmatex">\((x^*,\lambda^*)\)</span> 满足 KKT 条件，如果
+$$
+d^T\nabla_{xx}^2L(x^<em>,\lambda^</em>)d&gt;0,\ \forall d\in C(x^<em>,\lambda^</em>),d\neq 0
+$$
+那么 <span class="arithmatex">\(x^*\)</span> 为约束优化问题的一个严格局部极小解</p>
+<blockquote>
+<p>例子可以参考文再文老师的书和PPT，自己手算一遍</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年3月5日 05:17:07 UTC"><span class="timeago" datetime="2026-03-05T05:17:07+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月5日 05:17:07 UTC">2026-03-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

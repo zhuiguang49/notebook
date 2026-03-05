@@ -1,0 +1,2314 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="追光">
+      
+      
+        <link rel="canonical" href="https://note.zhuiguang.tech/Math/%E4%BC%98%E5%8C%96%E5%AE%9E%E7%94%A8%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%90%9C%E7%B4%A2%E6%96%B9%E6%B3%95/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/logo.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>线搜索方法 - 追光的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="追光的笔记本" class="md-header__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            追光的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              线搜索方法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="pink"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-tabs__link">
+          
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="追光的笔记本" class="md-nav__button md-logo" aria-label="追光的笔记本" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    追光的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhuiguang49/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhuiguang49/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week1%20Using%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week1 Using Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week2%20Grouping%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week2 Grouping Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week3%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week3 Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week4%265%20Inside%20Object/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week4&5 Inside Object
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week6%20Inside%20Class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week6 Inside Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week7%20Composition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week7 Composition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week8%20Inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week8 Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week9%20Polymorphism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week9 Polymorphism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week10%20Copy%20and%20Move/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week10 Copy and Move
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week11%20Overloaded%20Operator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week11 Overloaded Operator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week12%20Template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week12 Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/OOP/Week13%20Exception/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week13 Exception
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS61B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS61B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter1%20Java%20Basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 Java Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter2%20Lists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 Lists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter3%20OOP%20in%20Java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 OOP in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter4%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 数据结构和算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter5%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 并查集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter6%20Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter7%20Hash%20Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 Hash Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter8%20Heaps%20and%20Priority%20Queues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter8 Heaps and Priority Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter9%20Graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter9 Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter10%20Graph%20Problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter10 Graph Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter11%20Prefix%20Operations%20and%20Tries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter11 Prefix Operations and Tries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/CS61B/Chapter12%20Sorting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter12 Sorting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ADS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%201%20AVL%20Trees%2CSplay%20Trees%20and%20Amortized%20Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture1 AVL Trees,Splay Trees and Amortized Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%202%20Red-Black%20Trees%20and%20B%2B%20Trees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture2 Red-Black Trees and B+ Trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%203%20Inverted%20File%20Index/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture3 Inverted File Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture%204%20Leftist%20Heaps%20and%20Skew%20Heaps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture4 Leftist Heaps and Skew Heaps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CS/ADS/Lecture5%20Binomial%20Queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecture5 Binomial Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 事件及其概率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机变量与分布函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 数字特征与特征函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随机过程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            随机过程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter1%20%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter1 概率论复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter2%20%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter2 随机过程的定义和分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter3%20%E6%B3%8A%E6%9D%BE%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter3 泊松过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter4%20Markov%E9%93%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter4 Markov链
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter5%20%E5%88%86%E6%94%AF%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter5 分支过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter6%20%E5%B8%83%E6%9C%97%E8%BF%90%E5%8A%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter6 布朗运动
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/Chapter7%20%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter7 平稳过程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学建模
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学建模
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%87%86%E5%A4%87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学建模备赛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化实用算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            优化实用算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%88%E8%BF%90%E7%AD%B9%E5%AD%A6%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无约束优化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            无约束优化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1%20%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无约束优化算法概述
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      线搜索概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="线搜索概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      线搜索的重要性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      线搜索区间
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      精确线搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="精确线搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      分割法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      插值法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      精确线性搜索的收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      不精确一维搜索法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="不精确一维搜索法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      线搜索准则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      线搜索回溯法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      通用步长选择算法框架
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      不精确线搜索算法示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      收敛性分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">线搜索方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在本章伊始，我们曾讲到梯度类算法的一般迭代步骤为 <span class="arithmatex">\(x^{(k+1)}=x^{(k)}+\alpha_k d^{(k)}\)</span>，这里要求 <span class="arithmatex">\(d^{(k)}\)</span> 是一个下降方向，也即 <span class="arithmatex">\((d^k)^T\nabla f(x^k)&lt;0\)</span>（这里是因为，方向和梯度方向内积为负值，夹角为钝角，自然能保证是下降的），这个下降性质保证了沿着此方向搜索函数 <span class="arithmatex">\(f\)</span> 的值会减小。所以线搜索类算法的关键在于构造搜索方向 <span class="arithmatex">\(d^{(k)}\)</span> 和步长因子 <span class="arithmatex">\(\alpha_k\)</span>。而这一讲的线搜索方法就是在<strong>确定方向</strong>后，以精确或非精确的方式，<strong>找到合适的步长 <span class="arithmatex">\(\alpha_k\)</span></strong>，使得函数值得到有效的下降。</p>
+<h2 id="_2">线搜索概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在迭代格式中，沿着下降的方向 <span class="arithmatex">\(d^{(k)}\)</span>，通过解一维最优化问题
+$$
+\min_{\alpha \geq 0}\varphi(\alpha)=f(x^{(k)}+\alpha d^{(k)})
+$$
+确定步长因子的方法称为<strong>一维搜索（线搜索）</strong></p>
+<p>若以上述问题的最优解为步长，此时我们称之为<strong>精确一维搜索（精确线搜索/最优线搜索）</strong>，经常用到的精确一维搜索有黄金分割法、插值迭代法等等。但即使是精确一维搜索，经过有限次计算求出上述问题的严密解一般也不可能，我们往往在得到有足够精度的近似解时就将其作为补偿。</p>
+<p>在实际计算中，我们往往不是求解一维最优化问题，而是找出满足某些适当条件的粗略近似解作为步长，此时称为<strong>非精确一维搜索（近似一维搜索）</strong>，比如使目标函数 <span class="arithmatex">\(f\)</span> 得到可以接受的下降量，也即使得下降量 <span class="arithmatex">\(f(x^{(k)})-f(x^{(k)}+\alpha_kd^{(k)})&gt;0\)</span> 是可接受的。</p>
+<h3 id="_3">线搜索的重要性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="Line Search" src="D:\desktop\专业课\优化实用算法\note\images\line search.png" /></p>
+<p>如上图，我们没有经过线搜索的计算，随意选取步长，由于步长 <span class="arithmatex">\(\alpha\)</span> 选择较大，迭代产生了左右震荡。反之若是步长太小，算法收敛速度非常缓慢。而线搜索的目标就是使得沿着下降方向 <span class="arithmatex">\(d\)</span>，每次的函数值满足充分下降条件。</p>
+<h3 id="_4">线搜索区间<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">线搜索结构<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>线搜索的主要结构如下：</p>
+<ul>
+<li>在进行一维搜索之前，我们首先确定一个包含问题最优解的搜索区间</li>
+<li>采用某种分割技术或者插值方法缩小这个区间，进行搜索</li>
+</ul>
+<p>例如我们设 <span class="arithmatex">\(\alpha^{*}\)</span> 是满足 <span class="arithmatex">\(\varphi(\alpha^{*})=\min_{\alpha \geq 0}\varphi(\alpha)\)</span> 的精确解，如果存在 <span class="arithmatex">\([a,b]\subset [0,\infty)\)</span>，使得 <span class="arithmatex">\(\alpha^{*}\in[a,b]\)</span>，我们就称 <span class="arithmatex">\([a,b]\)</span> 是一维极小化 <span class="arithmatex">\(\min_{\alpha\geq 0}\varphi(\alpha)\)</span> 的搜索区间</p>
+<h4 id="_6">进退法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>进退法是一种确定搜索区间的简单方法，其基本思想是，从一点出发，按一定步长前进/后退，始终将函数值维持"高-低-高"的模式，如果一个方向不成功，就退回来，沿相反方向寻找，其算法流程如下：</p>
+<ol>
+<li><strong>选取初始数据：</strong>给定 <span class="arithmatex">\(\alpha_0,h_0&gt;0\)</span>，加倍系数 <span class="arithmatex">\(t&gt;1\)</span>，计算 <span class="arithmatex">\(\varphi(\alpha_0)\)</span>，设 <span class="arithmatex">\(k=0\)</span></li>
+<li><strong>比较目标函数值：</strong>令 <span class="arithmatex">\(\alpha_{k+1}=\alpha_k+h_k\)</span>，计算 <span class="arithmatex">\(\varphi_{k+1}=\varphi(\alpha_{k+1})\)</span>，如果 <span class="arithmatex">\(\varphi_{k+1}&lt;\varphi_k\)</span>，转步3，否则转步4</li>
+<li><strong>加大搜索步长：</strong>令 <span class="arithmatex">\(h_{k+1}=th_k,\alpha=\alpha_k,\alpha_k=\alpha_{k+1},\varphi_k=\varphi_{k+1},k=k+1\)</span>，转步2</li>
+<li><strong>反向探索：</strong>若 <span class="arithmatex">\(k=0\)</span>，转换搜索方向，令 <span class="arithmatex">\(h_l=-h_k,\alpha_k=\alpha_{k+1}\)</span>，转步2，否则停止迭代（此时 <span class="arithmatex">\(k&gt;0\)</span>，在函数值下降的方向已经至少前进了一步，现在遇到函数值开始上升的顶点，形成了高低高模式，成功找到一个包含极小值的区间），令</li>
+</ol>
+<div class="arithmatex">\[
+a = \min\{\alpha,\alpha_{k+1}\}, b = \max\{\alpha,\alpha_{k+1}\}
+\]</div>
+<h2 id="_7">精确线搜索<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>我们首先定义<strong>单峰/单谷函数</strong>的概念：</p>
+<p>设 <span class="arithmatex">\(\varphi:R\to R,[a,b]\subset R\)</span>，若存在 <span class="arithmatex">\(\alpha^{*}\in[a,b]\)</span>，使得 <span class="arithmatex">\(\varphi(\alpha)\)</span> 在 <span class="arithmatex">\([a,\alpha^*]\)</span> 上严格递减，在 <span class="arithmatex">\([\alpha^*,b]\)</span> 上严格递增，则称 <span class="arithmatex">\([a,b]\)</span> 是函数 <span class="arithmatex">\(\varphi\)</span> 的单峰区间；类似可以定义单谷区间。</p>
+<h3 id="_8">分割法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>分割法包括黄金分割法、斐波那契法、二分法等等，其基本思想是不断取试探点并比较函数值，来持续缩小包含极值点的搜索区间，当区间长度缩短到一定程度的时候，区间上各点均接近极小值，我们仅需要计算函数值，不需要计算导数值，适用于非光滑以及导数表达式复杂或者无法写出的情形。</p>
+<p>我们设 <span class="arithmatex">\(\varphi(\alpha)=f(x_k+\alpha p_k)\)</span> 是搜索区间 <span class="arithmatex">\([a_1,b_1]\)</span> 上的单峰函数，其中 <span class="arithmatex">\(p_k\)</span> 是当前步的方向，并假设在 <span class="arithmatex">\(k\)</span> 次迭代时搜索区间为 <span class="arithmatex">\([a_k,b_k]\)</span>，取两个试探点 <span class="arithmatex">\(\lambda_k,\mu_k\in[a_k,b_k]\)</span>，且 <span class="arithmatex">\(\lambda_k&lt;\mu_k\)</span>，要求满足下面两个条件：</p>
+<ul>
+<li><span class="arithmatex">\(\lambda_k\)</span> 和 <span class="arithmatex">\(\mu_k\)</span> 到搜索区间 <span class="arithmatex">\([a_k,b_k]\)</span> 两端点等距，也即 <span class="arithmatex">\(b_k-\lambda_k=\mu_k-a_k\)</span></li>
+<li>每次迭代，搜索区间长度缩短率相同，也即 <span class="arithmatex">\(b_{k+1}-a_{k+1}=\tau(b_k-a_k)\)</span></li>
+</ul>
+<p>如果 <span class="arithmatex">\(\varphi(\lambda_k)\leq \varphi(\mu_k)\)</span>，此时 <span class="arithmatex">\(a_k,\lambda_k,\mu_k\)</span> 组成了一组高-低-高，我们就令 <span class="arithmatex">\(a_{k+1}=a_k,b_{k+1}=\mu_k\)</span>；如果 <span class="arithmatex">\(\varphi(\lambda_k)&gt;\varphi(\mu_k)\)</span>，此时 <span class="arithmatex">\(\lambda_k,\mu_k,b_k\)</span> 就构成了一组高-低-高，令 <span class="arithmatex">\(a_{k+1}=\lambda_k,b_{k+1}=b_k\)</span>。</p>
+<h4 id="_9">黄金分割法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>对于黄金分割法，<span class="arithmatex">\(\tau = \frac{\sqrt{5}-1}{2}\approx 0.618\)</span>，并且有
+$$
+\lambda_k=a_k+0.382(b_k-a_k),\qquad \mu_k=a_k+0.618(b_k-a_k)
+$$</p>
+<h4 id="fibonacci">Fibonacci 法<a class="headerlink" href="#fibonacci" title="Permanent link">&para;</a></h4>
+<p>Fibonacci 法预先设定迭代次数 <span class="arithmatex">\(n\)</span>，故对于Fibonacci法，<span class="arithmatex">\(\tau\)</span> 不再是常数，而是随 <span class="arithmatex">\(k\)</span> 变化的 <span class="arithmatex">\(\tau_k\)</span>，下面我们进行推导。</p>
+<p>首先回忆一下 Fibonacci 数列的定义，<span class="arithmatex">\(F_0=0,F_1=F_2=1,F_{k+1}=F_{k}+F_{k-1},k=1,2,\cdots\)</span>，并且 Fibonacci 法也遵循区间缩减法的一般规律。我们假设在第 <span class="arithmatex">\(k\)</span> 次迭代后，新区间的长度 <span class="arithmatex">\(L_{k+1}\)</span> 与原区间长度 <span class="arithmatex">\(L_k\)</span> 的关系是 <span class="arithmatex">\(L_{k+1}=\tau_k L_k\)</span>，且两个试探点 <span class="arithmatex">\(\lambda_k,\mu_k\)</span> 将区间分为 <span class="arithmatex">\(\lambda_k-a_k,\mu_k-\lambda_k,b_k-\mu_k\)</span> 三段，并且 <span class="arithmatex">\(\lambda_k-a_k=b_k-\mu_k\)</span>。在推导 Fibonacci 法时很精妙的一步是，<strong>我们希望上一步留下的内部试探点，可以成为下一步新区间的试探点之一</strong>，这样我们每次迭代就只需要计算一次新的函数值。</p>
+<p>假设第 <span class="arithmatex">\(k\)</span> 步我们比较之后发现有 <span class="arithmatex">\(\varphi(\lambda_k)\leq \varphi(\mu_k)\)</span>，那么极小值一定在 <span class="arithmatex">\([a_k,\mu_k]\)</span> 内部，所以</p>
+<p>我们的新区间为 <span class="arithmatex">\([a_{k+1},b_{k+1}]=[a_k,\mu_k]\)</span>，新区间的长度是 <span class="arithmatex">\(L_{k+1}=\mu_k-a_k\)</span>，并且我们此时希望能够复用</p>
+<h4 id="_10">二分法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>二分法中 <span class="arithmatex">\(\lambda_k=\mu_k=\frac{a_k+b_k}{2}\)</span></p>
+<blockquote>
+<p>分割法都是线性收敛的方法</p>
+</blockquote>
+<h3 id="_11">插值法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>插值法的基本思想是<strong>在搜索区间中不断使用低次多项式来近似目标函数，并逐步用插值多项式的极小点来逼近一位搜索问题 <span class="arithmatex">\(\min_{\alpha}\varphi(\alpha)\)</span> 的极小值点</strong>，当函数解析性质比较好的时候，插值法比分割法效果更好。</p>
+<p>插值法有二次插值法（单点、二点、三点）、三次插值法（二点）等等，其中单点二次插值本质上就是牛顿法，具有局部二阶收敛性，例如设 <span class="arithmatex">\(q(\alpha)=a\alpha^2+b\alpha+c\)</span>，满足 <span class="arithmatex">\(q(\alpha_1)=\varphi(\alpha_1),q'(\alpha_1)=\varphi'(\alpha_1),q''(\alpha_1)=\varphi''(\alpha_1)\)</span>，直接求解 <span class="arithmatex">\(q(\alpha)\)</span> 的最小值可以得到
+$$
+\overline{\alpha}=-\frac{2b}{a}=\alpha_1-\frac{\varphi'(\alpha_1)}{\varphi''(\alpha_1)}
+$$</p>
+<h3 id="_12">精确线性搜索的收敛性<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>下面我们将证明精确线性搜索的收敛性，首先我们给出一个定理，只要目标函数的二阶导数有界，那么通过精确线性搜索（即找到最优的步长 <span class="arithmatex">\(\alpha_k\)</span>）得到的函数值下降量是有下界的。</p>
+<p><strong>定理</strong> 设 <span class="arithmatex">\(\alpha_k&gt;0\)</span> 是精确线性搜索的解，<span class="arithmatex">\(||\nabla^2f(x_k+\alpha p_k)||\leq M\)</span>，则有
+$$
+f(x_k)-f(x_k+\alpha_kp_k)\geq \frac{1}{2M}||\nabla f(x_k)||^2\cos^2 \theta_k
+$$
+其中 <span class="arithmatex">\(M\)</span> 是 <span class="arithmatex">\(Hessian\)</span> 矩阵模的上界，<span class="arithmatex">\(\theta_k\)</span> 是搜索方向 <span class="arithmatex">\(p_k\)</span> 与梯度 <span class="arithmatex">\(\nabla f(x_k)\)</span> 之间的夹角，也即满足 <span class="arithmatex">\(\cos \theta_k=\frac{p_k^T\nabla f(x_k)}{||p_k||||\nabla f(x_k)||}\)</span></p>
+<p><strong>证明</strong> 由假设可以知道，对于任意的 <span class="arithmatex">\(\alpha\)</span> 满足
+$$
+f(x_k+\alpha p_k)\leq f(x_k)+\alpha p_k^T\nabla f(x_k)+\frac{\alpha^2}{2}M||p_k||^2
+$$
+取 <span class="arithmatex">\(\alpha=\overline{\alpha}=-\frac{p_k^T\nabla f(x_k)}{M||p_k||^2}\)</span>，则有
+$$
+f(x_k)-f(x_k+\alpha_kp_k)\geq f(x_k)-f(x_k+\overline{\alpha}p_k)\geq -\overline{\alpha}p_k^T\nabla f(x_k)-\frac{\overline{\alpha}^2}{2}M||p_k||^2\
+=\frac{1}{2}\frac{(p_k^T\nabla f(x_k))^2}{M||p_k||^2}=\frac{1}{2M}||\nabla f(x_k)||^2\frac{(p_k^T \nabla f(x_k))^2}{||p_k||^2||\nabla f(x_k)||^2}=\frac{1}{2M}||\nabla f(x_k)||^2\cos^2\theta_k
+$$</p>
+<blockquote>
+<p>上述定理表明，只要搜索方向和梯度方向不垂直(并且搜索方向得先是个下降方向)，每次迭代都能够保证目标函数值是下降的</p>
+</blockquote>
+<p><strong>全局收敛性定理</strong> 设 <span class="arithmatex">\(\nabla f(x)\)</span> 在水平集 <span class="arithmatex">\(L=\{x\in R^n|f(x)\leq f(x_0)\}\)</span> 上存在且一致连续，并且选取的方向 <span class="arithmatex">\(p_k\)</span> 与负梯度 <span class="arithmatex">\(-\nabla f(x_k)\)</span> 的夹角 <span class="arithmatex">\(\theta_k\)</span> 满足，存在某个 <span class="arithmatex">\(\mu\)</span>
+$$
+\theta_k \leq \frac{\pi}{2}-\mu
+$$
+对所有 <span class="arithmatex">\(k\)</span> 成立，则或者有对某个 <span class="arithmatex">\(k\)</span> 有 <span class="arithmatex">\(\nabla f(x_k)=0\)</span>（代表在某一步找到了最优解），或者有 <span class="arithmatex">\(f(x_k)\to -\infty\)</span>，或者有 <span class="arithmatex">\(\nabla f(x_k)\to 0\)</span>，这保证了算法不会停留在非最优点</p>
+<p><strong>收敛速度</strong> 假设产生的序列 <span class="arithmatex">\(\{x_k\}\)</span> 收敛到 <span class="arithmatex">\(f(x)\)</span> 的极小值点 <span class="arithmatex">\(x^{*}\)</span>，如果 <span class="arithmatex">\(f(x)\)</span> 在 <span class="arithmatex">\(x^{*}\)</span> 的某个领域内二次连续可微，且存在 <span class="arithmatex">\(\varepsilon&gt;0\)</span> 和 <span class="arithmatex">\(M&gt;m&gt;0\)</span>，使得当 <span class="arithmatex">\(||x-x^{*}||&lt;\varepsilon\)</span> 时，有
+$$
+m||y||^2\leq y^TG(x)y\leq M||y^2||,  \ \  \ \forall y\in R^n
+$$
+则 <span class="arithmatex">\(\{x_k\}\)</span> 线性收敛</p>
+<h2 id="_13">不精确一维搜索法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>事实上，精确一维搜索的代价是巨大的，并且对于牛顿法、拟牛顿法等高效算法来说并不必要，更为实用的反而是不精确一维搜索</p>
+<h3 id="_14">线搜索准则<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>前面我们提到，不精确线性搜索是找出满足某些适当条件的粗略近似解作为步长，下面我们介绍选取 <span class="arithmatex">\(\alpha_k\)</span> 需要满足的要求，我们将其称为<strong>线搜索准则</strong>，需要指出的是，<strong>线搜索准则的合适与否直接决定了算法的收敛性，如果选取不合适的线搜索准则将会导致算法无法收敛</strong>，比如我们考虑这样一个一维的无约束优化问题</p>
+<p><strong>例</strong> 考虑一维无约束优化问题
+$$
+\min_x f(x)=x^2
+$$
+迭代初始点 <span class="arithmatex">\(x^0=1\)</span>，问题是一维的，下降方向只有 <span class="arithmatex">\(x\)</span> 轴正向和负向两种，我们选取 <span class="arithmatex">\(d_k=-\text{sign}(x_k)\)</span>，且我们只要求选取的补偿满足迭代点处函数值单调下降，也即 <span class="arithmatex">\(f(x_k+\alpha_k d_k)&lt;f(x_k)\)</span>，我们可以考虑如下两种步长：
+$$
+\alpha_{k,1}=\frac{1}{3^{k+1}},\qquad \alpha_{k,2}=1+\frac{2}{3^{k+1}}
+$$
+通过简单计算可以得到
+$$
+x_k^1=\frac{1}{2}(1+\frac{1}{3^k}),\qquad x_k^2=\frac{(-1)^k}{2}(1+\frac{1}{3^k})
+$$
+显然，序列 <span class="arithmatex">\(\{f(x_k^1)\}\)</span> 和序列 <span class="arithmatex">\(\{f(x_k^2)\}\)</span> 均单调下降，但是序列 <span class="arithmatex">\(\{x_k^1\}\)</span> 收敛的点不是极小值点，序列 <span class="arithmatex">\(\{x_k^2\}\)</span> 振荡不收敛</p>
+<p>下面我们给出一些线搜索准则以确保迭代的收敛性</p>
+<h4 id="armijo">Armijo 准则<a class="headerlink" href="#armijo" title="Permanent link">&para;</a></h4>
+<p>Armijo 准则是保证步长能够是函数值有足够的下降，但其无法避免步长过小的问题</p>
+<p><strong>Armijo 准则</strong> 设 <span class="arithmatex">\(d_k\)</span> 是点 <span class="arithmatex">\(x_k\)</span> 处的下降方向，若
+$$
+f(x_k+\alpha d_k)\leq f(x_k)+c_1\alpha \nabla f(x_k)^Td_k
+$$
+则称步长 <span class="arithmatex">\(\alpha\)</span> 满足 Armijo 准则，其中 <span class="arithmatex">\(c_1\in(0,1)\)</span> 是一个常数</p>
+<p>Armijo 准则的几何意义是，点 <span class="arithmatex">\((\alpha,\varphi(\alpha))\)</span> 必须在直线
+$$
+l(\alpha)= \varphi(0)+c_1\alpha \nabla f(x_k)^Td_k
+$$
+的下方，如下图所示：</p>
+<p><img alt="Armijo 准则" src="D:\desktop\专业课\优化实用算法\note\images\Armijo 准则.png" /></p>
+<p>区间 <span class="arithmatex">\([0,\alpha_1]\)</span> 中的点均满足 Armijo 准则。在实际应用中，参数 <span class="arithmatex">\(c_1\)</span> 我们往往选取一个很小的正数，比如 <span class="arithmatex">\(c_1=10^{-3}\)</span>，这使得 Armijo 准则非常容易得到满足。但是<strong>仅仅使用 Armijo 准则并不能保证迭代的收敛性</strong>，比如 <span class="arithmatex">\(\alpha = 0\)</span> 显然满足条件，但迭代序列中的点固定不变，也没有意义，所以我们还需要引入其他准则。</p>
+<h4 id="goldstein">Goldstein 准则<a class="headerlink" href="#goldstein" title="Permanent link">&para;</a></h4>
+<p>为了克服 Armijo 准则的缺陷，我们需要引入其他准则来保证每一步的 <span class="arithmatex">\(\alpha_k\)</span> 不会太小，Armijo 准则是要求点 <span class="arithmatex">\(\alpha,\varphi(\alpha)\)</span> 必须处在某条直线的下方，我们也可以使用相同的形式，使得该点必须处在另一条直线的上方，以排除太小的 <span class="arithmatex">\(\alpha_k\)</span>，这就是 Goldstein 准则</p>
+<p><strong>Goldstein 准则</strong> 设 <span class="arithmatex">\(d_k\)</span> 是点 <span class="arithmatex">\(x_k\)</span> 处的下降方向，若
+$$
+f(x_k+\alpha d_k)\leq f(x_k)+c\alpha\nabla f(x_k)^Td_k\
+f(x_k+\alpha d_k)\geq f(x_k)+(1-c)\alpha \nabla f(x_k)^Td_k
+$$
+则称步长 <span class="arithmatex">\(\alpha\)</span> 满足 Goldstein 准则，其中 <span class="arithmatex">\(c\in(0,\frac{1}{2})\)</span></p>
+<p>类似 Armijo 准则，Goldstein 准则也有非常直观的集合含义，它指的是点 <span class="arithmatex">\((\alpha,\varphi(\alpha))\)</span> 必须在两条直线
+$$
+l_1(\alpha)=\varphi(0)+c\alpha \nabla f(x_k)^Td_k\
+l_2(\alpha)=\varphi(0)+(1-c)\alpha \nabla f(x_k)^Td_k
+$$
+之间，如下图所示：</p>
+<p><img alt="Goldstein 准则" src="D:\desktop\专业课\优化实用算法\note\images\Goldstein 准则.png" /></p>
+<p>区间 <span class="arithmatex">\([\alpha_1,\alpha_2]\)</span> 中的点均满足 Goldstein 准则，并且其剔除了过小的 <span class="arithmatex">\(\alpha\)</span></p>
+<p>但同样，我们会发现 Goldstein 准则的问题，它虽然能够使得函数值充分下降，但是它可能避开了最优的函数值，例如在上图中，一维函数 <span class="arithmatex">\(\varphi(\alpha)\)</span> 的最小值点并不在满足 Goldstein 准则的区间 <span class="arithmatex">\([\alpha_1,\alpha_2]\)</span> 中，所以我们还需要引入新的准则</p>
+<h4 id="wolfe">Wolfe 准则<a class="headerlink" href="#wolfe" title="Permanent link">&para;</a></h4>
+<p><strong>Wolfe准则</strong> 设 <span class="arithmatex">\(d_k\)</span> 是点 <span class="arithmatex">\(x_k\)</span> 处的下降方向，若
+$$
+f(x_k+\alpha d_k)\leq f(x_k)+c_1\alpha \nabla f(x_k)^Td_k\
+\nabla f(x_k+\alpha d_k)^T d_k\geq c_2\nabla f(x_k)^Td_k
+$$
+则称步长 <span class="arithmatex">\(\alpha\)</span> 满足 Wolfe 准则，其中 <span class="arithmatex">\(c_1,c_2\in(0,1)\)</span> 为给定的常数且 <span class="arithmatex">\(c_1&lt;c_2\)</span></p>
+<p>上述准则中，第一个不等式即是 Armijo 准则，第二个不等式是 Wolfe 准则的本质要求。<span class="arithmatex">\(\nabla f(x_k+\alpha d_k)^Td_k\)</span> 其实恰好是 <span class="arithmatex">\(\varphi(\alpha)\)</span> 的导数，这条不等式实际上是要求 <span class="arithmatex">\(\varphi(\alpha)\)</span> 在点 <span class="arithmatex">\(\alpha\)</span> 处的切线的斜率不能小于 <span class="arithmatex">\(\varphi'(0)\)</span> 的 <span class="arithmatex">\(c_2\)</span> 倍，如下图所示：</p>
+<p><img alt="Wolfe 准则" src="D:\desktop\专业课\优化实用算法\note\images\Wolfe 准则.png" /></p>
+<p>在上图中，区间 <span class="arithmatex">\([\alpha_1,\alpha_2]\)</span> 中的点均满足 Wolfe 准则。并且由于 <span class="arithmatex">\(\varphi(\alpha)\)</span> 的极小值点 <span class="arithmatex">\(\alpha^{*}\)</span> 有
+$$
+\varphi'(\alpha^<em>)=\nabla f(x^k+\alpha^</em> d_k)^Td_k=0
+$$
+因此 <span class="arithmatex">\(\alpha^{*}\)</span> 永远满足第二个不等式，而选择较小的 <span class="arithmatex">\(c_1\)</span> 可以使得 <span class="arithmatex">\(\alpha^{*}\)</span> 同时满足第一个不等式，也即 Wolfe 准则在绝对大多数情况下都会包含线搜索子问题的精确解。在实际应用中，参数 <span class="arithmatex">\(c_2\)</span> 通常取为 <span class="arithmatex">\(0.9\)</span></p>
+<blockquote>
+<p><strong>Strong Wolfe Condition：</strong> Strong Wolfe conditions 是标准 Wolfe 准则的一个变体，其仍然满足第一条充分下降条件，但第二条曲率条件通过绝对值来约束新梯度的斜率，也即：
+$$
+f(x_k+\alpha d_k)\leq f(x_k)+c_1\alpha\nabla f(x_k)^Td_k\
+|\nabla f(x_k+\alpha d_k)^Td_k|\leq c_2|(\nabla f(x_k))^T d_k|
+$$
+Strong Wolfe 准则不仅防止了新的斜率过负，也禁止它变得过正，可以排除那些虽然满足标准 Wolfe 条件但距离一维函数 <span class="arithmatex">\(\varphi(\alpha)\)</span> 的极小值较远的点，从而将步长 <span class="arithmatex">\(\alpha_k\)</span> 约束在一个更接近极小值点的邻域内。
+</p>
+</blockquote>
+<h3 id="_15">线搜索回溯法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>线搜索回溯法用于寻找一个满足 Armijo 准则的步长。给定初值 <span class="arithmatex">\(\hat{\alpha}\)</span>，线搜索回溯法通过不断以指数方式缩小试探步长，找到第一个满足 Armijo 准则的点，具体来说，线搜索回溯法选取
+$$
+\alpha_k = \gamma^{j_0}\hat{\alpha}
+$$
+其中
+$$
+j_0=\min{j=0,1,\cdots|f(x_k+\gamma^j\hat{\alpha}d_k)\leq f(x_k)+c_1\gamma^{j}\hat{\alpha}\nabla f(x_k)^Td_k}
+$$
+参数 <span class="arithmatex">\(\gamma\in(0,1)\)</span> 为一个给定的实数，其算法为代码如下：</p>
+<ul>
+<li>选择初始步长 <span class="arithmatex">\(\hat{\alpha}\)</span>，参数 <span class="arithmatex">\(\gamma,c\in(0,1)\)</span>，初始化 <span class="arithmatex">\(\alpha \leftarrow \hat{\alpha}\)</span></li>
+<li><strong>while</strong> <span class="arithmatex">\(f(x_k+\alpha d_k)&gt;f(x_k)+c\alpha\nabla f(x_k)^Td_k\)</span> <strong>do</strong></li>
+<li>令 <span class="arithmatex">\(\alpha \leftarrow \gamma \alpha\)</span></li>
+<li><strong>end while</strong></li>
+<li>输出 <span class="arithmatex">\(\alpha_k=\alpha\)</span></li>
+</ul>
+<p>该算法被称为线搜索<strong>回溯</strong>法是因为 <span class="arithmatex">\(\alpha\)</span> 的试验值是由大至小的，它可以确保输出的 <span class="arithmatex">\(\alpha_k\)</span> 能尽可能大，并且算法也不会无限进行下去，因为 <span class="arithmatex">\(d_k\)</span> 是一个下降方向，当 <span class="arithmatex">\(\alpha\)</span> 充分小时，Armijo 准则总是成立的，在实际应用中我们通常也会给 <span class="arithmatex">\(\alpha\)</span> 设置一个下界，防止步长过小。</p>
+<blockquote>
+<p>在线搜索回溯法的过程中，初始步长 <span class="arithmatex">\(\hat{\alpha}\)</span> 在牛顿法和拟牛顿法中被选为 <span class="arithmatex">\(1\)</span>，但在最速下降法或共轭梯度法等其他算法中也可以是不同的值。</p>
+</blockquote>
+<h3 id="_16">通用步长选择算法框架<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>线搜索回溯法虽然简单，但是它只满足 Armijo 条件，有时候我们可能需要满足更严格的 Wolfe 条件，就需要一个更通用的算法框架，我们考虑寻找一维函数
+$$
+\varphi(\alpha)=f(x_k+\alpha p_k)
+$$
+的最小值的方法，或者仅仅是寻找满足终止条件之一（比如 Wolfe 准则和 Goldstein 准则）。</p>
+<p>如果 <span class="arithmatex">\(f\)</span> 是一个凸二次函数 <span class="arithmatex">\(f(x)=\frac{1}{2}x^TQx-b^Tx\)</span>，那么沿着 <span class="arithmatex">\(x_k+\alpha p_k\)</span> 的最小值可以通过求导求极值的方法计算，可以得到
+$$
+\alpha_k=\frac{(\nabla f(x_k))^Tp_k}{p_kQp_k}
+$$
+而如果 <span class="arithmatex">\(f\)</span> 是一个一般的非线性函数，我们就需要使用迭代过程，典型的过程包括两个阶段：</p>
+<ul>
+<li><strong>设界(bracketing phase)：</strong>找到包含可接受步长区间的区间 <span class="arithmatex">\([\overline{a},\overline{b}]\)</span></li>
+<li><strong>选择(selection phase)：</strong>缩放定位最终步长</li>
+</ul>
+<h4 id="_17">插值法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>在<strong>选择阶段</strong>，我们可以使用<strong>插值法</strong>来提高效率，其基本思想是用一个简单的低阶多项式来近似模拟目标函数 <span class="arithmatex">\(\varphi(\alpha)=f(x_k+\alpha p_k)\)</span> 的局部形状，然后求解这个简单的多项式的极小点来作为下一个试验步长。插值过程是迭代进行的，通常从二次插值开始，如果信息更充分或二次插值效果不佳，就用三次插值</p>
+<p><strong>二次插值：</strong>二次插值前我们通常有一个初始的试验步长 <span class="arithmatex">\(\alpha_0\)</span>，这个 <span class="arithmatex">\(\alpha_0\)</span> <strong>不满足</strong>充分下降条件，也即 <span class="arithmatex">\(\varphi(\alpha_0)&gt;\varphi(0)+c_1\alpha_0\varphi'(0)\)</span>，在这种情况下，一个可接受的步长一定存在于区间 <span class="arithmatex">\([0,\alpha_0]\)</span>之内。并且我们已知三个信息点，初始函数值 <span class="arithmatex">\(\varphi(0)\)</span>，初始导数值 <span class="arithmatex">\(\varphi'(0)\)</span>，试验点函数值 <span class="arithmatex">\(\varphi(\alpha_0)\)</span>，我们构造一个二次函数 <span class="arithmatex">\(\varphi_q(\alpha)=a\alpha^2+b\alpha+c\)</span> 来逼近 <span class="arithmatex">\(\varphi(\alpha)\)</span>，让其通过这三个信息点，则可以得到
+$$
+\varphi_q(\alpha)=(\frac{\varphi(\alpha_0)-\varphi(0)-\alpha_0\varphi'(0)}{\alpha_0^2})\alpha^2+\varphi'(0)\alpha +\varphi(0)
+$$
+我们的下一个试验步长 <span class="arithmatex">\(\alpha_1\)</span> 就是这个二次函数的极小值点，我们对 <span class="arithmatex">\(\varphi_q(\alpha)\)</span> 求导可以解得
+$$
+\alpha_1=-\frac{\varphi'(0)\alpha_0^2}{2[\varphi(\alpha_0)-\varphi(0)-\varphi'(0)\alpha_0]}
+$$
+计算出 <span class="arithmatex">\(\alpha_1\)</span> 后，我们会再次检查它是否满足充分下降条件。如果满足，线搜索就结束；否则进入三次插值</p>
+<p><strong>三次插值：</strong>当二次插值产生的点 <span class="arithmatex">\(\alpha_1\)</span> 仍然不满足条件时，我们就得到了更多信息，可以构建一个更精确的三次模型，现在有四个信息点，<span class="arithmatex">\(\varphi(0),\varphi'(0),\varphi(\alpha_0),\varphi(\alpha_1)\)</span>，可以构造一个三次函数 <span class="arithmatex">\(\varphi_c(\alpha)=a\alpha^3+b\alpha^2+c\alpha +d\)</span> 来同时满足这四个条件，我们容易得到 <span class="arithmatex">\(c=\varphi'(0),d=\varphi(0)\)</span>，系数 <span class="arithmatex">\(a,b\)</span> 可以解线性方程组的解，这里我们直接给出
+$$
+[a,b]^T=\frac{1}{\alpha_0^2\alpha_1^2(\alpha_1-\alpha_0)}</p>
+<div class="arithmatex">\[\begin{bmatrix}
+\alpha_0^2&amp;-\alpha_1^2\\
+-\alpha_0^3&amp;\alpha_1^3
+\end{bmatrix}\]</div>
+<p>\begin{bmatrix}
+\varphi(\alpha_1)-\varphi(0)-\varphi'(0)\alpha_1\
+\varphi(\alpha_0)-\varphi(0)-\varphi'(0)\alpha_0
+\end{bmatrix}
+$$
+下一个试验步长 <span class="arithmatex">\(\alpha_2\)</span> 是这个三次函数的极小值点，可以解得
+$$
+\alpha_2=\frac{-b+\sqrt{b^2-3a\varphi'(0)}}{3a}
+$$</p>
+<h4 id="_18">初始步长<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>牛顿法和拟牛顿法的初始试验步长应该取为 <span class="arithmatex">\(1\)</span>，也即 <span class="arithmatex">\(\alpha_0=1\)</span></p>
+<p>最速下降法和共轭梯度法产生的搜索方向并没有经过良好的缩放，<span class="arithmatex">\(\alpha_0=1\)</span> 往往是一个比较差的猜测，我们需要一些更好的策略，主要有两种</p>
+<h3 id="_19">不精确线搜索算法示例<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p><img alt="Algorithm1" src="D:\desktop\专业课\优化实用算法\note\images\Algorithm1.png" /></p>
+<p><img alt="Algorithm2" src="D:\desktop\专业课\优化实用算法\note\images\Algorithm2.png" /></p>
+<p>算法1是主循环，负责从一个初始点开始，通过不断尝试更大的步长来寻找一个设界区间 <span class="arithmatex">\([\alpha_{i-1},\alpha_i]\)</span>；算法2是辅助方法，当主程序找到了一个包含解的区间 <span class="arithmatex">\([a_{low},a_{high}]\)</span> 后，其在这个区间内高效地找到最终的步长。</p>
+<h3 id="_20">收敛性分析<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>这里的收敛性分析建立在一般的不精确线搜索类算法的框架上，得到的结论较弱。</p>
+<h4 id="zoutendijk">Zoutendijk 定理<a class="headerlink" href="#zoutendijk" title="Permanent link">&para;</a></h4>
+<p>Zoutendijk 定理是线搜索方法收敛性的核心定理，为所有使用 Wolfe 准则的先搜索算法提供了一个统一的基本收敛性结论</p>
+<p><strong>(Zoutendijk)</strong> 考虑一般的迭代格式 <span class="arithmatex">\(x_{k+1}=x_k+\alpha_k d_k\)</span>，其中 <span class="arithmatex">\(d_k\)</span> 是搜索方向，<span class="arithmatex">\(\alpha_k\)</span> 是步长，且在迭代过程中 Wolfe 准则满足，我们假设目标函数 <span class="arithmatex">\(f\)</span> 下有界、连续可微且梯度 <span class="arithmatex">\(L-\)</span>利普希茨连续，也即
+$$
+||\nabla f((x)-\nabla f(y)||\leq L||x-y||,\forall x,y\in R^n
+$$
+那么 
+$$
+\sum_{k=0}^{\infty}\cos^2\theta_k ||\nabla f(x_k)||^2&lt;\infty
+$$
+其中 <span class="arithmatex">\(\cos\theta_k\)</span> 为负梯度 <span class="arithmatex">\(-\nabla f(x_k)\)</span> 和下降方向 <span class="arithmatex">\(d_k\)</span> 夹角的余弦，也即
+$$
+\cos\theta_k=\frac{-\nabla f(x_k)^Td_k}{||\nabla f(x_k)||\cdot||d_k||}
+$$</p>
+<p>上述不等式我们称为 Zoutendijk 条件</p>
+<blockquote>
+<p>证明可以参考文老师的书</p>
+</blockquote>
+<h4 id="_21">线搜索算法收敛性<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>Zoutendijk 定理直接导出了保证算法全局收敛的关键条件，由 Zoutendijk 条件可以得到
+$$
+\lim_{k\to\infty}\cos^2\theta_k||\nabla f(x_k)||^2=0
+$$
+而为了由其导出 <span class="arithmatex">\(||\nabla f(x_k)||\to 0\)</span>，我们需要确保 <span class="arithmatex">\(\cos^2\theta_k\)</span> 不趋于 <span class="arithmatex">\(0\)</span>，也即搜索方向 <span class="arithmatex">\(p_k\)</span> 不能与梯度方向 <span class="arithmatex">\(\nabla f(x_k)\)</span> 趋于正交，即必须存在一个常数 <span class="arithmatex">\(\delta &gt;0\)</span>，使得对于所有的迭代步 <span class="arithmatex">\(k\)</span> 都满足：
+$$
+\cos\theta_k\geq \delta &gt;0
+$$
+这些条件保证了搜索方向始终是一个足够好的下降方向。</p>
+<p>由此我们导出了<strong>线搜索算法的收敛性定理</strong>：对于迭代法 <span class="arithmatex">\(x_{k+1}=x_k+\alpha_kd_k\)</span>，设 <span class="arithmatex">\(\theta_k\)</span> 为每一步负梯度 <span class="arithmatex">\(-\nabla f(x_k)\)</span> 与下降方向 <span class="arithmatex">\(d_k\)</span> 的夹角，并假设对任意的 <span class="arithmatex">\(k\)</span>，存在常数 <span class="arithmatex">\(\gamma &gt;0\)</span>，使得
+$$
+\theta_k&lt;\frac{\pi}{2}-\gamma
+$$
+则在 Zoutendijk 定理成立的条件下，有
+$$
+\lim_{k\to\infty}\nabla f(x_k)=0
+$$</p>
+<blockquote>
+<p>上述定理仅仅给出了最基本的收敛性，而没有进一步回答算法的收敛速度，这是因为算法收敛速度极大地取决于 <span class="arithmatex">\(d_k\)</span> 的选择，下面一节我们将着重介绍如何选取下降方向 <span class="arithmatex">\(d_k\)</span></p>
+</blockquote>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年3月5日 05:17:07 UTC"><span class="timeago" datetime="2026-03-05T05:17:07+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月5日 05:17:07 UTC">2026-03-05</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+  <hr>
+  <h2>评论</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="zhuiguang49/notebook"  data-repo-id="R_kgDOPDL8OA"   data-category="General"
+          data-category-id="DIC_kwDOPDL8OM4CsJQk"  data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"  data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
