@@ -58,7 +58,7 @@ plugins:
   - git-revision-date-localized: 
       type: timeago
       locale: zh
-  - mermaid2  
+
 
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
@@ -75,7 +75,11 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite        
   - pymdownx.snippets            
-  - pymdownx.superfences         
+  - pymdownx.superfences:
+      custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format         
   - admonition                   
   - pymdownx.details             
   - pymdownx.tabbed:            
@@ -117,6 +121,11 @@ nav:
       - 'Chapter12 Sorting': 'CS/CS61B/Chapter12 Sorting.md'
     - 'ADS':
       - 'Lecture1 AVL Trees,Splay Trees and Amortized Analysis': 'CS/ADS/Lecture 1 AVL Trees,Splay Trees and Amortized Analysis.md'
+      - 'Lecture2 Red-Black Trees and B+ Trees': 'CS/ADS/Lecture 2 Red-Black Trees and B+ Trees.md'
+      - 'Lecture3 Inverted File Index': 'CS/ADS/Lecture 3 Inverted File Index.md'
+      - 'Lecture4 Leftist Heaps and Skew Heaps': 'CS/ADS/Lecture 4 Leftist Heaps and Skew Heaps.md'
+      - 'Lecture5 Binomial Queue': 'CS/ADS/Lecture5 Binomial Queue.md'
+
 
   - 'Math': 
     - '概率论': 
