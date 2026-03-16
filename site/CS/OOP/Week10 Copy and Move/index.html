@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -167,6 +169,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
@@ -2311,59 +2318,59 @@
 <h2 id="copyingcopy-constructor">拷贝(Copying)与拷贝构造函数(Copy Constructor)<a class="headerlink" href="#copyingcopy-constructor" title="Permanent link">&para;</a></h2>
 <h3 id="_1">拷贝<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>拷贝指的是从现有对象创建新对象的副本，比如常见的值传递、初始化等等都是这么进行的，可以看下面这个例子：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">Currency</span><span class="w"> </span><span class="n">p</span><span class="p">){</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;X=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">dollars</span><span class="p">();</span><span class="w"> </span><span class="cm">/* 这里函数func接受一个Currency类型的参数p，以值传递的方式传递；</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">    而值传递就意味着参数p是调用者传入对象的一个副本，并非原始对象*/</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">Currency</span><span class="w"> </span><span class="n">p</span><span class="p">){</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;X=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">dollars</span><span class="p">();</span><span class="w"> </span><span class="cm">/* 这里函数func接受一个Currency类型的参数p，以值传递的方式传递；</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">    而值传递就意味着参数p是调用者传入对象的一个副本，并非原始对象*/</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>由于是值传递，在调用<code>func</code>的时候，C++会为<code>p</code>创建一个新对象，通过<code>Currency</code>类的拷贝构造函数（如果没有定义的话，就会使用编译器生成的默认拷贝构造函数）从传入的对象拷贝数据，拷贝构造函数的典型签名是<code>Currency::Currency(const Currency&amp;)</code>，这里的<code>const Currency &amp;</code>是常量引用，避免不必要的拷贝且允许临时对象</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Currency</span><span class="w"> </span><span class="nf">bucks</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">func</span><span class="p">(</span><span class="n">bucks</span><span class="p">);</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Currency</span><span class="w"> </span><span class="nf">bucks</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">func</span><span class="p">(</span><span class="n">bucks</span><span class="p">);</span>
+</span></code></pre></div>
 <p>创建了一个<code>Currency</code>对象<code>bucks</code>，<code>func(bucks)</code>调用<code>func</code>，将<code>bucks</code>作为参数传递，由于<code>func</code>使用值传递，C++会调用<code>Currency</code>的拷贝构造函数，基于<code>bucks</code>创建一个新对象<code>p</code>，<code>p</code>是<code>bucks</code>的副本，包含相同的数据，但是位于不同的内存地址。</p>
 <h3 id="_2">拷贝构造函数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>拷贝构造函数的典型签名是<code>T::T(const T&amp;)</code>，用于实现拷贝。需要注意的是，拷贝构造函数的<strong>第一个参数必须是同类对象的引用</strong>，并且<strong>无返回类型</strong>，像以下几个都是不对的：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">MyClass</span><span class="o">&amp;</span><span class="p">(</span><span class="n">MyClass</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">MyClass</span><span class="p">(</span><span class="n">Myclass</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">MyClass</span><span class="p">(</span><span class="n">Myclass</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">);</span>
-</code></pre></div>
+<div class="language-c++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">MyClass</span><span class="o">&amp;</span><span class="p">(</span><span class="n">MyClass</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">MyClass</span><span class="p">(</span><span class="n">Myclass</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">MyClass</span><span class="p">(</span><span class="n">Myclass</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">);</span>
+</span></code></pre></div>
 <p>第一个有返回类型，故错误；第二个参数按值传递，调用自身会导致无限递归，也错误；第三个参数是指针，而拷贝构造函数要求引用类型。</p>
 <p>如果我们没有显式定义拷贝构造函数的话，编译器会自动生成<strong>逐成员</strong>的拷贝构造函数（我们称之为<strong>默认拷贝构造函数</strong>），但是这样的拷贝构造函数是存在一定风险的，如果<strong>类包含指针，那么就可能导致浅拷贝（指针共享内存）</strong>，这会导致比较严重的内存问题。比如我们看下面这个例子：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">{</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">public</span><span class="o">:</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Person</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Person</span><span class="p">();</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">();</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">private</span><span class="o">:</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Person</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Person</span><span class="p">();</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">();</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>对于这个例子来说，如果<code>Person</code>类没有定义拷贝构造函数的话，那么编译器生成的默认拷贝构造函数就会直接拷贝<code>name</code>指针的值，结果是两个<code>name</code>对象（原对象和副本）的<code>name</code>指针指向同一块内存（浅拷贝），那么就会导致当其中一个对象被销毁的时候，其析构函数已经释放了<code>name</code>指向的内存，此时另一个对象的<code>name</code>指针就会变成<strong>悬空指针（指向已释放的内存）</strong>，后续访问或释放会导致未定义行为。</p>
 <p>这里有必要先简单介绍一下拷贝的两种类型——<strong>浅拷贝</strong>和<strong>深拷贝</strong>，浅拷贝是在拷贝指针；而深拷贝是拷贝整个数据块。具体来说，浅拷贝仅仅拷贝了指针的值，新对象和原对象的指针指向的是同一块内存，这样会导致内存共享，析构时可能双重释放或产生悬空指针；深拷贝则是为新对象分配新内存，并复制指针指向的数据。</p>
 <h3 id="_3">拷贝构造函数何时被调用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>对象初始化</strong>：即使用现有对象初始化新对象的时候，如下面的例子：</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_a</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baby_a</span><span class="p">;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">Person</span><span class="w"> </span><span class="nf">baby_c</span><span class="p">(</span><span class="n">baby_a</span><span class="p">);</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_a</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baby_a</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">Person</span><span class="w"> </span><span class="nf">baby_c</span><span class="p">(</span><span class="n">baby_a</span><span class="p">);</span>
+</span></code></pre></div>
 <p>无论是用<code>=</code>还是括号进行初始化，都会调用拷贝构造函数</p>
 <ol>
 <li><strong>值传递</strong>：函数参数按值传递的时候会调用拷贝构造函数，比如下面的例子：</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">roster</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">child</span><span class="p">){...}</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_a</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">roster</span><span class="p">(</span><span class="n">baby_a</span><span class="p">);</span><span class="w"> </span><span class="c1">// 拷贝构造函数调用</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">roster</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">child</span><span class="p">){...}</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">Person</span><span class="w"> </span><span class="n">baby_a</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">roster</span><span class="p">(</span><span class="n">baby_a</span><span class="p">);</span><span class="w"> </span><span class="c1">// 拷贝构造函数调用</span>
+</span></code></pre></div>
 <ol>
 <li><strong>函数返回对象：</strong>函数返回对象（非引用）的时候，可能触发拷贝构造函数（尽管编译器可能做一些优化，如RVO），比如下面这个例子：</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Person</span><span class="w"> </span><span class="nf">copy_func</span><span class="p">(){</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="n">local</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">local</span><span class="p">;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Person</span><span class="w"> </span><span class="nf">copy_func</span><span class="p">(){</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="n">local</span><span class="p">(</span><span class="s">&quot;Tom&quot;</span><span class="p">);</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">local</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
+</span></code></pre></div>
 <h3 id="constructionassignment">构造(Construction)和赋值(Assignment)<a class="headerlink" href="#constructionassignment" title="Permanent link">&para;</a></h3>
 <ul>
 <li>每个对象只会被构造一次（通过构造函数或者拷贝构造函数等）</li>
@@ -2483,7 +2490,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.path", "navigation.instant", "navigation.top", "header.autohide", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
@@ -2492,9 +2499,11 @@
       
         <script src="../../../js/timeago_mkdocs_material.js"></script>
       
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="../../../javascripts/katex.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
       
     
   </body>
