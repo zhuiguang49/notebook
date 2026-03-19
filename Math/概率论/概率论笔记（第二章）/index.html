@@ -1513,6 +1513,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机向量的变换
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2533,6 +2542,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机向量的变换
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3342,7 +3360,7 @@ g(y)=p(f^{-1}(y))|(f^{-1}(y))^{'}|=
 <div class="arithmatex">\[ g(y) = g_1(y) + g_2(y) = \begin{cases}  \frac{1}{\sqrt{2\pi y}} \exp\left\{-\frac{y}{2}\right\}, &amp; y &gt; 0, \\ 0, &amp; y \leq 0 \end{cases} \]</div>
 <p><strong>例3</strong> 设 <span class="arithmatex">\(\xi\)</span> 有连续的分布函数 <span class="arithmatex">\(F(x)\)</span>，求 <span class="arithmatex">\(\theta=F(\xi)\)</span> 的分布</p>
 <h3 id="_24">连续型随机向量的函数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<p><strong>这里随机向量的函数，变换前的是随机向量，但是变换后就变成了一维向量，这和下一部分的随机向量之间的变换是不同的</strong></p>
+<p><strong>这里随机向量的函数，变换前的是随机向量，但是变换后就变成了标量，这和下一部分的随机向量之间的变换是不同的</strong></p>
 <p>一般理论：设 <span class="arithmatex">\((\xi_1,\cdot\cdot\cdot\xi_n)\)</span> 为连续型随机向量，其密度函数为 <span class="arithmatex">\(p(x_1,\cdot\cdot\cdot,x_n)\)</span>，又设 <span class="arithmatex">\(\eta=f(\xi_1,\cdot\cdot\cdot\xi_n)\)</span>。则 <span class="arithmatex">\(\eta\)</span> 的分布函数为
 $$
 F_{\eta}(y)=P(f(\xi_1,\cdot\cdot\cdot,\xi_n)\leq y)=\int\cdot\cdot\cdot\int_{B^n}p(x_1,\cdot\cdot\cdot,x_n)dx_1\cdot\cdot\cdot dx_n
@@ -3455,10 +3473,88 @@ $$</p>
 </li>
 <li>
 <p>对于 <span class="arithmatex">\((\xi_1^*,\xi_n^*)\)</span> 的分布函数，可以这样考虑</p>
+<div class="arithmatex">\[
+\begin{align}
+F(x,y)&amp;=P(\xi_1^* \leq x,\xi_n^* \leq y)=P(\xi_n^* \leq y)-P(\xi_1^* &gt;x,\xi_n^* \leq y)=[F(y)]^n-P(\bigcap_{i=1}^n\left\{x &lt;\xi_i \leq y\right\})\\&amp;=\begin{cases}[F(y)]^n-[F(y)-F(x)]^n&amp;x &lt; y \\
+[F(y)]^n&amp;x\geq y\end{cases}
+\end{align}
+\]</div>
 </li>
 </ul>
-<p>$$\begin{aligned}
-F(x,y)&amp;=P(\xi_1^<em> \leq x,\xi_n^</em> \leq y)=P(\xi_n^<em> \leq y)-P(\xi_1^</em> &gt;x,\xi_n^* \leq y)=[F(y)]^n-P(\bigcap_{i=1}^n\left{x &lt;\xi_i \leq y\right})\&amp;=\begin{cases}[F(y)]^n-[F(y)-F(x)]^n&amp;x</p>
+<h3 id="_28">随机向量的变换<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>这里和2.7.3是不同的，这里的变换是<strong>从随机向量变换到随机向量</strong>   </p>
+<p>先考虑一般理论：设 <span class="arithmatex">\((\xi_1,\cdot\cdot\cdot\xi_n)\)</span> 的密度函数为 <span class="arithmatex">\(p(x_1,\cdot\cdot\cdot,x_n)\)</span>，现有 <span class="arithmatex">\(m\)</span> 个Borel函数：
+$$
+\eta_1=f_1(\xi_1,\cdot\cdot\cdot,\xi_n),\cdot\cdot\cdot,\eta_m=f_m(\xi_1,\cdot\cdot\cdot,\xi_n)
+$$
+   则 <span class="arithmatex">\((\eta_1,\cdot\cdot\cdot,\eta_m)\)</span> 是随机向量，其联合分布函数为</p>
+<div class="arithmatex">\[\begin{aligned}
+G(y_1, \cdots, y_m) &amp;= P(\eta_1 \leq y_1, \cdots, \eta_m \leq y_m)= P((\xi_1, \cdots, \xi_n) \in B^n)
+\\&amp;= \int \cdots \int_{B^n} p(x_1, \cdots, x_n) \, dx_1 \cdots dx_n,
+\end{aligned}\]</div>
+<p>其中，<span class="arithmatex">\(B^n\)</span> 是 <span class="arithmatex">\(n\)</span> 维 Borel 集：</p>
+<p>$$
+{(x_1, \cdots, x_n) : f_1(x_1, \cdots, x_n) \leq y_1, \cdots, f_m(x_1, \cdots, x_n) \leq y_m}.
+$$
+我们考虑一种特殊情形（光滑可逆变换情形）：<span class="arithmatex">\((\eta_1,\cdot\cdot\cdot,\eta_m)\)</span> 与 <span class="arithmatex">\((\xi_1,\cdot\cdot\cdot,\xi_n)\)</span>有一一对应的变换关系（此时 <span class="arithmatex">\(m=n\)</span>），且向量变换
+$$
+y_j=f_j(x_1,\cdot\cdot\cdot,x_n),\qquad j=1,\cdot\cdot\cdot,n
+$$
+的反函数组
+$$
+x_j=x_j(y_1,\cdot\cdot\cdot,y_n),\qquad j=1,\cdot\cdot\cdot,n
+$$
+在其定义域内都有连续的偏导数则有<strong>如下定理</strong>：</p>
+<p>假设 <span class="arithmatex">\((\xi_1, \cdots, \xi_n)\)</span> 有联合密度函数 <span class="arithmatex">\(p(x_1, \cdots, x_n)\)</span>; 函数组 <span class="arithmatex">\(y_j = f_j(x_1, \cdots, x_n), \quad j = 1, \cdots, n\)</span> 有唯一的反函数组: <span class="arithmatex">\(x_j = x_j(y_1, \cdots, y_n), \quad j = 1, \cdots, n\)</span> 且坐标变换的Jacobi行列式 </p>
+<div class="arithmatex">\[
+J = \frac{\partial (x_1, \cdots, x_n)}{\partial (y_1, \cdots, y_n)} = \begin{vmatrix} \frac{\partial x_1}{\partial y_1} &amp; \cdots &amp; \frac{\partial x_1}{\partial y_n} \\ \vdots &amp; \ddots &amp; \vdots \\ \frac{\partial x_n}{\partial y_1} &amp; \cdots &amp; \frac{\partial x_n}{\partial y_n} \end{vmatrix} \neq 0
+\]</div>
+<p>反函数组 <span class="arithmatex">\(\{x_j = x_j(y_1, \cdots, y_n), \, j = 1, \cdots, n\}\)</span> 在其定义域内都有连续的偏导数. 则 <span class="arithmatex">\((\eta_1, \cdots, \eta_n)\)</span> 是连续型随机向量, 密度函数为 </p>
+<div class="arithmatex">\[
+g(y_1, \cdots, y_n) = \begin{cases}  p(x_1(y_1, \cdots, y_n), \cdots, x_n(y_1, \cdots, y_n)) \cdot |J|, &amp; (y_1, \cdots, y_n) \in (f_1, \cdots, f_n) 的值域, \\ 0, &amp; 其他 \end{cases}
+\]</div>
+<p>其实这也是验证几个条件：</p>
+<ul>
+<li>连续条件：<span class="arithmatex">\((\xi_1, \cdots, \xi_n)\)</span> 是连续型随机向量</li>
+<li>光滑条件：反函数组 <span class="arithmatex">\(\{x_j = x_j(y_1, \cdots, y_n), \, j = 1, \cdots, n\}\)</span> 在其定义域内都有连续的偏导数</li>
+<li>可逆条件：雅克比行列式不为 <span class="arithmatex">\(0\)</span></li>
+</ul>
+<p>并且尽管这里考虑的是 <span class="arithmatex">\(n\)</span> 维随机向量到 <span class="arithmatex">\(n\)</span> 维随机向量的变换，但是它跟一维情形是十分类似的，将反函数组带回原来的联合密度函数，并且乘了雅可比行列式的绝对值（一维情形下是将反函数代回了密度函数，并且乘反函数导数的绝对值）</p>
+<p>下面我们看一道例题：</p>
+<p><strong>例1</strong> <span class="arithmatex">\((\xi,\eta)\)</span> 为连续型随机向量，设 <span class="arithmatex">\(\xi,\eta\)</span> 相互独立，都服从参数为 <span class="arithmatex">\(1\)</span> 的指数分布，求：</p>
+<ol>
+<li><span class="arithmatex">\(\alpha=\xi+\eta\)</span> 与 <span class="arithmatex">\(\beta=\xi/\eta\)</span> 的联合密度函数</li>
+<li>分别求 <span class="arithmatex">\(\xi+\eta\)</span> 与 <span class="arithmatex">\(\xi/\eta\)</span> 的边际密度函数</li>
+</ol>
+<p><strong>解</strong> 懒得敲</p>
+<p><img alt="例1.jpg" src="../images/%E4%BE%8B1.jpg" /></p>
+<p>我们可以看出，<span class="arithmatex">\(\alpha\)</span> 与 <span class="arithmatex">\(\beta\)</span> 是相互独立的</p>
+<p>由这个例子我们可以得到一些启发：</p>
+<ul>
+<li>要判断随机向量的几个函数 <span class="arithmatex">\((\eta_1,\cdot\cdot\cdot,\eta_n)\)</span> 是否相互独立，可用随机向量变换公式来求得它们的联合分布，以及相应的边际分布，然后利用独立性的各种充要条件来判断。</li>
+<li>为求随机向量的一个函数的分布，有时我们可以适当地补充几个函数，先求它们的联合分布，而原来要求的随机向量的函数分布可以作为其边际分布得到</li>
+</ul>
+<p><strong>例2</strong> <span class="arithmatex">\(\xi,\eta\)</span> 相互独立，并且 <span class="arithmatex">\(\xi \sim N(0,\sigma^2),\eta\sim U(0,\pi)\)</span>，求 <span class="arithmatex">\(\alpha=\xi+a\ cos\eta\)</span> 的密度函数，其中 <span class="arithmatex">\(a\)</span> 为常数</p>
+<p><strong>解</strong> 懒得敲<img alt="例2（2）.jpg" src="../images/%E4%BE%8B2%EF%BC%882%EF%BC%89.jpg" /></p>
+<p><strong>例3</strong> <span class="arithmatex">\(\xi,\eta\)</span> 独立同分布，都服从 <span class="arithmatex">\(N(0,1)\)</span> 分布，<span class="arithmatex">\(\xi=\rho cos\varphi,\eta = \rho sin \varphi\)</span>，求证：<span class="arithmatex">\(\rho=\rho(\xi,\eta),\varphi=\varphi (\xi,\eta)\)</span> 相互独立</p>
+<p><strong>例4</strong> 假设随机变量 <span class="arithmatex">\(X,Y\)</span> 相互独立，并且 <span class="arithmatex">\(Z\)</span> 是 <span class="arithmatex">\(X\)</span> 的函数，<span class="arithmatex">\(W\)</span> 是 <span class="arithmatex">\(Y\)</span> 的函数：<span class="arithmatex">\(Z=g(X),W=h(Y)\)</span>，其中 <span class="arithmatex">\(g\)</span> 和 <span class="arithmatex">\(h\)</span> 都是Borel函数，证明：<span class="arithmatex">\(Z\)</span> 和 <span class="arithmatex">\(W\)</span> 相互独立</p>
+<p><strong>证明</strong> 感觉有点抽象</p>
+<p>对于任意给定的实数 <span class="arithmatex">\(z\)</span> 和 <span class="arithmatex">\(w\)</span>，定义</p>
+<div class="arithmatex">\[
+A=\left\{x:g(x)\leq z\right\},\qquad B=\left\{y:h(y)\leq w\right\}
+\]</div>
+<p>则 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span> 都是Borel集（因为 <span class="arithmatex">\(g\)</span> 和 <span class="arithmatex">\(h\)</span> 是Borel函数），又因为 <span class="arithmatex">\(X\)</span> 和 <span class="arithmatex">\(Y\)</span> 相互独立，所以
+$$
+P(X\in A,Y \in B)=P(X\in A)P(Y\in B)
+$$
+由此可知对任意的实数<span class="arithmatex">\(z,w \in R\)</span></p>
+<div class="arithmatex">\[\begin{aligned}
+P(Z\leq z,W\leq w )&amp;=P(g(X)\leq z,h(Y)\leq w)=P(x\in A,Y\in B)\\&amp;=P(X \in A)P(Y\in B)
+=P(Z\leq z)P(W\leq w)
+\end{aligned}\]</div>
+<p>所以 <span class="arithmatex">\(W\)</span> 和 <span class="arithmatex">\(Z\)</span> 相互独立</p>
+<p>关于<strong>随机变量函数的独立性</strong>，其实还有更一般的结论</p>
+<p>令 <span class="arithmatex">\(1 \leq n_1 &lt; n_2 &lt; \cdots &lt; n_k = n\)</span>; <span class="arithmatex">\(f_1\)</span> 是 <span class="arithmatex">\(n_1\)</span> 个变量的 Borel 函数, <span class="arithmatex">\(f_2\)</span> 是 <span class="arithmatex">\(n_2 - n_1\)</span> 个变量的 Borel 函数, <span class="arithmatex">\(\cdots\)</span>, <span class="arithmatex">\(f_k\)</span> 是 <span class="arithmatex">\(n_k - n_{k-1}\)</span> 个变量的 Borel 函数. 如果 <span class="arithmatex">\(X_1, X_2, \cdots, X_n\)</span> 是独立随机变量, 则 <span class="arithmatex">\(f_1(X_1, \cdots, X_{n_1}), f_2(X_{n_1+1}, \cdots, X_{n_2}), \cdots, f_k(X_{n_{k-1}+1}, \cdots, X_{n_k})\)</span> 是相互独立的.</p>
 
 
 
@@ -3479,7 +3575,7 @@ F(x,y)&amp;=P(\xi_1^<em> \leq x,\xi_n^</em> \leq y)=P(\xi_n^<em> \leq y)-P(\xi_1
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025年6月29日 09:50:43 UTC"><span class="timeago" datetime="2025-06-29T09:50:43+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月29日 09:50:43 UTC">2025-06-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026年3月19日 07:25:50 UTC"><span class="timeago" datetime="2026-03-19T07:25:50+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月19日 07:25:50 UTC">2026-03-19</span>
   </span>
 
     
